@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instituto de Justiça Reprodutiva</title>
+<meta name="description" content="Autonomia reprodutiva é justiça reprodutiva. Organização de direitos humanos na defesa da saúde sexual e reprodutiva de mulheres negras e pessoas que gestam no Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: linha dos posts IJR. Fundo água granulado, anéis do símbolo do logo, títulos condensados sobre faixas de cor (verde e rosa), fotos P&B recortadas com borda branca. Azul é a cor institucional; rosa e verde só aparecem como faixas. Identidade única, sem modo escuro. */
+:root {
+  color-scheme: light;
+  --agua: #93D5D3;
+  --agua-clara: #B9E6E4;
+  --azul: #1F2AD8;
+  --rosa: #E97AB2;
+  --verde: #46A866;
+  --branco: #F8F8F5;
+  --tinta: #1C2340;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --grao: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.12  0 0 0 0 0.2  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.28'/></svg>");
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--agua); color: var(--tinta); font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--azul); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); position: relative; }
+.band { padding-block: clamp(64px, 9vw, 116px); position: relative; overflow: hidden; }
+.grao { background-image: var(--grao); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: 1.02; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2.6rem, 6.4vw, 5rem); }
+h3 { font-size: 1.7rem; }
+p { margin: 0; max-width: 60ch; }
+
+/* Faixas de destaque, como nos posts */
+.faixa { display: flex; flex-direction: column; align-items: flex-start; gap: .06em; }
+.faixa > span { display: inline-block; padding: .04em .14em .02em; color: var(--branco); }
+.f-verde { background: var(--verde); }
+.f-rosa { background: var(--rosa); }
+.f-agua { background: var(--agua); }
+.f-azul { background: var(--azul); }
+.selo { display: inline; background: var(--branco); color: var(--azul); font-family: var(--body); font-weight: 600; font-size: clamp(1.25rem, 2.6vw, 1.9rem); line-height: 1.5; padding: .05em .3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+/* Anel do símbolo */
+.anel { position: absolute; pointer-events: none; }
+
+/* Cabeçalho */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: var(--azul); color: var(--branco); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 12px; flex-wrap: wrap; }
+.nav .logo img { height: 40px; width: auto; }
+.links { display: flex; gap: clamp(14px, 2.6vw, 30px); flex-wrap: wrap; align-items: center; font-weight: 600; font-size: .9rem; }
+.links a { text-decoration: none; }
+.links a:hover { text-decoration: underline; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+.links .junte { background: var(--rosa); padding: 7px 16px; border-radius: 999px; }
+.links .junte:hover { text-decoration: none; background: #f08bbd; }
+
+/* Capa */
+.hero { padding-block: clamp(48px, 7vw, 96px) clamp(64px, 9vw, 110px); }
+.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+@media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.15fr 1fr; gap: 56px; } }
+.hero .wrap > * { min-width: 0; }
+.hero h1 { font-size: clamp(3rem, 8.4vw, 6.6rem); }
+.hero .txt { display: grid; gap: 30px; position: relative; z-index: 2; }
+.hero .lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); font-weight: 500; }
+.acoes { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { font-family: var(--body); font-weight: 700; font-size: 1rem; padding: 13px 26px; border-radius: 999px; text-decoration: none; border: 2px solid var(--azul); display: inline-block; }
+.btn.cheio { background: var(--azul); color: var(--branco); }
+.btn.vazado { color: var(--azul); }
+.btn.claro { background: var(--branco); color: var(--azul); border-color: var(--branco); }
+.btn:hover { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+.recorte { position: relative; justify-self: center; width: min(86%, 440px); }
+.recorte .anel { width: 130%; left: -15%; top: -12%; z-index: 0; }
+.recorte figure { margin: 0; position: relative; z-index: 1; background: var(--branco); padding: 10px; transform: rotate(-2deg); box-shadow: 0 18px 40px rgba(28,35,64,.18); }
+.recorte img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; filter: grayscale(1) contrast(1.1); }
+
+/* Quem somos: azul */
+.quem { background: var(--azul); color: var(--branco); }
+.quem .wrap { display: grid; grid-template-columns: 1fr; gap: 36px; }
+@media (min-width: 900px) { .quem .wrap { grid-template-columns: 1fr 1.25fr; align-items: center; gap: 64px; } }
+.quem .wrap > * { min-width: 0; }
+.quem .grande { font-size: clamp(1.3rem, 2.3vw, 1.75rem); font-weight: 500; line-height: 1.45; }
+.quem .grande b { font-weight: 700; background: var(--rosa); padding: 0 .2em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.quem .anel { right: -140px; bottom: -160px; width: 420px; opacity: .5; }
+
+/* Cartões */
+.cab { display: grid; gap: 22px; margin-bottom: 48px; max-width: 900px; }
+.grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.card { background: var(--branco); padding: 26px 24px 30px; display: grid; gap: 14px; align-content: start; }
+.card h3 { font-size: 2rem; color: var(--azul); }
+.card p { font-size: .97rem; }
+.card .barra { height: 8px; width: 56px; }
+
+/* Brasil */
+.brasil { background-color: var(--agua-clara); }
+.brasil .wrap { display: grid; grid-template-columns: 1fr; gap: 44px; align-items: center; }
+@media (min-width: 900px) { .brasil .wrap { grid-template-columns: .9fr 1.1fr; gap: 64px; } }
+.brasil .wrap > * { min-width: 0; }
+.brasil figure { margin: 0; background: var(--branco); padding: 10px; transform: rotate(1.5deg); width: min(100%, 460px); justify-self: center; box-shadow: 0 18px 40px rgba(28,35,64,.16); }
+.brasil figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; filter: grayscale(1) contrast(1.08); }
+.brasil .txt { display: grid; gap: 24px; }
+.linha { list-style: none; margin: 0; padding: 0; display: grid; }
+.linha li { display: grid; grid-template-columns: 76px 1fr; gap: 16px; padding-block: 13px; border-top: 1.5px solid rgba(31,42,216,.25); font-size: .97rem; }
+.linha .ano { font-family: var(--display); font-size: 1.4rem; color: var(--azul); font-variant-numeric: tabular-nums; line-height: 1.1; }
+
+/* Para todas */
+.todas { background-color: var(--azul); color: var(--branco); }
+.todas .wrap { display: grid; place-items: center; }
+.todas .anel { left: 50%; top: 50%; width: min(130vw, 760px); transform: translate(-50%, -50%); }
+.todas .f-agua { color: var(--azul); }
+.todas h2 { position: relative; z-index: 1; font-size: clamp(2.8rem, 8vw, 6.2rem); }
+
+/* Contato */
+.contato .wrap { display: grid; grid-template-columns: 1fr; gap: 44px; }
+@media (min-width: 900px) { .contato .wrap { grid-template-columns: 1fr 1fr; gap: 72px; } }
+.contato .wrap > * { min-width: 0; }
+.contato .txt { display: grid; gap: 24px; align-content: start; }
+.email { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-weight: 700; color: var(--azul); font-size: 1.05rem; }
+.email span { user-select: all; overflow-wrap: anywhere; }
+.copiar { font: inherit; font-size: .82rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; border: 1.5px solid var(--azul); background: transparent; color: var(--azul); cursor: pointer; }
+form { background: var(--branco); padding: clamp(22px, 3vw, 34px); display: grid; gap: 14px; position: relative; }
+label { display: grid; gap: 6px; font-weight: 600; font-size: .9rem; color: var(--azul); }
+input, textarea { font: inherit; font-size: 1rem; padding: 12px 14px; border: 1.5px solid #C6CBE6; background: #fff; color: var(--tinta); border-radius: 10px; }
+input:focus, textarea:focus { outline: none; border-color: var(--azul); }
+.honey { position: absolute; left: -9999px; width: 1px; height: 1px; }
+.enviar { font: inherit; font-weight: 700; justify-self: start; padding: 13px 30px; border-radius: 999px; background: var(--azul); color: var(--branco); border: 0; cursor: pointer; }
+.enviar:disabled { opacity: .6; cursor: wait; }
+.status { font-size: .9rem; min-height: 1.4em; }
+.status.ok { color: #2E7D4A; font-weight: 700; }
+.status.erro { color: #B0245E; font-weight: 600; }
+
+footer { background: var(--azul); color: var(--branco); padding-block: 30px; font-size: .88rem; }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+footer img { height: 46px; width: auto; }
+
+/* Missão, visão e valores */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { background: var(--branco); color: var(--azul); font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; }
+
+.declaracao { background-color: var(--azul); color: var(--branco); }
+.declaracao .wrap { display: grid; gap: 64px; }
+.bloco { display: grid; grid-template-columns: 1fr; gap: 18px 56px; }
+@media (min-width: 900px) { .bloco { grid-template-columns: 300px 1fr; } }
+.bloco > * { min-width: 0; }
+.bloco .rot { font-size: clamp(3rem, 6vw, 5rem); }
+.bloco .rot.r { color: var(--rosa); } .bloco .rot.a { color: var(--agua); }
+.bloco p { font-size: clamp(1.2rem, 2.1vw, 1.65rem); font-weight: 500; line-height: 1.5; max-width: 52ch; }
+.bloco p b { font-weight: 700; background: rgba(233,122,178,.9); padding: 0 .15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+
+.valores { background-color: var(--agua-clara); }
+.lista-valores { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 32px; }
+.lista-valores li { border-top: 2px solid var(--azul); padding-block: 16px 20px; display: grid; gap: 6px; }
+.lista-valores b { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.6rem; color: var(--azul); line-height: 1.1; }
+.lista-valores span { font-size: .96rem; }
+
+.declaracao .chips span { background: var(--branco); }
+.grande-m { font-size: clamp(1.1rem, 1.8vw, 1.35rem); font-weight: 500; }
+.card ul { margin: 4px 0 0; padding-left: 1.1em; font-size: .95rem; display: grid; gap: 4px; }
+
+/* Equipe */
+.equipe { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px 32px; margin-top: 24px; }
+.pessoa { display: grid; gap: 12px; justify-items: start; min-width: 0; }
+.pessoa .foto { position: relative; width: 100%; max-width: 380px; padding: 13%; }
+.pessoa .anel-p { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-20deg); }
+.pessoa img { position: relative; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 10px solid var(--branco); filter: grayscale(1) contrast(1.05); transition: filter .3s; }
+.pessoa:hover img { filter: none; }
+@media (prefers-reduced-motion: reduce) { .pessoa img { transition: none; } }
+.pessoa h3 { font-size: 2rem; }
+.pessoa p { font-weight: 600; font-size: 1rem; }
+.f-agua-t { background: var(--agua); color: var(--azul) !important; }
+
+/* Publicações */
+.docs { display: grid; gap: 28px; }
+.doc { background: var(--branco); display: grid; grid-template-columns: 1fr; gap: 24px 36px; padding: clamp(20px, 3vw, 36px); }
+@media (min-width: 760px) { .doc { grid-template-columns: 230px 1fr; align-items: start; } }
+.doc > * { min-width: 0; }
+.capa-doc { display: block; max-width: 230px; box-shadow: 0 14px 30px rgba(28,35,64,.22); transform: rotate(-1.5deg); transition: transform .2s; }
+.doc:nth-child(2) .capa-doc { transform: rotate(1.5deg); }
+.capa-doc:hover { transform: rotate(0) translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .capa-doc, .capa-doc:hover { transition: none; } }
+.capa-doc img { width: 100%; height: auto; }
+.doc-txt { display: grid; gap: 14px; align-content: start; }
+.doc h3 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); color: var(--azul); }
+.doc-tipo { font-weight: 700; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: #B0245E; }
+.doc-autoria { font-weight: 600; font-size: .95rem; }
+.doc-acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+
+/* Imprensa */
+.imprensa { background-color: var(--agua-clara); }
+.anos { display: grid; gap: 8px; }
+.ano-bloco { display: grid; grid-template-columns: 1fr; gap: 6px 32px; border-top: 2px solid var(--azul); padding-top: 14px; }
+@media (min-width: 760px) { .ano-bloco { grid-template-columns: 120px 1fr; } }
+.ano-t { font-size: 2.4rem; color: var(--azul); }
+.materias { list-style: none; margin: 0; padding: 0; display: grid; min-width: 0; }
+.materias li + li { border-top: 1px solid rgba(31,42,216,.2); }
+.materias a { display: grid; grid-template-columns: 64px 1fr auto; gap: 2px 16px; padding-block: 14px; text-decoration: none; align-items: baseline; }
+.materias time { grid-row: span 2; font-weight: 700; font-size: .85rem; color: var(--azul); text-transform: uppercase; letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.materias .veic { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #B0245E; }
+.materias .tit { grid-column: 2; font-weight: 600; font-size: 1.02rem; line-height: 1.4; overflow-wrap: anywhere; }
+.materias .seta { grid-column: 3; grid-row: 1 / span 2; align-self: center; font-size: 1.3rem; color: var(--azul); }
+.materias a:hover .tit { text-decoration: underline; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+
+/* Redes */
+.redes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.redes a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 500; color: var(--tinta); }
+.redes a b { color: var(--azul); }
+.redes a:hover b { text-decoration: underline; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.redes svg { width: 34px; height: 34px; padding: 6px; background: var(--azul); color: var(--branco); border-radius: 50%; flex: none; }
+.redes-mini { display: flex; gap: 10px; }
+.redes-mini a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(248,248,245,.6); }
+.redes-mini a:hover { background: var(--rosa); border-color: var(--rosa); }
+.redes-mini svg { width: 20px; height: 20px; }
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="simbolo" viewBox="0 0 200 200">
+      <path d="M 158 62 A 72 72 0 1 1 112 29" fill="none" stroke="currentColor" stroke-width="34"/>
+      <path d="M 120 6 L 174 42 L 116 64 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="simbolo-g" viewBox="0 0 200 200">
+      <path d="M 160 66 A 72 72 0 1 1 110 28" fill="none" stroke="currentColor" stroke-width="50"/>
+      <path d="M 116 0 L 180 44 L 112 72 Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#inicio" aria-label="Instituto de Justiça Reprodutiva, início"><img src="img/logo-branco.png" alt="Instituto de Justiça Reprodutiva"></a>
+    <nav class="links" aria-label="Seções">
+      <a href="#quem-somos">Quem somos</a>
+      <a href="#missao">Missão e visão</a>
+      <a href="#o-que-e">Justiça reprodutiva</a>
+      <a href="#atuacao">Nosso trabalho</a>
+      <a href="#publicacoes">Publicações</a>
+      <a href="#imprensa">Imprensa</a>
+      <a class="junte" href="#contato">Junte-se a nós</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="band hero grao">
+    <div class="wrap">
+      <div class="txt">
+        <h1 class="faixa" aria-label="Autonomia reprodutiva é justiça reprodutiva">
+          <span class="f-verde">Autonomia</span>
+          <span class="f-rosa">reprodutiva</span>
+          <span class="f-verde">é justiça</span>
+          <span class="f-rosa">reprodutiva</span>
+        </h1>
+        <p class="lede">O Instituto de Justiça Reprodutiva é uma organização de direitos humanos que atua na defesa da saúde sexual e reprodutiva de mulheres negras e pessoas que gestam no Brasil.</p>
+        <div class="acoes">
+          <a class="btn cheio" href="#atuacao">Conheça nosso trabalho</a>
+          <a class="btn vazado" href="#contato">Junte-se a nós</a>
+        </div>
+      </div>
+      <div class="recorte">
+        <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--azul)"><use href="#simbolo"/></svg>
+        <figure><img src="img/foto-2.jpg" alt="Mulher negra com megafone em manifestação de rua" width="808" height="1152"></figure>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="band declaracao grao" id="missao">
+    <div class="wrap">
+      <div class="cab" style="margin-bottom:8px">
+        <h2 class="faixa"><span class="f-verde">Missão,</span><span class="f-rosa">visão e valores</span></h2>
+        <p class="grande-m">Somos uma organização feminista negra de direitos humanos. Defendemos a saúde sexual e reprodutiva de mulheres negras e de todas as pessoas que gestam no Brasil, incluindo homens trans e pessoas não binárias.</p>
+        <div class="chips" aria-label="Nossas frentes"><span>Feminismo negro</span><span>Equidade de gênero e direitos trans</span><span>Justiça climática</span><span>Saúde e SUS</span><span>Direitos humanos</span></div>
+      </div>
+      <div class="bloco">
+        <h2 class="rot r">Missão</h2>
+        <p>Promover a justiça reprodutiva no Brasil, defendendo a saúde e os direitos sexuais e reprodutivos de <b>mulheres negras e de todas as pessoas que gestam</b>, por meio de pesquisa, incidência política, formação e comunicação, e enfrentando o racismo, o machismo, a transfobia e as desigualdades sociais e ambientais que atravessam nossos corpos e territórios.</p>
+      </div>
+      <div class="bloco">
+        <h2 class="rot a">Visão</h2>
+        <p>Um Brasil onde todas as pessoas possam decidir se, quando e como ter filhos, e criá-los com dignidade, em <b>territórios saudáveis, seguros e ambientalmente justos</b>, com um SUS público, universal e antirracista e livres de racismo, violência e discriminação de gênero.</p>
+      </div>
+    </div>
+  </section>
+  <section class="band grao">
+    <div class="wrap">
+      <div class="cab">
+        <p><span class="selo">nossos compromissos</span></p>
+        <p>A justiça reprodutiva liga o direito ao próprio corpo às condições de vida. Por isso nossa atuação cruza seis frentes.</p>
+      </div>
+      <div class="grade">
+        <article class="card"><span class="barra f-verde"></span><h3>Feminismo negro</h3><p>Somos uma organização feminista negra e interseccional. Partimos da experiência de mulheres negras, indígenas, quilombolas e periféricas, que vivem raça, gênero e classe ao mesmo tempo.</p></article>
+        <article class="card"><span class="barra f-rosa"></span><h3>Equidade de gênero e direitos trans</h3><p>Justiça reprodutiva é para todas as pessoas que gestam. Defendemos a equidade de gênero e os direitos das pessoas trans, e incluímos homens trans, pessoas transmasculinas e não binárias na nossa linguagem, nas nossas pesquisas e nas políticas que defendemos.</p><ul><li>Acesso a pré-natal, parto e contracepção sem transfobia</li><li>Saúde integral da população LGBTQIA+ no SUS</li></ul></article>
+        <article class="card"><span class="barra f-verde"></span><h3>Justiça climática</h3><p>A crise climática já afeta a saúde reprodutiva. Calor extremo, enchentes, falta de saneamento e insegurança alimentar atingem primeiro gestantes e crianças negras, indígenas e periféricas. Defendemos territórios saudáveis e a participação dessas comunidades nas decisões sobre clima.</p></article>
+        <article class="card"><span class="barra f-rosa"></span><h3>Saúde e SUS</h3><p>Defendemos um SUS público, universal e antirracista, a Política Nacional de Saúde Integral da População Negra e o enfrentamento da mortalidade materna evitável e da violência obstétrica.</p></article>
+        <article class="card"><span class="barra f-verde"></span><h3>Direitos humanos</h3><p>Nosso trabalho se apoia nos marcos de direitos humanos: a Conferência do Cairo (1994), a Plataforma de Pequim (1995), a Convenção CEDAW e a decisão da ONU no caso Alyne Pimentel.</p></article>
+        <article class="card"><span class="barra f-rosa"></span><h3>Antirracismo e reparação</h3><p>O racismo estrutura as desigualdades na saúde. Somamos à luta por reparação e bem viver construída pela Marcha das Mulheres Negras.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="band valores grao">
+    <div class="wrap">
+      <div class="cab"><h2 class="faixa"><span class="f-azul">Valores</span></h2></div>
+      <ul class="lista-valores">
+        <li><b>Autonomia</b><span>Cada pessoa decide sobre o próprio corpo, a sexualidade e a família.</span></li>
+        <li><b>Antirracismo</b><span>Enfrentamos o racismo em todas as suas formas, inclusive o institucional.</span></li>
+        <li><b>Interseccionalidade</b><span>Raça, gênero, identidade, classe e território andam juntos.</span></li>
+        <li><b>Diversidade</b><span>Mulheres cis e trans, homens trans e pessoas não binárias fazem parte da nossa luta.</span></li>
+        <li><b>Escuta dos territórios</b><span>Quem vive as violações constrói as soluções.</span></li>
+        <li><b>Transparência</b><span>Prestamos contas do que fazemos, com quem e com quais recursos.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band quem grao" id="quem-somos">
+    <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--rosa)"><use href="#simbolo"/></svg>
+    <div class="wrap">
+      <h2>Quem somos</h2>
+      <div style="display:grid; gap:22px">
+        <p class="grande">Somos uma organização de direitos humanos que atua na defesa da <b>saúde sexual e reprodutiva de mulheres negras e pessoas que gestam</b> no Brasil.</p>
+        <p>Conheça nosso trabalho e junte-se a nós nesta luta.</p>
+        <p><a class="btn claro" href="#publicacoes">Nossas publicações</a></p>
+      </div>
+      <div class="equipe">
+        <article class="pessoa">
+          <div class="foto"><svg class="anel-p" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--verde)"><use href="#simbolo-g"/></svg><img src="img/fabiana-pinto.jpg" alt="Fabiana Pinto sorrindo" loading="lazy" width="640" height="640"></div>
+          <h3 class="faixa"><span class="f-verde">Fabiana Pinto</span></h3>
+          <p>Diretora Executiva</p>
+        </article>
+        <article class="pessoa">
+          <div class="foto"><svg class="anel-p" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--rosa)"><use href="#simbolo-g"/></svg><img src="img/aron-giovanni.jpg" alt="Aron Giovanni falando ao microfone em um debate" loading="lazy" width="640" height="640"></div>
+          <h3 class="faixa"><span class="f-rosa">Aron Giovanni</span></h3>
+          <p>Diretor de Estratégia</p>
+        </article>
+        <article class="pessoa">
+          <div class="foto"><svg class="anel-p" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--agua)"><use href="#simbolo-g"/></svg><img src="img/juliana-santiago.jpg" alt="Juliana Santiago sorrindo, com lenço verde do Comitê de Justiça Reprodutiva" loading="lazy" width="640" height="640"></div>
+          <h3 class="faixa"><span class="f-agua-t">Juliana Santiago</span></h3>
+          <p>Diretora Financeira</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band grao" id="o-que-e">
+    <div class="wrap">
+      <div class="cab">
+        <p><span class="selo">o que é justiça reprodutiva</span></p>
+        <p>O conceito foi criado em 1994 por mulheres negras, que perceberam que falar só em "direito de escolha" deixava de fora quem não tem acesso a saúde, renda, moradia ou segurança. Ele reúne quatro direitos que não se separam.</p>
+      </div>
+      <div class="grade">
+        <article class="card"><span class="barra f-verde"></span><h3>Não ter</h3><p>Acesso a informação, contracepção e aborto nos casos previstos em lei, sem julgamento nem barreiras.</p></article>
+        <article class="card"><span class="barra f-rosa"></span><h3>Ter</h3><p>Pré-natal, parto respeitoso e cuidado no pós-parto. Fim da esterilização forçada e da violência obstétrica.</p></article>
+        <article class="card"><span class="barra f-verde"></span><h3>Criar</h3><p>Criar filhos em territórios seguros, com escola, creche, saneamento, renda e sem violência de Estado.</p></article>
+        <article class="card"><span class="barra f-rosa"></span><h3>Autonomia</h3><p>Decidir sobre o próprio corpo, a sexualidade e a forma de família, com respeito a todas as identidades.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band brasil grao" id="brasil">
+    <div class="wrap">
+      <figure><img src="img/foto-1.jpg" alt="Mulher negra de punho erguido em manifestação, com cartaz Brasil negro e livre, sem medo" loading="lazy" width="824" height="1152"></figure>
+      <div class="txt">
+        <h2 class="faixa"><span class="f-azul">Morte materna</span><span class="f-rosa">não é acaso</span></h2>
+        <p>A mortalidade materna no Brasil atinge com mais força mulheres negras, indígenas e moradoras de periferias. A maioria dessas mortes é evitável. O caso Alyne Pimentel mostrou ao mundo essa desigualdade.</p>
+        <ol class="linha">
+          <li><span class="ano">2002</span><span>Alyne da Silva Pimentel Teixeira, jovem negra de Belford Roxo (RJ), morre aos 28 anos, grávida de seis meses, após falhas no atendimento.</span></li>
+          <li><span class="ano">2011</span><span>O Comitê CEDAW da ONU responsabiliza o Estado brasileiro. É a primeira morte materna julgada por um órgão internacional de direitos humanos.</span></li>
+          <li><span class="ano">Hoje</span><span>Seguimos cobrando políticas que considerem raça, classe e território.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="band grao" id="atuacao">
+    <div class="wrap">
+      <div class="cab">
+        <p><span class="selo">acesso a direitos sexuais e reprodutivos</span></p>
+        <p>Lutamos pela garantia e ampliação dos direitos sexuais e reprodutivos no Brasil.</p>
+      </div>
+      <div class="grade">
+        <article class="card"><span class="barra f-verde"></span><h3>Pesquisa</h3><p>Produção e divulgação de dados sobre saúde reprodutiva, mortalidade materna e racismo.</p></article>
+        <article class="card"><span class="barra f-rosa"></span><h3>Incidência</h3><p>Diálogo com o poder público e acompanhamento de leis e decisões que afetam a vida reprodutiva.</p></article>
+        <article class="card"><span class="barra f-verde"></span><h3>Formação</h3><p>Rodas e oficinas com comunidades, profissionais de saúde e lideranças nos territórios.</p></article>
+        <article class="card"><span class="barra f-rosa"></span><h3>Comunicação</h3><p>Materiais em linguagem simples sobre direitos, serviços e caminhos para buscar ajuda.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band pubs grao" id="publicacoes">
+    <div class="wrap">
+      <div class="cab">
+        <h2 class="faixa"><span class="f-azul">Publicações</span></h2>
+        <p>Documentos que construímos junto com o movimento de mulheres negras e de pessoas transmasculinas. Leia online ou baixe em PDF.</p>
+      </div>
+      <div class="docs">
+        <article class="doc">
+          <a class="capa-doc" href="docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener"><img src="img/capa-manifesto.jpg" alt="Capa do Manifesto por Justiça Reprodutiva" width="530" height="740" loading="lazy"></a>
+          <div class="doc-txt">
+            <span class="doc-tipo">Manifesto · 2025 · PDF, 40 páginas</span>
+            <h3>Manifesto por Justiça Reprodutiva</h3>
+            <p class="doc-autoria">Comitê de Justiça Reprodutiva rumo à Marcha das Mulheres Negras · Marcha Nacional de Mulheres Negras 2025</p>
+            <p>Lançado na Marcha das Mulheres Negras de 2025, em Brasília, o manifesto reúne as violações vividas por mulheres negras na saúde reprodutiva e consolida uma agenda política nacional por justiça reprodutiva.</p>
+            <div class="doc-acoes">
+              <a class="btn cheio" href="docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+            </div>
+          </div>
+        </article>
+        <article class="doc">
+          <a class="capa-doc" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
+          <div class="doc-txt">
+            <span class="doc-tipo">Dossiê · 2026 · PDF, 86 páginas · ISBN 978-65-01-89991-6</span>
+            <h3>Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva: Equidade Racial e Direitos Humanos</h3>
+            <p class="doc-autoria">Organização: Aron Giovanni Oliveira e Fabiana Pinto · Liga Transmasculina João W. Nery</p>
+            <p>Primeiro dossiê nacional sobre a saúde reprodutiva de homens trans e pessoas transmasculinas negras e periféricas, com dados sobre violações e propostas de políticas públicas.</p>
+            <div class="doc-acoes">
+              <a class="btn cheio" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band imprensa grao" id="imprensa">
+    <div class="wrap">
+      <div class="cab">
+        <h2 class="faixa"><span class="f-rosa">Imprensa</span><span class="f-verde">e notícias</span></h2>
+        <p>O trabalho do Instituto e de sua equipe na imprensa, da matéria mais recente para a mais antiga.</p>
+      </div>
+      <div class="anos">
+        <section class="ano-bloco">
+          <h3 class="ano-t">2026</h3>
+          <ul class="materias">
+            <li><a href="https://outraspalavras.net/outrasaude/o-sus-que-mobiliza-esperanca/" target="_blank" rel="noopener"><time datetime="2026-10-19">19 out</time><span class="veic">Outras Palavras</span><span class="tit">O SUS que mobiliza a esperança</span><span class="seta" aria-hidden="true">↗</span></a></li>
+            <li><a href="https://midianinja.org/corpos-vozes-e-territorios-ii-forum-nacional-de-transmasculinidades-negras/" target="_blank" rel="noopener"><time datetime="2026-01-22">22 jan</time><span class="veic">Mídia NINJA</span><span class="tit">Dossiê inédito revela violações e propõe políticas públicas para transmasculinidades negras</span><span class="seta" aria-hidden="true">↗</span></a></li>
+          </ul>
+        </section>
+        <section class="ano-bloco">
+          <h3 class="ano-t">2025</h3>
+          <ul class="materias">
+            <li><a href="https://outraspalavras.net/outrasaude/contra-o-racismo-no-sus-a-luta-por-justica-reprodutiva/" target="_blank" rel="noopener"><time datetime="2025-12-08">8 dez</time><span class="veic">Outras Palavras</span><span class="tit">Contra o racismo no SUS, a luta por justiça reprodutiva</span><span class="seta" aria-hidden="true">↗</span></a></li>
+            <li><a href="https://almapreta.com.br/sessao/cotidiano/manifesto-de-mulheres-negras-expoe-violacoes-e-reivindica-justica-reprodutiva/" target="_blank" rel="noopener"><time datetime="2025-11-24">24 nov</time><span class="veic">Alma Preta</span><span class="tit">Manifesto de mulheres negras expõe violações e reivindica justiça reprodutiva</span><span class="seta" aria-hidden="true">↗</span></a></li>
+            <li><a href="https://revistamarieclaire.globo.com/politica/noticia/2025/11/mulheres-negras-lancam-manifesto-por-justica-reprodutiva-texto-consolida-uma-agenda-politica-nacional.ghtml" target="_blank" rel="noopener"><time datetime="2025-11">nov</time><span class="veic">Marie Claire</span><span class="tit">Mulheres negras lançam manifesto por justiça reprodutiva; texto consolida uma agenda política nacional</span><span class="seta" aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www1.folha.uol.com.br/cotidiano/2025/11/marcha-das-mulheres-negras-pede-reparacao-economica-pela-escravidao-e-fim-da-violencia.shtml" target="_blank" rel="noopener"><time datetime="2025-11">nov</time><span class="veic">Folha de S.Paulo</span><span class="tit">Marcha das Mulheres Negras pede reparação econômica pela escravidão e fim da violência</span><span class="seta" aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.geledes.org.br/marcha-das-mulheres-negras-pede-reparacao-economica-pela-escravidao-e-fim-da-violencia/" target="_blank" rel="noopener"><time datetime="2025-11">nov</time><span class="veic">Geledés</span><span class="tit">Marcha das Mulheres Negras pede reparação econômica pela escravidão e fim da violência</span><span class="seta" aria-hidden="true">↗</span></a></li>
+            <li><a href="https://revistaafirmativa.com.br/19-anos-apos-criacao-do-dia-nacional-pro-saude-da-populacao-negra-racismo-ainda-limita-o-acesso-a-saude-publica/" target="_blank" rel="noopener"><time datetime="2025-11-02">2 nov</time><span class="veic">Revista Afirmativa</span><span class="tit">Racismo continua sendo obstáculo para efetivação das políticas públicas de saúde da população negra</span><span class="seta" aria-hidden="true">↗</span></a></li>
+          </ul>
+        </section>
+        <section class="ano-bloco">
+          <h3 class="ano-t">2021</h3>
+          <ul class="materias">
+            <li><a href="https://fpabramo.org.br/pauta-brasil-juventude-e-o-novo-alvo-da-pandemia/" target="_blank" rel="noopener"><time datetime="2021-05-03">3 mai</time><span class="veic">Fundação Perseu Abramo</span><span class="tit">Pauta Brasil: juventude é o novo alvo da pandemia</span><span class="seta" aria-hidden="true">↗</span></a></li>
+          </ul>
+        </section>
+        <section class="ano-bloco">
+          <h3 class="ano-t">2020</h3>
+          <ul class="materias">
+            <li><a href="https://www1.folha.uol.com.br/colunas/perifaconnection/2020/06/por-que-a-fila-unica-e-a-saida-para-salvar-vidas.shtml" target="_blank" rel="noopener"><time datetime="2020-06">jun</time><span class="veic">Folha · PerifaConnection</span><span class="tit">Por que a fila única é a saída para salvar vidas</span><span class="seta" aria-hidden="true">↗</span></a></li>
+          </ul>
+        </section>
+        <section class="ano-bloco">
+          <h3 class="ano-t">Mais</h3>
+          <ul class="materias">
+            <li><a href="https://mobilidade.estadao.com.br/na-perifa/entrevista-saude-publica-e-um-direito-e-nao-um-favor/" target="_blank" rel="noopener"><time>—</time><span class="veic">Estadão · Na Perifa</span><span class="tit">Entrevista: saúde pública é um direito e não um favor</span><span class="seta" aria-hidden="true">↗</span></a></li>
+            <li><a href="https://bluestudio.estadao.com.br/especialistas-falam-do-protagonismo-das-mulheres-negras-e-da-saude-nas-favelas/" target="_blank" rel="noopener"><time>—</time><span class="veic">Estadão Blue Studio</span><span class="tit">Especialistas falam do protagonismo das mulheres negras e da saúde nas favelas</span><span class="seta" aria-hidden="true">↗</span></a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="band todas grao">
+    <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--rosa)"><use href="#simbolo"/></svg>
+    <div class="wrap">
+      <h2 class="faixa">
+        <span>Justiça</span>
+        <span>reprodutiva</span>
+        <span class="f-agua">para todas</span>
+        <span>as pessoas</span>
+        <span>que gestam</span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="band contato grao" id="contato">
+    <div class="wrap">
+      <div class="txt">
+        <h2 class="faixa"><span class="f-verde">Junte-se</span><span class="f-rosa">a nós</span></h2>
+        <p>Quer construir uma parceria, convidar o Instituto para uma atividade, falar com a imprensa ou somar na luta? Mande sua mensagem.</p>
+        <div class="email"><span id="end-email">justicareprodutiva@gmail.com</span><button class="copiar" type="button" id="btn-copiar">Copiar</button></div>
+        <ul class="redes">
+          <li><a href="https://www.instagram.com/justicareprodutiva/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg><span>Instagram <b>@justicareprodutiva</b></span></a></li>
+          <li><a href="https://x.com/jusreprodutiva" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>X <b>@jusreprodutiva</b></span></a></li>
+          <li><a href="https://www.threads.com/@justicareprodutiva" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 11.2c-.3-2.6-2-4-4.4-4-2.6 0-4.4 2-4.4 4.8s1.8 4.8 4.6 4.8c2.1 0 3.7-1.2 3.7-3 0-1.6-1.4-2.6-3.3-2.6-1.6 0-2.7.8-2.7 2 0 1 .9 1.7 2.1 1.7 1.8 0 3.1-1.5 3.1-4.4V9.8M12 21c-5.2 0-8.5-3.6-8.5-9S6.8 3 12 3c4.3 0 7.2 2.3 8.1 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Threads <b>@justicareprodutiva</b></span></a></li>
+        </ul>
+      </div>
+      <form id="form-contato" novalidate>
+        <label for="nome">Nome<input id="nome" name="nome" autocomplete="name" required></label>
+        <label for="email">E-mail<input id="email" name="email" type="email" autocomplete="email" required></label>
+        <label for="assunto">Assunto<input id="assunto" name="assunto" placeholder="Parceria, imprensa, voluntariado..."></label>
+        <label for="msg">Mensagem<textarea id="msg" name="mensagem" rows="5" required></textarea></label>
+        <input class="honey" type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="enviar" type="submit" id="btn-enviar">Enviar mensagem</button>
+        <p class="status" id="status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-branco.png" alt="Instituto de Justiça Reprodutiva">
+    <span>Autonomia reprodutiva é justiça reprodutiva.</span>
+    <nav class="redes-mini" aria-label="Redes sociais">
+      <a href="https://www.instagram.com/justicareprodutiva/" target="_blank" rel="noopener" aria-label="Instagram @justicareprodutiva"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg></a>
+      <a href="https://x.com/jusreprodutiva" target="_blank" rel="noopener" aria-label="X @jusreprodutiva"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></a>
+      <a href="https://www.threads.com/@justicareprodutiva" target="_blank" rel="noopener" aria-label="Threads @justicareprodutiva"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 11.2c-.3-2.6-2-4-4.4-4-2.6 0-4.4 2-4.4 4.8s1.8 4.8 4.6 4.8c2.1 0 3.7-1.2 3.7-3 0-1.6-1.4-2.6-3.3-2.6-1.6 0-2.7.8-2.7 2 0 1 .9 1.7 2.1 1.7 1.8 0 3.1-1.5 3.1-4.4V9.8M12 21c-5.2 0-8.5-3.6-8.5-9S6.8 3 12 3c4.3 0 7.2 2.3 8.1 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var DESTINO = 'https://formsubmit.co/ajax/justicareprodutiva@gmail.com';
+  var form = document.getElementById('form-contato');
+  var status = document.getElementById('status');
+  var btn = document.getElementById('btn-enviar');
+
+  function msg(texto, tipo) { status.textContent = texto; status.className = 'status' + (tipo ? ' ' + tipo : ''); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('honey').value) return;
+    if (!form.checkValidity()) { msg('Preencha nome, um e-mail válido e a mensagem.', 'erro'); return; }
+    var d = new FormData(form);
+    var corpo = {
+      nome: d.get('nome'),
+      email: d.get('email'),
+      assunto: d.get('assunto') || '(sem assunto)',
+      mensagem: d.get('mensagem'),
+      _subject: 'Contato pelo site: ' + (d.get('assunto') || d.get('nome')),
+      _replyto: d.get('email'),
+      _template: 'table',
+      _captcha: 'false'
+    };
+    btn.disabled = true; msg('Enviando...');
+    fetch(DESTINO, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(corpo) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (res.ok && String(res.j.success) === 'true') { msg('Mensagem enviada. Obrigada! Respondemos pelo e-mail que você informou.', 'ok'); form.reset(); }
+        else { throw new Error('falha'); }
+      })
+      .catch(function () { msg('Não foi possível enviar agora. Escreva direto para justicareprodutiva@gmail.com.', 'erro'); })
+      .finally(function () { btn.disabled = false; });
+  });
+
+  document.getElementById('btn-copiar').addEventListener('click', function () {
+    var b = this;
+    function marcar() { var r = document.createRange(); r.selectNodeContents(document.getElementById('end-email')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    try {
+      navigator.clipboard.writeText('justicareprodutiva@gmail.com').then(function () { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = 'Copiar'; }, 1800); }, marcar);
+    } catch (err) { marcar(); }
+  });
+})();
+</script>
+
+</body>
+</html>
