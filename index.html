@@ -55,13 +55,13 @@ p { margin: 0; max-width: 60ch; }
 header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: var(--azul); color: var(--branco); }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 12px; flex-wrap: wrap; }
 .nav .logo img { height: 40px; width: auto; }
-.links { display: flex; gap: clamp(14px, 2.6vw, 30px); flex-wrap: wrap; align-items: center; font-weight: 600; font-size: .9rem; }
+.links { display: flex; gap: clamp(12px, 1.5vw, 20px); flex-wrap: wrap; align-items: center; font-weight: 600; font-size: .9rem; }
 .links a { text-decoration: none; }
 .links a:hover { text-decoration: underline; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; text-underline-offset: 6px; }
 .links .junte { background: var(--rosa); padding: 7px 16px; border-radius: 999px; }
 .links .junte:hover { text-decoration: none; background: #f08bbd; }
 .menu-btn { display: none; font: inherit; font-weight: 700; font-size: .9rem; color: var(--branco); background: transparent; border: 1.5px solid rgba(248,248,245,.7); border-radius: 999px; padding: 7px 16px; cursor: pointer; }
-@media (max-width: 760px) {
+@media (max-width: 1080px) {
   .menu-btn { display: inline-block; }
   .links { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 4px; padding-block: 8px 4px; }
   .links a { padding-block: 8px; font-size: 1rem; }
