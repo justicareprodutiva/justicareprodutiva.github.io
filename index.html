@@ -236,7 +236,9 @@ body:has(#quem-somos:target) { overflow: hidden; }
 .link-pod svg { width: 17px; height: 17px; }
 .pods { background-color: var(--azul); color: var(--branco); }
 .pods .cab p { color: var(--branco); }
-.pod-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 28px 24px; }
+.pod-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
+@media (min-width: 900px) { .pod-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 36px; } }
+@media (max-width: 480px) { .pod-tit { font-size: 1.15rem; } .play { width: 40px; height: 40px; } .pod-capa { border-width: 6px; } }
 .pod { display: grid; gap: 10px; align-content: start; text-decoration: none; color: var(--branco); min-width: 0; }
 .pod-capa { position: relative; display: block; aspect-ratio: 1; background: var(--rosa); border: 8px solid var(--branco); box-shadow: 0 16px 34px rgba(0,0,0,.28); overflow: hidden; transition: transform .25s ease; }
 .pod:nth-child(odd) .pod-capa { transform: rotate(-1.5deg); }
