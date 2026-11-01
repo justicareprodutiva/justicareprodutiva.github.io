@@ -253,7 +253,19 @@ body:has(#quem-somos:target) { overflow: hidden; }
 .capa-tag { position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 1; font-family: var(--display); text-transform: uppercase; font-size: clamp(.95rem, 1.7vw, 1.3rem); line-height: 1.05; }
 .capa-tag span { box-shadow: 0 4px 10px rgba(0,0,0,.18); }
 .capa-tag.topo { top: 10px; bottom: auto; }
-.lista-ler:not(.aberta) li:nth-child(n+5) { display: none; }
+.lista-ler:not(.aberta) { display: none; }
+.lista-ler { margin-top: 36px; }
+.ler-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
+@media (min-width: 1000px) { .ler-grade { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 28px; } }
+.ler { display: grid; gap: 8px; align-content: start; text-decoration: none; color: var(--tinta); min-width: 0; }
+.ler-img { display: block; aspect-ratio: 4 / 3; background-color: var(--azul); background-image: var(--grao); border: 6px solid var(--branco); box-shadow: 0 12px 26px rgba(28,35,64,.18); overflow: hidden; }
+.ler-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.ler:hover .ler-img img { transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) { .ler-img img { transition: none; } }
+.ler .veic { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #B0245E; margin-top: 6px; }
+.ler .tit { font-weight: 700; font-size: 1.02rem; line-height: 1.35; overflow-wrap: anywhere; }
+.ler time { font-size: .78rem; font-weight: 500; color: #4A5470; }
+.ler:hover .tit { text-decoration: underline; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; text-underline-offset: 4px; }
 .ver-mais { margin-top: 24px; font: inherit; font-weight: 700; padding: 12px 26px; border-radius: 999px; border: 2px solid var(--azul); background: var(--azul); color: var(--branco); cursor: pointer; }
 .ver-mais:hover { background: var(--rosa); border-color: var(--rosa); }
 .capa-tag.grande { font-size: clamp(1.3rem, 2.6vw, 2.3rem); left: 16px; bottom: 16px; }
@@ -529,11 +541,13 @@ body:has(#quem-somos:target) { overflow: hidden; }
         <h2 class="faixa"><span class="f-verde">Para ler</span></h2>
         <p class="sub-area">Artigos, reportagens, entrevistas e notícias.</p>
       </div>
+      <div class="ler-grade">
+        <a class="ler" href="https://outraspalavras.net/outrasaude/o-sus-que-mobiliza-esperanca/" target="_blank" rel="noopener"><span class="ler-img"><img src="https://outraspalavras.nyc3.cdn.digitaloceanspaces.com/media/2026/10/261019-mulher_negra_crianca.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="veic">Fabiana Pinto · Outras Palavras</span><span class="tit">O SUS que mobiliza a esperança</span><time datetime="2026-10">out 2026</time></a>
+        <a class="ler" href="https://midianinja.org/corpos-vozes-e-territorios-ii-forum-nacional-de-transmasculinidades-negras/" target="_blank" rel="noopener"><span class="ler-img"><img src="https://midianinja.org/wp-content/uploads/2026/01/IMG_8182.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="veic">Casa NINJA Amazônia · Mídia NINJA</span><span class="tit">Dossiê inédito revela violações e propõe políticas públicas para transmasculinidades negras</span><time datetime="2026-01">jan 2026</time></a>
+        <a class="ler" href="https://outraspalavras.net/outrasaude/contra-o-racismo-no-sus-a-luta-por-justica-reprodutiva/" target="_blank" rel="noopener"><span class="ler-img"><img src="https://outraspalavras.nyc3.cdn.digitaloceanspaces.com/media/2025/12/251207-maesnegras.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="veic">Marjorie Chaves · Outras Palavras</span><span class="tit">Contra o racismo no SUS, a luta por justiça reprodutiva</span><time datetime="2025-12">dez 2025</time></a>
+        <a class="ler" href="https://almapreta.com.br/sessao/cotidiano/manifesto-de-mulheres-negras-expoe-violacoes-e-reivindica-justica-reprodutiva/" target="_blank" rel="noopener"><span class="ler-img"><img src="https://almapreta.com.br/images/2025/11/d6a2424-1.webp" alt="" loading="lazy" onerror="this.remove()"></span><span class="veic">Thayná Santana · Alma Preta</span><span class="tit">Manifesto de mulheres negras expõe violações e reivindica justiça reprodutiva</span><time datetime="2025-11">nov 2025</time></a>
+      </div>
       <ul class="lista-ler" id="lista-ler">
-          <li><a href="https://outraspalavras.net/outrasaude/o-sus-que-mobiliza-esperanca/" target="_blank" rel="noopener"><span class="veic">Outras Palavras</span><span class="tit">O SUS que mobiliza a esperança</span><time datetime="2026-10">out 2026</time><span class="seta" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://midianinja.org/corpos-vozes-e-territorios-ii-forum-nacional-de-transmasculinidades-negras/" target="_blank" rel="noopener"><span class="veic">Mídia NINJA</span><span class="tit">Dossiê inédito revela violações e propõe políticas públicas para transmasculinidades negras</span><time datetime="2026-01">jan 2026</time><span class="seta" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://outraspalavras.net/outrasaude/contra-o-racismo-no-sus-a-luta-por-justica-reprodutiva/" target="_blank" rel="noopener"><span class="veic">Outras Palavras</span><span class="tit">Contra o racismo no SUS, a luta por justiça reprodutiva</span><time datetime="2025-12">dez 2025</time><span class="seta" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://almapreta.com.br/sessao/cotidiano/manifesto-de-mulheres-negras-expoe-violacoes-e-reivindica-justica-reprodutiva/" target="_blank" rel="noopener"><span class="veic">Alma Preta</span><span class="tit">Manifesto de mulheres negras expõe violações e reivindica justiça reprodutiva</span><time datetime="2025-11">nov 2025</time><span class="seta" aria-hidden="true">↗</span></a></li>
           <li><a href="https://revistamarieclaire.globo.com/politica/noticia/2025/11/mulheres-negras-lancam-manifesto-por-justica-reprodutiva-texto-consolida-uma-agenda-politica-nacional.ghtml" target="_blank" rel="noopener"><span class="veic">Marie Claire</span><span class="tit">Mulheres negras lançam manifesto por justiça reprodutiva; texto consolida uma agenda política nacional</span><time datetime="2025-11">nov 2025</time><span class="seta" aria-hidden="true">↗</span></a></li>
           <li><a href="https://www1.folha.uol.com.br/cotidiano/2025/11/marcha-das-mulheres-negras-pede-reparacao-economica-pela-escravidao-e-fim-da-violencia.shtml" target="_blank" rel="noopener"><span class="veic">Folha de S.Paulo</span><span class="tit">Marcha das Mulheres Negras pede reparação econômica pela escravidão e fim da violência</span><time datetime="2025-11">nov 2025</time><span class="seta" aria-hidden="true">↗</span></a></li>
           <li><a href="https://www.geledes.org.br/marcha-das-mulheres-negras-pede-reparacao-economica-pela-escravidao-e-fim-da-violencia/" target="_blank" rel="noopener"><span class="veic">Geledés</span><span class="tit">Marcha das Mulheres Negras pede reparação econômica pela escravidão e fim da violência</span><time datetime="2025-11">nov 2025</time><span class="seta" aria-hidden="true">↗</span></a></li>
@@ -543,7 +557,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
           <li><a href="https://mobilidade.estadao.com.br/na-perifa/entrevista-saude-publica-e-um-direito-e-nao-um-favor/" target="_blank" rel="noopener"><span class="veic">Estadão · Na Perifa</span><span class="tit">Entrevista: saúde pública é um direito e não um favor</span><span class="seta" aria-hidden="true">↗</span></a></li>
           <li><a href="https://bluestudio.estadao.com.br/especialistas-falam-do-protagonismo-das-mulheres-negras-e-da-saude-nas-favelas/" target="_blank" rel="noopener"><span class="veic">Estadão Blue Studio</span><span class="tit">Especialistas falam do protagonismo das mulheres negras e da saúde nas favelas</span><span class="seta" aria-hidden="true">↗</span></a></li>
       </ul>
-      <button class="ver-mais" type="button" id="ver-mais" aria-expanded="false" aria-controls="lista-ler">Ver mais</button>
+      <button class="ver-mais" type="button" id="ver-mais" aria-expanded="false" aria-controls="lista-ler">Ver mais matérias</button>
     </div>
   </section>
 
@@ -612,7 +626,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
 <script>
 (function () {
   var vm = document.getElementById('ver-mais'), ll = document.getElementById('lista-ler');
-  vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais'; });
+  vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais matérias'; });
   var hd = document.querySelector('header'), mb = document.getElementById('menu-btn');
   mb.addEventListener('click', function () { var a = hd.classList.toggle('aberto'); mb.setAttribute('aria-expanded', a); mb.textContent = a ? 'Fechar' : 'Menu'; });
   document.querySelectorAll('#menu a').forEach(function (l) { l.addEventListener('click', function () { hd.classList.remove('aberto'); mb.setAttribute('aria-expanded', 'false'); mb.textContent = 'Menu'; }); });
