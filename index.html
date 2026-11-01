@@ -219,15 +219,16 @@ body:has(#quem-somos:target) { overflow: hidden; }
 /* Publicações */
 .docs { display: grid; gap: 28px; }
 .doc { background: var(--branco); display: grid; grid-template-columns: 1fr; gap: 24px 36px; padding: clamp(20px, 3vw, 36px); }
-@media (min-width: 760px) { .doc { grid-template-columns: 230px 1fr; align-items: start; } }
+@media (min-width: 760px) { .doc { grid-template-columns: 140px 1fr; align-items: start; } }
+.docs:not(.aberta) .doc:nth-child(n+3) { display: none; }
 .doc > * { min-width: 0; }
-.capa-doc { display: block; max-width: 230px; box-shadow: 0 14px 30px rgba(28,35,64,.22); transform: rotate(-1.5deg); transition: transform .2s; }
+.capa-doc { display: block; max-width: 140px; box-shadow: 0 14px 30px rgba(28,35,64,.22); transform: rotate(-1.5deg); transition: transform .2s; }
 .doc:nth-child(even) .capa-doc { transform: rotate(1.5deg); }
 .capa-doc:hover { transform: rotate(0) translateY(-3px); }
 @media (prefers-reduced-motion: reduce) { .capa-doc, .capa-doc:hover { transition: none; } }
 .capa-doc img { width: 100%; height: auto; }
 .doc-txt { display: grid; gap: 14px; align-content: start; }
-.doc h3 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); color: var(--azul); }
+.doc h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--azul); }
 .doc-tipo { font-weight: 700; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: #B0245E; }
 .doc-autoria { font-weight: 600; font-size: .95rem; }
 .doc-acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
@@ -366,7 +367,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
         <h2 class="faixa"><span class="f-azul">Publicações</span></h2>
         <p>Documentos, cartilhas, livros e artigos que construímos junto com o movimento de mulheres negras e de pessoas transmasculinas. Leia online ou baixe em PDF.</p>
       </div>
-      <div class="docs">
+      <div class="docs" id="docs-lista">
         <article class="doc">
           <a class="capa-doc" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
           <div class="doc-txt">
@@ -429,6 +430,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
           </div>
         </article>
       </div>
+      <button class="ver-mais" type="button" id="ver-mais-pub" aria-expanded="false" aria-controls="docs-lista">Ver mais publicações</button>
     </div>
   </section>
 
@@ -575,6 +577,8 @@ body:has(#quem-somos:target) { overflow: hidden; }
 
 <script>
 (function () {
+  var vp = document.getElementById('ver-mais-pub'), dl = document.getElementById('docs-lista');
+  vp.addEventListener('click', function () { var a = dl.classList.toggle('aberta'); vp.setAttribute('aria-expanded', a); vp.textContent = a ? 'Ver menos' : 'Ver mais publicações'; });
   var vm = document.getElementById('ver-mais'), ll = document.getElementById('lista-ler');
   vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais matérias'; });
   var hd = document.querySelector('header'), mb = document.getElementById('menu-btn');
