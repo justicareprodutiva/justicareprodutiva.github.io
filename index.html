@@ -178,15 +178,18 @@ footer img { height: 46px; width: auto; }
 .colagem .anel { width: 60%; right: -10%; bottom: -6%; z-index: 0; }
 .c-marcha { position: absolute; left: 9%; top: 3%; width: 82%; margin: 0; background: var(--branco); padding: 8px; transform: rotate(-2deg); box-shadow: 0 20px 44px rgba(28,35,64,.22); z-index: 1; }
 .c-marcha img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: grayscale(1) contrast(1.1); }
-.circ { position: absolute; margin: 0; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 7px solid var(--branco); box-shadow: 0 14px 30px rgba(28,35,64,.22); z-index: 2; isolation: isolate; }
-.circ img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(1.05); mix-blend-mode: screen; }
-.rosa { background: var(--rosa); } .verde { background: var(--verde); }
-.c-comite { width: 36%; left: 0; top: 0; }
-.c-juliana { width: 30%; right: 1%; top: 22%; }
+/* Recortes de papel: as duas mulheres de lenço verde, juntas, em cores, sobre o céu da foto */
+.recorte-p { position: absolute; z-index: 2; filter: drop-shadow(0 12px 16px rgba(28,35,64,.3)); }
+.recorte-p figure { margin: 0; position: relative; background: var(--branco); padding: 7px; clip-path: polygon(2% 1%, 18% 0, 33% 2%, 51% 0, 68% 1.5%, 85% 0, 99% 2%, 100% 20%, 98.5% 38%, 100% 57%, 98.8% 76%, 100% 98%, 82% 100%, 64% 98.5%, 47% 100%, 29% 98.6%, 12% 100%, 0 98%, 1.5% 79%, 0 60%, 1.2% 41%, 0 22%); }
+.recorte-p img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(1.05) contrast(1.04); }
+.recorte-p figure::after, .c-marcha::after { content: ""; position: absolute; inset: 7px; background-image: var(--grao); background-size: 160px; mix-blend-mode: multiply; opacity: .55; pointer-events: none; }
+.c-marcha::after { inset: 8px; }
+.c-comite { width: 33%; left: -1%; top: 1%; transform: rotate(-6deg); }
+.c-juliana { width: 30%; left: 25%; top: 6%; transform: rotate(5deg); z-index: 3; }
 @media (max-width: 899px) {
   .hero .wrap { gap: 36px; }
   .colagem { width: min(90%, 420px); }
-  .circ { border-width: 5px; }
+  .recorte-p figure { padding: 5px; }
 }
 
 /* Quem somos: painel que abre pelo menu */
@@ -306,8 +309,8 @@ body:has(#quem-somos:target) { overflow: hidden; }
       <div class="colagem">
         <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--azul)"><use href="#simbolo"/></svg>
         <figure class="c-marcha"><img src="img/marcha-vertical.jpg" alt="Mulheres com a faixa Justiça reprodutiva é reparação e bem viver na Marcha das Mulheres Negras 2025" width="720" height="900"></figure>
-        <figure class="circ verde c-comite"><img src="img/comite.jpg" alt="Mulher sorrindo com lenço verde do Comitê de Justiça Reprodutiva" width="520" height="520"></figure>
-        <figure class="circ rosa c-juliana"><img src="img/juliana-santiago.jpg" alt="Juliana Santiago sorrindo, com lenço verde do Comitê de Justiça Reprodutiva" width="640" height="640"></figure>
+        <div class="recorte-p c-comite"><figure><img src="img/comite.jpg" alt="Mulher sorrindo com lenço verde do Comitê de Justiça Reprodutiva" width="520" height="520"></figure></div>
+        <div class="recorte-p c-juliana"><figure><img src="img/juliana-santiago.jpg" alt="Juliana Santiago sorrindo, com lenço verde do Comitê de Justiça Reprodutiva" width="640" height="640"></figure></div>
       </div>
     </div>
   </section>
