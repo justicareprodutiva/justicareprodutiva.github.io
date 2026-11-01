@@ -237,7 +237,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
 .pods { background-color: var(--azul); color: var(--branco); }
 .pods .cab p { color: var(--branco); }
 .pod-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
-@media (min-width: 900px) { .pod-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 36px; } }
+@media (min-width: 1000px) { .pod-grade { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 28px; } .pod-tit { font-size: 1.3rem; } }
 @media (max-width: 480px) { .pod-tit { font-size: 1.15rem; } .play { width: 40px; height: 40px; } .pod-capa { border-width: 6px; } }
 .pod { display: grid; gap: 10px; align-content: start; text-decoration: none; color: var(--branco); min-width: 0; }
 .pod-capa { position: relative; display: block; aspect-ratio: 1; background: var(--rosa); border: 8px solid var(--branco); box-shadow: 0 16px 34px rgba(0,0,0,.28); overflow: hidden; transition: transform .25s ease; }
@@ -252,6 +252,10 @@ body:has(#quem-somos:target) { overflow: hidden; }
 .ig-capa.reel { background-color: var(--verde); }
 .capa-tag { position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 1; font-family: var(--display); text-transform: uppercase; font-size: clamp(.95rem, 1.7vw, 1.3rem); line-height: 1.05; }
 .capa-tag span { box-shadow: 0 4px 10px rgba(0,0,0,.18); }
+.capa-tag.topo { top: 10px; bottom: auto; }
+.lista-ler:not(.aberta) li:nth-child(n+5) { display: none; }
+.ver-mais { margin-top: 24px; font: inherit; font-weight: 700; padding: 12px 26px; border-radius: 999px; border: 2px solid var(--azul); background: var(--azul); color: var(--branco); cursor: pointer; }
+.ver-mais:hover { background: var(--rosa); border-color: var(--rosa); }
 .capa-tag.grande { font-size: clamp(1.3rem, 2.6vw, 2.3rem); left: 16px; bottom: 16px; }
 .capa-trans { position: absolute; inset: 0; background: linear-gradient(#5BCEFA 0 20%, #F5A9B8 20% 40%, #FFFFFF 40% 60%, #F5A9B8 60% 80%, #5BCEFA 80%); }
 .capa-trans::after { content: ""; position: absolute; inset: 0; background-image: var(--grao); opacity: .7; mix-blend-mode: multiply; }
@@ -468,12 +472,30 @@ body:has(#quem-somos:target) { overflow: hidden; }
         <p class="sub-area">Vídeos, podcasts, debates e outros conteúdos audiovisuais.</p>
       </div>
       <div class="pod-grade">
-        <a class="pod destaque-m" href="https://www.youtube.com/watch?v=LRQYaq7Y4x0" target="_blank" rel="noopener">
+        <a class="pod" href="https://www.instagram.com/p/DbNzTlzu7cK/" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="img/ig-aborto.jpg" alt="Fabiana Pinto em vídeo com o título O que o aborto tem a ver com racismo?" loading="lazy" width="520" height="520"><span class="capa-tag faixa"><span class="f-rosa">com Fabiana Pinto</span></span></span>
+          <span class="pod-meta">Fabiana Pinto · Instagram</span>
+          <span class="pod-tit">O que o aborto tem a ver com racismo?</span>
+          <span class="pod-acao">Assistir no Instagram ↗</span>
+        </a>
+        <a class="pod" href="https://www.youtube.com/watch?v=LRQYaq7Y4x0" target="_blank" rel="noopener">
           <span class="pod-capa"><img src="https://i.ytimg.com/vi/LRQYaq7Y4x0/hqdefault.jpg" alt="Capa do vídeo Painel Saúde e Justiça Reprodutiva" loading="lazy" width="480" height="360" onerror="this.remove()"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
           <span class="pod-meta">Planeta Ella · YouTube</span>
           <span class="pod-tit">Painel Saúde e Justiça Reprodutiva: dignidade menstrual, direitos reprodutivos e humanização do parto</span>
           <time class="pod-data" datetime="2026-05">mai 2026</time>
           <span class="pod-acao">Assistir no YouTube ↗</span>
+        </a>
+        <a class="pod" href="https://www.instagram.com/p/DVEHVotDsX_/" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="img/campanha-fantasia.jpg" alt="Mulher sorrindo segura leque da campanha Meu corpo não é fantasia do Instituto de Justiça Reprodutiva" loading="lazy" width="640" height="640"><span class="capa-tag topo faixa"><span class="f-azul">Campanha</span><span class="f-rosa">Meu corpo não é fantasia</span></span></span>
+          <span class="pod-meta">Campanha · Instagram</span>
+          <span class="pod-tit">Campanha Meu corpo não é fantasia 🏳️‍⚧️</span>
+          <span class="pod-acao">Assistir no Instagram ↗</span>
+        </a>
+        <a class="pod" href="https://www.instagram.com/reels/DRfdnuKCRr3/" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="img/ig-comite.jpg" alt="Integrante do Comitê de Justiça Reprodutiva com lenço verde fala ao microfone" loading="lazy" width="600" height="600"><span class="capa-tag faixa"><span class="f-verde">Comitê de Justiça Reprodutiva</span><span class="f-rosa">no Congresso Nacional</span></span></span>
+          <span class="pod-meta">Comitê de Justiça Reprodutiva · Instagram</span>
+          <span class="pod-tit">Comitê de Justiça Reprodutiva no Congresso Nacional</span>
+          <span class="pod-acao">Assistir no Instagram ↗</span>
         </a>
         <a class="pod" href="https://www.youtube.com/watch?v=SuqBZng987o" target="_blank" rel="noopener">
           <span class="pod-capa"><img src="https://i.ytimg.com/vi/SuqBZng987o/hqdefault.jpg" alt="Capa do vídeo de lançamento do Comitê de Justiça Reprodutiva" loading="lazy" width="480" height="360" onerror="this.remove()"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
@@ -503,24 +525,6 @@ body:has(#quem-somos:target) { overflow: hidden; }
           <time class="pod-data" datetime="2020-09">set 2020</time>
           <span class="pod-acao">Ouvir no Spotify ↗</span>
         </a>
-        <a class="pod" href="https://www.instagram.com/p/DbNzTlzu7cK/" target="_blank" rel="noopener">
-          <span class="pod-capa"><img src="img/ig-aborto.jpg" alt="Fabiana Pinto em vídeo com o título O que o aborto tem a ver com racismo?" loading="lazy" width="520" height="520"><span class="capa-tag faixa"><span class="f-rosa">com Fabiana Pinto</span></span></span>
-          <span class="pod-meta">Fabiana Pinto · Instagram</span>
-          <span class="pod-tit">O que o aborto tem a ver com racismo?</span>
-          <span class="pod-acao">Assistir no Instagram ↗</span>
-        </a>
-        <a class="pod" href="https://www.instagram.com/reels/DRfdnuKCRr3/" target="_blank" rel="noopener">
-          <span class="pod-capa"><img src="img/ig-comite.jpg" alt="Integrante do Comitê de Justiça Reprodutiva com lenço verde fala ao microfone" loading="lazy" width="600" height="600"><span class="capa-tag faixa"><span class="f-verde">Comitê de Justiça Reprodutiva</span><span class="f-rosa">no Congresso Nacional</span></span></span>
-          <span class="pod-meta">Comitê de Justiça Reprodutiva · Instagram</span>
-          <span class="pod-tit">Comitê de Justiça Reprodutiva no Congresso Nacional</span>
-          <span class="pod-acao">Assistir no Instagram ↗</span>
-        </a>
-        <a class="pod destaque destaque-m" href="https://www.instagram.com/p/DVEHVotDsX_/" target="_blank" rel="noopener">
-          <span class="pod-capa"><span class="capa-trans" aria-hidden="true"></span><span class="capa-tag grande faixa"><span class="f-azul">Campanha</span><span class="f-rosa">Meu corpo não é fantasia 🏳️‍⚧️</span></span></span>
-          <span class="pod-meta">Campanha · Instagram</span>
-          <span class="pod-tit">Campanha Meu corpo não é fantasia 🏳️‍⚧️</span>
-          <span class="pod-acao">Assistir no Instagram ↗</span>
-        </a>
       </div>
     </div>
   </section>
@@ -531,7 +535,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
         <h2 class="faixa"><span class="f-verde">Para ler</span></h2>
         <p class="sub-area">Artigos, reportagens, entrevistas e notícias.</p>
       </div>
-      <ul class="lista-ler">
+      <ul class="lista-ler" id="lista-ler">
           <li><a href="https://outraspalavras.net/outrasaude/o-sus-que-mobiliza-esperanca/" target="_blank" rel="noopener"><span class="veic">Outras Palavras</span><span class="tit">O SUS que mobiliza a esperança</span><time datetime="2026-10">out 2026</time><span class="seta" aria-hidden="true">↗</span></a></li>
           <li><a href="https://midianinja.org/corpos-vozes-e-territorios-ii-forum-nacional-de-transmasculinidades-negras/" target="_blank" rel="noopener"><span class="veic">Mídia NINJA</span><span class="tit">Dossiê inédito revela violações e propõe políticas públicas para transmasculinidades negras</span><time datetime="2026-01">jan 2026</time><span class="seta" aria-hidden="true">↗</span></a></li>
           <li><a href="https://outraspalavras.net/outrasaude/contra-o-racismo-no-sus-a-luta-por-justica-reprodutiva/" target="_blank" rel="noopener"><span class="veic">Outras Palavras</span><span class="tit">Contra o racismo no SUS, a luta por justiça reprodutiva</span><time datetime="2025-12">dez 2025</time><span class="seta" aria-hidden="true">↗</span></a></li>
@@ -545,6 +549,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
           <li><a href="https://mobilidade.estadao.com.br/na-perifa/entrevista-saude-publica-e-um-direito-e-nao-um-favor/" target="_blank" rel="noopener"><span class="veic">Estadão · Na Perifa</span><span class="tit">Entrevista: saúde pública é um direito e não um favor</span><span class="seta" aria-hidden="true">↗</span></a></li>
           <li><a href="https://bluestudio.estadao.com.br/especialistas-falam-do-protagonismo-das-mulheres-negras-e-da-saude-nas-favelas/" target="_blank" rel="noopener"><span class="veic">Estadão Blue Studio</span><span class="tit">Especialistas falam do protagonismo das mulheres negras e da saúde nas favelas</span><span class="seta" aria-hidden="true">↗</span></a></li>
       </ul>
+      <button class="ver-mais" type="button" id="ver-mais" aria-expanded="false" aria-controls="lista-ler">Ver mais</button>
     </div>
   </section>
 
@@ -612,6 +617,8 @@ body:has(#quem-somos:target) { overflow: hidden; }
 
 <script>
 (function () {
+  var vm = document.getElementById('ver-mais'), ll = document.getElementById('lista-ler');
+  vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais'; });
   var hd = document.querySelector('header'), mb = document.getElementById('menu-btn');
   mb.addEventListener('click', function () { var a = hd.classList.toggle('aberto'); mb.setAttribute('aria-expanded', a); mb.textContent = a ? 'Fechar' : 'Menu'; });
   document.querySelectorAll('#menu a').forEach(function (l) { l.addEventListener('click', function () { hd.classList.remove('aberto'); mb.setAttribute('aria-expanded', 'false'); mb.textContent = 'Menu'; }); });
