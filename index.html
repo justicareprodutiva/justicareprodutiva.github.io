@@ -173,16 +173,36 @@ footer img { height: 46px; width: auto; }
 .grande-m { font-size: clamp(1.1rem, 1.8vw, 1.35rem); font-weight: 500; }
 .card ul { margin: 4px 0 0; padding-left: 1.1em; font-size: .95rem; display: grid; gap: 4px; }
 
-/* Equipe */
-.equipe { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px 32px; margin-top: 24px; }
-.pessoa { display: grid; gap: 12px; justify-items: start; min-width: 0; }
-.pessoa .foto { position: relative; width: 100%; max-width: 380px; padding: 13%; }
-.pessoa .anel-p { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-20deg); }
-.pessoa img { position: relative; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 10px solid var(--branco); filter: grayscale(1) contrast(1.05); transition: filter .3s; }
-.pessoa:hover img { filter: none; }
-@media (prefers-reduced-motion: reduce) { .pessoa img { transition: none; } }
-.pessoa h3 { font-size: 2rem; }
-.pessoa p { font-weight: 600; font-size: 1rem; }
+/* Capa: colagem */
+.colagem { position: relative; justify-self: center; width: min(100%, 520px); aspect-ratio: 1 / 1; }
+.colagem .anel { width: 74%; left: 22%; top: -2%; z-index: 0; }
+.c-marcha { position: absolute; left: 0; top: 24%; width: 84%; margin: 0; background: var(--branco); padding: 8px; transform: rotate(-3deg); box-shadow: 0 18px 40px rgba(28,35,64,.2); z-index: 1; }
+.c-marcha img { width: 100%; aspect-ratio: 1292 / 838; object-fit: cover; filter: grayscale(1) contrast(1.1); }
+.circ { position: absolute; margin: 0; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 7px solid var(--branco); box-shadow: 0 14px 30px rgba(28,35,64,.22); z-index: 2; isolation: isolate; }
+.circ img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(1.05); mix-blend-mode: screen; }
+.rosa { background: var(--rosa); } .verde { background: var(--verde); } .azul-f { background: var(--azul); }
+.c-fala { width: 40%; right: 0; top: 0; }
+.c-comite { width: 36%; right: 8%; bottom: 0; }
+
+/* Quem somos: painel que abre pelo menu */
+#quem-somos { display: none; }
+#quem-somos:target { display: block; position: fixed; inset: 0; z-index: 30; overflow-y: auto; background-color: var(--azul); color: var(--branco); padding-block: calc(env(safe-area-inset-top, 0px) + 28px) calc(env(safe-area-inset-bottom, 0px) + 56px); }
+body:has(#quem-somos:target) { overflow: hidden; }
+.painel .wrap { display: grid; gap: 26px; }
+.painel-topo { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.painel-topo h2 { font-size: clamp(2.6rem, 7vw, 4.4rem); }
+.fechar { font-weight: 700; text-decoration: none; border: 1.5px solid rgba(248,248,245,.7); border-radius: 999px; padding: 8px 18px; }
+.fechar:hover { background: var(--rosa); border-color: var(--rosa); }
+.painel .grande { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 500; line-height: 1.45; max-width: 60ch; }
+.painel .grande b { font-weight: 700; background: var(--rosa); padding: 0 .2em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.equipe { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 32px 24px; margin-block: 12px; }
+.pessoa { display: grid; gap: 12px; justify-items: center; text-align: center; min-width: 0; }
+.pessoa .foto { width: 150px; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 6px solid var(--branco); isolation: isolate; box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+.pessoa img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12) brightness(1.05); mix-blend-mode: screen; }
+.pessoa .faixa { align-items: center; }
+.pessoa h3 { font-size: 1.6rem; }
+.pessoa p { font-weight: 600; font-size: .95rem; }
+.agua-f { background: var(--agua); }
 .f-agua-t { background: var(--agua); color: var(--azul) !important; }
 
 /* Publicações */
@@ -249,6 +269,7 @@ footer img { height: 46px; width: auto; }
     <a class="logo" href="#inicio" aria-label="Instituto de Justiça Reprodutiva, início"><img src="img/logo-branco.png" alt="Instituto de Justiça Reprodutiva"></a>
     <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
     <nav class="links" id="menu" aria-label="Seções">
+      <a href="#quem-somos">Quem somos</a>
       <a href="#missao">Missão e visão</a>
       <a href="#o-que-e">Justiça reprodutiva</a>
       <a href="#atuacao">Nosso trabalho</a>
@@ -275,9 +296,11 @@ footer img { height: 46px; width: auto; }
           <a class="btn vazado" href="#contato">Junte-se a nós</a>
         </div>
       </div>
-      <div class="recorte">
+      <div class="colagem">
         <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--azul)"><use href="#simbolo"/></svg>
-        <figure><img src="img/foto-2.jpg" alt="Mulher negra com megafone em manifestação de rua" width="808" height="1152"></figure>
+        <figure class="c-marcha"><img src="img/marcha-2025.jpg" alt="Mulheres com a faixa Justiça reprodutiva é reparação e bem viver na Marcha das Mulheres Negras 2025" width="960" height="623"></figure>
+        <figure class="circ rosa c-fala"><img src="img/fala.jpg" alt="Mulher negra de turbante fala ao microfone" width="520" height="520"></figure>
+        <figure class="circ verde c-comite"><img src="img/comite.jpg" alt="Mulher sorrindo com lenço verde do Comitê de Justiça Reprodutiva" width="520" height="520"></figure>
       </div>
     </div>
   </section>
@@ -493,6 +516,18 @@ footer img { height: 46px; width: auto; }
         <button class="enviar" type="submit" id="btn-enviar">Enviar mensagem</button>
         <p class="status" id="status" role="status"></p>
       </form>
+    </div>
+  </section>
+  <section class="painel grao" id="quem-somos" aria-label="Quem somos">
+    <div class="wrap">
+      <div class="painel-topo"><h2>Quem somos</h2><a class="fechar" href="#inicio">Fechar ✕</a></div>
+      <p class="grande">Somos uma organização feminista negra de direitos humanos que atua na defesa da <b>saúde sexual e reprodutiva de mulheres negras e pessoas que gestam</b> no Brasil.</p>
+      <div class="equipe">
+        <article class="pessoa"><div class="foto verde"><img src="img/fabiana-pinto.jpg" alt="Fabiana Pinto sorrindo" loading="lazy" width="640" height="640"></div><h3 class="faixa"><span class="f-verde">Fabiana Pinto</span></h3><p>Diretora Executiva</p></article>
+        <article class="pessoa"><div class="foto rosa"><img src="img/aron-giovanni.jpg" alt="Aron Giovanni falando ao microfone em um debate" loading="lazy" width="640" height="640"></div><h3 class="faixa"><span class="f-rosa">Aron Giovanni</span></h3><p>Diretor de Estratégia</p></article>
+        <article class="pessoa"><div class="foto agua-f"><img src="img/juliana-santiago.jpg" alt="Juliana Santiago sorrindo, com lenço verde do Comitê de Justiça Reprodutiva" loading="lazy" width="640" height="640"></div><h3 class="faixa"><span class="f-agua-t">Juliana Santiago</span></h3><p>Diretora Financeira</p></article>
+      </div>
+      <p><a class="btn claro" href="#missao">Missão, visão e valores</a></p>
     </div>
   </section>
 </main>
