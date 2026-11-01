@@ -250,6 +250,8 @@ body:has(#quem-somos:target) { overflow: hidden; }
 .pod:hover .play { transform: scale(1.1); }
 .ig-capa { position: absolute; inset: 0; display: grid; place-items: center; background: var(--rosa); background-image: var(--grao); color: var(--branco); }
 .ig-capa.reel { background-color: var(--verde); }
+.capa-tag { position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 1; font-family: var(--display); text-transform: uppercase; font-size: clamp(.95rem, 1.7vw, 1.3rem); line-height: 1.05; }
+.capa-tag span { box-shadow: 0 4px 10px rgba(0,0,0,.18); }
 .ig-capa svg { width: 42%; height: 42%; }
 .pod-meta { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--agua); margin-top: 6px; }
 .pod-tit { font-family: var(--display); text-transform: uppercase; font-size: 1.45rem; line-height: 1.08; }
@@ -487,16 +489,16 @@ body:has(#quem-somos:target) { overflow: hidden; }
           <span class="pod-tit">Vozes de Criola: Justiça Reprodutiva</span>
           <span class="pod-acao">Ouvir no Spotify ↗</span>
         </a>
-        <a class="pod pod-ig" href="https://www.instagram.com/p/DbNzTlzu7cK/" target="_blank" rel="noopener">
-          <span class="pod-capa"><span class="ig-capa" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg></span></span>
-          <span class="pod-meta">Instagram</span>
-          <span class="pod-tit">Conteúdo em destaque no Instagram</span>
-          <span class="pod-acao">Ver no Instagram ↗</span>
+        <a class="pod" href="https://www.instagram.com/p/DbNzTlzu7cK/" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="img/ig-aborto.jpg" alt="Fabiana Pinto em vídeo com o título O que o aborto tem a ver com racismo?" loading="lazy" width="520" height="520"><span class="capa-tag faixa"><span class="f-rosa">com Fabiana Pinto</span></span></span>
+          <span class="pod-meta">Instagram · Dia da Mulher Negra Latino-Americana e Caribenha</span>
+          <span class="pod-tit">O que o aborto tem a ver com racismo?</span>
+          <span class="pod-acao">Assistir no Instagram ↗</span>
         </a>
-        <a class="pod pod-ig" href="https://www.instagram.com/reels/DRfdnuKCRr3/" target="_blank" rel="noopener">
-          <span class="pod-capa"><span class="ig-capa reel" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 8.5h17M8 3.5l3 5M13.5 3.5l3 5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 11.5v5.5l4.6-2.75z" fill="currentColor"/></svg></span></span>
+        <a class="pod" href="https://www.instagram.com/reels/DRfdnuKCRr3/" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="img/ig-comite.jpg" alt="Integrante do Comitê de Justiça Reprodutiva com lenço verde fala ao microfone" loading="lazy" width="600" height="600"><span class="capa-tag faixa"><span class="f-verde">Comitê de Justiça Reprodutiva</span><span class="f-rosa">no Congresso Nacional</span></span></span>
           <span class="pod-meta">Instagram · Reels</span>
-          <span class="pod-tit">Vídeo em destaque no Instagram</span>
+          <span class="pod-tit">Comitê de Justiça Reprodutiva no Congresso Nacional</span>
           <span class="pod-acao">Assistir no Instagram ↗</span>
         </a>
       </div>
