@@ -72,7 +72,7 @@ header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; backg
 /* Capa */
 .hero { padding-block: clamp(48px, 7vw, 96px) clamp(64px, 9vw, 110px); }
 .hero .wrap { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-@media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.15fr 1fr; gap: 56px; } }
+@media (min-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
 .hero .wrap > * { min-width: 0; }
 .hero h1 { font-size: clamp(3rem, 8.4vw, 6.6rem); }
 .hero .txt { display: grid; gap: 30px; position: relative; z-index: 2; }
@@ -341,12 +341,6 @@ body:has(#quem-somos:target) { overflow: hidden; }
           <a class="btn cheio" href="#atuacao">Conheça nosso trabalho</a>
           <a class="btn vazado" href="#contato">Junte-se a nós</a>
         </div>
-      </div>
-      <div class="colagem">
-        <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--azul)"><use href="#simbolo"/></svg>
-        <figure class="c-marcha"><img src="img/marcha-vertical.jpg" alt="Mulheres com a faixa Justiça reprodutiva é reparação e bem viver na Marcha das Mulheres Negras 2025" width="720" height="900"></figure>
-        <div class="recorte-p c-comite"><figure><img src="img/comite.jpg" alt="Mulher sorrindo com lenço verde do Comitê de Justiça Reprodutiva" width="520" height="520"></figure></div>
-        <div class="recorte-p c-juliana"><figure><img src="img/juliana-santiago.jpg" alt="Juliana Santiago sorrindo, com lenço verde do Comitê de Justiça Reprodutiva" width="640" height="640"></figure></div>
       </div>
     </div>
   </section>
