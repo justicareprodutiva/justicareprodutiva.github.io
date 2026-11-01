@@ -222,7 +222,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
 @media (min-width: 760px) { .doc { grid-template-columns: 230px 1fr; align-items: start; } }
 .doc > * { min-width: 0; }
 .capa-doc { display: block; max-width: 230px; box-shadow: 0 14px 30px rgba(28,35,64,.22); transform: rotate(-1.5deg); transition: transform .2s; }
-.doc:nth-child(2) .capa-doc { transform: rotate(1.5deg); }
+.doc:nth-child(even) .capa-doc { transform: rotate(1.5deg); }
 .capa-doc:hover { transform: rotate(0) translateY(-3px); }
 @media (prefers-reduced-motion: reduce) { .capa-doc, .capa-doc:hover { transition: none; } }
 .capa-doc img { width: 100%; height: auto; }
@@ -364,9 +364,21 @@ body:has(#quem-somos:target) { overflow: hidden; }
     <div class="wrap">
       <div class="cab">
         <h2 class="faixa"><span class="f-azul">Publicações</span></h2>
-        <p>Documentos que construímos junto com o movimento de mulheres negras e de pessoas transmasculinas. Leia online ou baixe em PDF.</p>
+        <p>Documentos, cartilhas, livros e artigos que construímos junto com o movimento de mulheres negras e de pessoas transmasculinas. Leia online ou baixe em PDF.</p>
       </div>
       <div class="docs">
+        <article class="doc">
+          <a class="capa-doc" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
+          <div class="doc-txt">
+            <span class="doc-tipo">Dossiê · 2026</span>
+            <h3>Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva: Equidade Racial e Direitos Humanos</h3>
+            <p class="doc-autoria">Organização: Aron Giovanni Oliveira e Fabiana Pinto · Liga Transmasculina João W. Nery</p>
+            <p>Primeiro dossiê nacional sobre a saúde reprodutiva de homens trans e pessoas transmasculinas negras e periféricas, com dados sobre violações e propostas de políticas públicas.</p>
+            <div class="doc-acoes">
+              <a class="btn cheio" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+            </div>
+          </div>
+        </article>
         <article class="doc">
           <a class="capa-doc" href="docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener"><img src="img/capa-manifesto.jpg" alt="Capa do Manifesto por Justiça Reprodutiva" width="530" height="740" loading="lazy"></a>
           <div class="doc-txt">
@@ -381,14 +393,38 @@ body:has(#quem-somos:target) { overflow: hidden; }
           </div>
         </article>
         <article class="doc">
-          <a class="capa-doc" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
+          <a class="capa-doc" href="docs/cartilha-jovens-na-trilha-do-sus.pdf" target="_blank" rel="noopener"><img src="img/capa-cartilha.jpg" alt="Capa da cartilha Jovens na Trilha do SUS" width="350" height="497" loading="lazy"></a>
           <div class="doc-txt">
-            <span class="doc-tipo">Dossiê · 2026</span>
-            <h3>Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva: Equidade Racial e Direitos Humanos</h3>
-            <p class="doc-autoria">Organização: Aron Giovanni Oliveira e Fabiana Pinto · Liga Transmasculina João W. Nery</p>
-            <p>Primeiro dossiê nacional sobre a saúde reprodutiva de homens trans e pessoas transmasculinas negras e periféricas, com dados sobre violações e propostas de políticas públicas.</p>
+            <span class="doc-tipo">Cartilha · 2024</span>
+            <h3>Jovens na Trilha do SUS</h3>
+            <p class="doc-autoria">Agenda Jovem Fiocruz · Fiocruz Bahia</p>
+            <p>Explica os serviços do SUS e onde encontrá-los. Traz informações sobre as condições de saúde na juventude, o direito à saúde e à participação previsto em lei e orientações contra a desinformação na internet.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="docs/cartilha-jovens-na-trilha-do-sus.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+            </div>
+          </div>
+        </article>
+        <article class="doc">
+          <a class="capa-doc" href="docs/livro-aps-mais-10-2022.pdf" target="_blank" rel="noopener"><img src="img/capa-livro-aps10.jpg" alt="Capa do livro APS+10" width="497" height="702" loading="lazy"></a>
+          <div class="doc-txt">
+            <span class="doc-tipo">Livro · 2022</span>
+            <h3>APS+10: painel de indicadores para o monitoramento de 10 anos de expansão da APS no município do Rio de Janeiro</h3>
+            <p class="doc-autoria">Fiocruz · Escola Nacional de Saúde Pública · Organização: Raphael Mendonça Guimarães e outros</p>
+            <p>Livro que acompanha dez anos de expansão da Atenção Primária à Saúde no Rio de Janeiro. Fabiana Pinto assina o capítulo Breve contextualização histórica da APS no município do Rio de Janeiro.</p>
+            <div class="doc-acoes">
+              <a class="btn cheio" href="docs/livro-aps-mais-10-2022.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+            </div>
+          </div>
+        </article>
+        <article class="doc">
+          <a class="capa-doc" href="docs/artigo-justica-reprodutiva-covid19-2021.pdf" target="_blank" rel="noopener"><img src="img/capa-artigo.jpg" alt="Capa da revista Jovens Investigadores: um olhar geracional sobre a saúde" width="485" height="626" loading="lazy"></a>
+          <div class="doc-txt">
+            <span class="doc-tipo">Artigo · 2021</span>
+            <h3>Justiça reprodutiva e Covid-19: um ano de lutas de jovens ativistas negras</h3>
+            <p class="doc-autoria">Fabiana Pinto · Revista Jovens Investigadores: um olhar geracional sobre a saúde · Agenda Jovem Fiocruz</p>
+            <p>Pesquisa com jovens ativistas negras sobre as barreiras de acesso à saúde reprodutiva durante a pandemia de Covid-19, a partir do marco da justiça reprodutiva.</p>
+            <div class="doc-acoes">
+              <a class="btn cheio" href="docs/artigo-justica-reprodutiva-covid19-2021.pdf" target="_blank" rel="noopener">Abrir PDF</a>
             </div>
           </div>
         </article>
