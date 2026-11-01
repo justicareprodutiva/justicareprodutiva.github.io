@@ -60,6 +60,14 @@ header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; backg
 .links a:hover { text-decoration: underline; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; text-underline-offset: 6px; }
 .links .junte { background: var(--rosa); padding: 7px 16px; border-radius: 999px; }
 .links .junte:hover { text-decoration: none; background: #f08bbd; }
+.menu-btn { display: none; font: inherit; font-weight: 700; font-size: .9rem; color: var(--branco); background: transparent; border: 1.5px solid rgba(248,248,245,.7); border-radius: 999px; padding: 7px 16px; cursor: pointer; }
+@media (max-width: 760px) {
+  .menu-btn { display: inline-block; }
+  .links { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 4px; padding-block: 8px 4px; }
+  .links a { padding-block: 8px; font-size: 1rem; }
+  header.aberto .links { display: flex; }
+  .links .junte { margin-top: 6px; }
+}
 
 /* Capa */
 .hero { padding-block: clamp(48px, 7vw, 96px) clamp(64px, 9vw, 110px); }
@@ -239,8 +247,8 @@ footer img { height: 46px; width: auto; }
 <header>
   <div class="wrap nav">
     <a class="logo" href="#inicio" aria-label="Instituto de Justiça Reprodutiva, início"><img src="img/logo-branco.png" alt="Instituto de Justiça Reprodutiva"></a>
-    <nav class="links" aria-label="Seções">
-      <a href="#quem-somos">Quem somos</a>
+    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="links" id="menu" aria-label="Seções">
       <a href="#missao">Missão e visão</a>
       <a href="#o-que-e">Justiça reprodutiva</a>
       <a href="#atuacao">Nosso trabalho</a>
@@ -322,34 +330,6 @@ footer img { height: 46px; width: auto; }
     </div>
   </section>
 
-  <section class="band quem grao" id="quem-somos">
-    <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--rosa)"><use href="#simbolo"/></svg>
-    <div class="wrap">
-      <h2>Quem somos</h2>
-      <div style="display:grid; gap:22px">
-        <p class="grande">Somos uma organização de direitos humanos que atua na defesa da <b>saúde sexual e reprodutiva de mulheres negras e pessoas que gestam</b> no Brasil.</p>
-        <p>Conheça nosso trabalho e junte-se a nós nesta luta.</p>
-        <p><a class="btn claro" href="#publicacoes">Nossas publicações</a></p>
-      </div>
-      <div class="equipe">
-        <article class="pessoa">
-          <div class="foto"><svg class="anel-p" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--verde)"><use href="#simbolo-g"/></svg><img src="img/fabiana-pinto.jpg" alt="Fabiana Pinto sorrindo" loading="lazy" width="640" height="640"></div>
-          <h3 class="faixa"><span class="f-verde">Fabiana Pinto</span></h3>
-          <p>Diretora Executiva</p>
-        </article>
-        <article class="pessoa">
-          <div class="foto"><svg class="anel-p" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--rosa)"><use href="#simbolo-g"/></svg><img src="img/aron-giovanni.jpg" alt="Aron Giovanni falando ao microfone em um debate" loading="lazy" width="640" height="640"></div>
-          <h3 class="faixa"><span class="f-rosa">Aron Giovanni</span></h3>
-          <p>Diretor de Estratégia</p>
-        </article>
-        <article class="pessoa">
-          <div class="foto"><svg class="anel-p" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--agua)"><use href="#simbolo-g"/></svg><img src="img/juliana-santiago.jpg" alt="Juliana Santiago sorrindo, com lenço verde do Comitê de Justiça Reprodutiva" loading="lazy" width="640" height="640"></div>
-          <h3 class="faixa"><span class="f-agua-t">Juliana Santiago</span></h3>
-          <p>Diretora Financeira</p>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <section class="band grao" id="o-que-e">
     <div class="wrap">
@@ -531,6 +511,9 @@ footer img { height: 46px; width: auto; }
 
 <script>
 (function () {
+  var hd = document.querySelector('header'), mb = document.getElementById('menu-btn');
+  mb.addEventListener('click', function () { var a = hd.classList.toggle('aberto'); mb.setAttribute('aria-expanded', a); mb.textContent = a ? 'Fechar' : 'Menu'; });
+  document.querySelectorAll('#menu a').forEach(function (l) { l.addEventListener('click', function () { hd.classList.remove('aberto'); mb.setAttribute('aria-expanded', 'false'); mb.textContent = 'Menu'; }); });
   var DESTINO = 'https://formsubmit.co/ajax/justicareprodutiva@gmail.com';
   var form = document.getElementById('form-contato');
   var status = document.getElementById('status');
