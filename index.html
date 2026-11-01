@@ -252,6 +252,11 @@ body:has(#quem-somos:target) { overflow: hidden; }
 .ig-capa.reel { background-color: var(--verde); }
 .capa-tag { position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 1; font-family: var(--display); text-transform: uppercase; font-size: clamp(.95rem, 1.7vw, 1.3rem); line-height: 1.05; }
 .capa-tag span { box-shadow: 0 4px 10px rgba(0,0,0,.18); }
+.capa-tag.grande { font-size: clamp(1.3rem, 2.6vw, 2.3rem); left: 16px; bottom: 16px; }
+.capa-trans { position: absolute; inset: 0; background: linear-gradient(#5BCEFA 0 20%, #F5A9B8 20% 40%, #FFFFFF 40% 60%, #F5A9B8 60% 80%, #5BCEFA 80%); }
+.capa-trans::after { content: ""; position: absolute; inset: 0; background-image: var(--grao); opacity: .7; mix-blend-mode: multiply; }
+@media (min-width: 900px) { .pod.destaque { grid-column: span 2; } .pod.destaque .pod-capa { aspect-ratio: 2.1 / 1; } }
+@media (max-width: 899px) { .pod.destaque-m { grid-column: span 2; } .pod.destaque-m .pod-capa { aspect-ratio: 2 / 1; } }
 .ig-capa svg { width: 42%; height: 42%; }
 .pod-meta { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--agua); margin-top: 6px; }
 .pod-tit { font-family: var(--display); text-transform: uppercase; font-size: 1.45rem; line-height: 1.08; }
@@ -463,7 +468,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
         <p class="sub-area">Vídeos, podcasts, debates e outros conteúdos audiovisuais.</p>
       </div>
       <div class="pod-grade">
-        <a class="pod" href="https://www.youtube.com/watch?v=SuqBZng987o" target="_blank" rel="noopener">
+        <a class="pod destaque destaque-m" href="https://www.youtube.com/watch?v=SuqBZng987o" target="_blank" rel="noopener">
           <span class="pod-capa"><img src="https://i.ytimg.com/vi/SuqBZng987o/hqdefault.jpg" alt="Capa do vídeo de lançamento do Comitê de Justiça Reprodutiva" loading="lazy" width="480" height="360" onerror="this.remove()"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
           <span class="pod-meta">Marcha das Mulheres Negras · YouTube</span>
           <span class="pod-tit">Lançamento do Comitê de Justiça Reprodutiva da Marcha das Mulheres Negras</span>
@@ -501,6 +506,12 @@ body:has(#quem-somos:target) { overflow: hidden; }
           <span class="pod-capa"><img src="img/ig-comite.jpg" alt="Integrante do Comitê de Justiça Reprodutiva com lenço verde fala ao microfone" loading="lazy" width="600" height="600"><span class="capa-tag faixa"><span class="f-verde">Comitê de Justiça Reprodutiva</span><span class="f-rosa">no Congresso Nacional</span></span></span>
           <span class="pod-meta">Comitê de Justiça Reprodutiva · Instagram</span>
           <span class="pod-tit">Comitê de Justiça Reprodutiva no Congresso Nacional</span>
+          <span class="pod-acao">Assistir no Instagram ↗</span>
+        </a>
+        <a class="pod destaque" href="https://www.instagram.com/p/DVEHVotDsX_/" target="_blank" rel="noopener">
+          <span class="pod-capa"><span class="capa-trans" aria-hidden="true"></span><span class="capa-tag grande faixa"><span class="f-azul">Campanha</span><span class="f-rosa">Meu corpo não é fantasia 🏳️‍⚧️</span></span></span>
+          <span class="pod-meta">Campanha · Instagram</span>
+          <span class="pod-tit">Campanha Meu corpo não é fantasia 🏳️‍⚧️</span>
           <span class="pod-acao">Assistir no Instagram ↗</span>
         </a>
       </div>
