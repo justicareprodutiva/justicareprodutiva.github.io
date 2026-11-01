@@ -231,6 +231,29 @@ body:has(#quem-somos:target) { overflow: hidden; }
 .doc-autoria { font-weight: 600; font-size: .95rem; }
 .doc-acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
 
+/* Podcasts */
+.link-pod { display: inline-flex; align-items: center; gap: 6px; }
+.link-pod svg { width: 17px; height: 17px; }
+.pods { background-color: var(--azul); color: var(--branco); }
+.pods .cab p { color: var(--branco); }
+.pod-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 28px 24px; }
+.pod { display: grid; gap: 10px; align-content: start; text-decoration: none; color: var(--branco); min-width: 0; }
+.pod-capa { position: relative; display: block; aspect-ratio: 1; background: var(--rosa); border: 8px solid var(--branco); box-shadow: 0 16px 34px rgba(0,0,0,.28); overflow: hidden; transition: transform .25s ease; }
+.pod:nth-child(odd) .pod-capa { transform: rotate(-1.5deg); }
+.pod:nth-child(even) .pod-capa { transform: rotate(1.5deg); background: var(--verde); }
+.pod:hover .pod-capa, .pod:focus-visible .pod-capa { transform: rotate(0) translateY(-4px); }
+.pod-capa img { width: 100%; height: 100%; object-fit: cover; }
+.play { position: absolute; right: 10px; bottom: 10px; width: 52px; height: 52px; border-radius: 50%; background: var(--rosa); color: var(--branco); display: grid; place-items: center; box-shadow: 0 6px 16px rgba(0,0,0,.3); transition: transform .2s; }
+.play svg { width: 26px; height: 26px; margin-left: 3px; }
+.pod:hover .play { transform: scale(1.1); }
+.ig-capa { position: absolute; inset: 0; display: grid; place-items: center; background: var(--rosa); background-image: var(--grao); color: var(--branco); }
+.ig-capa svg { width: 42%; height: 42%; }
+.pod-meta { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--agua); margin-top: 6px; }
+.pod-tit { font-family: var(--display); text-transform: uppercase; font-size: 1.45rem; line-height: 1.08; }
+.pod-acao { font-weight: 700; font-size: .9rem; }
+.pod:hover .pod-acao { text-decoration: underline; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .pod-capa, .play { transition: none; } }
+
 /* Imprensa */
 .imprensa { background-color: var(--agua-clara); }
 .anos { display: grid; gap: 8px; }
@@ -284,6 +307,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
       <a href="#o-que-e">Justiça reprodutiva</a>
       <a href="#atuacao">Nosso trabalho</a>
       <a href="#publicacoes">Publicações</a>
+      <a href="#podcasts" class="link-pod"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="3" y="13" width="5" height="7" rx="2" fill="currentColor"/><rect x="16" y="13" width="5" height="7" rx="2" fill="currentColor"/></svg>Podcasts</a>
       <a href="#imprensa">Imprensa</a>
       <a class="junte" href="#contato">Junte-se a nós</a>
     </nav>
@@ -425,6 +449,41 @@ body:has(#quem-somos:target) { overflow: hidden; }
             </div>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band pods grao" id="podcasts">
+    <div class="wrap">
+      <div class="cab">
+        <h2 class="faixa"><span class="f-rosa">Podcasts</span><span class="f-verde">e conteúdos</span></h2>
+        <p>Conversas sobre justiça reprodutiva, saúde e o movimento de mulheres negras. Toque na capa para ouvir.</p>
+      </div>
+      <div class="pod-grade">
+        <a class="pod" href="https://open.spotify.com/episode/1GH1M2YmOXm2HgHXP6YgbE" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="https://i.scdn.co/image/ab6765630000ba8af8bc0a3bcfd59d253964584b" alt="Capa do Podcast do Minas Programam" loading="lazy" width="640" height="640" onerror="this.remove()"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <span class="pod-meta">Podcast do Minas Programam · 2023 · 54 min</span>
+          <span class="pod-tit">Justiça reprodutiva com Fabiana Pinto</span>
+          <span class="pod-acao">Ouvir no Spotify ↗</span>
+        </a>
+        <a class="pod" href="https://open.spotify.com/episode/1lEx1OFug7D154EGjYjVjC" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="https://i.scdn.co/image/ab6765630000ba8a8017d2a120c29941b3616a9a" alt="Capa do podcast Conversa de Portão" loading="lazy" width="640" height="640" onerror="this.remove()"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <span class="pod-meta">Conversa de Portão · 2021 · 67 min</span>
+          <span class="pod-tit">O SUS não é um favor: movimento de mulheres negras na saúde</span>
+          <span class="pod-acao">Ouvir no Spotify ↗</span>
+        </a>
+        <a class="pod" href="https://open.spotify.com/episode/4rwwb8h0mm0ck4UOU36Qvz" target="_blank" rel="noopener">
+          <span class="pod-capa"><img src="https://i.scdn.co/image/ab6765630000ba8a0015686b9802fa9c14b65623" alt="Capa do Criola POD" loading="lazy" width="640" height="640" onerror="this.remove()"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <span class="pod-meta">Criola POD · 2020 · 25 min</span>
+          <span class="pod-tit">Vozes de Criola: Justiça Reprodutiva</span>
+          <span class="pod-acao">Ouvir no Spotify ↗</span>
+        </a>
+        <a class="pod pod-ig" href="https://www.instagram.com/p/DbNzTlzu7cK/" target="_blank" rel="noopener">
+          <span class="pod-capa"><span class="ig-capa" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg></span></span>
+          <span class="pod-meta">Instagram</span>
+          <span class="pod-tit">Conteúdo em destaque no Instagram</span>
+          <span class="pod-acao">Ver no Instagram ↗</span>
+        </a>
       </div>
     </div>
   </section>
