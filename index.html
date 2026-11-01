@@ -218,6 +218,7 @@ body:has(#quem-somos:target) { overflow: hidden; }
 
 /* Publicações */
 .docs { display: grid; gap: 28px; }
+@media (min-width: 900px) { .docs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .doc { background: var(--branco); display: grid; grid-template-columns: 1fr; gap: 24px 36px; padding: clamp(20px, 3vw, 36px); }
 @media (min-width: 760px) { .doc { grid-template-columns: 140px 1fr; align-items: start; } }
 .docs:not(.aberta) .doc:nth-child(n+3) { display: none; }
