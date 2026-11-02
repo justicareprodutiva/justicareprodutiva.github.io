@@ -98,6 +98,33 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;lin
 @media (max-width:700px){.mundo{grid-template-columns:1fr}}
 .mundo-n{font-family:var(--display);font-weight:900;font-size:clamp(80px,11vw,140px);line-height:.9;color:var(--laranja-esc)}
 .w77{max-width:280px}
+.painel-num{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(40px,6vw,64px)}
+@media (max-width:960px){.painel-num{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.painel-num{grid-template-columns:1fr}}
+.pn{background:var(--branco);border-radius:20px;padding:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;gap:10px;min-width:0}
+.pn-largo{grid-column:1/-1}
+.pn-n{font-family:var(--display);font-weight:900;font-size:clamp(60px,6.4vw,84px);line-height:.9;color:var(--laranja-esc);font-variant-numeric:tabular-nums}
+.pn-t{font-size:16px;font-weight:500;max-width:36ch}
+.pn-nota{font-size:16.5px;max-width:70ch;margin-top:6px}
+.linha-tempo{position:relative;padding:8px 0 74px;margin-top:6px}
+.lt-barra{display:flex;height:46px;border-radius:8px;overflow:hidden;gap:2px;background:var(--branco)}
+.lt-barra span{display:block;height:100%}
+.lt-2020{background:var(--laranja-esc)}
+.lt-2021{background:var(--laranja)}
+.lt-resto{background:#F2C2A8}
+.lt-marcas{position:absolute;left:0;right:0;top:62px;height:0}
+.lt-marcas div{position:absolute;transform:translateX(-100%);text-align:right;padding-right:8px;border-right:2px solid var(--tinta);white-space:nowrap}
+.lt-marcas b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(24px,3vw,34px);line-height:1}
+.lt-marcas span{font-size:13px;color:var(--suave)}
+@media (max-width:620px){.lt-marcas div span{white-space:normal;display:block;max-width:90px}.lt-marcas div:nth-child(2){display:none}.lt-marcas div:first-child{left:0!important;transform:none;text-align:left;border-right:none;border-left:2px solid var(--tinta);padding:0 0 0 8px}}
+.pontos{display:grid;grid-template-columns:repeat(auto-fill,minmax(7px,1fr));gap:3px;margin-top:6px}
+.pontos i{aspect-ratio:1;border-radius:50%;background:var(--laranja)}
+.w80{max-width:240px;margin-top:6px}
+.w-leg{display:flex;gap:14px;font-size:13px;color:var(--suave)}
+.w-leg span{display:inline-flex;align-items:center;gap:6px}
+.w-leg i{width:12px;height:12px;border-radius:3px}
+.pessoas{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;max-width:240px;margin-top:6px}
+.pessoas svg{width:100%;height:auto}
 .fontes{margin-top:18px;font-size:14px}
 .fontes summary{cursor:pointer;font-weight:700;color:var(--suave)}
 .fontes ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--suave)}
@@ -285,20 +312,49 @@ blockquote{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2
       <span class="traco" style="color:var(--laranja)"></span>
       <h2 class="titulo">Um ano de pandemia, um ano de luta</h2>
       <p class="lead" style="margin-top:18px">Quando o artigo foi escrito, em 2021, o Brasil somava mais de 500 mil vidas perdidas, cerca de 1.600 delas de gestantes e puérperas. Refletir sobre essas mortes, e sobre como poderiam ter sido evitadas, é desenhar caminhos que garantam <b>o direito à vida e à saúde de qualidade</b> para mulheres negras, o maior grupo demográfico do país.</p>
-      <div class="big3">
-        <div><b>194.949</b><span>mortes por Covid-19 no Brasil em 2020</span></div>
-        <div><b>549</b><span>gestantes e puérperas morreram de Covid-19 no Brasil em 2020</span></div>
-        <div><b>~80%</b><span>das gestantes que morreram de Covid-19 no mundo em 2020 eram brasileiras</span></div>
-        <div><b>715 mil</b><span>mortes por Covid-19 no Brasil até 2025</span></div>
-      </div>
     </div>
-    <figure class="foto duo textura" style="aspect-ratio:4/3.2"><img src="img/roda-postits.jpg" alt="Fabiana Pinto, de vestido vermelho, conduz uma roda de diálogo diante de uma parede preta com post-its coloridos; mulheres negras ouvem sentadas." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020, antes de ser declarada a pandemia de Covid-19 no Brasil e de as medidas de quarentena serem adotadas</figcaption></figure>
+    <figure class="foto duo textura" style="aspect-ratio:4/3.2"><img src="img/roda-postits.jpg" alt="Fabiana Pinto, de vestido vermelho, conduz uma roda de diálogo diante de uma parede preta com post-its coloridos; mulheres negras ouvem sentadas." loading="lazy"><figcaption>Roda de Diálogo na Maré, no Rio de Janeiro, em março de 2020, pouco antes de a pandemia de Covid-19 ser declarada e de as medidas de quarentena começarem no Brasil</figcaption></figure>
   </div>
   <div class="wrap">
+    <div class="painel-num">
+      <article class="pn pn-largo">
+        <p class="kicker" style="color:var(--laranja-esc)">Mortes por Covid-19 no Brasil</p>
+        <div class="linha-tempo" id="lt" role="img" aria-label="Mortes por Covid-19 no Brasil: 194.949 em 2020, mais de 500 mil quando o artigo foi escrito em 2021, e 715 mil até 2025.">
+          <div class="lt-barra"><span class="lt-2020" style="width:27.3%"></span><span class="lt-2021" style="width:42.6%"></span><span class="lt-resto" style="width:30.1%"></span></div>
+          <div class="lt-marcas">
+            <div style="left:27.3%"><b>194.949</b><span>até o fim de 2020</span></div>
+            <div style="left:69.9%"><b>500 mil</b><span>quando o artigo foi escrito, em 2021</span></div>
+            <div style="left:100%" class="ult"><b>715 mil</b><span>até 2025</span></div>
+          </div>
+        </div>
+        <p class="pn-nota">Só em 2020, o primeiro ano da pandemia, o país perdeu <b>quase 200 mil vidas</b>: mais de um quarto de todas as mortes por Covid-19 até 2025.</p>
+      </article>
+      <article class="pn">
+        <p class="kicker" style="color:var(--laranja-esc)">Gestantes e puérperas em 2020</p>
+        <p class="pn-n">549</p>
+        <p class="pn-t">mortes de gestantes e puérperas por Covid-19 no Brasil em 2020. Cada ponto é uma mulher.</p>
+        <div class="pontos" id="pontos" role="img" aria-label="549 pontos, um para cada gestante ou puérpera morta por Covid-19 no Brasil em 2020"></div>
+      </article>
+      <article class="pn">
+        <p class="kicker" style="color:var(--laranja-esc)">O Brasil no mundo, em 2020</p>
+        <p class="pn-n">~80%</p>
+        <p class="pn-t">das gestantes e puérperas que morreram de Covid-19 no mundo eram brasileiras. Quase 8 em cada 10.</p>
+        <div class="waffle w80" id="w80" role="img" aria-label="Em cada 100 mortes maternas por Covid-19 notificadas no mundo, 77 foram no Brasil"></div>
+        <div class="w-leg"><span><i style="background:var(--laranja)"></i>Brasil</span><span><i style="background:#E6D7CC"></i>outros países</span></div>
+      </article>
+      <article class="pn">
+        <p class="kicker" style="color:var(--laranja-esc)">Mulheres negras no Brasil</p>
+        <p class="pn-n">28%</p>
+        <p class="pn-t">da população brasileira são mulheres negras, o maior grupo demográfico do país.</p>
+        <div class="pessoas" id="pessoas" role="img" aria-label="Em cada 100 pessoas no Brasil, 28 são mulheres negras"></div>
+      </article>
+    </div>
     <details class="fontes" style="margin-top:28px"><summary>Fontes dos números</summary><ul>
       <li>194.949 mortes em 2020: Ministério da Saúde, boletim de 31/12/2020 (<a href="https://jornalgrandebahia.com.br/2021/01/em-2020-194-949-brasileiros-foram-a-obito-devido-a-covid-19/" target="_blank" rel="noopener">Jornal Grande Bahia</a>).</li>
       <li>549 gestantes e puérperas em 2020: Observatório Covid-19 Fiocruz, <i>BMC Pregnancy and Childbirth</i> (<a href="https://www.poder360.com.br/coronavirus/pandemia-aumentou-obitos-maternos-em-40-em-2020-diz-pesquisa/" target="_blank" rel="noopener">Poder360</a>).</li>
       <li>~80% (77%) das mortes maternas por Covid-19 notificadas no mundo até meados de 2020: Takemoto et al., <i>International Journal of Gynecology &amp; Obstetrics</i>, 2020 (<a href="https://exame.com/ciencia/brasil-e-o-pais-que-mais-concentra-mortes-por-covid-em-gravidas" target="_blank" rel="noopener">Exame</a>).</li>
+      <li>28% de mulheres negras na população: dado citado no artigo de Fabiana Pinto (2021).</li>
+      <li>500 mil mortes em 2021: dado citado no artigo.</li>
       <li>715 mil mortes até março de 2025: Ministério da Saúde (<a href="https://www.poder360.com.br/poder-saude/5-anos-apos-decreto-de-pandemia-brasil-tem-715-mil-mortes-por-covid/" target="_blank" rel="noopener">Poder360</a>).</li>
     </ul></details>
   </div>
@@ -394,7 +450,7 @@ blockquote{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2
       <p class="quem">Ativistas participantes da pesquisa</p>
       <div class="nav"><button type="button" id="voz-ant" aria-label="Fala anterior">←</button><div class="dots" id="voz-dots"></div><button type="button" id="voz-prox" aria-label="Próxima fala">→</button></div>
     </div>
-    <figure class="foto duo textura" style="aspect-ratio:4/3"><img src="img/roda-livros.jpg" alt="Mulheres negras sentadas em roda em um galpão, conversando em volta de livros e cartazes espalhados no chão." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020, antes de ser declarada a pandemia de Covid-19 no Brasil e de as medidas de quarentena serem adotadas</figcaption></figure>
+    <figure class="foto duo textura" style="aspect-ratio:4/3"><img src="img/roda-livros.jpg" alt="Mulheres negras sentadas em roda em um galpão, conversando em volta de livros e cartazes espalhados no chão." loading="lazy"><figcaption>Roda de Diálogo na Maré, no Rio de Janeiro, em março de 2020, pouco antes de a pandemia de Covid-19 ser declarada e de as medidas de quarentena começarem no Brasil</figcaption></figure>
   </div>
 </section>
 
@@ -464,6 +520,13 @@ const pb=document.getElementById('pausa');pb.onclick=()=>{const on=document.body
 const fmt=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:2});
 
 
+
+/* painel de números */
+document.getElementById('pontos').innerHTML='<i></i>'.repeat(549);
+const w80=document.getElementById('w80');w80.innerHTML=Array.from({length:100},(_,i)=>`<i style="background:${i<77?'var(--laranja)':'#E6D7CC'}"></i>`).join('');
+w80.querySelectorAll('i').forEach((c,i)=>{const h=i<77?'<b>Brasil</b><br>77 de cada 100 mortes maternas por Covid-19 notificadas no mundo em 2020':'<b>Outros países</b><br>23 de cada 100';c.onmouseenter=e=>showTip(e,h);c.onmousemove=e=>showTip(e,h);c.onmouseleave=hideTip});
+const pes=document.getElementById('pessoas');pes.innerHTML=Array.from({length:100},(_,i)=>`<svg viewBox="0 0 10 16" aria-hidden="true"><circle cx="5" cy="3.2" r="2.8" fill="${i<28?'#B8461A':'#E6D7CC'}"/><path d="M1 16 V9.5 Q1 6.6 5 6.6 Q9 6.6 9 9.5 V16 Z" fill="${i<28?'#B8461A':'#E6D7CC'}"/></svg>`).join('');
+document.querySelectorAll('#lt .lt-barra span').forEach((sp,k)=>{const h=['<b>2020</b><br>194.949 mortes','<b>2020 até meados de 2021</b><br>chega a 500 mil mortes','<b>Depois de 2021 até 2025</b><br>chega a 715 mil mortes'][k];sp.onmouseenter=e=>showTip(e,h);sp.onmousemove=e=>showTip(e,h);sp.onmouseleave=hideTip});
 
 /* lentes */
 const LENTES={
