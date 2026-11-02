@@ -298,6 +298,14 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 .vivo .card, .vivo .estr article, .vivo .mito { animation: entra 0.7s ease-out both; }
 .foto-tela.vivo > img { animation: zoom 2.4s ease-out both; }
 @media (prefers-reduced-motion: reduce) { .vivo, .vivo * { animation: none !important; } html { scroll-behavior: auto; } }
+.indice { display: grid; gap: 10px; margin-top: 6px; }
+.indice .r { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+.indice ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.indice a { display: inline-block; font-weight: 700; font-size: 0.84rem; color: inherit; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.7); border-radius: 999px; padding: 6px 14px; transition: background .2s, color .2s; }
+.indice a:hover, .indice a:focus-visible { background: var(--branco); color: var(--vinho); }
+@media (max-width: 520px) { .indice a { font-size: 0.8rem; padding: 6px 12px; } }
+[id^="sec-"] { scroll-margin-top: 0; }
+.credito-interativo { font-size: 0.8rem; font-weight: 600; opacity: 0.9; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.3); }
 /* galeria com fotos do Dossiê */
 .galeria { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 210px; grid-auto-flow: dense; gap: 12px; margin-top: 32px; }
 .galeria .foto { height: 100%; }
@@ -332,6 +340,10 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
       <div><span class="r">Realização</span><div class="logos"><img src="img/logo-ijr-branco.png" alt="Instituto de Justiça Reprodutiva" width="118"><img src="img/logo-liga-branco.png" alt="Liga Transmasculina João W. Nery" width="76"></div></div>
       <div><span class="r">Apoio</span><div class="logos"><img src="img/logo-itf-branco.png" alt="International Trans Fund" width="78"></div></div>
     </div>
+    <nav class="indice" aria-label="Navegue pelo Dossiê">
+      <span class="r">Navegue pelo Dossiê</span>
+      <ul><li><a href="#sec-d2">A escuta em números</a></li><li><a href="#sec-d2b">Da escuta ao Congresso</a></li><li><a href="#sec-d3">8 estruturas de exclusão</a></li><li><a href="#sec-d4">Escutas e levantamento</a></li><li><a href="#sec-dm">Situação no seu estado</a></li><li><a href="#sec-d5">Onde estão os serviços</a></li><li><a href="#sec-d6">Apagamento completo</a></li><li><a href="#sec-d9">Isso não é verdade</a></li><li><a href="#sec-d7">35 recomendações</a></li><li><a href="#sec-d8">Direitos no SUS</a></li><li><a href="#sec-d10">Ferramentas</a></li><li><a href="#sec-dg">Galeria de fotos</a></li></ul>
+    </nav>
   </div>
 </header>
 
@@ -348,7 +360,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 3 · ESCUTA EM NÚMEROS -->
-<section class="tela textura t-papel" aria-labelledby="d2">
+<section class="tela textura t-papel" id="sec-d2" aria-labelledby="d2">
   <div class="wrap duas">
     <div class="texto">
       <h2 id="d2" class="titulo" style="color:var(--vinho)">A escuta em números</h2>
@@ -374,7 +386,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 4 · DA ESCUTA AO CONGRESSO -->
-<section class="tela t-branco" aria-labelledby="d2b">
+<section class="tela t-branco" id="sec-d2b" aria-labelledby="d2b">
   <div class="wrap">
     <h2 id="d2b" class="titulo" style="color:var(--vinho)">Da escuta ao Congresso</h2>
     <div class="tempo">
@@ -386,7 +398,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 5 · 8 ESTRUTURAS -->
-<section class="tela textura t-azul" aria-labelledby="d3">
+<section class="tela textura t-azul" id="sec-d3" aria-labelledby="d3">
   <div class="wrap">
     <span class="pill">diagnóstico transversal</span>
     <h2 id="d3" class="titulo-g" style="margin-top:16px">8 estruturas de exclusão</h2>
@@ -405,7 +417,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 6 · ESCUTAS x LEVANTAMENTO -->
-<section class="tela textura t-papel escutas" aria-labelledby="d4">
+<section class="tela textura t-papel escutas" id="sec-d4" aria-labelledby="d4">
   <div class="wrap">
     <span class="pill" style="color:var(--rosa)">o que foi relatado × o que existe</span>
     <h2 id="d4" class="titulo-g" style="margin-top:16px;color:var(--vinho)">O que as escutas contaram e o que o levantamento mostra</h2>
@@ -477,7 +489,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 6b · MAPA INTERATIVO -->
-<section class="tela t-branco mapa-sec" aria-labelledby="dm">
+<section class="tela t-branco mapa-sec" id="sec-dm" aria-labelledby="dm">
   <div class="wrap">
     <span class="pill" style="color:var(--rosa)">mapa interativo</span>
     <h2 id="dm" class="titulo-g" style="margin-top:16px;color:var(--vinho)">Veja qual a situação no seu estado</h2>
@@ -517,7 +529,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 7 · MAPA DOS SERVIÇOS (barras) -->
-<section class="tela textura t-vinho" aria-labelledby="d5">
+<section class="tela textura t-vinho" id="sec-d5" aria-labelledby="d5">
   <div class="wrap">
     <span class="pill">levantamento nacional</span>
     <div class="duas" style="margin-top:16px">
@@ -555,7 +567,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 8 · PORTO ALEGRE (meia rosca) -->
-<section class="tela textura t-rosa" aria-labelledby="d6">
+<section class="tela textura t-rosa" id="sec-d6" aria-labelledby="d6">
   <div class="wrap duas">
     <div class="texto">
       <h2 id="d6" class="titulo">Ter serviço não basta: apagamento completo</h2>
@@ -574,7 +586,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 9 · DESINFORMAÇÃO -->
-<section class="tela textura t-vinho" aria-labelledby="d9">
+<section class="tela textura t-vinho" id="sec-d9" aria-labelledby="d9">
   <div class="wrap">
     <span class="pill">desinformação</span>
     <h2 id="d9" class="titulo-g" style="margin-top:16px">Isso não é verdade</h2>
@@ -603,7 +615,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 10 · RECOMENDAÇÕES (waffle) -->
-<section class="tela textura t-verde" aria-labelledby="d7">
+<section class="tela textura t-verde" id="sec-d7" aria-labelledby="d7">
   <div class="wrap duas inv">
     <div class="waffle" id="waffle"></div>
     <div class="texto">
@@ -615,7 +627,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 11 · DIREITOS DE PESSOAS TRANS -->
-<section class="tela textura t-papel" aria-labelledby="d8">
+<section class="tela textura t-papel" id="sec-d8" aria-labelledby="d8">
   <div class="wrap">
     <h2 id="d8" class="titulo-g" style="color:var(--vinho)">Direitos de pessoas trans no SUS</h2>
     <p class="intro" style="color:var(--suave)">O básico, segundo o Levantamento do Instituto de Justiça Reprodutiva e Liga Transmasculina João W. Nery.</p>
@@ -635,7 +647,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </section>
 
 <!-- 12 · FERRAMENTAS -->
-<section class="tela textura t-papel" aria-labelledby="d10">
+<section class="tela textura t-papel" id="sec-d10" aria-labelledby="d10">
   <div class="wrap">
     <span class="pill" style="color:var(--vinho)">para pessoas trans e profissionais de saúde</span>
     <h2 id="d10" class="titulo-g" style="margin-top:16px;color:var(--vinho)">Ferramentas</h2>
@@ -658,7 +670,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 
 <!-- 13 · ENCERRAMENTO -->
 <!-- GALERIA · FOTOS DO DOSSIÊ -->
-<section class="tela textura t-papel" aria-labelledby="dg">
+<section class="tela textura t-papel" id="sec-dg" aria-labelledby="dg">
   <div class="wrap">
     <span class="pill" style="color:var(--vinho)">imagens do Dossiê</span>
     <h2 id="dg" class="titulo-g" style="margin-top:16px;color:var(--vinho)">Corpos, vozes e territórios</h2>
@@ -687,6 +699,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
       <span><b>Liga Transmasculina João W. Nery</b> · <a href="mailto:contato@ligatransmasculina.org">contato@ligatransmasculina.org</a> · <a href="https://www.instagram.com/ligatransmasculina/" target="_blank" rel="noopener">@ligatransmasculina</a></span>
       <span><b>Instituto de Justiça Reprodutiva</b> · <a href="mailto:justicareprodutiva@gmail.com">justicareprodutiva@gmail.com</a> · <a href="https://www.instagram.com/justicareprodutiva/" target="_blank" rel="noopener">@justicareprodutiva</a></span>
     </div>
+    <p class="credito-interativo">Versão interativa desenvolvida pelo Instituto de Justiça Reprodutiva (2026)</p>
   </div>
 </footer>
 
