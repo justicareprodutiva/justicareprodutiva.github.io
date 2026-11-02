@@ -8,14 +8,14 @@
 <meta property="og:image" content="https://justicareprodutiva.github.io/img/capa-manifesto.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Squada+One&family=Open+Sans:wdth,wght@75,600;75,700;75,800&family=Outfit:wght@400;500;600;700;800&family=Permanent+Marker&display=swap">
 <style>
 :root {
   color-scheme: light;
   --vinho: #4A1210; --vermelho: #A3201F; --laranja: #E8832A; --amarelo: #F3C23A; --verde: #2E8B4A; --verde-esc: #1F6B37;
   --creme: #F7EFE1; --branco: #FFFDF8; --tinta: #2A1512; --suave: #6B4F48;
-  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
-  --body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --display: "Squada One", "Anton", "Arial Narrow", sans-serif; --cond: "Open Sans", "Arial Narrow", sans-serif;
+  --body: "Outfit", "Helvetica Neue", Arial, sans-serif;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -201,6 +201,13 @@ mark { background: var(--amarelo); color: var(--tinta); padding: 0 .1em; border-
 .fim .contatos { display: grid; gap: 6px; font-size: .9rem; font-weight: 500; }
 .credito-interativo { font-size: .8rem; font-weight: 600; opacity: .9; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.3); }
 
+/* tipografia do manifesto: títulos (display), subtítulos e citações em Open Sans Condensed */
+.cond, .citacao-e, .destaque, .dir summary .dt, .fecho blockquote p:first-child + p, .kicker, .capa .lede { font-family: var(--cond); font-stretch: 75%; }
+.citacao-e { text-transform: none; font-weight: 700; font-size: clamp(1.25rem, 2.4vw, 1.75rem); line-height: 1.15; }
+.destaque { text-transform: none; font-weight: 800; font-size: clamp(1.4rem, 2.8vw, 2.1rem); line-height: 1.12; }
+.dir summary .dt { font-weight: 700; font-size: 1.08rem; letter-spacing: 0; }
+.kicker { font-size: .95rem !important; letter-spacing: .04em !important; }
+h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
 :root { --papel: #F4EAD7; --mao: "Permanent Marker", "Comic Sans MS", cursive; }
 /* texturas */
 .papel { position: relative; isolation: isolate; }
@@ -386,7 +393,7 @@ mark { background: var(--amarelo); color: var(--tinta); padding: 0 .1em; border-
         <ul><li><a href="#o-que-e">O que é justiça reprodutiva</a></li><li><a href="#escutas">O que as escutas revelaram</a></li><li><a href="#numeros">As propostas em números</a></li><li><a href="#agenda">Os 7 eixos da agenda política</a></li><li><a href="#movimento">A Marcha em movimento</a></li><li><a href="#quem">Quem construiu o manifesto</a></li><li><a href="#baixar">Baixe o manifesto</a></li></ul>
       </nav>
     </div>
-    <div class="palco palco-capa entra"><div class="pc sombra" style="--x:0%;--y:24%;--w:100%;--r:-3deg;--z:1;--i:0"><img src="img/rasg-comite.webp" alt="Integrantes do Comitê de Justiça Reprodutiva, várias com lenço verde, seguram a faixa Justiça reprodutiva é reparação e bem viver! Marcha das Mulheres Negras 2025." loading="lazy" decoding="async"><span class="fita" style="--fr:-5deg"></span></div><div class="pc boil sombra" style="--x:30%;--y:0%;--w:36%;--r:4deg;--z:3;--i:1"><img src="img/rec-catedral.webp" alt="Mulher negra sorridente de tranças e lenço verde do Comitê, diante da Catedral de Brasília." loading="lazy" decoding="async"></div><div class="pc pisca" style="--x:6%;--y:2%;--w:15%;--r:0deg;--z:2;--i:2;color:var(--amarelo)"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2 L60 30 L84 16 L70 40 L98 50 L70 60 L84 84 L60 70 L50 98 L40 70 L16 84 L30 60 L2 50 L30 40 L16 16 L40 30 Z" fill="currentColor"/></svg></div><div class="pc boil sombra" style="--x:0%;--y:60%;--w:44%;--r:-4deg;--z:5;--i:3"><img src="img/rec-manif-g.webp" alt="Duas mulheres negras sorriem segurando o Manifesto por Justiça Reprodutiva; uma delas usa o lenço verde." loading="lazy" decoding="async"></div><div class="pc boil sombra" style="--x:62%;--y:48%;--w:38%;--r:4deg;--z:6;--i:4"><img src="img/rec-vermelha.webp" alt="Mulher negra sorridente de camiseta vermelha da Marcha e lenço verde do Comitê de Justiça Reprodutiva." loading="lazy" decoding="async"></div><div class="pc gira" style="--x:43%;--y:80%;--w:19%;--r:0deg;--z:7;--i:5"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ986" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="96" fill="#F3C23A"/><circle cx="100" cy="100" r="56" fill="none" stroke="#4A1210" stroke-width="3" stroke-dasharray="2 6"/><text font-family="Anton, Impact, sans-serif" font-size="21" letter-spacing="3" fill="#4A1210"><textPath href="#circ986">JUSTIÇA REPRODUTIVA É REPARAÇÃO E BEM VIVER · </textPath></text><g transform="translate(70 70) scale(.6)" fill="#A3201F"><path d="M50 2 L60 30 L84 16 L70 40 L98 50 L70 60 L84 84 L60 70 L50 98 L40 70 L16 84 L30 60 L2 50 L30 40 L16 16 L40 30 Z"/></g></svg></div><span class="data-mao" style="left:2%;top:17%">Brasília · 25.11.2025</span></div>
+    <div class="palco palco-capa entra"><div class="pc sombra" style="--x:0%;--y:24%;--w:100%;--r:-3deg;--z:1;--i:0"><img src="img/rasg-comite.webp" alt="Integrantes do Comitê de Justiça Reprodutiva, várias com lenço verde, seguram a faixa Justiça reprodutiva é reparação e bem viver! Marcha das Mulheres Negras 2025." loading="lazy" decoding="async"><span class="fita" style="--fr:-5deg"></span></div><div class="pc boil sombra" style="--x:30%;--y:0%;--w:36%;--r:4deg;--z:3;--i:1"><img src="img/rec-catedral.webp" alt="Mulher negra sorridente de tranças e lenço verde do Comitê, diante da Catedral de Brasília." loading="lazy" decoding="async"></div><div class="pc pisca" style="--x:6%;--y:2%;--w:15%;--r:0deg;--z:2;--i:2;color:var(--amarelo)"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2 L60 30 L84 16 L70 40 L98 50 L70 60 L84 84 L60 70 L50 98 L40 70 L16 84 L30 60 L2 50 L30 40 L16 16 L40 30 Z" fill="currentColor"/></svg></div><div class="pc boil sombra" style="--x:0%;--y:60%;--w:44%;--r:-4deg;--z:5;--i:3"><img src="img/rec-manif-g.webp" alt="Duas mulheres negras sorriem segurando o Manifesto por Justiça Reprodutiva; uma delas usa o lenço verde." loading="lazy" decoding="async"></div><div class="pc boil sombra" style="--x:62%;--y:48%;--w:38%;--r:4deg;--z:6;--i:4"><img src="img/rec-vermelha.webp" alt="Mulher negra sorridente de camiseta vermelha da Marcha e lenço verde do Comitê de Justiça Reprodutiva." loading="lazy" decoding="async"></div><div class="pc gira" style="--x:43%;--y:80%;--w:19%;--r:0deg;--z:7;--i:5"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ755" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="96" fill="#F3C23A"/><circle cx="100" cy="100" r="56" fill="none" stroke="#4A1210" stroke-width="3" stroke-dasharray="2 6"/><text font-family="Squada One, Impact, sans-serif" font-size="23" letter-spacing="2.5" fill="#4A1210"><textPath href="#circ755">JUSTIÇA REPRODUTIVA É REPARAÇÃO E BEM VIVER · </textPath></text><g transform="translate(70 70) scale(.6)" fill="#A3201F"><path d="M50 2 L60 30 L84 16 L70 40 L98 50 L70 60 L84 84 L60 70 L50 98 L40 70 L16 84 L30 60 L2 50 L30 40 L16 16 L40 30 Z"/></g></svg></div><span class="data-mao" style="left:2%;top:17%">Brasília · 25.11.2025</span></div>
   </div>
 </header>
 <div class="padrao" aria-hidden="true"></div>
