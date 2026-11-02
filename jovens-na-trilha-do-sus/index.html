@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jovens na Trilha do SUS · Cartilha interativa · Instituto de Justiça Reprodutiva</title>
+<meta name="description" content="Cartilha interativa Jovens na Trilha do SUS: descubra os serviços do SUS, para onde ir em cada situação e os direitos de saúde das juventudes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: a página é um tabuleiro. Cada faixa de cor é uma "casa" da trilha, numerada na ordem de leitura */
+:root{
+  /* cores da cartilha: ruas cinza sobre papel creme, quarteirões em laranja, verde e azul */
+  --green:#3fb26f; --blue:#2f5bb5; --electric:#2f5bb5;
+  --pink:#ef6464; --purple:#2f5bb5; --mint:#7fd3c9; --yellow:#f5b324;
+  --orange:#f47a1f; --cream:#fdebd7; --teal:#26a092; --gold:#f0a314;
+  --ink:#2e2b28; --line:#6e6e6e; --char:#f47a1f; --paper:#fdebd7; --white:#fffaf3; --muted:#6b6259;
+  --display:'Anton','Impact','Arial Narrow Bold',sans-serif;
+  --hand:'Permanent Marker','Anton',cursive;
+  --body:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.band{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,100px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto}
+.green{background:var(--green);color:var(--white)}
+.blue{background:var(--blue);color:var(--white)}
+.pink{background:var(--pink);color:var(--white)}
+.purple{background:var(--purple);color:var(--white)}
+.dark{background:var(--blue);color:var(--white)}
+.orange-b{background:var(--orange);color:var(--white)}
+.paper{background:var(--paper);color:var(--ink)}
+h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance}
+h2{font-size:clamp(42px,6.6vw,84px)}
+h3{font-size:clamp(24px,2.6vw,32px)}
+.lead{font-size:clamp(16px,1.5vw,18px);max-width:58ch}
+
+/* cabeçalho de cada casa */
+.casa{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.casa .dado{width:46px;height:46px;border-radius:12px;background:var(--white);color:var(--ink);display:grid;place-items:center;font-family:var(--display);font-size:24px;transform:rotate(-6deg);box-shadow:4px 4px 0 var(--line);flex:none}
+.casa span{font-family:var(--hand);font-size:18px;letter-spacing:.02em}
+.head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+@media (max-width:820px){.head{grid-template-columns:1fr}}
+
+/* HERO */
+.hero{background:var(--cream);color:var(--ink);padding-block:clamp(64px,9vw,120px) clamp(56px,7vw,90px)}
+.herogrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:clamp(24px,5vw,72px);align-items:center}
+.heroart{width:100%;height:auto;max-width:260px;justify-self:end;transform:rotate(2deg)}
+.herogrid{position:relative}
+.herogrid::before{content:"";position:absolute;top:-200px;bottom:-200px;width:60px;right:calc(260px + clamp(24px,5vw,72px)/2 - 30px);background:url("img/rua-vertical.svg") center/100% 100% no-repeat;z-index:-1;pointer-events:none}
+@media (max-width:760px){.herogrid::before{display:none}}
+@media (max-width:760px){.herogrid{grid-template-columns:1fr}.heroart{display:none}}
+.street{display:block;width:100%;height:auto;max-height:420px;object-fit:cover;object-position:center 30%;background:var(--cream)}
+.roads{background-image:url("img/fundo-ruas.svg");background-size:cover;background-position:center}
+.capa-fundo{background-image:url("img/fundo-capa.svg");background-size:cover;background-position:right center}
+@media (max-width:760px){.capa-fundo{background-image:none}}
+.roads2{background-image:url("img/fundo-ruas-2.svg");background-size:cover;background-position:center}
+.canto::after{content:"";position:absolute;right:0;bottom:0;width:min(38vw,440px);aspect-ratio:420/300;background:url("img/canto.svg") no-repeat right bottom/contain;pointer-events:none;z-index:0}
+.cidade{position:relative;background:var(--cream);padding-block:clamp(36px,6vw,64px) 0;overflow:hidden}
+.cidade img{display:block;width:min(1400px,100%);height:auto;margin:0 auto}
+.cidade .finish{position:relative;text-align:center;color:var(--orange);z-index:1;padding-inline:16px;margin:0 0 -40px}
+.ico{height:62px;width:auto;max-width:100px;object-fit:contain;display:block}
+.ctitle{margin:0;font-family:var(--hand);font-weight:400;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;align-items:flex-start;font-size:clamp(52px,10vw,132px);color:var(--cream)}
+.ctitle span{display:block;padding:.06em .32em .02em;border:clamp(6px,1vw,12px) solid #6e6e6e}
+.ctitle small{font-size:.48em;vertical-align:.32em;margin-right:.12em}
+.ctitle .b1{background:var(--orange);transform:rotate(-4deg)}
+.ctitle .b2{background:#4bbf7a;transform:rotate(-2deg);margin:-.06em 0 0 .6em;font-size:.82em}
+.ctitle .b3{background:#2f5bb5;transform:rotate(-1deg);margin:-.06em 0 0 1.1em;font-size:1.12em}
+@media (max-width:520px){.ctitle .b2{margin-left:.3em}.ctitle .b3{margin-left:.5em}}
+.intro{margin-top:40px;max-width:46ch;font-size:clamp(17px,1.8vw,21px);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:13px 22px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--line)}
+.btn.ink{background:var(--blue);color:var(--white)}
+.btn.ink:hover{box-shadow:4px 4px 0 var(--line)}
+.btn.white{background:var(--white);color:var(--ink);border:2px solid var(--line)}
+.btn.mint{background:var(--mint);color:var(--ink)}
+.casas{display:flex;flex-wrap:wrap;gap:10px;margin-top:44px;list-style:none;padding:0}
+.casas a{display:flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--line);color:var(--ink);text-decoration:none;border-radius:12px;padding:8px 14px 8px 8px;font-weight:700;font-size:13.5px;transition:transform .15s}
+.casas a:hover{transform:rotate(-2deg) scale(1.04)}
+.casas b{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:var(--white);font-family:var(--display);font-weight:400;font-size:15px}
+
+/* destaque */
+.big{font-family:var(--display);text-transform:uppercase;color:var(--electric);font-size:clamp(46px,8.4vw,112px);line-height:.95;text-align:center;text-wrap:balance}
+.big em{font-style:normal;color:var(--pink)}
+.bigsub{text-align:center;max-width:56ch;margin:24px auto 0;font-weight:500}
+.src{font-size:12px;color:var(--muted);margin-top:12px}
+.on-color .src{color:rgba(255,255,255,.8)}
+
+/* casa 1: escada */
+.stairs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
+.step{border:none;border-radius:16px 16px 6px 6px;padding:16px;text-align:left;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.step b{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.4vw,30px);text-transform:uppercase;line-height:1}
+.step small{font-size:12.5px;font-weight:600}
+.step:hover{transform:translateY(-4px)}
+.step[aria-selected="true"]{box-shadow:0 0 0 4px var(--white),8px 8px 0 4px var(--line)}
+.step.s1{background:var(--pink);height:130px;color:var(--white)}
+.step.s2{background:var(--teal);height:180px;color:var(--white)}
+.step.s3{background:var(--gold);height:230px;color:var(--white)}
+.step.s4{background:var(--cream);height:100px}
+@media (max-width:640px){.stairs{grid-template-columns:repeat(2,1fr)}.step.s1,.step.s2,.step.s3,.step.s4{height:auto;min-height:96px}}
+.panel{margin-top:18px;background:var(--white);color:var(--ink);border-radius:18px;padding:clamp(22px,3.5vw,36px);display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px}
+.panel h3{color:var(--blue);margin-bottom:12px}
+.panel ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+.panel li{background:var(--paper);border-radius:999px;padding:8px 14px;font-weight:700;font-size:13.5px}
+@media (max-width:760px){.panel{grid-template-columns:1fr}}
+.princ{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;align-items:center}
+.princ span{font-weight:700;font-size:14px;margin-right:4px}
+.princ i{font-style:normal;border:2px solid var(--white);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13.5px}
+
+/* casa 2: tabuleiro */
+.boardwrap{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.boardwrap{grid-template-columns:1fr}}
+.board{background:var(--cream);border-radius:24px;padding:18px 10px;box-shadow:8px 8px 0 var(--line);position:relative;min-width:0}
+.boardtop{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:0 8px 6px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;font-weight:700}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.stage{position:relative;width:100%}
+.stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.stop{position:absolute;transform:translate(-50%,-102px);display:flex;flex-direction:column;align-items:center;gap:12px;background:none;border:none;padding:0;text-align:center}
+.stop .c{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:24px;color:var(--white);border:4px solid var(--line);transition:transform .2s;box-shadow:0 4px 0 var(--line)}
+.stop .l{font-weight:700;font-size:12.5px;line-height:1.15;max-width:112px;color:var(--ink);background:var(--white);padding:0 3px;border-radius:4px}
+.stop:hover .c{transform:scale(1.1) rotate(-6deg)}
+.stop[aria-pressed="true"] .c{transform:scale(1.18);box-shadow:0 0 0 6px var(--yellow),0 4px 0 6px var(--line)}
+.flag{position:absolute;transform:translate(-50%,-50%);font-family:var(--hand);font-size:15px;background:var(--line);color:var(--white);padding:4px 10px;border-radius:8px;white-space:nowrap}
+.pawn{position:absolute;width:30px;height:30px;transform:translate(calc(-50% - 44px),-38px);transition:left .28s ease,top .28s ease;pointer-events:none;z-index:3}
+.pawn::before{content:"";position:absolute;left:50%;top:0;width:18px;height:18px;border-radius:50%;background:var(--orange);border:3px solid var(--line);transform:translateX(-50%)}
+.pawn::after{content:"";position:absolute;left:50%;bottom:0;width:28px;height:16px;border-radius:14px 14px 4px 4px;background:var(--orange);border:3px solid var(--line);transform:translateX(-50%)}
+.pawn.hop{animation:hop .28s}
+@keyframes hop{50%{margin-top:-14px}}
+.die{width:44px;height:44px;border-radius:10px;background:var(--white);border:3px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:5px;flex:none}
+.die i{width:7px;height:7px;border-radius:50%;background:var(--ink);place-self:center;visibility:hidden}
+.die.roll{animation:roll .5s}
+@keyframes roll{50%{transform:rotate(180deg) scale(1.15)}}
+.rollbtn{display:flex;align-items:center;gap:10px;background:var(--yellow);border:3px solid var(--line);border-radius:14px;padding:6px 14px 6px 6px;font-weight:800;font-size:14px;box-shadow:3px 3px 0 var(--line)}
+.rollbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.card{background:var(--white);color:var(--ink);border-radius:20px;padding:clamp(20px,2.6vw,28px);min-width:0}
+.detail{position:sticky;top:max(16px,env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:12px;border:4px solid var(--line);box-shadow:8px 8px 0 var(--line)}
+.detail .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.detail .num{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:22px;color:var(--white);border:3px solid var(--line)}
+.chip{display:inline-block;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:800;color:var(--white)}
+.detail h3{font-size:clamp(30px,3.4vw,42px)}
+.detail .sum{font-weight:700}
+.detail .txt{font-size:14.5px}
+.detail .nav2{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:8px}
+.detail .nav2 button{background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:700;font-size:13.5px}
+.extras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+@media (max-width:820px){.extras{grid-template-columns:1fr}}
+.extras div{border:2px dashed var(--line);border-radius:16px;padding:16px 18px;font-size:14px}
+.extras b{display:block;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:20px;margin-bottom:4px}
+
+/* casa 3: para onde eu vou */
+.finder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px}
+@media (max-width:860px){.finder{grid-template-columns:1fr}}
+.sits{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+.sit{text-align:left;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.45);border-radius:14px;padding:11px 15px;font-weight:600;font-size:14.5px;transition:.18s}
+.sit:hover{border-color:var(--cream)}
+.sit[aria-pressed="true"]{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.answer{position:sticky;top:max(16px,env(safe-area-inset-top,0px));align-self:start;display:flex;flex-direction:column;gap:12px;min-height:300px}
+.answer .go{font-family:var(--display);text-transform:uppercase;font-size:clamp(40px,5vw,62px);line-height:.92;color:var(--electric)}
+.answer .tip{background:var(--paper);border-radius:12px;padding:14px 16px;font-size:14.5px}
+.answer .alt{font-size:13.5px;color:var(--muted)}
+.call{font-family:var(--display);font-size:clamp(60px,8vw,96px);color:var(--pink);line-height:1}
+.linkbtn{align-self:flex-start;background:none;border:none;padding:0;font-weight:800;font-size:14px;text-decoration:underline;text-underline-offset:4px;color:var(--blue)}
+
+/* casa 4: dados */
+.statgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px}
+@media (max-width:860px){.statgrid{grid-template-columns:1fr}}
+.lbl{font-size:13px;font-weight:800;color:var(--orange);margin-bottom:14px}
+.hbar{display:grid;grid-template-columns:minmax(104px,170px) 1fr;gap:4px 12px;align-items:center;font-size:13px;margin-bottom:10px}
+.hbar .t{font-weight:700}
+.hbar .tr{background:#efedf5;border-radius:999px;height:26px;overflow:hidden}
+.hbar .f{height:100%;border-radius:999px;background:var(--blue);display:flex;align-items:center;justify-content:flex-end;padding:0 10px;font-variant-numeric:tabular-nums;font-weight:800;font-size:12px;color:var(--white);min-width:max-content}
+.hbar .f.out{color:var(--ink);background:var(--mint)}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:540px){.tiles{grid-template-columns:1fr}}
+.tile{border-radius:16px;padding:16px;color:var(--white);display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile .v{font-family:var(--display);font-size:clamp(36px,4vw,48px);line-height:1;font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px;line-height:1.35;font-weight:500}
+.tile .k{font-size:11.5px;font-weight:800;opacity:.9;text-transform:uppercase;letter-spacing:.05em}
+.obes{display:flex;align-items:flex-end;gap:14px;height:140px;margin-bottom:12px}
+.obes .yr{flex:1;text-align:center;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.obes .col{border-radius:12px 12px 4px 4px;margin:0 auto 6px;width:62%}
+.obes .val{font-family:var(--display);font-size:26px}
+.obes .y{font-size:12px;font-weight:700}
+
+/* casa 5: idade */
+.agebox{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center}
+@media (max-width:760px){.agebox{grid-template-columns:1fr}}
+.ageout{font-family:var(--display);font-size:clamp(96px,14vw,170px);line-height:.85}
+.ageout small{font-size:.26em;margin-left:6px}
+input[type=range]{width:100%;accent-color:var(--orange);height:30px}
+.agecards{display:grid;gap:10px}
+.agecard{border-radius:14px;padding:13px 16px;background:rgba(255,255,255,.12);transition:.2s;opacity:.5}
+.agecard.on{opacity:1;background:var(--white);color:var(--ink);transform:rotate(-1deg)}
+.agecard b{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:20px;display:block}
+.agecard span{font-size:13px}
+.marc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:34px}
+@media (max-width:900px){.marc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.marc{grid-template-columns:1fr}}
+
+/* casa 6: direito */
+.quote{background:var(--white);color:var(--ink);border-radius:20px;padding:clamp(22px,4vw,40px);font-size:clamp(16px,1.8vw,20px);line-height:1.6;font-weight:500;margin:0;border:4px solid var(--line);box-shadow:8px 8px 0 var(--line)}
+.quote b{color:var(--electric)}
+.quote .hand{display:block;font-family:var(--hand);color:var(--orange);font-size:20px;margin-bottom:10px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.two a{color:inherit;font-weight:700}
+.note{border:2px dashed rgba(255,255,255,.75);border-radius:16px;padding:18px 20px;font-size:14.5px}
+.note b{display:block;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:22px;margin-bottom:6px}
+
+/* casa 7: checador */
+.check{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.check{grid-template-columns:1fr}}
+.q{display:flex;gap:14px;align-items:flex-start;background:var(--white);color:var(--ink);border-radius:14px;padding:14px 16px;margin-bottom:8px;cursor:pointer;font-weight:600;font-size:14.5px;transition:transform .15s}
+.q:hover{transform:translateX(4px)}
+.q input{width:22px;height:22px;flex:none;accent-color:var(--green);margin-top:1px}
+.meter{background:var(--white);color:var(--ink);border-radius:20px;padding:24px;position:sticky;top:max(16px,env(safe-area-inset-top,0px));border:4px solid var(--line);box-shadow:8px 8px 0 var(--green)}
+.meter .v{font-family:var(--display);font-size:76px;line-height:1}
+.meter .bar{height:14px;background:var(--paper);border-radius:999px;overflow:hidden;margin:10px 0 14px}
+.meter .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .4s}
+
+/* chegada / créditos */
+.finish{font-family:var(--hand);font-size:clamp(28px,4vw,44px);color:var(--cream);margin-bottom:8px}
+.credits{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+@media (max-width:860px){.credits{grid-template-columns:1fr}}
+.exp{display:grid;gap:7px;font-size:14px}
+.refs{font-size:12.5px;display:grid;gap:9px;align-content:start}
+.refs .t{font-weight:800;color:var(--cream);font-size:13px}
+.refs a{color:var(--cream);word-break:break-word}
+.url{font-size:12.5px;opacity:.75;word-break:break-all;margin-top:10px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.25);font-size:13px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+.voltar-ijr{position:relative;z-index:20;background:#1F2AD8;color:#F8F8F5;font:600 0.82rem "Montserrat",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.voltar-ijr .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px 20px;flex-wrap:wrap;padding-block:10px}
+.voltar-ijr a{color:inherit;text-decoration:none}
+@media (max-width:520px){.voltar-ijr a + a{display:none}}
+.voltar-ijr a:hover{text-decoration:underline;text-decoration-color:#E97AB2;text-decoration-thickness:3px;text-underline-offset:5px}
+[hidden]{display:none!important}
+img{max-width:100%}
+</style>
+</head>
+<body style="margin:0">
+<div class="voltar-ijr"><div class="wrap"><a href="../">← Instituto de Justiça Reprodutiva</a><a href="../#publicacoes">Publicações</a></div></div>
+<header class="band hero capa-fundo" id="topo">
+    <div class="wrap herogrid">
+   <div>
+    <h1 class="ctitle" aria-label="Jovens na Trilha do SUS"><span class="b1">Jovens</span><span class="b2"><small>na</small> Trilha</span><span class="b3"><small>do</small> SUS</span></h1>
+    <p class="intro">O SUS é público, gratuito e é seu. Bora percorrer a trilha e descobrir onde buscar cuidado antes da hora do pânico?</p>
+    <div class="cta">
+      <a class="btn ink" href="#casa2">Começar a trilha ↓</a>
+      <a class="btn white" href="../docs/cartilha-jovens-na-trilha-do-sus.pdf" target="_blank" rel="noopener">Cartilha em PDF ↗</a>
+    </div>
+    <ol class="casas" aria-label="Casas da trilha">
+      <li><a href="#casa1"><b style="background:var(--blue)">1</b>Como o SUS funciona</a></li>
+      <li><a href="#casa2"><b style="background:var(--orange)">2</b>As 12 paradas</a></li>
+      <li><a href="#casa3"><b style="background:var(--char)">3</b>Para onde eu vou?</a></li>
+      <li><a href="#casa4"><b style="background:var(--purple)">4</b>Papo reto</a></li>
+      <li><a href="#casa5"><b style="background:var(--blue)">5</b>Quem é jovem?</a></li>
+      <li><a href="#casa6"><b style="background:var(--green)">6</b>Saúde é direito</a></li>
+      <li><a href="#casa7"><b style="background:var(--pink)">7</b>Não caia na rede</a></li>
+    </ol>
+   </div>
+   <img class="heroart" src="img/coluna.jpg" alt="Ilustração da capa da cartilha: casas, prédios e uma van desenhados à mão entre ruas" width="320" height="780">
+  </div>
+</header>
+
+<section class="band paper roads">
+  <div class="wrap">
+    <p class="big">Mais de <em>8 milhões</em> de jovens atendidos na atenção primária em 2020</p>
+    <p class="bigsub">Jovem de 15 a 29 anos tem necessidades próprias: entrada no trabalho, início da vida sexual, novas famílias. Saúde é mais do que combater doença. É promoção, prevenção e cuidado.</p>
+    <p class="src" style="text-align:center">Fonte: Atlas das Juventudes, 2021, p. 210</p>
+  </div>
+</section>
+
+<!-- CASA 1 -->
+<section class="band blue canto" id="casa1">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="casa"><div class="dado">1</div><span>entrando na trilha</span></div><h2>Como o SUS funciona</h2></div>
+      <p class="lead">O SUS é como uma escada: quanto mais complexo o problema, mais alto o degrau. As cores são as mesmas do tabuleiro. Toque em cada degrau.</p>
+    </div>
+    <div class="stairs" role="tablist" id="stairs">
+      <button class="step s1" role="tab" id="lv0"><small>degrau 1</small><b>Atenção primária</b></button>
+      <button class="step s2" role="tab" id="lv1"><small>degrau 2</small><b>Atenção secundária</b></button>
+      <button class="step s3" role="tab" id="lv2"><small>degrau 3</small><b>Atenção terciária</b></button>
+      <button class="step s4" role="tab" id="lv3"><small>por trás de tudo</small><b>Outros serviços</b></button>
+    </div>
+    <div class="panel" role="tabpanel" id="panel" aria-live="polite"></div>
+    <div class="princ"><span>Os 3 princípios do SUS:</span><i>Universalização</i><i>Equidade</i><i>Integralidade</i></div>
+  </div>
+</section>
+
+<!-- CASA 2 -->
+<section class="band paper roads2" id="casa2">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="casa"><div class="dado" style="background:var(--orange);color:var(--white)">2</div><span>o tabuleiro</span></div><h2>As 12 paradas da trilha</h2></div>
+      <p class="lead">Todos esses lugares são SUS. Toque numa parada ou jogue o dado para andar com o peão pela trilha.</p>
+    </div>
+    <div class="boardwrap">
+      <div class="board">
+        <div class="boardtop">
+          <div class="legend" id="legend"></div>
+          <button class="rollbtn" id="roll" aria-label="Jogar o dado"><span class="die" id="die"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Jogar o dado</button>
+        </div>
+        <div class="stage" id="stage"></div>
+      </div>
+      <div class="card detail" id="detail" aria-live="polite"></div>
+    </div>
+    <div class="extras">
+      <div><b>Saúde indígena</b>Rede com base nas aldeias, com Agentes Indígenas de Saúde, organizada nos Distritos Sanitários Especiais Indígenas (DSEI).</div>
+      <div><img src="img/barco.png" alt="" style="height:40px;width:auto;display:block;margin-bottom:8px"><b>UBS Fluviais</b>Barcos com equipes de saúde que atendem a população ribeirinha da Amazônia Legal e do Pantanal.</div>
+      <div><b>Em conflito com a lei</b>Jovens até 17 anos em regime fechado ou semiliberdade têm direito à saúde pela Pnaisari.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASA 3 -->
+<section class="band orange-b" id="casa3">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="casa"><div class="dado">3</div><span>e agora?</span></div><h2>Para onde eu vou?</h2></div>
+      <p class="lead">Escolha a situação e veja qual serviço procurar. Usar a porta certa evita fila na emergência e garante cuidado antes do problema crescer.</p>
+    </div>
+    <div class="finder">
+      <div class="sits" id="sits"></div>
+      <div class="card answer" id="answer" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASA 4 -->
+<section class="band green on-color canto" id="casa4">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="casa"><div class="dado">4</div><span>papo reto!</span></div><h2>Dados que preocupam</h2></div>
+      <p class="lead">O que levou jovens ao SUS em 2020 e os sinais de alerta sobre saúde mental, alimentação e trabalho.</p>
+    </div>
+    <div class="statgrid">
+      <div class="card">
+        <div class="lbl">Jovens atendidos no SUS em 2020, por condição de saúde</div>
+        <div id="bars"></div>
+        <p class="src">Fonte: Atlas da Juventude, 2021, p. 210</p>
+      </div>
+      <div style="display:grid;gap:16px;min-width:0">
+        <div class="card">
+          <div class="lbl">Saúde mental: por que cuidar cedo</div>
+          <div class="tiles">
+            <div class="tile" style="background:var(--green)"><span class="v">50%</span><span class="d">dos transtornos começam até os 14 anos</span></div>
+            <div class="tile" style="background:var(--pink)"><span class="v">75%</span><span class="d">começam até os 24 anos</span></div>
+            <div class="tile" style="background:var(--blue)"><span class="v">80%</span><span class="d">ficam sem diagnóstico ou tratamento</span></div>
+          </div>
+          <p class="src">Fonte: Juventudes do Agora, 2022, p. 102</p>
+        </div>
+        <div class="card">
+          <div class="lbl">Obesidade entre jovens: quase dobrou em um ano</div>
+          <div class="obes">
+            <div class="yr"><div class="col" style="height:46%;background:var(--pink)"></div><div class="val">9%</div><div class="y">2022</div></div>
+            <div class="yr"><div class="col" style="height:88%;background:var(--electric)"></div><div class="val">17,1%</div><div class="y">2023</div></div>
+          </div>
+          <p style="font-size:13.5px">Só <b>39,2%</b> dos jovens comem verduras e legumes com regularidade, e <b>24,3%</b> tomam refrigerante ou suco artificial com frequência.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tiles" style="margin-top:16px">
+      <div class="tile" style="background:var(--blue)"><span class="k">trabalho</span><span class="v">70%</span><span class="d">dos jovens a partir de 18 anos trabalham. Entre quem estuda, metade também trabalha.</span></div>
+      <div class="tile" style="background:var(--blue)"><span class="k">informalidade</span><span class="v">43%</span><span class="d">dos jovens estão na informalidade.</span></div>
+      <div class="tile" style="background:var(--blue)"><span class="k">acidentes</span><span class="v">1 em 3</span><span class="d">vítimas de acidente de trabalho notificado no SUS é jovem.</span></div>
+    </div>
+    <p class="src">Fonte: Panorama da Situação de Saúde de Jovens Brasileiros 2016–2022 (Agenda Jovem Fiocruz, 2024)</p>
+  </div>
+</section>
+
+<section class="band pink">
+  <div class="wrap head" style="margin-bottom:0;align-items:center">
+    <h2 style="font-family:var(--hand);font-size:clamp(40px,6vw,76px);line-height:1.05">Não espere o “pânico”!</h2>
+    <div class="lead" style="display:grid;gap:12px;font-weight:500">
+      <p>A partir dos 15 anos aparecem os piores indicadores de internações por lesões, acidentes, violências e ISTs. E é justamente quando jovens se afastam do SUS.</p>
+      <p><b>Não é só porque você é jovem que precisa aguentar tudo.</b> Chegue antes da emergência. Atividade física, boa alimentação e sono também são cuidado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASA 5 -->
+<section class="band blue canto" id="casa5">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="casa"><div class="dado">5</div><span>pega a visão</span></div><h2>Quem é jovem?</h2></div>
+      <p class="lead">Arraste e descubra quais leis protegem você.</p>
+    </div>
+    <div class="agebox">
+      <div>
+        <label for="age" style="font-weight:700;font-size:14px">Sua idade</label>
+        <div class="ageout"><span id="ageval">16</span><small>anos</small></div>
+        <input type="range" id="age" min="12" max="29" value="16">
+        <p id="agemsg" style="margin-top:12px;font-weight:700"></p>
+      </div>
+      <div class="agecards" id="agecards"></div>
+    </div>
+    <h3 style="margin-top:56px">Os marcadores sociais pesam</h3>
+    <p class="lead" style="margin-top:8px">Raça, gênero, orientação sexual e renda mudam o acesso à saúde. As desigualdades atingem principalmente juventudes negras, indígenas e LGBTQIA+.</p>
+    <div class="marc">
+      <div class="tile" style="background:var(--purple)"><span class="v">60,2%</span><span class="d">dos estudantes LGBTQIA+ se sentem inseguros na escola pela orientação sexual</span></div>
+      <div class="tile" style="background:var(--pink)"><span class="v">42,8%</span><span class="d">se sentem inseguros pela forma como expressam seu gênero</span></div>
+      <div class="tile" style="background:var(--orange)"><span class="v">2,6×</span><span class="d">mais chance de uma pessoa negra ser assassinada</span></div>
+      <div class="tile" style="background:var(--green)"><span class="v">+21,6%</span><span class="d">na taxa de mortalidade entre indígenas nos últimos anos</span></div>
+    </div>
+    <p class="src" style="color:rgba(255,255,255,.8)">Fontes: Juventudes do Agora, 2022, p. 31; ABGLT, 2016, p. 27</p>
+  </div>
+</section>
+
+<!-- CASA 6 -->
+<section class="band orange-b" id="casa6">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="casa"><div class="dado">6</div><span>pra geral</span></div><h2>Saúde é um direito!</h2></div>
+      <p class="lead">E participar das decisões sobre saúde também é. Jovens podem e devem ocupar os Conselhos e as Conferências de Saúde.</p>
+    </div>
+    <blockquote class="quote"><span class="hand">Tá na Constituição</span><b>Art. 196.</b> A saúde é direito de todos e dever do Estado, garantido mediante políticas sociais e econômicas que visem à redução do risco de doença e de outros agravos e ao acesso universal e igualitário às ações e serviços para sua promoção, proteção e recuperação.</blockquote>
+    <div class="two">
+      <div class="note"><b>Saúde na escola dá match</b>O Programa Saúde na Escola (PSE) leva profissionais de saúde às escolas públicas com oficinas, rodas de conversa, exames simples e vacinas.</div>
+      <div class="note"><b>Seja conselheiro!</b>Conheça o CONJUVE (@conjuvebr) e o Conselho Nacional de Saúde (<a href="https://conselho.saude.gov.br" target="_blank" rel="noopener">conselho.saude.gov.br</a>). Agosto é o Mês da Juventude, e 12 de agosto é o Dia Internacional da Juventude.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASA 7 -->
+<section class="band paper roads" id="casa7">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="casa"><div class="dado" style="background:var(--pink);color:var(--white)">7</div><span>informação consciente</span></div><h2>Não caia na rede!</h2></div>
+      <p class="lead">Recebeu uma mensagem sobre saúde? Passe ela pelo checador antes de acreditar ou compartilhar.</p>
+    </div>
+    <div class="check">
+      <div id="qs"></div>
+      <div class="meter">
+        <b style="font-size:14px">Checador de mensagem</b>
+        <div class="v"><span id="qn">0</span>/6</div>
+        <div class="bar"><i id="qbar"></i></div>
+        <p id="qmsg" style="font-size:14.5px;font-weight:600"></p>
+        <p style="font-size:13px;margin-top:14px;color:var(--muted)">Prefira sites oficiais do governo. Na dúvida, pergunte a quem é da área. Saber dizer “eu não sei” também é inteligência.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEGADA -->
+<div class="cidade"><p class="finish">Chegada! Você completou a trilha.</p><img src="img/cidade.webp" alt="Mapa da cidade da cartilha redesenhado em linhas coloridas: UBS, CAPS, UPA 24h, hospital, campo de futebol e casas" width="1800" height="1288" loading="lazy"></div>
+<footer class="band dark" id="creditos">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:36px">
+      <h2>Créditos</h2>
+      <div class="lead"><p>Conteúdo da cartilha <b>Jovens na Trilha do SUS</b>, da Agenda Jovem Fiocruz com a Fiocruz Bahia e o Ministério da Saúde.</p>
+        <div class="cta" style="margin-top:16px"><a class="btn white" href="../docs/cartilha-jovens-na-trilha-do-sus.pdf" target="_blank" rel="noopener">Acessar a cartilha em PDF ↗</a></div>
+        <p class="url">Também disponível no <a href="https://fiocruz.br/sites/fiocruz.br/files/documentos_2/cartilha_jovens_na_trilha_do_sus_versao_online.pdf" target="_blank" rel="noopener">site da Fiocruz</a>.</p>
+      </div>
+    </div>
+    <div class="credits">
+      <div class="exp">
+        <div><b>Ministra da Saúde:</b> Nísia Verônica Trindade Lima</div>
+        <div><b>Presidente da Fiocruz:</b> Mario Santos Moreira</div>
+        <div><b>Coordenação de Cooperação Social da Presidência da Fiocruz:</b> José Leonídio Madureira de Sousa Santos</div>
+        <div><b>Coordenação da Agenda Jovem Fiocruz:</b> André Luiz da Silva Sobrinho, Luciane Cristina Ferrareto</div>
+        <div><b>Direção da Fiocruz Bahia:</b> Marilda de Souza Gonçalves</div>
+        <div><b>Concepção:</b> Agenda Jovem Fiocruz</div>
+        <div><b>Pesquisa:</b> Daniela Silva</div>
+        <div><b>Entrevistas:</b> Daniela Cerqueira e Daniela Silva</div>
+        <div><b>Relatoria:</b> Bruna Melo e Maurício Santos</div>
+        <div><b>Organização e escrita:</b> Fabiana Pinto</div>
+        <div><b>Edição e revisão de textos:</b> Eric Veiga Andriolo e Fabiana Pinto</div>
+        <div><b>Comunicação – Agenda Jovem Fiocruz:</b> Eric Veiga Andriolo</div>
+        <div><b>Comunicação – Fiocruz Bahia:</b> Antonio Brotas</div>
+        <div><b>Assessoria de Gestão:</b> Rayssa Fonseca</div>
+        <div><b>Projeto gráfico, diagramação e ilustração da cartilha:</b> Túlio Cerquize</div>
+        <div style="margin-top:10px"><b>Jovens participantes:</b> Abraão Batista, Camila Silva, Carlos Santos, Cauan Silva, Emilli Costa, Isi Santos, Jonathas Oliveira, Kailane Santos, Letícia Oliveira, Lucinaldo Santos, Luis Henrique Silva, Luisa da Hora, Maria Clara Portela, Michell Santos, Roxane Helen Campos e a graduanda Francielle Souza.</div>
+        <div style="margin-top:10px;opacity:.8">O telefone do CVV (188) foi acrescentado nesta versão interativa.</div>
+      </div>
+      <div class="refs">
+        <span class="t">Referências da cartilha</span>
+        <p>ABGLT. <b>Pesquisa Nacional sobre o Ambiente Educacional no Brasil 2015.</b> Curitiba: ABGLT, 2016.</p>
+        <p>ATLAS DAS JUVENTUDES. <b>Evidências para a transformação das juventudes.</b> 2021. <a href="https://atlasdasjuventudes.com.br/relatorio/" target="_blank" rel="noopener">atlasdasjuventudes.com.br/relatorio</a></p>
+        <p>ATLAS DAS JUVENTUDES. <b>Juventudes do Agora.</b> 2022. <a href="https://www.juventudesdoagora.com.br/" target="_blank" rel="noopener">juventudesdoagora.com.br</a></p>
+        <p>ATLAS DAS JUVENTUDES. <b>Juventudes e a Pandemia: E agora?</b> 2022.</p>
+        <p>BRASIL. Lei nº 8.069/1990. <b>Estatuto da Criança e do Adolescente.</b> <a href="http://www.planalto.gov.br/ccivil_03/leis/l8069.htm" target="_blank" rel="noopener">planalto.gov.br</a></p>
+        <p>BRASIL. Lei nº 12.852/2013. <b>Estatuto da Juventude.</b> <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12852.htm" target="_blank" rel="noopener">planalto.gov.br</a></p>
+        <p>HOBBS, Renee. Entrevista a Vinícius de Oliveira. <b>Porvir</b>, 27 maio 2023.</p>
+        <p>LEANDRO, Bianca B. S. Juventude e saúde. In: SILVA SOBRINHO, A. L.; ABRAMO, H. W.; VILLI, M. C. <b>Jovens e saúde: revelações da pandemia no Brasil 2020-2022.</b> Rio de Janeiro: Fiocruz, 2022.</p>
+        <p>SESAB. <b>Saúde de adolescentes e jovens.</b> <a href="https://www.saude.ba.gov.br/atencao-a-saude/saude-de-todos-nos/saude-de-adolescentes-e-jovens/" target="_blank" rel="noopener">saude.ba.gov.br</a></p>
+      </div>
+    </div>
+    <div class="foot">
+      <p style="opacity:.8">Realização da cartilha: Agenda Jovem Fiocruz · Fiocruz Bahia · Coordenação de Cooperação Social da Fiocruz · Ministério da Saúde · SUS</p>
+      <p style="font-weight:700">Versão interativa produzida por Instituto de Justiça Reprodutiva (2026)</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- CASA 1: escada ---------- */
+const LV=[
+ {t:'A porta de entrada',d:'Atende casos simples, como sintomas gripais. Faz vacinação, curativos, pré-natal, testagem rápida de HIV e outros exames básicos. Também leva ações de saúde para escolas, academias da saúde e praças.',ex:['UBS','Postos de Saúde','Consultório na Rua']},
+ {t:'Média complexidade',d:'Médicos especialistas (ginecologia, ortopedia, oftalmologia) e exames mais avançados. As UPAs atendem emergências e estabilizam o paciente antes de encaminhar para o hospital.',ex:['UPA 24h','Ambulatórios de especialidades']},
+ {t:'Alta complexidade',d:'Hospitais e institutos com equipamentos avançados. Aqui acontecem cirurgias e o atendimento de quem corre risco de vida, como câncer e acidentes graves.',ex:['Hospitais','Maternidades','Hospitais universitários','INCA, INC e INTO']},
+ {t:'A rede por trás',d:'Serviços que não ficam nos degraus, mas cuidam da vida de todo mundo de outras formas.',ex:['SAMU 192','Laboratórios','Vigilância Sanitária','Hemocentros']}
+];
+const stairs=[...document.querySelectorAll('.step')],panel=document.getElementById('panel');
+function showLv(i){stairs.forEach((b,j)=>b.setAttribute('aria-selected',i===j));const l=LV[i];
+ panel.innerHTML=`<div><h3>${l.t}</h3><p>${l.d}</p></div><ul>${l.ex.map(e=>`<li>${e}</li>`).join('')}</ul>`}
+stairs.forEach((b,i)=>b.onclick=()=>showLv(i));showLv(0);
+
+/* ---------- CASA 2: tabuleiro ---------- */
+const CAT={prim:['Atenção primária','var(--pink)'],sec:['Atenção secundária','var(--teal)'],ter:['Atenção terciária','var(--gold)'],out:['Outros serviços','var(--blue)']};
+const SV=[
+ ['Posto de Saúde','prim','Consultas de rotina, vacinas e orientações para quem mora no bairro.','Tem médico generalista e enfermeiro, e às vezes ginecologista, infectologista ou dermatologista. Procure quando não for grave, mas precisar de cuidado rápido.'],
+ ['UBS','prim','Médico de família e testes rápidos de ISTs, dengue e Covid-19.','Atende dor de dente, diarreia persistente, suspeita de gravidez, sobrepeso e tem atendimento psicológico. Na primeira visita, leve documento e comprovante de residência.'],
+ ['CAPS','sec','Saúde mental: apoio psicológico e psiquiátrico.','O CAPS-AD cuida de uso abusivo de álcool e outras drogas. O atendimento é respeitoso, humanizado e sigiloso.'],
+ ['SAMU 192','out','Ambulância para emergências.','Ligue 192 em acidentes graves, tentativa de suicídio, suspeita de infarto ou AVC, ou agressão com arma. A ligação é grátis e o atendimento começa na chamada.'],
+ ['Consultório na Rua','prim','Equipes que cuidam de pessoas em situação de rua.','Quem vive na rua é usuário do SUS como qualquer pessoa. As equipes têm enfermeiro, psicólogo e assistente social ou terapeuta ocupacional.'],
+ ['UPA 24h','sec','Aberta 24 horas, todos os dias.','Procure em febre acima de 39 °C, fraturas, cortes, dor no peito, dor de dente forte, falta de ar intensa, cólica renal ou vômito constante.'],
+ ['Hospital','ter','Para casos graves e complexos.','Vá direto ao Pronto-Socorro em dor no peito, palpitações, traumas, fratura exposta, picada de animal peçonhento ou alergia forte.'],
+ ['Hemocentro','out','Doar sangue salva vidas.','A partir de 16 anos e 50 kg (menores de 18 com autorização). Leve documento com foto, durma 6 horas e vá alimentado.'],
+ ['Laboratórios','out','Onde vacinas e remédios são produzidos e testados.','Os laboratórios públicos foram fundamentais na pandemia de Covid-19 e abastecem farmácias e unidades de saúde.'],
+ ['Vigilância Sanitária','out','Fiscaliza produtos e serviços ligados à saúde.','Restaurantes, creches, escolas, hotéis, salões de beleza, asilos, piscinas e clubes passam por ela.'],
+ ['CEREST','prim','Saúde do trabalhador.','Atende doenças ligadas ao trabalho, formal ou informal, e quem ficou desempregado por adoecer no trabalho.'],
+ ['Fiocruz','out','Pesquisa, vacinas e medicamentos para o Brasil.','Se houver uma unidade perto de você, dá para buscar atendimento lá. A Fiocruz também oferece estágios de nível médio e superior.']
+];
+document.getElementById('legend').innerHTML=Object.values(CAT).map(c=>`<span><i style="background:${c[1]}"></i>${c[0]}</span>`).join('');
+const IC=['posto','ubs','caps','samu','consultorio','upa','hospital','hemocentro','lab','vigilancia','cerest','fiocruz'];
+const stage=document.getElementById('stage'),detail=document.getElementById('detail');
+let cur=0,pts=[],pawn,stops=[];
+function layout(){
+ const W=stage.clientWidth||600, cols=W>=620?4:W>=440?3:2, rows=Math.ceil(SV.length/cols), cw=W/cols, rh=210, top=118;
+ const H=top+(rows-1)*rh+82; stage.style.height=H+'px';
+ pts=SV.map((_,i)=>{const r=Math.floor(i/cols),c=i%cols,cc=r%2?cols-1-c:c;return[cw*(cc+.5),top+r*rh]});
+ let d=`M ${Math.max(8,pts[0][0]-cw*.5)} ${pts[0][1]}`;
+ pts.forEach((p,i)=>{if(i===0){d+=` L ${p[0]} ${p[1]}`;return}const q=pts[i-1];
+  if(q[1]===p[1])d+=` L ${p[0]} ${p[1]}`;else{const right=p[0]>W/2;d+=` A ${rh/2} ${rh/2} 0 0 ${right?1:0} ${p[0]} ${p[1]}`}});
+ const last=pts[pts.length-1],lr=Math.floor((SV.length-1)/cols)%2;
+ d+=` L ${lr?Math.max(8,last[0]-cw*.45):Math.min(W-8,last[0]+cw*.45)} ${last[1]}`;
+ stage.innerHTML=`<svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><path d="${d}" fill="none" stroke="#6e6e6e" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#fde9cf" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round"/></svg>`;
+ stops=SV.map((s,i)=>{const b=document.createElement('button');b.className='stop';b.id='stop'+i;b.style.left=pts[i][0]+'px';b.style.top=pts[i][1]+'px';
+  b.setAttribute('aria-label',`Parada ${i+1}: ${s[0]}`);b.innerHTML=`<img class="ico" src="img/${IC[i]}.png" alt=""><span class="c" style="background:${CAT[s[1]][1]}">${i+1}</span><span class="l">${s[0]}</span>`;
+  b.onclick=()=>walkTo(i);stage.appendChild(b);return b});
+ const f=document.createElement('div');f.className='flag';f.textContent='Largada';f.style.left=Math.max(40,pts[0][0]-cw*.5+36)+'px';f.style.top=(pts[0][1]-46)+'px';
+
+ pawn=document.createElement('div');pawn.className='pawn';stage.appendChild(pawn);placePawn(cur);mark(cur);
+}
+function placePawn(i){pawn.style.left=pts[i][0]+'px';pawn.style.top=pts[i][1]+'px';pawn.classList.remove('hop');void pawn.offsetWidth;pawn.classList.add('hop')}
+function mark(i){stops.forEach((b,j)=>b.setAttribute('aria-pressed',i===j));const s=SV[i],c=CAT[s[1]];
+ detail.innerHTML=`<img src="img/${IC[i]}.png" alt="" style="height:110px;width:auto;max-width:100%;object-fit:contain;align-self:flex-start"><div class="top"><span class="num" style="background:${c[1]}">${i+1}</span><span class="chip" style="background:${c[1]}">${c[0]}</span></div><h3>${s[0]}</h3><p class="sum">${s[2]}</p><p class="txt">${s[3]}</p><div class="nav2"><button id="prev">← anterior</button><button id="next">próxima →</button></div>`;
+ document.getElementById('prev').onclick=()=>walkTo((i+SV.length-1)%SV.length);
+ document.getElementById('next').onclick=()=>walkTo((i+1)%SV.length)}
+let walking=null;
+function walkTo(t,steps){clearInterval(walking);const n=steps??(((t-cur)+SV.length)%SV.length);
+ if(n===0||n>SV.length/2&&steps==null){cur=t;placePawn(cur);mark(cur);return}
+ let k=0;walking=setInterval(()=>{cur=(cur+1)%SV.length;placePawn(cur);if(++k>=n){clearInterval(walking);mark(cur)}},300)}
+const die=document.getElementById('die'),FACES={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+function face(v){[...die.children].forEach((d,j)=>d.style.visibility=FACES[v].includes(j)?'visible':'hidden')}
+face(1);
+document.getElementById('roll').onclick=()=>{const v=1+Math.floor(Math.random()*6);die.classList.remove('roll');void die.offsetWidth;die.classList.add('roll');face(v);walkTo(null,v)};
+new ResizeObserver(()=>layout()).observe(stage);
+
+/* ---------- CASA 3: para onde eu vou ---------- */
+const ST=[
+ {s:'Gripe, consulta ou vacina',go:'Posto de Saúde ou UBS',stop:1,tip:'Na primeira visita à UBS, leve documento de identidade e comprovante de residência.',alt:'É a porta de entrada do SUS: de lá você é encaminhado se precisar.'},
+ {s:'Teste de HIV ou outra IST',go:'UBS',stop:1,tip:'A UBS faz testes rápidos de infecções sexualmente transmissíveis, dengue e Covid-19.',alt:'Pré-natal e suspeita de gravidez também são atendidos lá.'},
+ {s:'Sofrimento mental',go:'UBS ou CAPS',stop:2,tip:'Pensamentos suicidas, automutilação, baixa autoestima, assédio na escola ou no trabalho: busque ajuda. O atendimento é sigiloso e humanizado.',alt:'Para conversar agora, o CVV atende de graça pelo 188, 24 horas.'},
+ {s:'Álcool ou outras drogas',go:'CAPS-AD',stop:2,tip:'O CAPS-AD é o serviço de saúde mental para uso abusivo de álcool e outras drogas.',alt:'Em intoxicação grave, procure a UPA ou ligue 192.'},
+ {s:'Febre alta, corte ou fratura',go:'UPA 24h',stop:5,tip:'A UPA funciona 24 horas e encaminha ao hospital se for preciso.',alt:'Vale também para falta de ar intensa, cólica renal e vômito constante.'},
+ {s:'Acidente grave, infarto ou AVC',go:'Ligue',call:true,stop:3,tip:'O SAMU manda ambulância e o atendimento começa na própria ligação. É grátis.',alt:'Também em tentativa de suicídio e agressão com arma.'},
+ {s:'Fratura exposta ou picada de bicho',go:'Hospital com Pronto-Socorro',stop:6,tip:'Também em dor no peito, palpitações, traumas e alergia forte.',alt:'Se não conseguir se deslocar, ligue 192.'},
+ {s:'Adoeci por causa do trabalho',go:'CEREST',stop:10,tip:'Atende trabalhadores formais e informais, e quem ficou desempregado por adoecer no trabalho.',alt:'Burnout, estresse e ansiedade no trabalho também são cuidados pelo SUS.'},
+ {s:'Quero doar sangue',go:'Hemocentro',stop:7,tip:'A partir de 16 anos e 50 kg. Leve documento com foto, durma 6 horas e vá alimentado.',alt:'Menores de 18 precisam de autorização dos responsáveis.'}
+];
+const sits=document.getElementById('sits'),ans=document.getElementById('answer');
+function pick(i){[...sits.children].forEach((b,j)=>b.setAttribute('aria-pressed',i===j));const s=ST[i];
+ ans.innerHTML=`<img src="img/${IC[s.stop]}.png" alt="" style="height:90px;width:auto;max-width:60%;object-fit:contain;align-self:flex-start"><span style="font-weight:700;color:var(--muted);font-size:14px">Vá para</span><div class="go">${s.go}</div>${s.call?'<div class="call">192</div>':''}<div class="tip">${s.tip}</div><p class="alt">${s.alt}</p><button class="linkbtn" id="seeStop">Ver essa parada no tabuleiro ↑</button>`;
+ document.getElementById('seeStop').onclick=()=>{document.getElementById('casa2').scrollIntoView();cur=s.stop;placePawn(cur);mark(cur)}}
+ST.forEach((s,i)=>{const b=document.createElement('button');b.className='sit';b.id='sit'+i;b.textContent=s.s;b.onclick=()=>pick(i);sits.appendChild(b)});pick(0);
+
+/* ---------- CASA 4: barras ---------- */
+const BD=[['Pré-natal',8047546],['Saúde sexual e reprodutiva',3300991],['Saúde mental',2043698],['Obesidade',314688],['Desnutrição',119813],['Abuso de drogas',80479],['Abuso de álcool',54933]];
+const mx=BD[0][1];
+document.getElementById('bars').innerHTML=BD.map((b,i)=>{const w=b[1]/mx*100;return `<div class="hbar"><span class="t">${b[0]}</span><div class="tr"><div class="f ${w<24?'out':''}" style="width:${w}%;${i===2?'background:var(--pink)':''}">${b[1].toLocaleString('pt-BR')}</div></div></div>`}).join('');
+
+/* ---------- CASA 5: idade ---------- */
+const AG=[{a:[12,17],t:'Adolescente (ECA)',d:'Estatuto da Criança e do Adolescente: 12 a 17 anos.'},{a:[15,29],t:'Jovem (Estatuto da Juventude)',d:'Lei 12.852/2013: 15 a 29 anos.'},{a:[15,17],t:'Jovem adolescente',d:'15 a 17 anos: protegido pelos dois estatutos.'},{a:[18,24],t:'Jovem iniciando a vida adulta',d:'18 a 24 anos.'},{a:[25,29],t:'Jovem adulto',d:'25 a 29 anos.'}];
+const age=document.getElementById('age'),ac=document.getElementById('agecards');
+ac.innerHTML=AG.map(g=>`<div class="agecard"><b>${g.t}</b><span>${g.d}</span></div>`).join('');
+function upAge(){const v=+age.value;document.getElementById('ageval').textContent=v;
+ [...ac.children].forEach((c,i)=>c.classList.toggle('on',v>=AG[i].a[0]&&v<=AG[i].a[1]));
+ document.getElementById('agemsg').textContent=v<15?'Ainda não é jovem pelo Estatuto da Juventude, mas o ECA garante seus direitos.':v<=17?'Você tem direitos como jovem e como adolescente ao mesmo tempo!':'Você é jovem pelo Estatuto da Juventude. Saúde é seu direito.'}
+age.oninput=upAge;upAge();
+
+/* ---------- CASA 7: checador ---------- */
+const QS=['Quem enviou se esforça para trazer a melhor informação possível?','Você já conhece essa fonte e confia no trabalho dela?','A linguagem é objetiva, neutra e sem xingamentos?','Se há uma acusação, a pessoa acusada foi ouvida?','A imagem ou o vídeo não pode ser de outra coisa, ou estar fora de contexto?','A mensagem faz sentido? Pessoas normais agiriam daquele jeito?'];
+const qs=document.getElementById('qs');
+qs.innerHTML=QS.map((q,i)=>`<label class="q" for="q${i}"><input type="checkbox" id="q${i}"><span>${q}</span></label>`).join('');
+function upQ(){const n=qs.querySelectorAll('input:checked').length;document.getElementById('qn').textContent=n;document.getElementById('qbar').style.width=(n/6*100)+'%';
+ document.getElementById('qmsg').textContent=n===6?'Passou no checador! Mesmo assim, confira num site oficial antes de compartilhar.':n>=4?'Parece mais confiável, mas ainda tem ponto em aberto.':n>=1?'Sinal amarelo: não compartilhe ainda.':'Marque as perguntas que a mensagem responde bem.'}
+qs.addEventListener('change',upQ);upQ();
+</script>
+</body>
+</html>
