@@ -14,7 +14,7 @@
   --green:#3fb26f; --blue:#2f5bb5; --electric:#2f5bb5;
   --pink:#ef6464; --purple:#2f5bb5; --mint:#7fd3c9; --yellow:#f5b324;
   --orange:#f47a1f; --cream:#fdebd7; --teal:#26a092; --gold:#f0a314;
-  --ink:#2e2b28; --line:#6e6e6e; --char:#f47a1f; --paper:#fdebd7; --white:#fffaf3; --muted:#6b6259;
+  --ink:#2e2b28; --line:#e8d0b2; --char:#f47a1f; --paper:#fdebd7; --white:#fffaf3; --muted:#6b6259;
   --display:'Anton','Impact','Arial Narrow Bold',sans-serif;
   --hand:'Permanent Marker','Anton',cursive;
   --body:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -50,23 +50,20 @@ h3{font-size:clamp(24px,2.6vw,32px)}
 /* HERO */
 .hero{background:var(--cream);color:var(--ink);padding-block:clamp(64px,9vw,120px) clamp(56px,7vw,90px)}
 .herogrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:clamp(24px,5vw,72px);align-items:center}
-.heroart{width:100%;height:auto;max-width:260px;justify-self:end;transform:rotate(2deg)}
+.heroart{width:100%;height:auto;max-width:260px;justify-self:end;transform:rotate(2deg);mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse 70% 75% at center,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 70% 75% at center,#000 62%,transparent 100%)}
 .herogrid{position:relative}
-.herogrid::before{content:"";position:absolute;top:-200px;bottom:-200px;width:60px;right:calc(260px + clamp(24px,5vw,72px)/2 - 30px);background:url("img/rua-vertical.svg") center/100% 100% no-repeat;z-index:-1;pointer-events:none}
-@media (max-width:760px){.herogrid::before{display:none}}
 @media (max-width:760px){.herogrid{grid-template-columns:1fr}.heroart{display:none}}
 .street{display:block;width:100%;height:auto;max-height:420px;object-fit:cover;object-position:center 30%;background:var(--cream)}
-.roads{background-image:url("img/fundo-ruas.svg");background-size:cover;background-position:center}
-.capa-fundo{background-image:url("img/fundo-capa.svg");background-size:cover;background-position:right center}
-@media (max-width:760px){.capa-fundo{background-image:none}}
-.roads2{background-image:url("img/fundo-ruas-2.svg");background-size:cover;background-position:center}
-.canto::after{content:"";position:absolute;right:0;bottom:0;width:min(38vw,440px);aspect-ratio:420/300;background:url("img/canto.svg") no-repeat right bottom/contain;pointer-events:none;z-index:0}
+.band::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .32 0 0 0 0 .2 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.16;mix-blend-mode:multiply;pointer-events:none;z-index:0}
+.roads,.roads2,.capa-fundo{background-image:radial-gradient(38rem 26rem at 96% 4%,rgba(244,122,31,.13),transparent 70%),radial-gradient(30rem 22rem at 2% 96%,rgba(63,178,111,.12),transparent 70%),radial-gradient(26rem 18rem at 70% 100%,rgba(47,91,181,.08),transparent 70%)}
+.roads2{background-image:radial-gradient(34rem 24rem at 0% 0%,rgba(239,100,100,.10),transparent 70%),radial-gradient(36rem 26rem at 100% 90%,rgba(38,160,146,.11),transparent 70%)}
+.canto::after{content:"";position:absolute;right:0;bottom:0;width:min(38vw,440px);aspect-ratio:420/300;background:url("img/mancha.svg") no-repeat right bottom/contain;pointer-events:none;z-index:0}
 .cidade{position:relative;background:var(--cream);padding-block:clamp(36px,6vw,64px) 0;overflow:hidden}
 .cidade img{display:block;width:min(1400px,100%);height:auto;margin:0 auto}
 .cidade .finish{position:relative;text-align:center;color:var(--orange);z-index:1;padding-inline:16px;margin:0 0 -40px}
 .ico{height:62px;width:auto;max-width:100px;object-fit:contain;display:block}
 .ctitle{margin:0;font-family:var(--hand);font-weight:400;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;align-items:flex-start;font-size:clamp(52px,10vw,132px);color:var(--cream)}
-.ctitle span{display:block;padding:.06em .32em .02em;border:clamp(6px,1vw,12px) solid #6e6e6e}
+.ctitle span{display:block;padding:.08em .36em .04em;border-radius:6px;box-shadow:6px 7px 0 rgba(46,43,40,.10)}
 .ctitle small{font-size:.48em;vertical-align:.32em;margin-right:.12em}
 .ctitle .b1{background:var(--orange);transform:rotate(-4deg)}
 .ctitle .b2{background:#4bbf7a;transform:rotate(-2deg);margin:-.06em 0 0 .6em;font-size:.82em}
@@ -116,7 +113,7 @@ h3{font-size:clamp(24px,2.6vw,32px)}
 /* casa 2: tabuleiro */
 .boardwrap{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:22px;align-items:start}
 @media (max-width:900px){.boardwrap{grid-template-columns:1fr}}
-.board{background:var(--cream);border-radius:24px;padding:18px 10px;box-shadow:8px 8px 0 var(--line);position:relative;min-width:0}
+.board{background:var(--white);border-radius:24px;padding:18px 10px;box-shadow:8px 8px 0 var(--line);position:relative;min-width:0}
 .boardtop{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:0 8px 6px}
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;font-weight:700}
 .legend span{display:inline-flex;align-items:center;gap:6px}
@@ -124,14 +121,14 @@ h3{font-size:clamp(24px,2.6vw,32px)}
 .stage{position:relative;width:100%}
 .stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .stop{position:absolute;transform:translate(-50%,-102px);display:flex;flex-direction:column;align-items:center;gap:12px;background:none;border:none;padding:0;text-align:center}
-.stop .c{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:24px;color:var(--white);border:4px solid var(--line);transition:transform .2s;box-shadow:0 4px 0 var(--line)}
+.stop .c{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:24px;color:var(--white);border:4px solid var(--white);transition:transform .2s;box-shadow:0 4px 0 var(--line)}
 .stop .l{font-weight:700;font-size:12.5px;line-height:1.15;max-width:112px;color:var(--ink);background:var(--white);padding:0 3px;border-radius:4px}
 .stop:hover .c{transform:scale(1.1) rotate(-6deg)}
 .stop[aria-pressed="true"] .c{transform:scale(1.18);box-shadow:0 0 0 6px var(--yellow),0 4px 0 6px var(--line)}
 .flag{position:absolute;transform:translate(-50%,-50%);font-family:var(--hand);font-size:15px;background:var(--line);color:var(--white);padding:4px 10px;border-radius:8px;white-space:nowrap}
 .pawn{position:absolute;width:30px;height:30px;transform:translate(calc(-50% - 44px),-38px);transition:left .28s ease,top .28s ease;pointer-events:none;z-index:3}
-.pawn::before{content:"";position:absolute;left:50%;top:0;width:18px;height:18px;border-radius:50%;background:var(--orange);border:3px solid var(--line);transform:translateX(-50%)}
-.pawn::after{content:"";position:absolute;left:50%;bottom:0;width:28px;height:16px;border-radius:14px 14px 4px 4px;background:var(--orange);border:3px solid var(--line);transform:translateX(-50%)}
+.pawn::before{content:"";position:absolute;left:50%;top:0;width:18px;height:18px;border-radius:50%;background:var(--orange);border:3px solid var(--white);transform:translateX(-50%)}
+.pawn::after{content:"";position:absolute;left:50%;bottom:0;width:28px;height:16px;border-radius:14px 14px 4px 4px;background:var(--orange);border:3px solid var(--white);transform:translateX(-50%)}
 .pawn.hop{animation:hop .28s}
 @keyframes hop{50%{margin-top:-14px}}
 .die{width:44px;height:44px;border-radius:10px;background:var(--white);border:3px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:5px;flex:none}
@@ -544,7 +541,7 @@ function layout(){
   if(q[1]===p[1])d+=` L ${p[0]} ${p[1]}`;else{const right=p[0]>W/2;d+=` A ${rh/2} ${rh/2} 0 0 ${right?1:0} ${p[0]} ${p[1]}`}});
  const last=pts[pts.length-1],lr=Math.floor((SV.length-1)/cols)%2;
  d+=` L ${lr?Math.max(8,last[0]-cw*.45):Math.min(W-8,last[0]+cw*.45)} ${last[1]}`;
- stage.innerHTML=`<svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><path d="${d}" fill="none" stroke="#6e6e6e" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#fde9cf" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round"/></svg>`;
+ stage.innerHTML=`<svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><path d="${d}" fill="none" stroke="#f3d6b3" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round"/></svg>`;
  stops=SV.map((s,i)=>{const b=document.createElement('button');b.className='stop';b.id='stop'+i;b.style.left=pts[i][0]+'px';b.style.top=pts[i][1]+'px';
   b.setAttribute('aria-label',`Parada ${i+1}: ${s[0]}`);b.innerHTML=`<img class="ico" src="img/${IC[i]}.png" alt=""><span class="c" style="background:${CAT[s[1]][1]}">${i+1}</span><span class="l">${s[0]}</span>`;
   b.onclick=()=>walkTo(i);stage.appendChild(b);return b});
