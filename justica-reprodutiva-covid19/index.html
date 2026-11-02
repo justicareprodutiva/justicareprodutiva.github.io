@@ -91,8 +91,8 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;lin
 .foto.textura img{filter:grayscale(.35) contrast(1.08) saturate(.9)}
 .foto.textura::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.28;mix-blend-mode:overlay}
 .foto.textura::after{opacity:.24;z-index:1}
-.foto figcaption{z-index:2;position:absolute;left:12px;bottom:12px;font-size:12.5px;font-weight:500;color:var(--branco);background:rgba(35,24,21,.6);padding:4px 10px;border-radius:999px}
-.big3{display:grid;gap:14px;margin-top:22px;min-height:290px;align-content:start}
+.foto figcaption{z-index:2;position:absolute;left:12px;right:12px;bottom:12px;font-size:12.5px;line-height:1.4;font-weight:500;color:var(--branco);background:rgba(35,24,21,.66);padding:6px 10px;border-radius:10px}
+.big3{display:grid;gap:14px;margin-top:26px}
 .big3 small{display:block;font-size:12.5px;color:var(--suave);margin-top:2px}
 .mundo{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(40px,6vw,72px);background:var(--branco);border-radius:20px;padding:clamp(20px,3vw,36px)}
 @media (max-width:700px){.mundo{grid-template-columns:1fr}}
@@ -285,30 +285,21 @@ blockquote{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2
       <span class="traco" style="color:var(--laranja)"></span>
       <h2 class="titulo">Um ano de pandemia, um ano de luta</h2>
       <p class="lead" style="margin-top:18px">Quando o artigo foi escrito, em 2021, o Brasil somava mais de 500 mil vidas perdidas, cerca de 1.600 delas de gestantes e puérperas. Refletir sobre essas mortes, e sobre como poderiam ter sido evitadas, é desenhar caminhos que garantam <b>o direito à vida e à saúde de qualidade</b> para mulheres negras, o maior grupo demográfico do país.</p>
-      <div class="toggle" role="group" aria-label="Período" style="margin-top:24px;background:var(--branco)">
-        <button type="button" id="per-2020" aria-pressed="true">Em 2020</button>
-        <button type="button" id="per-total" aria-pressed="false">Saldo total da pandemia</button>
+      <div class="big3">
+        <div><b>194.949</b><span>mortes por Covid-19 no Brasil em 2020</span></div>
+        <div><b>549</b><span>gestantes e puérperas morreram de Covid-19 no Brasil em 2020</span></div>
+        <div><b>~80%</b><span>das gestantes que morreram de Covid-19 no mundo em 2020 eram brasileiras</span></div>
+        <div><b>715 mil</b><span>mortes por Covid-19 no Brasil até 2025</span></div>
       </div>
-      <div class="big3" id="big3" aria-live="polite"></div>
     </div>
-    <figure class="foto duo textura" style="aspect-ratio:4/3.2"><img src="img/roda-postits.jpg" alt="Fabiana Pinto, de vestido vermelho, conduz uma roda de diálogo diante de uma parede preta com post-its coloridos; mulheres negras ouvem sentadas." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020</figcaption></figure>
+    <figure class="foto duo textura" style="aspect-ratio:4/3.2"><img src="img/roda-postits.jpg" alt="Fabiana Pinto, de vestido vermelho, conduz uma roda de diálogo diante de uma parede preta com post-its coloridos; mulheres negras ouvem sentadas." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020, antes de ser declarada a pandemia de Covid-19 no Brasil e de as medidas de quarentena serem adotadas</figcaption></figure>
   </div>
   <div class="wrap">
-    <div class="mundo">
-      <div class="waffle w77" id="w77" role="img" aria-label="77 de cada 100 mortes maternas por Covid-19 notificadas no mundo até meados de 2020 ocorreram no Brasil"></div>
-      <div>
-        <p class="kicker" style="color:var(--laranja-esc)">O Brasil no mundo</p>
-        <p class="mundo-n">77%</p>
-        <p style="font-size:19px;font-weight:500;max-width:34ch">das mortes maternas por Covid-19 notificadas no mundo até meados de 2020 aconteceram no Brasil. Quase 8 em cada 10.</p>
-        <p class="src" style="margin-top:10px">Takemoto, M. L. S. et al. The tragedy of COVID-19 in Brazil: 124 maternal deaths and counting. <i>International Journal of Gynecology &amp; Obstetrics</i>, jul. 2020.</p>
-      </div>
-    </div>
-    <details class="fontes"><summary>Fontes dos números desta seção</summary><ul>
-      <li>Óbitos por Covid-19 no Brasil até 31/12/2020 (194.949): Ministério da Saúde, boletim de 31/12/2020. <a href="https://jornalgrandebahia.com.br/2021/01/em-2020-194-949-brasileiros-foram-a-obito-devido-a-covid-19/" target="_blank" rel="noopener">Jornal Grande Bahia</a>.</li>
-      <li>Mortes maternas por Covid-19 em 2020 (549): Observatório Covid-19 Fiocruz, estudo publicado na <i>BMC Pregnancy and Childbirth</i>. <a href="https://www.poder360.com.br/coronavirus/pandemia-aumentou-obitos-maternos-em-40-em-2020-diz-pesquisa/" target="_blank" rel="noopener">Poder360, 21/01/2023</a>.</li>
-      <li>Mais de 700 mil mortes em 28/03/2023: Ministério da Saúde e Conass. <a href="https://www.cartacapital.com.br/saude/covid-19-tres-anos-apos-primeira-morte-brasil-alcanca-a-marca-de-700-mil-mortes-pela-doenca/" target="_blank" rel="noopener">CartaCapital</a>. Cerca de 715 mil em março de 2025: <a href="https://www.poder360.com.br/poder-saude/5-anos-apos-decreto-de-pandemia-brasil-tem-715-mil-mortes-por-covid/" target="_blank" rel="noopener">Poder360</a>.</li>
-      <li>1.926 mortes de gestantes e puérperas por Covid-19 até novembro de 2021: Observatório Obstétrico Brasileiro (OOBr). <a href="https://olhardigital.com.br/2021/11/04/coronavirus/covid-19-obitos-de-gestantes-e-puerperas-subiu-217-em-2021/" target="_blank" rel="noopener">Olhar Digital, 04/11/2021</a>.</li>
-      <li>77% das mortes maternas por Covid-19 no mundo: Takemoto et al., <i>IJGO</i>, 2020. <a href="https://exame.com/ciencia/brasil-e-o-pais-que-mais-concentra-mortes-por-covid-em-gravidas" target="_blank" rel="noopener">Exame, 30/07/2020</a>.</li>
+    <details class="fontes" style="margin-top:28px"><summary>Fontes dos números</summary><ul>
+      <li>194.949 mortes em 2020: Ministério da Saúde, boletim de 31/12/2020 (<a href="https://jornalgrandebahia.com.br/2021/01/em-2020-194-949-brasileiros-foram-a-obito-devido-a-covid-19/" target="_blank" rel="noopener">Jornal Grande Bahia</a>).</li>
+      <li>549 gestantes e puérperas em 2020: Observatório Covid-19 Fiocruz, <i>BMC Pregnancy and Childbirth</i> (<a href="https://www.poder360.com.br/coronavirus/pandemia-aumentou-obitos-maternos-em-40-em-2020-diz-pesquisa/" target="_blank" rel="noopener">Poder360</a>).</li>
+      <li>~80% (77%) das mortes maternas por Covid-19 notificadas no mundo até meados de 2020: Takemoto et al., <i>International Journal of Gynecology &amp; Obstetrics</i>, 2020 (<a href="https://exame.com/ciencia/brasil-e-o-pais-que-mais-concentra-mortes-por-covid-em-gravidas" target="_blank" rel="noopener">Exame</a>).</li>
+      <li>715 mil mortes até março de 2025: Ministério da Saúde (<a href="https://www.poder360.com.br/poder-saude/5-anos-apos-decreto-de-pandemia-brasil-tem-715-mil-mortes-por-covid/" target="_blank" rel="noopener">Poder360</a>).</li>
     </ul></details>
   </div>
 </section>
@@ -403,7 +394,7 @@ blockquote{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2
       <p class="quem">Ativistas participantes da pesquisa</p>
       <div class="nav"><button type="button" id="voz-ant" aria-label="Fala anterior">←</button><div class="dots" id="voz-dots"></div><button type="button" id="voz-prox" aria-label="Próxima fala">→</button></div>
     </div>
-    <figure class="foto duo textura" style="aspect-ratio:4/3"><img src="img/roda-livros.jpg" alt="Mulheres negras sentadas em roda em um galpão, conversando em volta de livros e cartazes espalhados no chão." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020</figcaption></figure>
+    <figure class="foto duo textura" style="aspect-ratio:4/3"><img src="img/roda-livros.jpg" alt="Mulheres negras sentadas em roda em um galpão, conversando em volta de livros e cartazes espalhados no chão." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020, antes de ser declarada a pandemia de Covid-19 no Brasil e de as medidas de quarentena serem adotadas</figcaption></figure>
   </div>
 </section>
 
@@ -473,15 +464,6 @@ const pb=document.getElementById('pausa');pb.onclick=()=>{const on=document.body
 const fmt=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:2});
 
 
-/* períodos */
-const PER={
- '2020':[['194.949','mortes por Covid-19 no Brasil até 31 de dezembro de 2020','Ministério da Saúde'],['549','gestantes e puérperas mortas por Covid-19 no Brasil em 2020','Observatório Covid-19 Fiocruz'],['28%','da população brasileira são mulheres negras','dado citado no artigo']],
- total:[['+715 mil','mortes por Covid-19 no Brasil até março de 2025 (o país passou de 700 mil em março de 2023)','Ministério da Saúde'],['1.926','gestantes e puérperas mortas por Covid-19 até novembro de 2021','Observatório Obstétrico Brasileiro'],['28%','da população brasileira são mulheres negras','dado citado no artigo']]};
-const b3=document.getElementById('big3'),p20=document.getElementById('per-2020'),pT=document.getElementById('per-total');
-function per(k){p20.setAttribute('aria-pressed',k==='2020');pT.setAttribute('aria-pressed',k==='total');b3.innerHTML=PER[k].map(x=>`<div><b>${x[0]}</b><span>${x[1]}<small>Fonte: ${x[2]}</small></span></div>`).join('')}
-p20.onclick=()=>per('2020');pT.onclick=()=>per('total');per('2020');
-const w77=document.getElementById('w77');w77.innerHTML=Array.from({length:100},(_,i)=>`<i style="background:${i<77?'var(--laranja)':'#EADFD6'}"></i>`).join('');
-w77.querySelectorAll('i').forEach((c,i)=>{c.onmouseenter=e=>showTip(e,i<77?'<b>Brasil</b><br>77 de cada 100 mortes maternas por Covid-19 notificadas no mundo':'<b>Resto do mundo</b><br>23 de cada 100');c.onmouseleave=hideTip});
 
 /* lentes */
 const LENTES={
