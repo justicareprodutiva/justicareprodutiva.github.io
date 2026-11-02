@@ -87,7 +87,10 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;lin
 .foto{position:relative;margin:0;border-radius:14px;overflow:hidden;background:var(--tinta)}
 .foto img{width:100%;height:100%;object-fit:cover}
 .foto.duo::after{content:"";position:absolute;inset:0;background:var(--laranja);mix-blend-mode:multiply;opacity:.18;pointer-events:none}
-.foto figcaption{position:absolute;left:12px;bottom:12px;font-size:12.5px;font-weight:500;color:var(--branco);background:rgba(35,24,21,.6);padding:4px 10px;border-radius:999px}
+.foto.textura img{filter:grayscale(.35) contrast(1.08) saturate(.9)}
+.foto.textura::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.28;mix-blend-mode:overlay}
+.foto.textura::after{opacity:.24;z-index:1}
+.foto figcaption{z-index:2;position:absolute;left:12px;bottom:12px;font-size:12.5px;font-weight:500;color:var(--branco);background:rgba(35,24,21,.6);padding:4px 10px;border-radius:999px}
 .big3{display:grid;gap:14px;margin-top:26px}
 .big3 div{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;border-top:2px solid var(--tinta);padding-top:12px}
 .big3 b{font-family:var(--display);font-weight:900;font-size:clamp(38px,4.4vw,54px);line-height:1;color:var(--laranja-esc);font-variant-numeric:tabular-nums}
@@ -99,8 +102,6 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;lin
 .conceito{background:var(--branco);border-radius:18px;padding:clamp(22px,3vw,34px);display:grid;gap:12px;min-height:230px}
 .conceito h3{font-size:clamp(28px,3vw,38px);color:var(--laranja-esc)}
 .conceito ul{margin:0;padding-left:20px;display:grid;gap:6px}
-.torso{position:absolute;right:-40px;bottom:-30px;width:min(34vw,380px);opacity:.95;z-index:1;pointer-events:none}
-@media (max-width:860px){.torso{display:none}}
 .orgs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .orgs span{background:var(--tinta);color:var(--branco);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
 
@@ -261,13 +262,12 @@ blockquote{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2
         <div><b>28%</b><span>da população brasileira são mulheres negras</span></div>
       </div>
     </div>
-    <figure class="foto duo" style="aspect-ratio:4/3.2"><img src="img/roda-livros.jpg" alt="Mulheres negras sentadas em roda em um galpão, conversando em volta de livros e cartazes espalhados no chão." loading="lazy"><figcaption>Roda de conversa entre mulheres negras</figcaption></figure>
+    <figure class="foto duo textura" style="aspect-ratio:4/3.2"><img src="img/roda-postits.jpg" alt="Fabiana Pinto, de vestido vermelho, conduz uma roda de diálogo diante de uma parede preta com post-its coloridos; mulheres negras ouvem sentadas." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020</figcaption></figure>
   </div>
 </section>
 
 <section class="tela t-turquesa grao" id="conceito">
-  <img class="torso" src="img/torso.webp" alt="" aria-hidden="true">
-  <div class="wrap">
+    <div class="wrap">
     <div class="duas" style="align-items:end">
       <div>
         <p class="kicker">O marco teórico</p><span class="traco"></span>
@@ -355,7 +355,7 @@ blockquote{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2
       <p class="quem">Ativistas participantes da pesquisa</p>
       <div class="nav"><button type="button" id="voz-ant" aria-label="Fala anterior">←</button><div class="dots" id="voz-dots"></div><button type="button" id="voz-prox" aria-label="Próxima fala">→</button></div>
     </div>
-    <figure class="foto duo" style="aspect-ratio:4/3"><img src="img/roda-postits.jpg" alt="Mulher negra de vestido vermelho fala para um grupo sentado em cadeiras, diante de uma parede preta com post-its coloridos." loading="lazy"><figcaption>Roda de conversa</figcaption></figure>
+    <figure class="foto duo textura" style="aspect-ratio:4/3"><img src="img/roda-livros.jpg" alt="Mulheres negras sentadas em roda em um galpão, conversando em volta de livros e cartazes espalhados no chão." loading="lazy"><figcaption>Roda de Diálogo na Maré (Rio de Janeiro) em março de 2020</figcaption></figure>
   </div>
 </section>
 
