@@ -298,6 +298,16 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 .vivo .card, .vivo .estr article, .vivo .mito { animation: entra 0.7s ease-out both; }
 .foto-tela.vivo > img { animation: zoom 2.4s ease-out both; }
 @media (prefers-reduced-motion: reduce) { .vivo, .vivo * { animation: none !important; } html { scroll-behavior: auto; } }
+/* galeria com fotos do Dossiê */
+.galeria { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 210px; grid-auto-flow: dense; gap: 12px; margin-top: 32px; }
+.galeria .foto { height: 100%; }
+.galeria .larga { grid-column: span 2; }
+.galeria .alta { grid-row: span 2; }
+@media (min-width: 860px) { .galeria { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 250px; } }
+.contatos-fim { display: grid; gap: 6px; font-size: 0.86rem; font-weight: 500; margin-top: 8px; }
+.contatos-fim b { font-weight: 800; }
+.contatos-fim .r { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.9; margin: 18px 0 4px; }
+.contatos-fim a { color: inherit; }
 </style>
 
 </head>
@@ -343,7 +353,7 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
     <div class="texto">
       <h2 id="d2" class="titulo" style="color:var(--vinho)">A escuta em números</h2>
       <p>O Dossiê sistematiza as falas dos Fóruns Regionais com metodologia qualitativa e participativa. Os relatos de participantes aparecem sem identificação.</p>
-      <figure class="foto" style="aspect-ratio: 4 / 3; margin-top: 8px"><img src="img/dinamica.jpg" alt="Roda de conversa em atividade de formação, com uma pessoa falando ao centro." loading="lazy"><figcaption>Escuta e formação</figcaption></figure>
+      <figure class="foto" style="aspect-ratio: 4 / 3; margin-top: 8px"><img src="img/doc-participantes.jpg" alt="Mosaico com retratos de homens trans e pessoas transmasculinas negras e periféricas que participaram dos Fóruns." loading="lazy" style="object-position:50% 30%"><figcaption>Participantes dos Fóruns</figcaption></figure>
     </div>
     <div style="display:grid;gap:14px">
       <div class="cards num">
@@ -647,6 +657,22 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
 </main>
 
 <!-- 13 · ENCERRAMENTO -->
+<!-- GALERIA · FOTOS DO DOSSIÊ -->
+<section class="tela textura t-papel" aria-labelledby="dg">
+  <div class="wrap">
+    <span class="pill" style="color:var(--vinho)">imagens do Dossiê</span>
+    <h2 id="dg" class="titulo-g" style="margin-top:16px;color:var(--vinho)">Corpos, vozes e territórios</h2>
+    <p class="intro">Fotos publicadas no Dossiê: marchas trans de norte a sul do país e a presença transmasculina no Congresso Nacional.</p>
+    <div class="galeria">
+      <figure class="foto larga"><img src="img/doc-marcha-bahia.jpg" alt="Homens trans e pessoas transmasculinas posam juntos com faixas e bandeiras na Marcha Trans da Bahia." loading="lazy" style="object-position:50% 45%"><figcaption>Marcha Trans da Bahia</figcaption></figure>
+      <figure class="foto alta"><img src="img/doc-marsha-brasil.jpg" alt="Multidão em frente ao Congresso Nacional, em Brasília, na II Marsha Trans Brasil, com trio e faixa Vida, futuro e direitos trans." loading="lazy" style="object-position:50% 60%"><figcaption>II Marsha Trans Brasil, Brasília, 2025 · Foto: Distrito Drag</figcaption></figure>
+      <figure class="foto alta"><img src="img/doc-marcha-rj.jpg" alt="Pessoas carregam uma grande bandeira trans azul, rosa e branca na marcha do Rio de Janeiro." loading="lazy"><figcaption>II Marcha Trans &amp; Travesti do Rio de Janeiro, 2023 · Acervo Marcha Trans RJ</figcaption></figure>
+      <figure class="foto"><img src="img/doc-marcha-poa.jpg" alt="Faixa da I Marcha Trans de Porto Alegre levada por manifestantes em avenida arborizada." loading="lazy" style="object-position:50% 70%"><figcaption>I Marcha Trans de Porto Alegre, 2025 · Foto: Julio Leão</figcaption></figure>
+      <figure class="foto"><img src="img/doc-camara.jpg" alt="Ativistas trans acompanham audiência em plenário de comissão da Câmara dos Deputados." loading="lazy" style="object-position:50% 70%"><figcaption>Câmara dos Deputados, 2025 · Acervo da Liga</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <footer class="tela textura t-vinho fim">
   <svg class="onda tr" viewBox="0 0 560 300" aria-hidden="true"><path d="M60 0 C 90 70, 170 40, 210 110 S 330 170, 380 230 S 500 250, 560 300 L 560 0 Z" fill="#0073B2"/><path d="M60 0 C 90 70, 170 40, 210 110 S 330 170, 380 230 S 500 250, 560 300" fill="none" stroke="#DE128C" stroke-width="22"/></svg>
   <div class="wrap">
@@ -655,6 +681,11 @@ details.rec ol { margin: 0; padding: 0 16px 14px 2.4em; display: grid; gap: 4px;
     <div class="creditos">
       <div><span class="r">Realização</span><div class="logos"><img src="img/logo-ijr-branco.png" alt="Instituto de Justiça Reprodutiva" width="118"><img src="img/logo-liga-branco.png" alt="Liga Transmasculina João W. Nery" width="76"></div></div>
       <div><span class="r">Apoio</span><div class="logos"><img src="img/logo-itf-branco.png" alt="International Trans Fund" width="78"></div></div>
+    </div>
+    <div class="contatos-fim">
+      <span class="r">Contatos</span>
+      <span><b>Liga Transmasculina João W. Nery</b> · <a href="mailto:contato@ligatransmasculina.org">contato@ligatransmasculina.org</a> · <a href="https://www.instagram.com/ligatransmasculina/" target="_blank" rel="noopener">@ligatransmasculina</a></span>
+      <span><b>Instituto de Justiça Reprodutiva</b> · <a href="mailto:justicareprodutiva@gmail.com">justicareprodutiva@gmail.com</a> · <a href="https://www.instagram.com/justicareprodutiva/" target="_blank" rel="noopener">@justicareprodutiva</a></span>
     </div>
   </div>
 </footer>
