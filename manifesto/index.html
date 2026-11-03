@@ -360,6 +360,39 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
 .yt { position: relative; margin-top: 26px; background: #FBF7EF; padding: 12px; rotate: -.6deg; box-shadow: 0 18px 34px rgba(0,0,0,.4); max-width: 980px; }
 .yt iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #000; }
 .yt .fita { top: -10px; }
+.cm-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+@media (max-width: 920px) { .cm-grade { grid-template-columns: 1fr; } }
+.cm-bloco { background: rgba(255,253,248,.1); border: 1.5px solid rgba(255,253,248,.35); padding: 22px; display: grid; gap: 12px; align-content: start; }
+.cm-bloco h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); color: var(--amarelo); }
+.cm-bloco p { font-weight: 500; }
+.cm-cresce { display: grid; gap: 10px; }
+.cm-cresce div { display: grid; grid-template-columns: 46px 1fr auto; gap: 10px; align-items: center; }
+.cm-ano { font-weight: 800; font-size: .9rem; }
+.cm-barra { height: 22px; background: var(--amarelo); width: calc(var(--p) * 1%); clip-path: polygon(0 0, 100% 10%, 97% 50%, 100% 90%, 0 100%); }
+.cm-cresce b { font-family: var(--display); font-weight: 400; font-size: 1.5rem; }
+.cm-dest b { font-family: var(--display); font-weight: 400; font-size: 2rem; color: var(--amarelo); margin-right: 4px; }
+.cm-nums { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cm-nums li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: baseline; }
+.cm-nums b { font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 4.4vw, 3.4rem); line-height: .9; color: var(--amarelo); }
+.cm-nums span { font-weight: 600; }
+.cm-mini { font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.cm-temas { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: .92rem; font-weight: 500; }
+.cm-cit { margin: 34px 0 0; padding-left: 18px; border-left: 6px solid var(--amarelo); max-width: 70ch; }
+.cm-cit p { font-family: var(--cond); font-stretch: 75%; font-weight: 700; font-size: clamp(1.2rem, 2.2vw, 1.6rem); line-height: 1.25; }
+.cm-h { font-size: clamp(1.6rem, 3vw, 2.3rem); margin-top: 44px; }
+.cm-voz { font-family: var(--display); text-transform: uppercase; font-size: clamp(2rem, 5.4vw, 4rem); line-height: 1; color: var(--amarelo); margin-top: 14px; }
+.cm-res { display: grid; grid-template-columns: 1fr 1fr minmax(0, .8fr); gap: 18px; margin-top: 22px; }
+@media (max-width: 920px) { .cm-res { grid-template-columns: 1fr; } }
+.cm-pct, .cm-top { background: #FBF7EF; color: var(--tinta); padding: 22px; clip-path: polygon(0 2%, 100% 0, 99% 98%, 1% 100%); }
+.cm-pct b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(3.4rem, 7vw, 5.2rem); line-height: .9; color: var(--vermelho); }
+.cm-pct span { display: block; margin-top: 8px; font-weight: 600; }
+.cm-top ol { margin: 10px 0 0; padding-left: 1.3em; display: grid; gap: 6px; font-family: var(--display); text-transform: uppercase; font-size: 1.35rem; color: var(--vinho); }
+.cm-dem { margin: 18px 0 0; padding: 0; list-style: none; counter-reset: d; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+@media (max-width: 760px) { .cm-dem { grid-template-columns: 1fr; } }
+.cm-dem li { counter-increment: d; }
+.cm-dem a { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; text-decoration: none; background: rgba(255,253,248,.1); border: 1.5px solid rgba(255,253,248,.35); padding: 12px 14px; font-weight: 700; }
+.cm-dem a::before { content: counter(d); font-family: var(--display); font-size: 2rem; color: var(--amarelo); }
+.cm-dem a:hover { background: rgba(255,253,248,.2); }
 /* agenda */
 .agenda-cab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 20px 40px; align-items: end; }
 @media (max-width: 860px) { .agenda-cab { grid-template-columns: 1fr; } .agenda-cab .palco { max-width: 300px; } }
@@ -428,7 +461,7 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
       </div>
       <nav class="indice" aria-label="Navegue pelo Manifesto">
         <span class="rot">Navegue pelo Manifesto</span>
-        <ul><li><a href="#o-que-e">O que é justiça reprodutiva</a></li><li><a href="#escutas">O que as escutas revelaram</a></li><li><a href="#numeros">As propostas em números</a></li><li><a href="#agenda">Os 7 eixos da agenda política</a></li><li><a href="#movimento">Assista à Marcha</a></li><li><a href="#lancamento">Lançamento do Comitê</a></li><li><a href="#quem">Quem construiu o manifesto</a></li><li><a href="#baixe">Baixe o manifesto</a></li></ul>
+        <ul><li><a href="#o-que-e">O que é justiça reprodutiva</a></li><li><a href="#comite">O Comitê e o mapeamento</a></li><li><a href="#escutas">O que as escutas revelaram</a></li><li><a href="#numeros">As propostas em números</a></li><li><a href="#agenda">Os 7 eixos da agenda política</a></li><li><a href="#movimento">Assista à Marcha</a></li><li><a href="#lancamento">Lançamento do Comitê</a></li><li><a href="#quem">Quem construiu o manifesto</a></li><li><a href="#baixe">Baixe o manifesto</a></li></ul>
       </nav>
     </div>
     <div class="palco palco-capa entra"><div class="pc sombra" style="--x:0%;--y:40%;--w:100%;--r:-2deg;--z:1;--i:0"><img src="img/rasg-comite.webp" alt="Integrantes do Comitê de Justiça Reprodutiva, várias com lenço verde, seguram a faixa Justiça reprodutiva é reparação e bem viver! Marcha das Mulheres Negras 2025." loading="lazy" decoding="async"><span class="fita" style="--fr:-5deg"></span></div><div class="pc boil sombra" style="--x:0%;--y:0%;--w:60%;--r:-3deg;--z:3;--i:1"><img src="img/rec-maefilha.webp" alt="Mãe e filha sorriem segurando o lenço verde do Comitê de Justiça Reprodutiva." loading="lazy" decoding="async"></div><div class="pc boil sombra" style="--x:64%;--y:0%;--w:36%;--r:4deg;--z:2;--i:2"><img src="img/rec-manif-g.webp" alt="Duas mulheres negras sorriem segurando o Manifesto por Justiça Reprodutiva; uma delas usa o lenço verde." loading="lazy" decoding="async"></div><div class="pc pisca" style="--x:56%;--y:2%;--w:13%;--r:0deg;--z:4;--i:3"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50.0,2.0 58.4,29.7 83.9,16.1 70.3,41.6 98.0,50.0 70.3,58.4 83.9,83.9 58.4,70.3 50.0,98.0 41.6,70.3 16.1,83.9 29.7,58.4 2.0,50.0 29.7,41.6 16.1,16.1 41.6,29.7" fill="#E8832A"/><polygon points="61.5,22.3 58.5,41.5 77.7,38.5 62.0,50.0 77.7,61.5 58.5,58.5 61.5,77.7 50.0,62.0 38.5,77.7 41.5,58.5 22.3,61.5 38.0,50.0 22.3,38.5 41.5,41.5 38.5,22.3 50.0,38.0" fill="#A3201F"/><circle cx="50" cy="50" r="9" fill="#F3C23A"/></svg></div><div class="pc pisca" style="--x:88%;--y:34%;--w:10%;--r:0deg;--z:4;--i:4"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#A3201F"/><circle cx="50" cy="50" r="36" fill="none" stroke="#E8832A" stroke-width="7" stroke-dasharray="6 5"/><circle cx="50" cy="50" r="22" fill="#F3C23A"/><circle cx="50" cy="50" r="12" fill="#A3201F"/><circle cx="50" cy="50" r="5" fill="#F3C23A"/></svg></div></div>
@@ -464,6 +497,67 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
 </section>
 <div class="triangulos" aria-hidden="true"></div>
 
+<section class="tela t-vermelho chevron comite" id="comite" aria-labelledby="t-comite">
+  <div class="wrap">
+    <span class="rot" style="color:var(--amarelo)">da Marcha ao Comitê</span>
+    <h2 id="t-comite" class="titulo" style="margin-top:10px">Uma agenda construída com método</h2>
+    <p class="intro" style="margin-top:14px">O Comitê Feminista e Antirracista por Justiça Reprodutiva nasceu dentro da Marcha das Mulheres Negras por Reparação e Bem Viver e criou um processo próprio de escuta para construir esta agenda.</p>
+
+    <div class="cm-grade">
+      <article class="cm-bloco">
+        <h3>A Marcha</h3>
+        <div class="cm-cresce" role="img" aria-label="Em 2015, 100 mil mulheres; em 2025, 300 mil mulheres.">
+          <div><span class="cm-ano">2015</span><span class="cm-barra" style="--p:33"></span><b>100 mil</b></div>
+          <div><span class="cm-ano">2025</span><span class="cm-barra" style="--p:100"></span><b>300 mil</b></div>
+        </div>
+        <p>mulheres negras nas ruas. Em 2025, foram três vezes mais.</p>
+        <p class="cm-dest"><b>27</b> estados com comitês autônomos, além de comitês internacionais, regionais e temáticos.</p>
+      </article>
+      <article class="cm-bloco">
+        <h3>O Comitê</h3>
+        <ul class="cm-nums">
+          <li><b>225</b><span>integrantes individuais</span></li>
+          <li><b>2</b><span>reuniões virtuais</span></li>
+          <li><b>1</b><span>formulário para mapear as demandas</span></li>
+        </ul>
+      </article>
+      <article class="cm-bloco">
+        <h3>O mapeamento</h3>
+        <ul class="cm-nums">
+          <li><b>244</b><span>respostas</span></li>
+          <li><b>27</b><span>estados, todos os do Brasil</span></li>
+        </ul>
+        <p class="cm-mini">O formulário tratou de:</p>
+        <ul class="cm-temas">
+          <li>Acesso a serviços, recursos e informação em saúde sexual e reprodutiva, nos níveis nacional e local</li>
+          <li>Direito ao cuidado e à maternidade com dignidade</li>
+          <li>Autonomia, prazer e direito ao próprio corpo</li>
+          <li>Reparação e responsabilidade do Estado</li>
+        </ul>
+      </article>
+    </div>
+
+    <blockquote class="cm-cit"><p>“Falar de Reparação e Bem Viver pressupõe um acerto de contas com o passado e uma intervenção no presente para assegurar um futuro com a garantia irrestrita da dignidade humana e de todo o ecossistema.”</p></blockquote>
+
+    <h3 class="cm-h">O que o mapeamento revelou</h3>
+    <p class="cm-voz">“Parimos com medo de morrer.”</p>
+    <div class="cm-res">
+      <div class="cm-pct"><b>93,8%</b><span>avaliaram o acesso e a qualidade dos serviços de saúde reprodutiva para mulheres negras como regulares, ruins ou muito ruins</span></div>
+      <div class="cm-pct"><b>85,0%</b><span>avaliaram o acesso ao aborto legal como ruim ou muito ruim, o que evidencia a desinformação institucionalizada</span></div>
+      <div class="cm-top"><span class="cm-mini">Preocupações mais críticas</span><ol><li>Racismo institucional</li><li>Saúde mental</li><li>Violência obstétrica</li></ol></div>
+    </div>
+
+    <h3 class="cm-h">Seis demandas centrais do manifesto</h3>
+    <ol class="cm-dem">
+      <li><a href="#eixo-1" data-abre="1">Reconhecer o racismo institucional como emergência de saúde pública</a></li>
+      <li><a href="#eixo-1" data-abre="1">Criar mecanismos de reparação para vítimas de violência reprodutiva</a></li>
+      <li><a href="#eixo-2" data-abre="2">Garantir acesso universal a métodos contraceptivos e ao aborto seguro</a></li>
+      <li><a href="#eixo-4" data-abre="4">Assegurar acesso universal, gratuito e contínuo a produtos de higiene menstrual</a></li>
+      <li><a href="#eixo-3" data-abre="3">Valorizar os saberes tradicionais de parteiras, doulas e curandeiras</a></li>
+      <li><a href="#eixo-3" data-abre="3">Estabelecer protocolos nacionais de enfrentamento à violência e ao racismo obstétricos</a></li>
+    </ol>
+  </div>
+</section>
 <section class="tela t-laranja meio-tom" id="escutas" aria-labelledby="t-escutas">
   <div class="wrap">
     <span class="rot">um chamado político</span>
