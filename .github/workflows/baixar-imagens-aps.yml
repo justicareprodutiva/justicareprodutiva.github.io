@@ -1,0 +1,37 @@
+name: Baixar imagens APS+10
+on:
+  push:
+    branches: [aps-imagens-locais]
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar imagens do Wikimedia Commons
+        run: |
+          set -e
+          mkdir -p aps-mais-10/img
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/pavilh-o-mourisco-casa-de-oswaldo-cruz-dl-fc-st-26.jpg" "https://upload.wikimedia.org/wikipedia/commons/e/ee/Pavilh%C3%A3o_Mourisco%2C_Casa_de_Oswaldo_Cruz_%28DL-FC-ST-26-004%29.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/guerra-vaccino-obrigateza.jpg" "https://upload.wikimedia.org/wikipedia/commons/5/5b/Guerra_Vaccino-Obrigateza%21.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/bonde-revolta-da-vacina.jpg" "https://upload.wikimedia.org/wikipedia/commons/e/eb/Bonde_-_Revolta_da_Vacina.JPG"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/1280px-horta-da-cl-nica-da-fam-lia-augusto-boal-na.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Horta_da_Cl%C3%ADnica_da_Fam%C3%ADlia_Augusto_Boal_na_Mar%C3%A9_01.jpg/1280px-Horta_da_Cl%C3%ADnica_da_Fam%C3%ADlia_Augusto_Boal_na_Mar%C3%A9_01.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/expurgo-de-profilaxia-contra-febre-amarela-1910.jpg" "https://upload.wikimedia.org/wikipedia/commons/e/ed/Expurgo_de_profilaxia_contra_Febre_Amarela_1910.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/hospital-de-isolamento-casa-de-oswaldo-cruz-br-rjc.jpg" "https://upload.wikimedia.org/wikipedia/commons/7/70/Hospital_de_Isolamento%2C_Casa_de_Oswaldo_Cruz_%28BR_RJCOC_OC-DGSP-04-11%29.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/oswaldo-cruz-carlos-chagas-e-adolpho-lutz-com-alun.jpg" "https://upload.wikimedia.org/wikipedia/commons/3/3e/Oswaldo_Cruz%2C_Carlos_Chagas_e_Adolpho_Lutz_com_alunos_do_curso_de_1916%2C_Casa_de_Oswaldo_Cruz_%28BR_RJCOC_02-10-20-15-004-013%29.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/1920px-inaugura-o-da-cl-nica-da-fam-lia-arthur-bis.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Inaugura%C3%A7%C3%A3o_da_Cl%C3%ADnica_da_Fam%C3%ADlia_Arthur_Bispo_do_Ros%C3%A1rio.jpg/1920px-Inaugura%C3%A7%C3%A3o_da_Cl%C3%ADnica_da_Fam%C3%ADlia_Arthur_Bispo_do_Ros%C3%A1rio.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/1920px-posse-do-prefeito-pedro-ernesto.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Posse_do_Prefeito_Pedro_Ernesto.jpg/1920px-Posse_do_Prefeito_Pedro_Ernesto.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/charge-favor-vel-vacina-o-antivari-lica-a-var-ola-.jpg" "https://upload.wikimedia.org/wikipedia/commons/c/c8/Charge_favor%C3%A1vel_%C3%A0_vacina%C3%A7%C3%A3o_antivari%C3%B3lica._%22A_Var%C3%ADola_-_Fia-te_na_virgem_e_n%C3%A3o_corras%22._Rio_de_Janeiro._O_Malho%2C_Casa_de_Oswaldo_Cruz_%28BR_RJCOC_02-10-20-15-006-025%29.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/retrato-de-oswaldo-cruz-casa-de-oswaldo-cruz-br-rj.jpg" "https://upload.wikimedia.org/wikipedia/commons/1/10/Retrato_de_Oswaldo_Cruz%2C_Casa_de_Oswaldo_Cruz_%28BR_RJCOC_FO-01-02-07%29.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/anna-nery-c-1903.jpg" "https://upload.wikimedia.org/wikipedia/commons/a/a5/Anna_Nery%2C_c.1903.jpg"; sleep 2
+          curl -fsSL -A "IJR-site/1.0 (site institucional)" -o "aps-mais-10/img/ensp-10.jpg" "https://upload.wikimedia.org/wikipedia/commons/d/d9/Ensp_10.jpg"; sleep 2
+          ls -la aps-mais-10/img
+      - name: Salvar no repositório
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git rm -q .github/workflows/baixar-imagens-aps.yml
+          git add aps-mais-10/img
+          git commit -m "APS+10: imagens de acervo guardadas no próprio site"
+          git push
