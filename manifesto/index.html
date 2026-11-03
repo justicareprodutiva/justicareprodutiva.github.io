@@ -384,6 +384,32 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
 @media (prefers-reduced-motion: reduce) { .anim *, .anim *::before, .anim *::after { animation: none !important; } .js .anim .entra .pc { opacity: 1; } }
 .pausa { position: fixed; right: 14px; bottom: 14px; z-index: 60; font: inherit; font-weight: 700; font-size: .78rem; padding: 9px 14px; border-radius: 999px; border: 2px solid var(--vinho); background: var(--amarelo); color: var(--vinho); cursor: pointer; box-shadow: 0 6px 14px rgba(0,0,0,.25); }
 @media (max-width: 600px) { .pausa { font-size: 0; width: 46px; height: 46px; padding: 0; } .pausa::before { content: "❚❚"; font-size: .95rem; } .pausa[aria-pressed="true"]::before { content: "▶"; } }
+
+.bx { background: #F3C23A; color: #4A1210; position: relative; z-index: 1; }
+.bx .bx-in { max-width: 860px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) max(20px, env(safe-area-inset-left, 0px)); }
+.bx h2 { font-family: var(--display, "Anton", Impact, sans-serif); font-weight: 400; text-transform: uppercase; line-height: 1; font-size: clamp(2.2rem, 6vw, 3.8rem); margin: 0; text-align: center; text-wrap: balance; }
+.bx .bx-sub { text-align: center; font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 500; margin: 14px 0 34px; }
+.bx form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 22px; }
+.bx .bx-c { display: grid; gap: 7px; min-width: 0; }
+.bx .bx-c.l { grid-column: 1 / -1; }
+@media (max-width: 620px) { .bx form { grid-template-columns: 1fr; } }
+.bx label.t { font-weight: 800; font-size: .95rem; }
+.bx input[type=text], .bx input[type=email], .bx input[type=tel], .bx select { font: inherit; font-size: 1rem; width: 100%; padding: 14px 14px; border: 0; border-bottom: 3px solid #A3201F; background: #FFFDF8; color: #1D1D1D; border-radius: 0; appearance: none; -webkit-appearance: none; }
+.bx select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23333' stroke-width='2'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+.bx input:focus, .bx select:focus { outline: 3px solid #A3201F; outline-offset: 2px; }
+.bx .bx-ck { grid-column: 1 / -1; display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; font-size: .95rem; line-height: 1.45; cursor: pointer; }
+.bx .bx-ck input { width: 26px; height: 26px; margin: 0; accent-color: #A3201F; cursor: pointer; }
+.bx .bx-ck a { color: inherit; }
+.bx button[type=submit] { grid-column: 1 / -1; font: inherit; font-weight: 800; font-size: 1.05rem; padding: 17px; border: 0; background: #4A1210; color: #FFFFFF; cursor: pointer; text-transform: uppercase; letter-spacing: .06em; }
+.bx button[type=submit]:disabled { opacity: .6; cursor: wait; }
+.bx .bx-st { grid-column: 1 / -1; min-height: 1.4em; font-weight: 700; margin: 0; }
+.bx .bx-ok { display: none; text-align: center; }
+.bx .bx-ok p { font-size: 1.1rem; font-weight: 600; margin: 0 0 20px; }
+.bx .bx-ok .bx-pdfs { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.bx .bx-pdf { display: inline-block; font-weight: 800; padding: 15px 26px; background: #4A1210; color: #FFFFFF; text-decoration: none; }
+.bx.feito form { display: none; } .bx.feito .bx-ok { display: block; }
+.bx .bx-nota { font-size: .8rem; opacity: .85; margin-top: 22px; line-height: 1.45; }
+.bx .bx-hp { position: absolute; left: -9999px; }
 </style>
 </head>
 <body class="anim">
@@ -397,12 +423,12 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
       <h1><span>Manifesto</span><span class="a">por justiça</span><span class="b">reprodutiva</span></h1>
       <p class="lede">Agenda política das mulheres negras por justiça reprodutiva, reparação e bem viver.</p>
       <div class="botoes">
-        <a class="btn cheio" href="../docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener">Baixe o manifesto (PDF)</a>
-        <a class="btn" href="../docs/reproductive-justice-manifesto-en.pdf" target="_blank" rel="noopener" lang="en">Read in English (PDF)</a>
+        <a class="btn cheio" href="#baixe">Baixe o manifesto completo ↓</a>
+        <a class="btn" href="#baixe" lang="en">Download in English ↓</a>
       </div>
       <nav class="indice" aria-label="Navegue pelo Manifesto">
         <span class="rot">Navegue pelo Manifesto</span>
-        <ul><li><a href="#o-que-e">O que é justiça reprodutiva</a></li><li><a href="#escutas">O que as escutas revelaram</a></li><li><a href="#numeros">As propostas em números</a></li><li><a href="#agenda">Os 7 eixos da agenda política</a></li><li><a href="#movimento">Assista à Marcha</a></li><li><a href="#lancamento">Lançamento do Comitê</a></li><li><a href="#quem">Quem construiu o manifesto</a></li><li><a href="#baixar">Baixe o manifesto</a></li></ul>
+        <ul><li><a href="#o-que-e">O que é justiça reprodutiva</a></li><li><a href="#escutas">O que as escutas revelaram</a></li><li><a href="#numeros">As propostas em números</a></li><li><a href="#agenda">Os 7 eixos da agenda política</a></li><li><a href="#movimento">Assista à Marcha</a></li><li><a href="#lancamento">Lançamento do Comitê</a></li><li><a href="#quem">Quem construiu o manifesto</a></li><li><a href="#baixe">Baixe o manifesto</a></li></ul>
       </nav>
     </div>
     <div class="palco palco-capa entra"><div class="pc sombra" style="--x:0%;--y:40%;--w:100%;--r:-2deg;--z:1;--i:0"><img src="img/rasg-comite.webp" alt="Integrantes do Comitê de Justiça Reprodutiva, várias com lenço verde, seguram a faixa Justiça reprodutiva é reparação e bem viver! Marcha das Mulheres Negras 2025." loading="lazy" decoding="async"><span class="fita" style="--fr:-5deg"></span></div><div class="pc boil sombra" style="--x:0%;--y:0%;--w:60%;--r:-3deg;--z:3;--i:1"><img src="img/rec-maefilha.webp" alt="Mãe e filha sorriem segurando o lenço verde do Comitê de Justiça Reprodutiva." loading="lazy" decoding="async"></div><div class="pc boil sombra" style="--x:64%;--y:0%;--w:36%;--r:4deg;--z:2;--i:2"><img src="img/rec-manif-g.webp" alt="Duas mulheres negras sorriem segurando o Manifesto por Justiça Reprodutiva; uma delas usa o lenço verde." loading="lazy" decoding="async"></div><div class="pc pisca" style="--x:56%;--y:2%;--w:13%;--r:0deg;--z:4;--i:3"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50.0,2.0 58.4,29.7 83.9,16.1 70.3,41.6 98.0,50.0 70.3,58.4 83.9,83.9 58.4,70.3 50.0,98.0 41.6,70.3 16.1,83.9 29.7,58.4 2.0,50.0 29.7,41.6 16.1,16.1 41.6,29.7" fill="#E8832A"/><polygon points="61.5,22.3 58.5,41.5 77.7,38.5 62.0,50.0 77.7,61.5 58.5,58.5 61.5,77.7 50.0,62.0 38.5,77.7 41.5,58.5 22.3,61.5 38.0,50.0 22.3,38.5 41.5,41.5 38.5,22.3 50.0,38.0" fill="#A3201F"/><circle cx="50" cy="50" r="9" fill="#F3C23A"/></svg></div><div class="pc pisca" style="--x:88%;--y:34%;--w:10%;--r:0deg;--z:4;--i:4"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#A3201F"/><circle cx="50" cy="50" r="36" fill="none" stroke="#E8832A" stroke-width="7" stroke-dasharray="6 5"/><circle cx="50" cy="50" r="22" fill="#F3C23A"/><circle cx="50" cy="50" r="12" fill="#A3201F"/><circle cx="50" cy="50" r="5" fill="#F3C23A"/></svg></div></div>
@@ -577,12 +603,35 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
   </div>
 </section>
 
+<section class="bx" id="baixe" aria-labelledby="bx-t">
+  <div class="bx-in">
+    <h2 id="bx-t">Baixe o manifesto completo</h2>
+    <p class="bx-sub">Preencha os dados abaixo para baixar o PDF</p>
+    <form id="bx-form" novalidate>
+      <div class="bx-c l"><label class="t" for="bx-nome">Nome *</label><input id="bx-nome" name="nome" type="text" autocomplete="name" required></div>
+      <div class="bx-c"><label class="t" for="bx-email">E-mail *</label><input id="bx-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="bx-c"><label class="t" for="bx-tel">Telefone (com DDD) *</label><input id="bx-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 99999-9999" required></div>
+      <div class="bx-c l"><label class="t" for="bx-gen">Identidade de gênero *</label><select id="bx-gen" name="genero" required><option value="">Selecione</option><option>Mulher cis</option><option>Mulher trans</option><option>Homem cis</option><option>Homem trans</option><option>Pessoa não binária</option><option>Prefiro não responder</option></select></div>
+      <input class="bx-hp" type="text" name="_honey" id="bx-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="bx-ck"><input type="checkbox" id="bx-lgpd" required><span>Autorizo o tratamento dos meus dados pessoais (nome, e-mail, telefone e identidade de gênero) pelo Instituto de Justiça Reprodutiva para viabilizar o acesso e o envio do Manifesto por Justiça Reprodutiva. O tratamento será realizado em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018). *</span></label>
+      <label class="bx-ck"><input type="checkbox" id="bx-news"><span>Autorizo a adição dos meus dados à base de dados do Instituto de Justiça Reprodutiva para receber e-mails com notícias, publicações e campanhas.</span></label>
+      <button type="submit" id="bx-btn">Enviar e baixar</button>
+      <p class="bx-st" id="bx-st" role="status" aria-live="polite"></p>
+    </form>
+    <div class="bx-ok" id="bx-ok" tabindex="-1">
+      <p>Obrigada! Seu download está liberado.</p>
+      <div class="bx-pdfs"><a class="bx-pdf" href="../docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener" download>Baixar em português (PDF) ↓</a><a class="bx-pdf" href="../docs/reproductive-justice-manifesto-en.pdf" target="_blank" rel="noopener" download>Download in English (PDF) ↓</a></div>
+    </div>
+    <p class="bx-nota">Seus dados são usados só pelo Instituto de Justiça Reprodutiva e não são compartilhados. Para corrigir ou apagar seus dados, ou cancelar o recebimento de e-mails, escreva para <a href="mailto:justicareprodutiva@gmail.com">justicareprodutiva@gmail.com</a>.</p>
+  </div>
+</section>
+
 <footer class="tela t-vinho fim" id="baixar">
   <div class="wrap">
     <h2>Justiça reprodutiva é reparação e bem viver!</h2>
     <div class="botoes">
-      <a class="btn cheio" href="../docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener">Baixe o manifesto (PDF)</a>
-      <a class="btn" href="../docs/reproductive-justice-manifesto-en.pdf" target="_blank" rel="noopener" lang="en">Read in English (PDF)</a>
+      <a class="btn cheio" href="#baixe">Baixe o manifesto completo ↓</a>
+      <a class="btn" href="#baixe" lang="en">Download in English ↓</a>
     </div>
     <div><span class="r">Realização</span><p>Comitê de Justiça Reprodutiva da Marcha Nacional das Mulheres Negras por Reparação e Bem Viver · 2025</p></div>
     <div class="contatos"><span class="r">Contato</span><span><b>Instituto de Justiça Reprodutiva</b> · <a href="mailto:justicareprodutiva@gmail.com">justicareprodutiva@gmail.com</a> · <a href="https://www.instagram.com/justicareprodutiva/" target="_blank" rel="noopener">@justicareprodutiva</a></span></div>
@@ -702,6 +751,37 @@ var TEMAS = {"violencia": {"m": ["1.3.1", "1.3.2", "1.3.3", "2.1.1", "2.2.2", "2
       var li = document.getElementById('p-' + cod.replace(/\./g, '-'));
       if (li) { li.scrollIntoView({ block: 'center' }); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); }
     });
+  });
+})();
+
+(function () {
+  var f = document.getElementById('bx-form'); if (!f) return;
+  var sec = document.getElementById('baixe'), st = document.getElementById('bx-st'), btn = document.getElementById('bx-btn'), tel = document.getElementById('bx-tel');
+  var K = 'ijr-baixe-manifesto';
+  function liberar() { sec.classList.add('feito'); try { localStorage.setItem(K, '1'); } catch (e) {} }
+  try { if (localStorage.getItem(K) === '1') sec.classList.add('feito'); } catch (e) {}
+  tel.addEventListener('input', function () {
+    var d = tel.value.replace(/\D/g, '').slice(0, 11), s = d;
+    if (d.length > 2) s = '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length > 6) s = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+    tel.value = s;
+  });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('bx-honey').value) return;
+    var dig = tel.value.replace(/\D/g, '');
+    if (!f.checkValidity() || dig.length < 10) {
+      st.textContent = !document.getElementById('bx-lgpd').checked && f.nome.value && f.email.value ? 'Para baixar, marque a autorização de tratamento dos dados.' : 'Preencha nome, e-mail válido, telefone com DDD e identidade de gênero.';
+      return;
+    }
+    var corpo = { documento: 'Manifesto por Justiça Reprodutiva', nome: f.nome.value, email: f.email.value, telefone: tel.value, identidade_de_genero: f.genero.value,
+      autoriza_tratamento_lgpd: 'sim', autoriza_receber_noticias: document.getElementById('bx-news').checked ? 'sim' : 'não',
+      _subject: 'Download — Manifesto por Justiça Reprodutiva: ' + f.nome.value, _replyto: f.email.value, _template: 'table', _captcha: 'false' };
+    btn.disabled = true; st.textContent = 'Enviando...';
+    fetch('https://formsubmit.co/ajax/justicareprodutiva@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(corpo) })
+      .catch(function () {})
+      .then(function () { liberar(); var ok = document.getElementById('bx-ok'); ok.focus(); ok.scrollIntoView({ block: 'center' }); })
+      .finally(function () { btn.disabled = false; st.textContent = ''; });
   });
 })();
 </script>
