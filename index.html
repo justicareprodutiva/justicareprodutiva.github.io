@@ -499,6 +499,13 @@ footer .copy { flex: 1; flex-basis: auto; border-top: 0; padding-top: 0; text-al
 /* granulado leve em todo o site */
 body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size: 220px; opacity: .2; mix-blend-mode: multiply; }
 @media print { body::after { display: none; } }
+
+/* formulário Faça parte */
+#form-contato .campos .l { grid-column: 1 / -1; }
+#form-contato select { font: inherit; font-size: 1rem; padding: 12px 40px 12px 14px; border: 1.5px solid #C6CBE6; background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' fill='none' stroke='%231F2AD8' stroke-width='2'/></svg>") no-repeat right 14px center; color: var(--tinta); border-radius: 10px; appearance: none; -webkit-appearance: none; width: 100%; }
+#form-contato select:focus { outline: none; border-color: var(--azul); }
+#form-contato .aceite { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; font-weight: 500; font-size: .85rem; line-height: 1.45; color: var(--tinta); cursor: pointer; }
+#form-contato .aceite input { width: 22px; height: 22px; padding: 0; margin: 1px 0 0; accent-color: var(--azul); cursor: pointer; }
 </style>
 </head>
 <body>
@@ -566,65 +573,65 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-event
       </div>
       <div class="docs" id="docs-lista">
         <article class="doc" id="pub-dossie">
-          <a class="capa-doc" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
+          <a class="capa-doc" href="docs/IJuR_DossieTransmasculinidadesNegrasPerifericas_2026.pdf" target="_blank" rel="noopener"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Dossiê · 2026</span>
             <h3>Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva</h3>
             <p class="doc-autoria">Instituto de Justiça Reprodutiva e Liga Transmasculina João W. Nery</p>
             <p>Dossiê nacional inédito sobre o acesso à saúde sexual e reprodutiva de homens trans e pessoas transmasculinas negras e periféricas, com dados sobre violações e recomendações ao poder público para políticas públicas.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/dossie-nacional-transmasculinidades-negras-perifericas.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="docs/IJuR_DossieTransmasculinidadesNegrasPerifericas_2026.pdf" target="_blank" rel="noopener">Abrir PDF</a>
               <a class="btn vazado" href="dossie/">Versão interativa</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-manifesto">
-          <a class="capa-doc" href="docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener"><img src="img/capa-manifesto.jpg" alt="Capa do Manifesto por Justiça Reprodutiva" width="530" height="740" loading="lazy"></a>
+          <a class="capa-doc" href="docs/IJuR_ManifestoJusticaReprodutiva_2025.pdf" target="_blank" rel="noopener"><img src="img/capa-manifesto.jpg" alt="Capa do Manifesto por Justiça Reprodutiva" width="530" height="740" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Manifesto · 2025</span>
             <h3>Manifesto por Justiça Reprodutiva</h3>
             <p class="doc-autoria">Comitê de Justiça Reprodutiva rumo à Marcha das Mulheres Negras · Marcha Nacional de Mulheres Negras 2025</p>
             <p>Lançado na Marcha das Mulheres Negras de 2025, em Brasília, o manifesto reúne as violações vividas por mulheres negras na saúde reprodutiva e consolida uma agenda política nacional por justiça reprodutiva.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/manifesto-por-justica-reprodutiva.pdf" target="_blank" rel="noopener">Abrir PDF em português</a>
-              <a class="btn vazado" href="docs/reproductive-justice-manifesto-en.pdf" target="_blank" rel="noopener" lang="en">Read in English (PDF)</a>
+              <a class="btn cheio" href="docs/IJuR_ManifestoJusticaReprodutiva_2025.pdf" target="_blank" rel="noopener">Abrir PDF em português</a>
+              <a class="btn vazado" href="docs/IJuR_ReproductiveJusticeManifesto_2025.pdf" target="_blank" rel="noopener" lang="en">Read in English (PDF)</a>
               <a class="btn vazado" href="manifesto/">Versão interativa</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-cartilha">
-          <a class="capa-doc" href="docs/cartilha-jovens-na-trilha-do-sus.pdf" target="_blank" rel="noopener"><img src="img/capa-cartilha.jpg" alt="Capa da cartilha Jovens na Trilha do SUS" width="350" height="497" loading="lazy"></a>
+          <a class="capa-doc" href="docs/IJuR_CartilhaJovensNaTrilhaDoSUS_2024.pdf" target="_blank" rel="noopener"><img src="img/capa-cartilha.jpg" alt="Capa da cartilha Jovens na Trilha do SUS" width="350" height="497" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Cartilha · 2024</span>
             <h3>Jovens na Trilha do SUS</h3>
             <p class="doc-autoria">Agenda Jovem Fiocruz · Fiocruz Bahia</p>
             <p>Explica os serviços do SUS e onde encontrá-los. Traz informações sobre as condições de saúde na juventude, o direito à saúde e à participação previsto em lei e orientações contra a desinformação na internet.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/cartilha-jovens-na-trilha-do-sus.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="docs/IJuR_CartilhaJovensNaTrilhaDoSUS_2024.pdf" target="_blank" rel="noopener">Abrir PDF</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-aps10">
-          <a class="capa-doc" href="docs/livro-aps-mais-10-2022.pdf" target="_blank" rel="noopener"><img src="img/capa-livro-aps10.jpg" alt="Capa do livro APS+10" width="497" height="702" loading="lazy"></a>
+          <a class="capa-doc" href="docs/IJuR_LivroAPS10_2022.pdf" target="_blank" rel="noopener"><img src="img/capa-livro-aps10.jpg" alt="Capa do livro APS+10" width="497" height="702" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Livro · 2022</span>
             <h3>APS+10: painel de indicadores para o monitoramento de 10 anos de expansão da APS no município do Rio de Janeiro</h3>
             <p class="doc-autoria">Fiocruz · Escola Nacional de Saúde Pública</p>
             <p>Livro que acompanha dez anos de expansão da Atenção Primária à Saúde no Rio de Janeiro. Fabiana Pinto assina o capítulo Breve contextualização histórica da APS no município do Rio de Janeiro.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/livro-aps-mais-10-2022.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="docs/IJuR_LivroAPS10_2022.pdf" target="_blank" rel="noopener">Abrir PDF</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-revista">
-          <a class="capa-doc" href="docs/artigo-justica-reprodutiva-covid19-2021.pdf" target="_blank" rel="noopener"><img src="img/capa-artigo.jpg" alt="Capa da revista Jovens Investigadores: um olhar geracional sobre a saúde" width="485" height="626" loading="lazy"></a>
+          <a class="capa-doc" href="docs/IJuR_RevistaJusticaReprodutivaCovid19_2021.pdf" target="_blank" rel="noopener"><img src="img/capa-artigo.jpg" alt="Capa da revista Jovens Investigadores: um olhar geracional sobre a saúde" width="485" height="626" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Revista · 2021</span>
             <h3>Justiça reprodutiva e Covid-19: um ano de lutas de jovens ativistas negras</h3>
             <p class="doc-autoria">Fabiana Pinto · Revista Jovens Investigadores: um olhar geracional sobre a saúde · Agenda Jovem Fiocruz</p>
             <p>Pesquisa com jovens ativistas negras sobre as barreiras de acesso à saúde reprodutiva durante a pandemia de Covid-19, a partir do marco da justiça reprodutiva.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/artigo-justica-reprodutiva-covid19-2021.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="docs/IJuR_RevistaJusticaReprodutivaCovid19_2021.pdf" target="_blank" rel="noopener">Abrir PDF</a>
             </div>
           </div>
         </article>
@@ -754,9 +761,12 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-event
       </div>
       <form id="form-contato" novalidate>
         <div class="campos">
-          <label for="nome">Nome<input id="nome" name="nome" autocomplete="name" required></label>
-          <label for="email">E-mail<input id="email" name="email" type="email" autocomplete="email" required></label>
+          <label class="l" for="nome">Nome *<input id="nome" name="nome" autocomplete="name" required></label>
+          <label for="email">E-mail *<input id="email" name="email" type="email" autocomplete="email" required></label>
+          <label for="tel">Telefone (com DDD) *<input id="tel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(21) 99999-9999" required></label>
+          <label class="l" for="genero">Identidade de gênero *<select id="genero" name="genero" required><option value="">Selecione</option><option>Mulher cis</option><option>Mulher trans</option><option>Homem cis</option><option>Homem trans</option><option>Travesti</option><option>Pessoa não binária</option><option>Prefiro não responder</option></select></label>
         </div>
+        <label class="aceite"><input type="checkbox" id="aceite" required><span>Autorizo o tratamento dos meus dados pessoais pelo Instituto de Justiça Reprodutiva e a adição à sua base de dados para o recebimento de e-mails com notícias, publicações, campanhas e chamados para ação, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018). *</span></label>
         <input class="honey" type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="enviar" type="submit" id="btn-enviar">Inscrever</button>
         <p class="status" id="status" role="status"></p>
@@ -800,13 +810,16 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-event
   vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais matérias'; });
   var DESTINO = 'https://formsubmit.co/ajax/justicareprodutiva@gmail.com';
   var form = document.getElementById('form-contato'), status = document.getElementById('status'), btn = document.getElementById('btn-enviar');
+  var tel = document.getElementById('tel');
+  tel.addEventListener('input', function () { var d = tel.value.replace(/\D/g, '').slice(0, 11), s = d; if (d.length > 2) s = '(' + d.slice(0, 2) + ') ' + d.slice(2); if (d.length > 6) s = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4); tel.value = s; });
   function msg(texto, tipo) { status.textContent = texto; status.className = 'status' + (tipo ? ' ' + tipo : ''); }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (document.getElementById('honey').value) return;
-    if (!form.checkValidity()) { msg('Preencha seu nome e um e-mail válido.', 'erro'); return; }
+    var dig = tel.value.replace(/\D/g, '');
+    if (!form.checkValidity() || dig.length < 10) { msg(!document.getElementById('aceite').checked && form.nome.value && form.email.value && dig.length >= 10 && form.genero.value ? 'Para se inscrever, marque a autorização de tratamento dos dados.' : 'Preencha nome, e-mail válido, telefone com DDD e identidade de gênero.', 'erro'); return; }
     var d = new FormData(form);
-    var corpo = { nome: d.get('nome'), email: d.get('email'), _subject: 'Nova inscrição pelo site: ' + d.get('nome'), _replyto: d.get('email'), _template: 'table', _captcha: 'false' };
+    var corpo = { nome: d.get('nome'), email: d.get('email'), telefone: d.get('telefone'), identidade_de_genero: d.get('genero'), autoriza_tratamento_e_noticias_lgpd: 'sim', _subject: 'Nova inscrição pelo site: ' + d.get('nome'), _replyto: d.get('email'), _template: 'table', _captcha: 'false' };
     btn.disabled = true; msg('Enviando...');
     fetch(DESTINO, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(corpo) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })

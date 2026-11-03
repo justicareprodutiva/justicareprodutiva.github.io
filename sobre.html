@@ -499,6 +499,13 @@ footer .copy { flex: 1; flex-basis: auto; border-top: 0; padding-top: 0; text-al
 /* granulado leve em todo o site */
 body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size: 220px; opacity: .2; mix-blend-mode: multiply; }
 @media print { body::after { display: none; } }
+
+/* formulário Faça parte */
+#form-contato .campos .l { grid-column: 1 / -1; }
+#form-contato select { font: inherit; font-size: 1rem; padding: 12px 40px 12px 14px; border: 1.5px solid #C6CBE6; background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' fill='none' stroke='%231F2AD8' stroke-width='2'/></svg>") no-repeat right 14px center; color: var(--tinta); border-radius: 10px; appearance: none; -webkit-appearance: none; width: 100%; }
+#form-contato select:focus { outline: none; border-color: var(--azul); }
+#form-contato .aceite { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; font-weight: 500; font-size: .85rem; line-height: 1.45; color: var(--tinta); cursor: pointer; }
+#form-contato .aceite input { width: 22px; height: 22px; padding: 0; margin: 1px 0 0; accent-color: var(--azul); cursor: pointer; }
 </style>
 </head>
 <body>
