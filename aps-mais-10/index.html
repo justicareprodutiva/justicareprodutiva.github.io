@@ -365,7 +365,7 @@ blockquote::before{content:"“";display:block;font-size:90px;line-height:.6;col
       <div><span class="r">Livro</span><p><b>APS+10: painel de indicadores para o monitoramento de 10 anos de expansão da APS no município do Rio de Janeiro.</b> Org. Raphael Mendonça Guimarães, Fernanda do Nascimento Martins, Tatiana Araujo Eleuterio, Bianca Borges da Silva Leandro e Viviane Gomes Parreira Dutra. Rio de Janeiro: Fiocruz/ENSP, 2022. ISBN 978-65-5899-317-9. Licença CC BY-NC-SA 4.0.</p></div>
       <div><span class="r">Realização</span><p>Fundação Oswaldo Cruz · Escola Nacional de Saúde Pública · Programa de Pós-Graduação em Saúde Pública e Meio Ambiente.</p></div>
     </div>
-    <div class="imgcred" id="imgcred"><span class="r">Imagens (Wikimedia Commons)</span></div>
+    <div class="imgcred" id="imgcred"><span class="r">Imagens</span></div>
     <p class="credito-interativo" style="border-color:var(--linha)">Versão interativa desenvolvida pelo Instituto de Justiça Reprodutiva (2026)</p>
   </div>
 </footer>
@@ -374,8 +374,8 @@ blockquote::before{content:"“";display:block;font-size:90px;line-height:.6;col
 <script>
 (function(){
 const IMG={
- bonde:{u:'img/bonde-revolta-da-vacina.jpg',c:'Bonde virado durante a Revolta da Vacina, Rio de Janeiro, 1904. Domínio público.',p:'File:Bonde_-_Revolta_da_Vacina.JPG'},
- guerra:{u:'img/guerra-vaccino-obrigateza.jpg',c:'“Guerra Vaccino-Obrigateza!”, charge de Leônidas Freire sobre a vacina obrigatória, 1904. Domínio público.',p:'File:Guerra_Vaccino-Obrigateza!.jpg'},
+ bonde:{u:'img/bonde-revolta-da-vacina.jpg',c:'Bonde virado no centro do Rio de Janeiro durante a Revolta da Vacina, 1904. Acervo Casa de Oswaldo Cruz.',p:''},
+ guerra:{cor:1,u:'img/guerra-vaccino-obrigateza.jpg',c:'“Guerra Vaccino-Obrigateza!”, charge de Leônidas em <i>O Malho</i>, 29 out. 1904. A legenda antecipava a Revolta da Vacina, que ocorreria dias depois, entre 12 e 15 de novembro, quando a população enfrentou Oswaldo Cruz e sua guarda. FALCÃO, Edgard de Cerqueira (Org.). <i>Oswaldo Cruz Monumenta Histórica</i>. A incompreensão de uma época: Oswaldo Cruz e a caricatura. Brasiliensia Documenta, v. VI, tomo 1. São Paulo: [s.n.], 1971, p. 129. Acervo Casa de Oswaldo Cruz.',p:''},
  isolamento:{u:'img/hospital-de-isolamento-casa-de-oswaldo-cruz-br-rjc.jpg',c:'Hospital de Isolamento, antes de 1911. Acervo Casa de Oswaldo Cruz, domínio público.',p:'File:Hospital_de_Isolamento,_Casa_de_Oswaldo_Cruz_(BR_RJCOC_OC-DGSP-04-11).jpg'},
  expurgo:{u:'img/expurgo-de-profilaxia-contra-febre-amarela-1910.jpg',c:'Construção expurgada na profilaxia contra a febre amarela, Rio de Janeiro, 1910. Fundo Instituto Oswaldo Cruz, domínio público.',p:'File:Expurgo_de_profilaxia_contra_Febre_Amarela_1910.jpg'},
  chagas:{u:'img/oswaldo-cruz-carlos-chagas-e-adolpho-lutz-com-alun.jpg',c:'Oswaldo Cruz, Carlos Chagas e Adolpho Lutz com alunos do curso de 1916. Acervo Casa de Oswaldo Cruz, domínio público.',p:'File:Oswaldo_Cruz,_Carlos_Chagas_e_Adolpho_Lutz_com_alunos_do_curso_de_1916,_Casa_de_Oswaldo_Cruz_(BR_RJCOC_02-10-20-15-004-013).jpg'},
@@ -390,7 +390,7 @@ const IMG={
 };
 const ERAS={pre:'Pré-SUS · 1900–1988',sus:'SUS e Saúde da Família · 1986–2000',exp:'Expansão e retrocessos · 2001–2020'};
 const EV=[
- {y:'1904',e:'pre',t:'Antes do recorte: a Revolta da Vacina',d:'Não está no capítulo, mas ajuda a entender o começo do século: a vacinação obrigatória contra a varíola, sob Oswaldo Cruz, levou a população do Rio às ruas.',i:'guerra',tag:'Contexto'},
+ {y:'1904',e:'pre',t:'Antes do recorte: a Revolta da Vacina',d:'Não está no capítulo, mas ajuda a entender o começo do século: a vacinação obrigatória contra a varíola, sob Oswaldo Cruz, levou a população do Rio às ruas.',i:'guerra',i2:'bonde',tag:'Contexto'},
  {y:'1907',e:'pre',t:'O primeiro pronto-socorro do município',d:'Nasce o Posto Municipal de Assistência (PMA), hoje Hospital Municipal Souza Aguiar, focado nas urgências que as instituições filantrópicas já não davam conta de atender.',i:'isolamento',cap:'Imagem de época: Hospital de Isolamento, serviço da Diretoria Geral de Saúde Pública, antes de 1911. Acervo Casa de Oswaldo Cruz.'},
  {y:'1910',e:'pre',t:'Saúde pública vertical',d:'As ações de saúde pública eram campanhas contra doenças específicas, como a febre amarela, com pouco olhar para o território onde as pessoas viviam.',i:'expurgo',tag:'Contexto'},
  {y:'1918',e:'pre',t:'A gripe espanhola',d:'No verão de 1918–1919, a epidemia deixou evidente a falta de hospitais públicos para emergências. Expandir a rede hospitalar virou prioridade.'},
@@ -422,7 +422,7 @@ eras.innerHTML=`<button type="button" class="era" data-e="" aria-pressed="true">
 function vis(){return EV.map((x,i)=>i).filter(i=>!era||EV[i].e===era)}
 function show(i){cur=i;const x=EV[i];anos.querySelectorAll('.ano').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===i));
  const im=x.i?IMG[x.i]:null;
- ev.innerHTML=`<span class="ey">${x.y}</span>${x.tag?`<span class="tag">${x.tag}</span>`:''}<h3>${x.t}</h3><p>${x.d}</p>${im?`<figure class="acervo"><div class="img"><img src="${im.u}" alt="" loading="lazy"></div><figcaption>${x.cap||im.c}</figcaption></figure>`:''}<div class="nav"><button type="button" id="ant">← anterior</button><button type="button" id="prox">próximo →</button></div>`;
+ ev.innerHTML=`<span class="ey">${x.y}</span>${x.tag?`<span class="tag">${x.tag}</span>`:''}<h3>${x.t}</h3><p>${x.d}</p>${im?`<figure class="acervo${im.cor?' cor':''}"><div class="img"><img src="${im.u}" alt="" loading="lazy"></div><figcaption>${x.cap||im.c}</figcaption></figure>`:''}${x.i2?`<figure class="acervo"><div class="img"><img src="${IMG[x.i2].u}" alt="" loading="lazy"></div><figcaption>${IMG[x.i2].c}</figcaption></figure>`:''}<div class="nav"><button type="button" id="ant">← anterior</button><button type="button" id="prox">próximo →</button></div>`;
  const v=vis(),k=v.indexOf(i);document.getElementById('ant').onclick=()=>show(v[(k-1+v.length)%v.length]);document.getElementById('prox').onclick=()=>show(v[(k+1)%v.length])}
 anos.querySelectorAll('.ano').forEach(b=>b.onclick=()=>show(+b.dataset.i));
 eras.querySelectorAll('.era').forEach(b=>b.onclick=()=>{era=b.dataset.e||null;eras.querySelectorAll('.era').forEach(x=>x.setAttribute('aria-pressed',x===b));anos.querySelectorAll('.ano').forEach(a=>a.hidden=era&&EV[+a.dataset.i].e!==era);show(vis()[0])});
@@ -452,7 +452,7 @@ grupos.querySelectorAll('.era').forEach(b=>b.onclick=()=>grupo(b.dataset.g));gru
 document.querySelectorAll('.cb').forEach(c=>{const f=c.querySelector('.f'),v=c.querySelector('.v');f.style.width=f.dataset.w+'%';v.style.left=v.dataset.l+'%'});
 
 /* créditos das imagens */
-const ic=document.getElementById('imgcred');ic.insertAdjacentHTML('beforeend',Object.values(IMG).map(m=>`<span>${m.c} <a href="https://commons.wikimedia.org/wiki/${encodeURI(m.p)}" target="_blank" rel="noopener">Ver no Commons</a></span>`).join(''));
+const ic=document.getElementById('imgcred');ic.insertAdjacentHTML('beforeend',Object.values(IMG).map(m=>`<span>${m.c} ${m.p?`<a href="https://commons.wikimedia.org/wiki/${encodeURI(m.p)}" target="_blank" rel="noopener">Ver no Commons</a>`:''}</span>`).join(''));
 })();
 </script>
 </body>
