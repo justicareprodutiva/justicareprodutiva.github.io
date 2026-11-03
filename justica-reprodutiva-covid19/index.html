@@ -34,12 +34,12 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;lin
 .t-creme{background:var(--creme)}
 .t-branco{background:var(--branco)}
 .t-tinta{background:var(--tinta);color:var(--branco)}
-.grao::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.10;background-image:radial-gradient(rgba(35,24,21,.55) 1px,transparent 1.6px);background-size:9px 9px;-webkit-mask-image:linear-gradient(115deg,transparent 35%,#000 100%);mask-image:linear-gradient(115deg,transparent 35%,#000 100%)}
-.grao::before,.tela::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;background:url("img/textura-papel.jpg") repeat;background-size:640px 640px;opacity:.55}
-.t-laranja::before,.t-turquesa::before,.t-tinta::before{background-image:url("img/textura-parede.jpg");background-size:520px 520px;opacity:.5}
-body{background-image:url("img/textura-papel.jpg");background-blend-mode:multiply;background-size:640px 640px}
+.grao::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.05;background-image:radial-gradient(rgba(35,24,21,.55) 1px,transparent 1.6px);background-size:9px 9px;-webkit-mask-image:linear-gradient(115deg,transparent 35%,#000 100%);mask-image:linear-gradient(115deg,transparent 35%,#000 100%)}
+.grao::before,.tela::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;background:url("img/textura-papel.jpg") repeat;background-size:640px 640px;opacity:.22}
+.t-laranja::before,.t-turquesa::before,.t-tinta::before{background-image:url("img/textura-parede.jpg");background-size:520px 520px;opacity:.2}
+body{background-image:linear-gradient(rgba(251,244,238,.75),rgba(251,244,238,.75)),url("img/textura-papel.jpg");background-size:auto,640px 640px}
 .nums{position:relative}
-.nums::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("img/textura-parede.jpg");background-size:520px;mix-blend-mode:multiply;opacity:.5}
+.nums::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("img/textura-parede.jpg");background-size:520px;mix-blend-mode:multiply;opacity:.2}
 .kicker{font-family:var(--rot);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
 .traco{display:block;width:64px;height:5px;background:currentColor;margin:18px 0 22px;border-radius:2px}
 .titulo{font-size:clamp(40px,6vw,76px)}
@@ -63,7 +63,8 @@ body{background-image:url("img/textura-papel.jpg");background-blend-mode:multipl
 
 /* CAPA */
 .capa{padding-block:clamp(56px,8vw,96px) 0}
-.capa .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:end}
+.capa.t-laranja::before{background-image:url("img/textura-papel.jpg");background-size:640px 640px;mix-blend-mode:screen;opacity:.12;filter:invert(1)}
+.capa .grid{display:block}.capa .grid>div{max-width:900px}
 @media (max-width:860px){.capa .grid{grid-template-columns:1fr}}
 .capa h1{font-size:clamp(50px,8.4vw,112px);font-weight:900;line-height:.88}
 .capa h1 small{display:block;font-weight:700;font-size:.38em;line-height:1.05;margin-top:.35em;letter-spacing:.01em}
@@ -93,7 +94,7 @@ body{background-image:url("img/textura-papel.jpg");background-blend-mode:multipl
 /* CONTEXTO */
 .foto{position:relative;margin:0;border-radius:14px;overflow:hidden;background:var(--tinta)}
 .foto img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.18) brightness(1.04)}
-.foto::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:url("img/textura-papel.jpg");background-size:420px;mix-blend-mode:multiply;opacity:.9}
+.foto::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:url("img/textura-papel.jpg");background-size:420px;mix-blend-mode:multiply;opacity:.45}
 .foto::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--laranja);mix-blend-mode:multiply;opacity:.32}
 .faixa-foto{position:relative;margin:0;height:clamp(300px,52vw,620px);overflow:hidden;background:var(--tinta)}
 .faixa-foto.foto{border-radius:0}
@@ -306,13 +307,6 @@ blockquote{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2
           <li><a href="#revista">A revista</a></li>
         </ol>
       </nav>
-    </div>
-    <div class="colagem" aria-hidden="true" id="colagem">
-      <img class="c-mega" src="img/megafone.webp" alt="">
-      <img class="c-masc1" src="img/capa-mascara1.webp" alt="">
-      <img class="c-mulher" src="img/capa-mulher.webp" alt="">
-      <img class="c-ser" src="img/capa-seringa.webp" alt="">
-      <img class="c-masc2" src="img/capa-mascara2.webp" alt="">
     </div>
   </div>
 </header>
