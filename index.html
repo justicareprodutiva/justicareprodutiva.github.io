@@ -825,7 +825,7 @@ footer img { height: 110px; }
   window.addEventListener('hashchange', irPara); irPara();
   var vm = document.getElementById('ver-mais'), ll = document.getElementById('lista-ler');
   vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais matérias'; });
-  var DESTINO = 'https://formsubmit.co/ajax/justicareprodutiva@gmail.com';
+  var DESTINO = 'https://formsubmit.co/ajax/justicareprodutiva@gmail.com', PLANILHA = 'https://script.google.com/macros/s/AKfycbxX6UZ3MqjmkNl86IwRS6_RbAJ7ZRD5A_VOtRS4O2mYd5cF4PMKHPFKMeelMQMtZcux/exec';
   var form = document.getElementById('form-contato'), status = document.getElementById('status'), btn = document.getElementById('btn-enviar');
   var tel = document.getElementById('tel');
   tel.addEventListener('input', function () { var d = tel.value.replace(/\D/g, '').slice(0, 11), s = d; if (d.length > 2) s = '(' + d.slice(0, 2) + ') ' + d.slice(2); if (d.length > 6) s = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4); tel.value = s; });
@@ -838,6 +838,7 @@ footer img { height: 110px; }
     var d = new FormData(form);
     var corpo = { nome: d.get('nome'), email: d.get('email'), telefone: d.get('telefone'), identidade_de_genero: d.get('genero'), autoriza_tratamento_e_noticias_lgpd: 'sim', _subject: 'Nova inscrição pelo site: ' + d.get('nome'), _replyto: d.get('email'), _template: 'table', _captcha: 'false' };
     btn.disabled = true; msg('Enviando...');
+    try { fetch(PLANILHA, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ form: 'faca_parte', documento: '', nome: corpo.nome, email: corpo.email, telefone: corpo.telefone, identidade_de_genero: corpo.identidade_de_genero, autoriza_tratamento_e_noticias_lgpd: 'sim', pagina: location.pathname }) }).catch(function () {}); } catch (x) {}
     fetch(DESTINO, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(corpo) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) { if (res.ok && String(res.j.success) === 'true') { msg('Inscrição feita. Obrigada! Você vai receber nossas novidades por e-mail.', 'ok'); form.reset(); } else { throw new Error('falha'); } })
