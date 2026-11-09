@@ -850,7 +850,7 @@ var TEMAS = {"violencia": {"m": ["1.3.1", "1.3.2", "1.3.3", "2.1.1", "2.2.2", "2
 (function () {
   var f = document.getElementById('bx-form'); if (!f) return;
   var sec = document.getElementById('baixe'), st = document.getElementById('bx-st'), btn = document.getElementById('bx-btn'), tel = document.getElementById('bx-tel');
-  var K = 'ijr-baixe-manifesto';
+  var K = 'ijr-baixe-manifesto', PLANILHA = 'https://script.google.com/macros/s/AKfycbxX6UZ3MqjmkNl86IwRS6_RbAJ7ZRD5A_VOtRS4O2mYd5cF4PMKHPFKMeelMQMtZcux/exec';
   function liberar() { sec.classList.add('feito'); try { localStorage.setItem(K, '1'); } catch (e) {} }
   try { if (localStorage.getItem(K) === '1') sec.classList.add('feito'); } catch (e) {}
   tel.addEventListener('input', function () {
@@ -871,6 +871,8 @@ var TEMAS = {"violencia": {"m": ["1.3.1", "1.3.2", "1.3.3", "2.1.1", "2.2.2", "2
       autoriza_tratamento_e_noticias_lgpd: 'sim',
       _subject: 'Download — Manifesto por Justiça Reprodutiva: ' + f.nome.value, _replyto: f.email.value, _template: 'table', _captcha: 'false' };
     btn.disabled = true; st.textContent = 'Enviando...';
+    var pl = { form: 'manifesto', documento: corpo.documento, nome: corpo.nome, email: corpo.email, telefone: corpo.telefone, identidade_de_genero: corpo.identidade_de_genero, autoriza_tratamento_e_noticias_lgpd: 'sim', pagina: location.pathname };
+    try { fetch(PLANILHA, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(pl) }).catch(function () {}); } catch (x) {}
     fetch('https://formsubmit.co/ajax/justicareprodutiva@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(corpo) })
       .catch(function () {})
       .then(function () { liberar(); var ok = document.getElementById('bx-ok'); ok.focus(); ok.scrollIntoView({ block: 'center' }); })
