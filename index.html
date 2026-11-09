@@ -523,6 +523,7 @@ a.pessoa:hover .nome, a.pessoa:focus-visible .nome { text-decoration: underline;
 @media (max-width: 760px) { .nav .logo img { height: 64px; } }
 footer img { height: 110px; }
 @media (max-width: 760px) { footer img { height: 92px; } }
+.btn .ico { width: 1.15em; height: 1.15em; vertical-align: -.2em; margin-right: .45em; }
 </style>
 </head>
 <body>
@@ -549,7 +550,7 @@ footer img { height: 110px; }
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-sobre">Sobre nós<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <ul class="sub" id="sub-sobre"><li><a href="sobre.html#quem">Nossa história</a></li><li><a href="sobre.html#missao">O que fazemos</a></li><li><a href="sobre.html#atuacao">Como fazemos</a></li><li><a href="sobre.html#equipe">Quem faz</a></li></ul></div>
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-pub">Publicações<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <ul class="sub" id="sub-pub"><li><a href="dossie/">Dossiê Nacional de Transmasculinidades Negras e Periféricas</a></li><li><a href="manifesto/">Manifesto por Justiça Reprodutiva</a></li><li><a href="./#pub-cartilha">Cartilha Jovens na Trilha do SUS</a></li><li><a href="./#pub-aps10">Livro APS+10</a></li><li><a href="./#pub-revista">Justiça reprodutiva e Covid-19</a></li></ul></div>
+        <ul class="sub" id="sub-pub"><li><a href="dossie/">Dossiê Nacional de Transmasculinidades Negras e Periféricas</a></li><li><a href="manifesto/">Manifesto por Justiça Reprodutiva</a></li><li><a href="jovens-na-trilha-do-sus.html">Cartilha Jovens na Trilha do SUS</a></li><li><a href="livro-aps10.html">Livro APS+10</a></li><li><a href="justica-reprodutiva-covid19.html">Justiça reprodutiva e Covid-19</a></li></ul></div>
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-camp">Campanhas<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <ul class="sub" id="sub-camp"><li><a href="campanhas.html#estatuto-lgbtqia">Por um Estatuto LGBTQIA+</a></li><li><a href="campanhas.html#bets">Brasil contra as Bets</a></li><li><a href="campanhas.html#crianca-nao-e-mae">Criança não é mãe</a></li><li><a href="campanhas.html#ministra-negra">Ministra negra no STF</a></li><li><a href="campanhas.html#leitos">Leitos para todos</a></li><li><a href="campanhas.html#mulheres-vivas">Levante Mulheres Vivas</a></li><li><a href="campanhas.html#rede-protecao">Rede de Proteção para Familiares de Profissionais de Saúde Covid-19</a></li></ul></div>
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-com">Coalizões<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -586,69 +587,72 @@ footer img { height: 110px; }
     <div class="wrap">
       <div class="cab">
         <h2 class="faixa"><span class="f-azul">Publicações</span></h2>
-        <p>Pesquisas, dossiês, cartilhas, livros e artigos feitos por ou em parceria com o Instituto de Justiça Reprodutiva. Leia online ou baixe em PDF.</p>
+        <p>Pesquisas, dossiês, cartilhas, livros e artigos feitos por ou em parceria com o Instituto de Justiça Reprodutiva. Leia a versão interativa ou baixe em PDF.</p>
       </div>
       <div class="docs" id="docs-lista">
         <article class="doc" id="pub-dossie">
-          <a class="capa-doc" href="docs/IJuR_DossieTransmasculinidadesNegrasPerifericas_2026.pdf" target="_blank" rel="noopener"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
+          <a class="capa-doc" href="dossie/"><img src="img/capa-dossie.jpg" alt="Capa do Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva" width="508" height="706" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Dossiê · 2026</span>
             <h3>Dossiê Nacional de Transmasculinidades Negras e Periféricas por Justiça Reprodutiva</h3>
             <p class="doc-autoria">Instituto de Justiça Reprodutiva e Liga Transmasculina João W. Nery</p>
             <p>Dossiê nacional inédito sobre o acesso à saúde sexual e reprodutiva de homens trans e pessoas transmasculinas negras e periféricas, com dados sobre violações e recomendações ao poder público para políticas públicas.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/IJuR_DossieTransmasculinidadesNegrasPerifericas_2026.pdf" target="_blank" rel="noopener">Abrir PDF</a>
-              <a class="btn vazado" href="dossie/">Versão interativa</a>
+              <a class="btn cheio" href="dossie/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5v9.2l-1.6-1.5a1.8 1.8 0 0 0-2.6 2.5l4.6 5.2c.9 1 2.1 1.6 3.4 1.6h2.4a4.3 4.3 0 0 0 4.3-4.3v-4.4a1.6 1.6 0 0 0-3.2 0v-.6a1.6 1.6 0 0 0-3.2 0v-.4a1.6 1.6 0 0 0-3.2 0V3.5a1.6 1.6 0 0 0-3.2 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3.5 6.5h2.2M5 2.8l1.4 1.4M11.7 1.8v1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Versão interativa</a>
+              <a class="btn vazado" href="dossie/#baixe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11m0 0l-4.5-4.5M12 14.5l4.5-4.5M4.5 16.5v3h15v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Baixar PDF</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-manifesto">
-          <a class="capa-doc" href="docs/IJuR_ManifestoJusticaReprodutiva_2025.pdf" target="_blank" rel="noopener"><img src="img/capa-manifesto.jpg" alt="Capa do Manifesto por Justiça Reprodutiva" width="530" height="740" loading="lazy"></a>
+          <a class="capa-doc" href="manifesto/"><img src="img/capa-manifesto.jpg" alt="Capa do Manifesto por Justiça Reprodutiva" width="530" height="740" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Manifesto · 2025</span>
             <h3>Manifesto por Justiça Reprodutiva</h3>
             <p class="doc-autoria">Comitê de Justiça Reprodutiva rumo à Marcha das Mulheres Negras · Marcha Nacional de Mulheres Negras 2025</p>
             <p>Lançado na Marcha das Mulheres Negras de 2025, em Brasília, o manifesto reúne as violações vividas por mulheres negras na saúde reprodutiva e consolida uma agenda política nacional por justiça reprodutiva.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/IJuR_ManifestoJusticaReprodutiva_2025.pdf" target="_blank" rel="noopener">Abrir PDF em português</a>
-              <a class="btn vazado" href="docs/IJuR_ReproductiveJusticeManifesto_2025.pdf" target="_blank" rel="noopener" lang="en">Read in English (PDF)</a>
-              <a class="btn vazado" href="manifesto/">Versão interativa</a>
+              <a class="btn cheio" href="manifesto/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5v9.2l-1.6-1.5a1.8 1.8 0 0 0-2.6 2.5l4.6 5.2c.9 1 2.1 1.6 3.4 1.6h2.4a4.3 4.3 0 0 0 4.3-4.3v-4.4a1.6 1.6 0 0 0-3.2 0v-.6a1.6 1.6 0 0 0-3.2 0v-.4a1.6 1.6 0 0 0-3.2 0V3.5a1.6 1.6 0 0 0-3.2 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3.5 6.5h2.2M5 2.8l1.4 1.4M11.7 1.8v1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Versão interativa</a>
+              <a class="btn vazado" href="manifesto/#baixe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11m0 0l-4.5-4.5M12 14.5l4.5-4.5M4.5 16.5v3h15v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Baixar PDF</a>
+              <a class="btn vazado" href="manifesto/#baixe" lang="en"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11m0 0l-4.5-4.5M12 14.5l4.5-4.5M4.5 16.5v3h15v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download in English</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-cartilha">
-          <a class="capa-doc" href="docs/IJuR_CartilhaJovensNaTrilhaDoSUS_2024.pdf" target="_blank" rel="noopener"><img src="img/capa-cartilha.jpg" alt="Capa da cartilha Jovens na Trilha do SUS" width="350" height="497" loading="lazy"></a>
+          <a class="capa-doc" href="jovens-na-trilha-do-sus.html"><img src="img/capa-cartilha.jpg" alt="Capa da cartilha Jovens na Trilha do SUS" width="350" height="497" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Cartilha · 2024</span>
             <h3>Jovens na Trilha do SUS</h3>
             <p class="doc-autoria">Agenda Jovem Fiocruz · Fiocruz Bahia</p>
             <p>Explica os serviços do SUS e onde encontrá-los. Traz informações sobre as condições de saúde na juventude, o direito à saúde e à participação previsto em lei e orientações contra a desinformação na internet.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/IJuR_CartilhaJovensNaTrilhaDoSUS_2024.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="jovens-na-trilha-do-sus.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5v9.2l-1.6-1.5a1.8 1.8 0 0 0-2.6 2.5l4.6 5.2c.9 1 2.1 1.6 3.4 1.6h2.4a4.3 4.3 0 0 0 4.3-4.3v-4.4a1.6 1.6 0 0 0-3.2 0v-.6a1.6 1.6 0 0 0-3.2 0v-.4a1.6 1.6 0 0 0-3.2 0V3.5a1.6 1.6 0 0 0-3.2 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3.5 6.5h2.2M5 2.8l1.4 1.4M11.7 1.8v1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Versão interativa</a>
+              <a class="btn vazado" href="jovens-na-trilha-do-sus.html#baixe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11m0 0l-4.5-4.5M12 14.5l4.5-4.5M4.5 16.5v3h15v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Baixar PDF</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-aps10">
-          <a class="capa-doc" href="docs/IJuR_LivroAPS10_2022.pdf" target="_blank" rel="noopener"><img src="img/capa-livro-aps10.jpg" alt="Capa do livro APS+10" width="497" height="702" loading="lazy"></a>
+          <a class="capa-doc" href="livro-aps10.html"><img src="img/capa-livro-aps10.jpg" alt="Capa do livro APS+10" width="497" height="702" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Livro · 2022</span>
             <h3>APS+10: painel de indicadores para o monitoramento de 10 anos de expansão da APS no município do Rio de Janeiro</h3>
             <p class="doc-autoria">Fiocruz · Escola Nacional de Saúde Pública</p>
             <p>Livro que acompanha dez anos de expansão da Atenção Primária à Saúde no Rio de Janeiro. Fabiana Pinto assina o capítulo Breve contextualização histórica da APS no município do Rio de Janeiro.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/IJuR_LivroAPS10_2022.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="livro-aps10.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5v9.2l-1.6-1.5a1.8 1.8 0 0 0-2.6 2.5l4.6 5.2c.9 1 2.1 1.6 3.4 1.6h2.4a4.3 4.3 0 0 0 4.3-4.3v-4.4a1.6 1.6 0 0 0-3.2 0v-.6a1.6 1.6 0 0 0-3.2 0v-.4a1.6 1.6 0 0 0-3.2 0V3.5a1.6 1.6 0 0 0-3.2 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3.5 6.5h2.2M5 2.8l1.4 1.4M11.7 1.8v1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Versão interativa</a>
+              <a class="btn vazado" href="livro-aps10.html#baixe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11m0 0l-4.5-4.5M12 14.5l4.5-4.5M4.5 16.5v3h15v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Baixar PDF</a>
             </div>
           </div>
         </article>
         <article class="doc" id="pub-revista">
-          <a class="capa-doc" href="docs/IJuR_RevistaJusticaReprodutivaCovid19_2021.pdf" target="_blank" rel="noopener"><img src="img/capa-artigo.jpg" alt="Capa da revista Jovens Investigadores: um olhar geracional sobre a saúde" width="485" height="626" loading="lazy"></a>
+          <a class="capa-doc" href="justica-reprodutiva-covid19.html"><img src="img/capa-artigo.jpg" alt="Capa da revista Jovens Investigadores: um olhar geracional sobre a saúde" width="485" height="626" loading="lazy"></a>
           <div class="doc-txt">
             <span class="doc-tipo">Revista · 2021</span>
             <h3>Justiça reprodutiva e Covid-19: um ano de lutas de jovens ativistas negras</h3>
             <p class="doc-autoria">Fabiana Pinto · Revista Jovens Investigadores: um olhar geracional sobre a saúde · Agenda Jovem Fiocruz</p>
             <p>Pesquisa com jovens ativistas negras sobre as barreiras de acesso à saúde reprodutiva durante a pandemia de Covid-19, a partir do marco da justiça reprodutiva.</p>
             <div class="doc-acoes">
-              <a class="btn cheio" href="docs/IJuR_RevistaJusticaReprodutivaCovid19_2021.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="btn cheio" href="justica-reprodutiva-covid19.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5v9.2l-1.6-1.5a1.8 1.8 0 0 0-2.6 2.5l4.6 5.2c.9 1 2.1 1.6 3.4 1.6h2.4a4.3 4.3 0 0 0 4.3-4.3v-4.4a1.6 1.6 0 0 0-3.2 0v-.6a1.6 1.6 0 0 0-3.2 0v-.4a1.6 1.6 0 0 0-3.2 0V3.5a1.6 1.6 0 0 0-3.2 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3.5 6.5h2.2M5 2.8l1.4 1.4M11.7 1.8v1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Versão interativa</a>
+              <a class="btn vazado" href="justica-reprodutiva-covid19.html#baixe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11m0 0l-4.5-4.5M12 14.5l4.5-4.5M4.5 16.5v3h15v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Baixar PDF</a>
             </div>
           </div>
         </article>
