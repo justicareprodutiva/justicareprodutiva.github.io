@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>APS+10: breve história da APS no Rio de Janeiro · Instituto de Justiça Reprodutiva</title>
+<meta name="description" content="Versão interativa do prólogo do livro APS+10 (Fiocruz, 2022): a história da Atenção Primária à Saúde no município do Rio de Janeiro, de 1900 a 2020.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=Source+Sans+3:wght@400;500;600;700&family=Special+Elite&display=swap">
+<style>
+/* Layout: um arquivo histórico aberto. Papel envelhecido com grão, fotos de acervo com cantoneiras, fichas datilografadas e a curva azul do livro APS+10 atravessando o tempo */
+:root{
+  --papel:#F2EADB; --papel-2:#E9DDC7; --tinta:#1D1A16; --suave:#5E5446; --sepia:#8A6A44;
+  --azul:#1E8FD6; --azul-esc:#135E92; --carimbo:#A8382B; --branco:#FFFBF3; --linha:#D6C7AD;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --maq:'Special Elite','Courier New',monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--body);font-size:17.5px;line-height:1.62}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+p{margin:0}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.wrap{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.tela{position:relative;overflow:hidden;padding-block:clamp(64px,9vw,108px)}
+.tela::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:url("img/textura-papel.jpg");background-size:640px;mix-blend-mode:multiply;opacity:.35}
+.t-papel{background:var(--papel)}
+.t-papel2{background:var(--papel-2)}
+.t-tinta{background:var(--tinta);color:var(--papel)}
+.t-tinta::before{opacity:.12;mix-blend-mode:screen;filter:invert(1)}
+.t-azul{background:var(--azul-esc);color:var(--branco)}
+.t-azul::before{opacity:.25}
+.ficha{font-family:var(--maq);font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.titulo{font-size:clamp(38px,5.6vw,70px)}
+.lead{font-size:clamp(18px,1.7vw,21px);max-width:60ch}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:860px){.duas{grid-template-columns:1fr}}
+.src{font-size:13px;color:var(--suave);margin-top:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:4px;padding:12px 20px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid var(--tinta);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--tinta)}
+.btn.cheio{background:var(--tinta);color:var(--papel)}
+.btn.cheio:hover{box-shadow:4px 4px 0 var(--azul)}
+.botoes{display:flex;flex-wrap:wrap;gap:12px}
+
+/* voltar */
+.voltar-ijr{position:relative;z-index:20;background:#1F2AD8;color:#F8F8F5;font:600 .82rem "Source Sans 3",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.voltar-ijr .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px 20px;flex-wrap:wrap;padding-block:10px}
+.voltar-ijr a{color:inherit;text-decoration:none}
+@media (max-width:520px){.voltar-ijr a + a{display:none}}
+
+/* foto de acervo */
+.acervo{position:relative;margin:0;background:var(--branco);padding:12px 12px 14px;box-shadow:0 1px 0 var(--linha),0 14px 30px -18px rgba(29,26,22,.6)}
+.acervo .img{position:relative;overflow:hidden;background:#cfc3ad}
+.acervo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) sepia(.35) contrast(1.08) brightness(.98)}
+.acervo .img::after{content:"";position:absolute;inset:0;background:url("img/textura-papel.jpg");background-size:420px;mix-blend-mode:multiply;opacity:.55;pointer-events:none}
+.acervo figcaption{font-family:var(--maq);font-size:12.5px;line-height:1.4;color:var(--suave);margin-top:10px}
+.acervo figcaption b{color:var(--tinta);font-weight:400}
+.acervo::before,.acervo::after{content:"";position:absolute;width:26px;height:26px;background:var(--tinta);opacity:.82;clip-path:polygon(0 0,100% 0,0 100%)}
+.acervo::before{left:4px;top:4px}
+.acervo::after{right:4px;bottom:4px;transform:rotate(180deg)}
+.acervo.cor img{filter:sepia(.25) contrast(1.05) saturate(.75)}
+
+/* CAPA */
+.capa{padding-block:clamp(56px,8vw,96px) clamp(48px,7vw,88px)}
+.capa .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+@media (max-width:900px){.capa .grid{grid-template-columns:1fr}}
+.capa h1{font-size:clamp(46px,7.2vw,96px);font-weight:900}
+.capa h1 em{font-style:normal;color:var(--azul)}
+.capa .sub{font-family:var(--display);font-weight:600;font-size:clamp(20px,2.2vw,28px);margin-top:16px;max-width:30ch}
+.autoria{margin-top:22px;display:grid;gap:4px}
+.autoria b{font-weight:700}
+.carimbo{display:inline-block;margin-top:22px;font-family:var(--maq);color:var(--carimbo);border:2px solid var(--carimbo);padding:6px 12px;transform:rotate(-3deg);font-size:14px;letter-spacing:.06em;opacity:.9}
+.indice{margin-top:30px}
+.indice ol{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.indice a{display:inline-block;border:1.5px solid var(--tinta);border-radius:3px;padding:6px 12px;text-decoration:none;font-weight:600;font-size:14px;background:var(--branco)}
+.indice a:hover{background:var(--tinta);color:var(--papel)}
+.mural{position:relative;aspect-ratio:1/1.06;width:100%;max-width:520px;justify-self:end}
+.mural .acervo{position:absolute}
+.mural .m1{width:58%;left:0;top:4%;transform:rotate(-4deg)}
+.mural .m1 .img{aspect-ratio:3/4}
+.mural .m2{width:62%;right:0;bottom:2%;transform:rotate(3deg)}
+.mural .m2 .img{aspect-ratio:4/3}
+.curva{position:absolute;inset:auto -10% -8% -10%;width:120%;height:auto;z-index:3;pointer-events:none}
+.curva path{stroke-dasharray:1400;stroke-dashoffset:0;animation:desenha 3.2s ease-out both}
+@keyframes desenha{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (max-width:900px){.mural{justify-self:center;max-width:420px}}
+
+/* números */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--tinta);border-bottom:2px solid var(--tinta);margin-top:8px}
+.nums div{padding:22px 18px;border-right:1px dashed var(--sepia)}
+.nums div:last-child{border-right:none}
+.nums b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(38px,4.6vw,58px);line-height:1;color:var(--azul-esc);font-variant-numeric:tabular-nums}
+.nums span{font-size:15px}
+@media (max-width:760px){.nums{grid-template-columns:1fr 1fr}.nums div:nth-child(2){border-right:none}.nums div{border-bottom:1px dashed var(--sepia)}}
+
+/* LINHA DO TEMPO */
+.eras{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 22px}
+.era{border:2px solid var(--tinta);background:var(--branco);border-radius:3px;padding:8px 14px;font-weight:700;font-size:14.5px}
+.era[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.trilho{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,48px);align-items:start}
+@media (max-width:900px){.trilho{grid-template-columns:1fr}}
+.anos{position:relative;display:grid;gap:4px;max-height:640px;overflow:auto;padding-right:6px;scrollbar-width:thin}
+.anos::before{content:"";position:absolute;left:58px;top:0;bottom:0;width:2px;background:var(--sepia);opacity:.5}
+.ano{display:grid;grid-template-columns:52px 14px 1fr;gap:10px;align-items:center;background:none;border:none;text-align:left;padding:8px 6px;border-radius:4px;transition:background .15s}
+.ano:hover{background:rgba(255,251,243,.7)}
+.ano .y{font-family:var(--maq);font-size:15px;text-align:right}
+.ano .p{width:14px;height:14px;border-radius:50%;background:var(--papel);border:2px solid var(--tinta);position:relative;z-index:1}
+.ano .t{font-weight:600;font-size:15.5px;line-height:1.3}
+.ano[aria-pressed="true"]{background:var(--branco)}
+.ano[aria-pressed="true"] .p{background:var(--azul);border-color:var(--azul);box-shadow:0 0 0 4px rgba(30,143,214,.25)}
+.ano[hidden]{display:none}
+.evento{position:sticky;top:max(18px,env(safe-area-inset-top,0px));background:var(--branco);padding:clamp(20px,3vw,32px);box-shadow:0 18px 40px -26px rgba(29,26,22,.7);border-top:6px solid var(--azul);min-height:420px;display:grid;gap:14px;align-content:start}
+.evento .ey{font-family:var(--display);font-weight:900;font-size:clamp(56px,7vw,92px);line-height:.85;color:var(--azul-esc)}
+.evento h3{font-size:clamp(24px,2.6vw,32px)}
+.evento .acervo{box-shadow:none;padding:0;background:none}
+.evento .acervo::before,.evento .acervo::after{display:none}
+.evento .acervo .img{aspect-ratio:16/10}
+.evento .nav{display:flex;justify-content:space-between;gap:10px;margin-top:4px}
+.evento .nav button{border:2px solid var(--tinta);background:var(--papel);border-radius:3px;padding:8px 14px;font-weight:700;font-size:14px}
+.tag{display:inline-block;font-family:var(--maq);font-size:12.5px;color:var(--carimbo);border:1.5px solid var(--carimbo);padding:2px 8px;transform:rotate(-1.5deg);justify-self:start}
+
+/* ANTES E HOJE */
+.cartas{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:26px}
+.carta{perspective:900px;border:none;background:none;padding:0;height:170px;text-align:left}
+.carta .in{display:block;position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.carta[aria-pressed="true"] .in{transform:rotateY(180deg)}
+.carta .f,.carta .v{position:absolute;inset:0;backface-visibility:hidden;padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+.carta .f{background:var(--branco);border:1.5px solid var(--linha);box-shadow:0 10px 20px -16px rgba(29,26,22,.6)}
+.carta .v{background:var(--azul-esc);color:var(--branco);transform:rotateY(180deg)}
+.carta .k{font-family:var(--maq);font-size:12.5px;color:var(--suave)}
+.carta .v .k{color:rgba(255,255,255,.8)}
+.carta b{font-family:var(--display);font-weight:800;font-size:21px;line-height:1.1}
+.placar{display:flex;align-items:center;gap:14px;margin-top:14px;font-weight:600}
+.placar b{font-family:var(--display);font-size:30px;color:var(--azul-esc)}
+
+/* MODELOS */
+.balanca{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media (max-width:700px){.balanca{grid-template-columns:1fr}}
+.prato{background:var(--branco);color:var(--tinta);padding:24px;border-top:6px solid var(--azul);display:grid;gap:10px;align-content:start}
+.prato.prev{border-color:var(--carimbo)}
+.prato h3{font-size:28px}
+.prato ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* GOBI */
+.gobi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+@media (max-width:760px){.gobi{grid-template-columns:1fr 1fr}}
+.letra{background:var(--branco);border:none;padding:18px;text-align:left;display:grid;gap:6px;min-height:170px;align-content:start;border-bottom:5px solid var(--azul);transition:transform .2s}
+.letra:hover{transform:translateY(-3px)}
+.letra .L{font-family:var(--display);font-weight:900;font-size:64px;line-height:.9;color:var(--azul-esc)}
+.letra .en{font-family:var(--maq);font-size:13px;color:var(--suave)}
+.letra .pt{font-weight:700;font-size:16.5px}
+.letra .d{display:none;font-size:14.5px}
+.letra[aria-expanded="true"] .d{display:block}
+
+/* BAIRROS */
+.bairros{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.bairros span{font-family:var(--maq);font-size:13px;background:var(--branco);border:1px solid var(--linha);padding:4px 9px;border-radius:2px;transition:background .2s,color .2s}
+.bairros span.on{background:var(--azul);color:var(--branco);border-color:var(--azul)}
+.contador{font-family:var(--display);font-weight:900;font-size:clamp(70px,9vw,120px);line-height:.85;color:var(--azul-esc)}
+
+/* COBERTURA */
+.cobertura{background:var(--branco);padding:clamp(20px,3vw,32px);margin-top:24px}
+.cb{display:grid;grid-template-columns:minmax(150px,240px) 1fr;gap:12px;align-items:center;margin-bottom:12px;font-size:15px}
+.cb .tr{position:relative;height:38px;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--linha) calc(10% - 1px) 10%)}
+.cb .f{position:absolute;left:0;top:0;bottom:0;background:var(--azul);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.cb .f.meta{background:transparent;border:2.5px dashed var(--azul-esc)}
+.cb .f.est{background:var(--carimbo)}
+.cb .v{position:absolute;top:50%;transform:translateY(-50%);padding-left:8px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.eixo{display:grid;grid-template-columns:minmax(150px,240px) 1fr;gap:12px;font-size:12.5px;color:var(--suave)}
+.eixo div{display:flex;justify-content:space-between}
+
+/* citações */
+blockquote{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(22px,2.5vw,30px);line-height:1.3}
+blockquote::before{content:"“";display:block;font-size:90px;line-height:.6;color:var(--azul);height:40px}
+.cit-a{font-size:14.5px;margin-top:14px;font-family:var(--maq)}
+.alerta{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--branco);color:var(--tinta);padding:22px;border-left:8px solid var(--carimbo);margin-top:22px}
+.alerta b.n{font-family:var(--display);font-weight:900;font-size:64px;line-height:1;color:var(--carimbo)}
+
+/* créditos */
+.fim .cred{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;font-size:14.5px;margin-top:30px}
+@media (max-width:860px){.fim .cred{grid-template-columns:1fr}}
+.fim .r{display:block;font-family:var(--maq);text-transform:uppercase;color:var(--azul);margin-bottom:6px;font-size:13px;letter-spacing:.06em}
+.imgcred{margin-top:30px;font-size:13px;opacity:.85;display:grid;gap:4px}
+.imgcred a{color:inherit}
+.credito-interativo{margin-top:36px;padding-top:18px;border-top:1px solid rgba(242,234,219,.25);font-weight:700}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+.bx { background: #1F2AD8; color: #F8F8F5; position: relative; z-index: 1; }
+.bx .bx-in { max-width: 860px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) max(20px, env(safe-area-inset-left, 0px)); }
+.bx h2 { font-family: var(--display, "Anton", Impact, sans-serif); font-weight: 400; text-transform: uppercase; line-height: 1; font-size: clamp(2.2rem, 6vw, 3.8rem); margin: 0; text-align: center; text-wrap: balance; }
+.bx .bx-sub { text-align: center; font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 500; margin: 14px 0 34px; }
+.bx form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 22px; }
+.bx .bx-c { display: grid; gap: 7px; min-width: 0; }
+.bx .bx-c.l { grid-column: 1 / -1; }
+@media (max-width: 620px) { .bx form { grid-template-columns: 1fr; } }
+.bx label.t { font-weight: 800; font-size: .95rem; }
+.bx input[type=text], .bx input[type=email], .bx input[type=tel], .bx select { font: inherit; font-size: 1rem; width: 100%; padding: 14px 14px; border: 0; border-bottom: 3px solid #E97AB2; background: #FFFFFF; color: #1D1D1D; border-radius: 0; appearance: none; -webkit-appearance: none; }
+.bx select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23333' stroke-width='2'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+.bx input:focus, .bx select:focus { outline: 3px solid #E97AB2; outline-offset: 2px; }
+.bx .bx-ck { grid-column: 1 / -1; display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; font-size: .95rem; line-height: 1.45; cursor: pointer; }
+.bx .bx-ck input { width: 26px; height: 26px; margin: 0; accent-color: #E97AB2; cursor: pointer; }
+.bx .bx-ck a { color: inherit; }
+.bx button[type=submit] { grid-column: 1 / -1; font: inherit; font-weight: 800; font-size: 1.05rem; padding: 17px; border: 0; background: #E97AB2; color: #14185E; cursor: pointer; text-transform: uppercase; letter-spacing: .06em; }
+.bx button[type=submit]:disabled { opacity: .6; cursor: wait; }
+.bx .bx-st { grid-column: 1 / -1; min-height: 1.4em; font-weight: 700; margin: 0; }
+.bx .bx-ok { display: none; text-align: center; }
+.bx .bx-ok p { font-size: 1.1rem; font-weight: 600; margin: 0 0 20px; }
+.bx .bx-ok .bx-pdfs { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.bx .bx-pdf { display: inline-block; font-weight: 800; padding: 15px 26px; background: #E97AB2; color: #14185E; text-decoration: none; }
+.bx.feito form { display: none; } .bx.feito .bx-ok { display: block; }
+.bx .bx-nota { font-size: .8rem; opacity: .85; margin-top: 22px; line-height: 1.45; }
+.bx .bx-hp { position: absolute; left: -9999px; }
+.bx{z-index:3}
+</style>
+</head>
+<body>
+<div class="voltar-ijr"><div class="wrap"><a href="../">← Instituto de Justiça Reprodutiva</a><a href="../#publicacoes">Publicações</a></div></div>
+
+<header class="tela t-papel capa">
+  <div class="wrap grid">
+    <div>
+      <p class="ficha">Livro APS+10 · Fiocruz / ENSP · 2022 · Prólogo</p>
+      <h1 style="margin-top:16px">Breve história da <em>atenção primária</em> no Rio</h1>
+      <p class="sub">Dos primeiros serviços públicos de 1900 às Clínicas da Família: 120 anos de disputas pelo cuidado na cidade.</p>
+      <p class="autoria">Por Fabiana Pinto, Laís Pimenta Ribeiro dos Santos e Raphael Mendonça Guimarães</p>
+      <div class="botoes" style="margin-top:26px">
+        <a class="btn cheio" href="#baixe">Baixe o livro APS+10 (PDF)</a>
+        <a class="btn" href="#linha">Percorrer a linha do tempo ↓</a>
+      </div>
+      <nav class="indice" aria-label="Navegue pelo capítulo">
+        <span class="ficha">Navegue pelo capítulo</span>
+        <ol>
+          <li><a href="#linha">Linha do tempo</a></li>
+          <li><a href="#hospitais">Como se chamava?</a></li>
+          <li><a href="#modelos">Dois modelos</a></li>
+          <li><a href="#alma-ata">Alma-Ata</a></li>
+          <li><a href="#anos80">Anos 1980</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#hoje">Retrocessos</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="mural" aria-hidden="true">
+      <figure class="acervo m1"><div class="img"><img style="transform:scale(2.3);transform-origin:50% 30%" src="img/retrato-de-oswaldo-cruz-casa-de-oswaldo-cruz-br-rj.jpg" alt=""></div><figcaption><b>Oswaldo Cruz</b>, c. 1910–1919</figcaption></figure>
+      <figure class="acervo m2"><div class="img"><img src="img/pavilh-o-mourisco-casa-de-oswaldo-cruz-dl-fc-st-26.jpg" alt=""></div><figcaption><b>Pavilhão Mourisco</b>, Manguinhos</figcaption></figure>
+      <svg class="curva" viewBox="0 0 600 220" aria-hidden="true"><path d="M10 210 C120 205 180 30 300 22 C420 30 480 205 590 210" fill="none" stroke="#1E8FD6" stroke-width="9" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="tela t-papel2" aria-label="O capítulo em números">
+  <div class="wrap">
+    <p class="lead">O capítulo resgata a história da Atenção Primária à Saúde (APS) no município do Rio de Janeiro para mostrar que <b>indicadores de saúde só fazem sentido quando lidos dentro da história de cada lugar</b>. E que a expansão das Clínicas da Família, a partir de 2009, não começou do zero.</p>
+    <div class="nums" style="margin-top:30px">
+      <div><b>1907</b><span>primeiro pronto-socorro municipal, hoje Hospital Souza Aguiar</span></div>
+      <div><b>1927</b><span>primeiro Centro de Saúde da cidade, em Inhaúma</span></div>
+      <div><b>1978</b><span>Alma-Ata define a Atenção Primária à Saúde</span></div>
+      <div><b>7%</b><span>de cobertura da Saúde da Família no Rio em 2008</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela t-papel" id="linha">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><p class="ficha" style="color:var(--carimbo)">Arquivo · 1900–2020</p><h2 class="titulo" style="margin-top:10px">Linha do tempo da APS carioca</h2></div>
+      <p class="lead">Escolha um período e toque nos anos. Cada ficha traz o que o capítulo conta e, quando existe, uma imagem de acervo da época.</p>
+    </div>
+    <div class="eras" role="group" aria-label="Período" id="eras"></div>
+    <div class="trilho">
+      <div class="anos" id="anos"></div>
+      <article class="evento" id="evento" aria-live="polite"></article>
+    </div>
+  </div>
+</section>
+
+<section class="tela t-papel2" id="hospitais">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><p class="ficha" style="color:var(--carimbo)">Jogo da memória da cidade</p><h2 class="titulo" style="margin-top:10px">Como se chamava?</h2></div>
+      <p class="lead">Entre 1907 e os anos 1930, o Rio ganhou uma ampla rede de hospitais. Muitos mudaram de nome. Tente lembrar e vire a ficha para ver o nome de hoje.</p>
+    </div>
+    <div class="cartas" id="cartas"></div>
+    <div class="placar" aria-live="polite"><span>Fichas viradas:</span><b id="viradas">0</b><span>de <span id="total"></span></span></div>
+    <p class="src">Fonte: Fernandes, Santos e Guimarães (2022), a partir de Sanglard (2008), Vieira (1982) e Campos (2006).</p>
+  </div>
+</section>
+
+<section class="tela t-tinta" id="modelos">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><p class="ficha" style="color:var(--azul)">Anos 1930–1960</p><h2 class="titulo" style="margin-top:10px">Dois modelos em disputa</h2></div>
+      <p class="lead">Na era Vargas, o país dividiu a saúde: a saúde pública ficou com o Ministério da Educação e Saúde, e a assistência médica dos trabalhadores formais, com a Previdência. O legado no Rio foi uma grande rede de hospitais e poucos Centros Municipais de Saúde.</p>
+    </div>
+    <div class="balanca">
+      <div class="prato"><span class="tag">Saúde pública</span><h3>Educação sanitária e prevenção</h3><ul><li>Centros de Saúde por distrito sanitário</li><li>Foco em tuberculose e saúde materno-infantil</li><li>Enfermeiras visitadoras formadas na Escola Anna Nery</li><li>Para a população mais pobre</li></ul></div>
+      <div class="prato prev"><span class="tag">Medicina previdenciária</span><h3>Hospitais e ambulatórios dos IAPs</h3><ul><li>Institutos de Aposentadoria e Pensões por categoria</li><li>Hospitais dos bancários, comerciários, marítimos</li><li>Cuidado individual, fragmentado e especializado</li><li>Só para quem tinha carteira assinada</li></ul></div>
+    </div>
+    <figure class="acervo" style="margin-top:28px;max-width:520px;transform:rotate(-1.5deg)"><div class="img" style="aspect-ratio:3/4;max-height:520px"><img src="img/1920px-posse-do-prefeito-pedro-ernesto.jpg" alt="Página da revista A Noite Ilustrada de 1935 com a posse do prefeito Pedro Ernesto." loading="lazy" style="object-position:50% 20%"></div><figcaption><b>Posse de Pedro Ernesto</b> como prefeito do Distrito Federal, 1935. Na sua gestão foram criados hospitais como o Miguel Couto, o Getúlio Vargas e o Pedro Ernesto. A Noite Ilustrada, domínio público.</figcaption></figure>
+  </div>
+</section>
+
+<section class="tela t-papel" id="alma-ata">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><p class="ficha" style="color:var(--carimbo)">Alma-Ata, URSS · 1978</p><h2 class="titulo" style="margin-top:10px">“Saúde para Todos no ano 2000”</h2></div>
+      <p class="lead">A Conferência Internacional sobre Cuidados Primários de Saúde apresentou, pela primeira vez, o conceito de Atenção Primária à Saúde: integral, contra o cuidado centrado no hospital. Pouco depois, agências internacionais responderam com uma versão “seletiva”, um pacote de quatro itens. Toque nas letras.</p>
+    </div>
+    <div class="gobi" id="gobi"></div>
+    <p class="src">Fonte: capítulo, a partir de Pires-Alves (2010). A APS seletiva foi formulada por Fundação Rockefeller, Banco Mundial, Unicef e USAID.</p>
+  </div>
+</section>
+
+<section class="tela t-papel2" id="anos80">
+  <div class="wrap duas">
+    <div>
+      <p class="ficha" style="color:var(--carimbo)">1980–1988</p>
+      <h2 class="titulo" style="margin-top:10px">A atenção básica chega aos bairros</h2>
+      <p class="lead" style="margin-top:16px">Inspirada em Alma-Ata, a Secretaria Municipal lançou em 1980 o Plano de Ação Integrada. Surgiram as UACPS e UMAMPS e, a partir de 1986, uma rede de <b>27 Postos de Saúde</b>, concentrada na Zona Oeste. Escolha um grupo para acender os bairros.</p>
+      <div class="eras" role="group" aria-label="Grupo de unidades" id="grupos" style="margin-top:20px"></div>
+      <div class="contador" id="contador" aria-live="polite">18</div>
+      <p id="contador-t" style="font-weight:600"></p>
+    </div>
+    <div><div class="bairros" id="bairros"></div><p class="src">Fonte: capítulo, a partir de Campos, Cohn e Brandão (2016).</p></div>
+  </div>
+</section>
+
+<section class="tela t-azul" id="sus">
+  <div class="wrap duas" style="align-items:center">
+    <div>
+      <p class="ficha" style="color:#BFE3FA">1986–1995</p>
+      <h2 class="titulo" style="margin-top:10px">Da 8ª Conferência ao Saúde da Família</h2>
+      <p class="lead" style="margin-top:16px">A 8ª Conferência Nacional de Saúde (1986) consagrou um sistema que leva em conta as condições de vida. Vieram o SUS (Lei 8.080/1990), o Programa de Agentes Comunitários de Saúde (1991) e o Programa Saúde da Família (1994). No Rio, a primeira equipe de Saúde da Família foi experimental, na <b>Ilha de Paquetá</b>.</p>
+    </div>
+    <figure class="acervo" style="transform:rotate(1.5deg);max-width:400px;justify-self:center"><div class="img" style="aspect-ratio:3/4"><img src="img/sergio-arouca-8-conferencia-1986.jpg" alt="Sergio Arouca, de barba e óculos, diante do cartaz da 8ª Conferência Nacional de Saúde, março de 1986." loading="lazy" style="object-position:50% 30%"></div><figcaption><b>Sergio Arouca</b> na 8ª Conferência Nacional de Saúde, Brasília, março de 1986.</figcaption></figure>
+  </div>
+</section>
+
+<section class="tela t-papel" id="cobertura">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><p class="ficha" style="color:var(--carimbo)">2001–2008</p><h2 class="titulo" style="margin-top:10px">O plano de Arouca e a realidade</h2></div>
+      <p class="lead">Em 2001, como secretário municipal por pouco mais de seis meses, Sergio Arouca propôs expandir a Saúde da Família até cobrir 60% do território. O plano parou com sua saída. Sete anos depois, a cobertura era mínima.</p>
+    </div>
+    <div class="cobertura" role="img" aria-label="Cobertura da Saúde da Família no Rio: meta de 60% proposta por Arouca em 2001; 7,2% em 2008 segundo o Departamento de Atenção Básica; 3,5% segundo outros estudos.">
+      <div class="cb"><span>Meta de Arouca (2001)</span><div class="tr"><div class="f meta" data-w="60"></div><span class="v" data-l="60">60%</span></div></div>
+      <div class="cb"><span>Cobertura em 2008 (DAB)</span><div class="tr"><div class="f" data-w="7.2"></div><span class="v" data-l="7.2">7,2%</span></div></div>
+      <div class="cb"><span>Cobertura em 2008 (outros estudos)</span><div class="tr"><div class="f est" data-w="3.5"></div><span class="v" data-l="3.5">3,5%</span></div></div>
+      <div class="eixo"><span></span><div><span>0%</span><span>20%</span><span>40%</span><span>60%</span><span>80%</span><span>100%</span></div></div>
+    </div>
+    <p class="src">Fontes: capítulo, a partir de Lima (2014), OPAS (2013), Howe et al. (2016) e Soranz et al. (2016).</p>
+    <div class="duas" style="margin-top:44px;align-items:center">
+      <div>
+        <blockquote>Tinha um planejamento do Arouca muito forte para a expansão do Saúde da Família no Rio de Janeiro, com a base territorial forte, que nada mais é o que a gente fez em 2009.</blockquote>
+        <p class="cit-a">Daniel Soranz, Seminário Testemunho sobre a História da APS no Estado do Rio de Janeiro (2019)</p>
+      </div>
+      <figure class="acervo cor" style="transform:rotate(-1deg)"><div class="img" style="aspect-ratio:4/3"><img src="img/1920px-inaugura-o-da-cl-nica-da-fam-lia-arthur-bis.jpg" alt="Fachada de Clínica da Família no Rio de Janeiro no dia da inauguração." loading="lazy"></div><figcaption><b>Inauguração da Clínica da Família Arthur Bispo do Rosário</b>, Rio de Janeiro. Foto: Sam34iwy, CC0.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="tela t-tinta" id="hoje">
+  <div class="wrap duas" style="align-items:center">
+    <div>
+      <p class="ficha" style="color:var(--azul)">2009–2020</p>
+      <h2 class="titulo" style="margin-top:10px">Expansão, desmonte e pandemia</h2>
+      <p class="lead" style="margin-top:16px">A partir de 2009, a cidade apostou na Estratégia Saúde da Família, com Clínicas da Família e a Carteira de Serviços (2011). Entre 2017 e 2020 vieram precarização, atrasos salariais, demissões e fechamento de unidades. A população mais vulnerável chegou à pandemia de Covid-19 com a rede desorganizada.</p>
+      <div class="alerta"><b class="n">11</b><p><b>Clínicas da Família fechadas na Zona Oeste</b> em 2017, região de maioria negra e que mais sofre com a falta de profissionais.</p></div>
+    </div>
+    <figure class="acervo cor" style="transform:rotate(1.5deg);max-width:420px;justify-self:center"><div class="img" style="aspect-ratio:3/4"><img src="img/1280px-horta-da-cl-nica-da-fam-lia-augusto-boal-na.jpg" alt="Cuidadora da horta da Clínica da Família Augusto Boal, na Maré." loading="lazy"></div><figcaption><b>Horta da Clínica da Família Augusto Boal</b>, Maré, 2025. Foto: Polinhobr, CC BY-SA 4.0.</figcaption></figure>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <blockquote style="max-width:52ch">Podemos observar ao longo desse panorama histórico […] a importância, a força e a necessidade que a rede de APS tem no pensar e fazer saúde da população, principalmente para os mais vulneráveis.</blockquote>
+    <p class="cit-a" style="color:var(--azul)">Fernandes, Santos e Guimarães, APS+10 (2022)</p>
+  </div>
+</section>
+
+<section class="bx" id="baixe" aria-labelledby="bx-t">
+  <div class="bx-in">
+    <h2 id="bx-t">Baixe o livro APS+10</h2>
+    <p class="bx-sub">Preencha os dados abaixo para baixar o PDF</p>
+    <form id="bx-form" novalidate>
+      <div class="bx-c l"><label class="t" for="bx-nome">Nome *</label><input id="bx-nome" name="nome" type="text" autocomplete="name" required></div>
+      <div class="bx-c"><label class="t" for="bx-email">E-mail *</label><input id="bx-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="bx-c"><label class="t" for="bx-tel">Telefone (com DDD) *</label><input id="bx-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 99999-9999" required></div>
+      <div class="bx-c l"><label class="t" for="bx-gen">Identidade de gênero *</label><select id="bx-gen" name="genero" required><option value="">Selecione</option><option>Mulher cis</option><option>Mulher trans</option><option>Homem cis</option><option>Homem trans</option><option>Travesti</option><option>Pessoa não binária</option><option>Prefiro não responder</option></select></div>
+      <input class="bx-hp" type="text" name="_honey" id="bx-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="bx-ck"><input type="checkbox" id="bx-lgpd" required><span>Autorizo o tratamento dos meus dados pessoais pelo Instituto de Justiça Reprodutiva para viabilizar o acesso e o envio do Livro APS+10 e a adição à sua base de dados para o recebimento de e-mails com notícias, publicações e campanhas, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018). *</span></label>
+      <button type="submit" id="bx-btn">Enviar e baixar</button>
+      <p class="bx-st" id="bx-st" role="status" aria-live="polite"></p>
+    </form>
+    <div class="bx-ok" id="bx-ok" tabindex="-1">
+      <p>Obrigada! Seu download está liberado.</p>
+      <div class="bx-pdfs"><a class="bx-pdf" href="../docs/IJuR_LivroAPS10_2022.pdf" target="_blank" rel="noopener" download>Baixe o PDF ↓</a></div>
+    </div>
+    <p class="bx-nota">Seus dados são usados só pelo Instituto de Justiça Reprodutiva e não são compartilhados. Para corrigir ou apagar seus dados, ou cancelar o recebimento de e-mails, escreva para <a href="mailto:justicareprodutiva@gmail.com">justicareprodutiva@gmail.com</a>.</p>
+  </div>
+</section>
+
+<footer class="tela t-papel2 fim">
+  <div class="wrap">
+    <h2 class="titulo" style="font-size:clamp(32px,4.6vw,54px)">A luta para manter a APS faz-se cada dia mais necessária</h2>
+    <div class="botoes" style="margin-top:22px"><a class="btn cheio" href="#baixe">Baixe o livro APS+10 (PDF)</a></div>
+    <div class="cred">
+      <div><span class="r">Capítulo</span><p><b>Prólogo: Breve contextualização histórica da APS no município do Rio de Janeiro.</b> Fabiana Pinto, Laís Pimenta Ribeiro dos Santos e Raphael Mendonça Guimarães.</p></div>
+      <div><span class="r">Livro</span><p><b>APS+10: painel de indicadores para o monitoramento de 10 anos de expansão da APS no município do Rio de Janeiro.</b> Org. Raphael Mendonça Guimarães, Fernanda do Nascimento Martins, Tatiana Araujo Eleuterio, Bianca Borges da Silva Leandro e Viviane Gomes Parreira Dutra. Rio de Janeiro: Fiocruz/ENSP, 2022. ISBN 978-65-5899-317-9. Licença CC BY-NC-SA 4.0.</p></div>
+      <div><span class="r">Realização</span><p>Fundação Oswaldo Cruz · Escola Nacional de Saúde Pública · Programa de Pós-Graduação em Saúde Pública e Meio Ambiente.</p></div>
+    </div>
+    <div class="imgcred" id="imgcred"><span class="r">Imagens</span></div>
+    <p class="credito-interativo" style="border-color:var(--linha)">Versão interativa desenvolvida pelo Instituto de Justiça Reprodutiva (2026)</p>
+  </div>
+</footer>
+</main>
+
+<script>
+(function(){
+const IMG={
+ penha:{u:'img/posto-penha.jpg',c:'Primeiro Posto de Saúde da Penha, Rio de Janeiro.',p:''},
+ gripe:{u:'img/enfermaria-gripe-1918.jpg',c:'Enfermaria durante a epidemia de gripe espanhola, 1918.',p:''},
+ gaffree:{u:'img/gaffree-guinle-fachada.jpg',c:'Perspectiva da fachada principal do Hospital Gaffrée e Guinle, com arquitetura neocolonial. Álbum do Hospital Gaffrée e Guinle, [Rio de Janeiro, entre 1924-1929]. Acervo da família Paula Machado.',p:''},
+ vargas:{u:'img/inauguracao-era-vargas.jpg',c:'Inauguração de serviço público na Era Vargas.',p:''},
+ souza:{u:'img/souza-aguiar-guanabara.jpg',c:'Inauguração do Serviço de Anatomia Patológica do Hospital Estadual Souza Aguiar, no período do Estado da Guanabara.',p:''},
+ almaata:{u:'img/alma-ata-1978.jpg',c:'Plenária da Conferência Internacional sobre Cuidados Primários de Saúde, Alma-Ata, 1978.',p:''},
+ vacina70:{u:'img/vacinacao-anos-1970.jpg',c:'Vacinação com pistola injetora, anos 1970.',p:''},
+ movimento:{u:'img/movimento-saude.jpg',c:'Ato do movimento pela saúde no Rio de Janeiro, anos 1980.',p:''},
+ constituinte:{u:'img/constituinte-1988.jpg',c:'Plenário da Assembleia Nacional Constituinte, 1987–1988.',p:''},
+ psf:{u:'img/programa-saude-familia.jpg',c:'Material de divulgação do Programa Saúde da Família, Ministério da Saúde.',p:''},
+ acs:{u:'img/agente-comunitario.jpg',c:'Agente comunitária de saúde em visita domiciliar no Rio de Janeiro.',p:''},
+ saudepresente:{u:'img/saude-presente.jpg',c:'Unidade com a marca do programa Saúde Presente, Rio de Janeiro.',p:''},
+ expurgo:{u:'img/expurgo-de-profilaxia-contra-febre-amarela-1910.jpg',c:'Construção expurgada na profilaxia contra a febre amarela, Rio de Janeiro, 1910. Fundo Instituto Oswaldo Cruz, domínio público.',p:'File:Expurgo_de_profilaxia_contra_Febre_Amarela_1910.jpg'},
+ chagas:{u:'img/oswaldo-cruz-carlos-chagas-e-adolpho-lutz-com-alun.jpg',c:'Oswaldo Cruz, Carlos Chagas e Adolpho Lutz com alunos do curso de 1916. Acervo Casa de Oswaldo Cruz, domínio público.',p:'File:Oswaldo_Cruz,_Carlos_Chagas_e_Adolpho_Lutz_com_alunos_do_curso_de_1916,_Casa_de_Oswaldo_Cruz_(BR_RJCOC_02-10-20-15-004-013).jpg'},
+ annanery:{u:'img/anna-nery-c-1903.jpg',c:'Anna Nery, enfermeira que dá nome à escola criada nos anos 1920, c. 1903. Domínio público.',p:'File:Anna_Nery,_c.1903.jpg'},
+ ernesto:{u:'img/1920px-posse-do-prefeito-pedro-ernesto.jpg',c:'Posse de Pedro Ernesto como prefeito, A Noite Ilustrada, 1935. Domínio público.',p:'File:Posse_do_Prefeito_Pedro_Ernesto.jpg'},
+ arouca:{u:'img/sergio-arouca-8-conferencia-1986.jpg',c:'Sergio Arouca na 8ª Conferência Nacional de Saúde, Brasília, março de 1986.',p:''},
+ bispo:{u:'img/1920px-inaugura-o-da-cl-nica-da-fam-lia-arthur-bis.jpg',c:'Inauguração da Clínica da Família Arthur Bispo do Rosário. Foto: Sam34iwy, CC0.',p:'File:Inauguração_da_Clínica_da_Família_Arthur_Bispo_do_Rosário.jpg'},
+ mare:{u:'img/1280px-horta-da-cl-nica-da-fam-lia-augusto-boal-na.jpg',c:'Horta da Clínica da Família Augusto Boal, Maré, 2025. Foto: Polinhobr, CC BY-SA 4.0.',p:'File:Horta_da_Clínica_da_Família_Augusto_Boal_na_Maré_01.jpg'},
+ oc:{u:'img/retrato-de-oswaldo-cruz-casa-de-oswaldo-cruz-br-rj.jpg',c:'Retrato de Oswaldo Cruz, c. 1910–1919. Acervo Casa de Oswaldo Cruz, domínio público.',p:'File:Retrato_de_Oswaldo_Cruz,_Casa_de_Oswaldo_Cruz_(BR_RJCOC_FO-01-02-07).jpg'},
+ mourisco:{u:'img/pavilh-o-mourisco-casa-de-oswaldo-cruz-dl-fc-st-26.jpg',c:'Pavilhão Mourisco, Manguinhos. Coleção Dyrce Lacombe, acervo Casa de Oswaldo Cruz, CC BY-SA 4.0.',p:'File:Pavilhão_Mourisco,_Casa_de_Oswaldo_Cruz_(DL-FC-ST-26-004).jpg'}
+};
+const ERAS={pre:'Pré-SUS · 1900–1988',sus:'SUS e Saúde da Família · 1986–2000',exp:'Expansão e retrocessos · 2001–2020'};
+const EV=[
+ {y:'1907',e:'pre',t:'O primeiro pronto-socorro do município',d:'Nasce o Posto Municipal de Assistência (PMA), hoje Hospital Municipal Souza Aguiar, focado nas urgências que as instituições filantrópicas já não davam conta de atender.',i:'souza',cap:'Hoje Hospital Municipal Souza Aguiar: inauguração do Serviço de Anatomia Patológica, no período do Estado da Guanabara.'},
+ {y:'1910',e:'pre',t:'Saúde pública vertical',d:'As ações de saúde pública eram campanhas contra doenças específicas, como a febre amarela, com pouco olhar para o território onde as pessoas viviam.',i:'expurgo',tag:'Contexto'},
+ {y:'1918',e:'pre',t:'A gripe espanhola',d:'No verão de 1918–1919, a epidemia deixou evidente a falta de hospitais públicos para emergências. Expandir a rede hospitalar virou prioridade.',i:'gripe'},
+ {y:'1919',e:'pre',t:'Departamento Nacional de Saúde Pública',d:'Criado sob a direção de Carlos Chagas, com inspetorias para tuberculose, lepra, doenças venéreas e outras. Ações centralizadas, com foco em endemias.',i:'chagas'},
+ {y:'1920',e:'pre',t:'Novos hospitais públicos',d:'Hospital Pedro II (1920), em Santa Cruz; Hospital São Francisco de Assis (1922); Gaffrée & Guinle (1924); Abrigo-Hospital Arthur Bernardes (1924), hoje IFF/Fiocruz; e as obras do Hospital do Câncer (1927).',i:'gaffree'},
+ {y:'1923',e:'pre',t:'Enfermeiras visitadoras',d:'O Serviço de Enfermagem Sanitária e a Escola de Enfermagem Anna Nery, financiada pela Fundação Rockefeller, formam as enfermeiras visitadoras que mais tarde sustentariam as ações de saúde pública.',i:'annanery'},
+ {y:'1927',e:'pre',t:'O primeiro Centro de Saúde do Rio',d:'Inaugurado em Inhaúma. Até 1930 vieram só mais três: Penha, Bangu e Jacarepaguá, aproveitando os antigos Postos de Saneamento e Profilaxia Rural.',i:'penha',cap:'Primeiro Posto de Saúde da Penha, uma das primeiras unidades de saúde pública da cidade.'},
+ {y:'1930',e:'pre',t:'Vargas divide a saúde',d:'Criação do Ministério da Educação e Saúde Pública. A assistência previdenciária fica com o Ministério do Trabalho. A partir de 1934, sanitaristas da capital são deslocados para outros estados.',i:'vargas'},
+ {y:'1935',e:'pre',t:'A rede de Pedro Ernesto',d:'Como prefeito do Distrito Federal, Pedro Ernesto cria hospitais e dispensários: Miguel Couto, Getúlio Vargas, Pedro Ernesto, Rocha Faria, Carlos Chagas, Salgado Filho, entre outros.',i:'ernesto'},
+ {y:'1960',e:'pre',t:'A capital vai para Brasília',d:'O Rio vira estado da Guanabara e depois município. A secretaria tenta juntar hospital e prevenção, mas cresce a medicina previdenciária, individual e especializada.'},
+ {y:'1978',e:'pre',t:'Alma-Ata',d:'A Declaração de Alma-Ata define a Atenção Primária à Saúde como estratégia para “Saúde para Todos no ano 2000”.',i:'almaata'},
+ {y:'1980',e:'pre',t:'Plano de Ação Integrada',d:'A Secretaria Municipal prioriza cuidados primários e saúde materno-infantil nas regiões mais pobres. Surgem as UACPS e UMAMPS.',i:'vacina70'},
+ {y:'1986',e:'sus',t:'27 Postos de Saúde e a 8ª Conferência',d:'Concurso público e 27 novos Postos de Saúde, sobretudo na Zona Oeste. No país, a 8ª Conferência Nacional de Saúde consagra o projeto que daria origem ao SUS.',i:'arouca',i2:'movimento'},
+ {y:'1988',e:'sus',t:'A Constituinte e a saúde como direito',d:'A Constituição de 1988 cria a seguridade social e afirma a saúde como direito de todos e dever do Estado. É nesses princípios que a reforma da APS no Rio se fundamentaria décadas depois.',i:'constituinte'},
+ {y:'1990',e:'sus',t:'Nasce o SUS',d:'A Lei 8.080 define a saúde como direito fundamental. A Lei 8.142 garante a participação da comunidade, um dos pilares da APS.'},
+ {y:'1991',e:'sus',t:'Agentes comunitários',d:'O Programa de Agentes Comunitários de Saúde (PACS) começa a mudar a assistência. No Rio, Ronaldo Gazolla assume a secretaria e prioriza hospitais.'},
+ {y:'1994',e:'sus',t:'Programa Saúde da Família',d:'Criado nacionalmente para reorganizar o SUS. No Rio, a primeira equipe foi experimental, na Ilha de Paquetá, focada em populações vulneráveis.',i:'psf'},
+ {y:'1995',e:'sus',t:'15 PAMs municipalizados',d:'A prefeitura recebe 15 Postos de Assistência Médica do governo federal, de Botafogo a Campo Grande, ampliando a rede básica.'},
+ {y:'2001',e:'exp',t:'O projeto de Sergio Arouca',d:'Em seis meses como secretário, Arouca propõe cobrir 60% do território com Saúde da Família. O plano não é executado, mas marca a história da APS carioca.',i:'arouca',cap:'Sergio Arouca, sanitarista, aqui na 8ª Conferência Nacional de Saúde, 1986.'},
+ {y:'2003',e:'exp',t:'PROESF',d:'O Ministério da Saúde apoia grandes cidades. No Rio, +426 agentes comunitários e 23 novas equipes de Saúde da Família, ainda insuficientes.',i:'acs'},
+ {y:'2008',e:'exp',t:'Cobertura mínima',d:'Ao fim de 2008, a Saúde da Família cobria 7,2% da população segundo o Ministério, ou 3,5% segundo outros estudos.'},
+ {y:'2009',e:'exp',t:'Reforma da APS',d:'O município adota a Estratégia Saúde da Família, com gestão por Organizações Sociais e o programa Saúde Presente. Inspirado, segundo Daniel Soranz, no plano de Arouca.',i:'saudepresente'},
+ {y:'2011',e:'exp',t:'Carteira de Serviços',d:'As equipes passam a resolver mais, incluindo pequenas urgências e exames.'},
+ {y:'2017',e:'exp',t:'Desmonte',d:'Fechamento de 11 Clínicas da Família na Zona Oeste, precarização dos vínculos, atrasos salariais e demissões.'},
+ {y:'2020',e:'exp',t:'A pandemia encontra a rede desorganizada',d:'A Covid-19 chega e atinge com mais força quem mais depende da APS. O capítulo cita a proposta de “DesCrivelização” da saúde, de Beatriz Zocal da Silva.',i:'mare',cap:'Hoje: horta da Clínica da Família Augusto Boal, na Maré, 2025.'}
+];
+const anos=document.getElementById('anos'),ev=document.getElementById('evento'),eras=document.getElementById('eras');let era=null,cur=0;
+anos.innerHTML=EV.map((x,i)=>`<button type="button" class="ano" data-i="${i}" aria-pressed="false"><span class="y">${x.y}</span><span class="p"></span><span class="t">${x.t}</span></button>`).join('');
+eras.innerHTML=`<button type="button" class="era" data-e="" aria-pressed="true">Todos</button>`+Object.entries(ERAS).map(([k,v])=>`<button type="button" class="era" data-e="${k}" aria-pressed="false">${v}</button>`).join('');
+function vis(){return EV.map((x,i)=>i).filter(i=>!era||EV[i].e===era)}
+function show(i){cur=i;const x=EV[i];anos.querySelectorAll('.ano').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===i));
+ const im=x.i?IMG[x.i]:null;
+ ev.innerHTML=`<span class="ey">${x.y}</span>${x.tag?`<span class="tag">${x.tag}</span>`:''}<h3>${x.t}</h3><p>${x.d}</p>${im?`<figure class="acervo${im.cor?' cor':''}"><div class="img"><img src="${im.u}" alt="" loading="lazy"></div><figcaption>${x.cap||im.c}</figcaption></figure>`:''}${x.i2?`<figure class="acervo"><div class="img"><img src="${IMG[x.i2].u}" alt="" loading="lazy"></div><figcaption>${IMG[x.i2].c}</figcaption></figure>`:''}<div class="nav"><button type="button" id="ant">← anterior</button><button type="button" id="prox">próximo →</button></div>`;
+ const v=vis(),k=v.indexOf(i);document.getElementById('ant').onclick=()=>show(v[(k-1+v.length)%v.length]);document.getElementById('prox').onclick=()=>show(v[(k+1)%v.length])}
+anos.querySelectorAll('.ano').forEach(b=>b.onclick=()=>show(+b.dataset.i));
+eras.querySelectorAll('.era').forEach(b=>b.onclick=()=>{era=b.dataset.e||null;eras.querySelectorAll('.era').forEach(x=>x.setAttribute('aria-pressed',x===b));anos.querySelectorAll('.ano').forEach(a=>a.hidden=era&&EV[+a.dataset.i].e!==era);show(vis()[0])});
+show(1);
+
+/* como se chamava */
+const H=[['Posto Municipal de Assistência (1907)','Hospital Municipal Souza Aguiar'],['Hospital São Francisco de Assis (1922)','HESFA/UFRJ'],['Abrigo-Hospital Arthur Bernardes (1924)','Instituto Fernandes Figueira (IFF/Fiocruz)'],['Hospital do Câncer (1927)','Hospital Municipal Barata Ribeiro'],['Policlínica de Campo Grande','Hospital Estadual Rocha Faria'],['Hospital Periférico de Marechal Hermes','Hospital Estadual Carlos Chagas'],['Hospital Periférico da Gávea','Hospital Miguel Couto'],['Dispensário da Ilha','Hospital Paulino Werneck'],['Dispensário do Méier','Hospital Salgado Filho'],['Dispensário do Sapê','Maternidade Carmela Dutra'],['Dispensário de Paquetá','Hospital Manoel Arthur Villaboim'],['Dispensário Cascadura','Maternidade Herculano Pinheiro'],['Hospital dos Bancários','Hospital da Lagoa'],['Hospital dos Comerciários','Hospital de Ipanema e Instituto de Cardiologia de Laranjeiras'],['Hospital dos Funcionários dos Transportes','Hospital Geral de Bonsucesso'],['Hospital dos Marítimos','Hospital do Andaraí']];
+const cartas=document.getElementById('cartas');document.getElementById('total').textContent=H.length;
+cartas.innerHTML=H.map((h,i)=>`<button type="button" class="carta" aria-pressed="false" aria-label="${h[0]}. Virar para ver o nome atual."><span class="in"><span class="f"><span class="k">Ficha ${String(i+1).padStart(2,'0')} · antes</span><b>${h[0]}</b><span class="k">toque para virar ↻</span></span><span class="v"><span class="k">hoje</span><b>${h[1]}</b><span class="k">${h[0]}</span></span></span></button>`).join('');
+const vir=new Set();cartas.querySelectorAll('.carta').forEach((c,i)=>c.onclick=()=>{const on=c.getAttribute('aria-pressed')!=='true';c.setAttribute('aria-pressed',on);on?vir.add(i):vir.delete(i);document.getElementById('viradas').textContent=vir.size});
+
+/* GOBI */
+const G=[['G','growth monitoring','Monitoramento do crescimento','Acompanhar peso e altura das crianças.'],['O','oral rehydration','Reidratação oral','Soro caseiro e sais contra a desidratação por diarreia.'],['B','breast feeding','Aleitamento materno','Incentivo à amamentação.'],['I','immunization','Imunização','Vacinação infantil.']];
+const gobi=document.getElementById('gobi');gobi.innerHTML=G.map(g=>`<button type="button" class="letra" aria-expanded="false"><span class="L">${g[0]}</span><span class="en">${g[1]}</span><span class="pt">${g[2]}</span><span class="d">${g[3]}</span></button>`).join('');
+gobi.querySelectorAll('.letra').forEach(b=>b.onclick=()=>b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true'));
+
+/* bairros anos 80 */
+const GR={uacps:{n:'UACPS',t:'Unidades Auxiliares de Cuidados Primários à Saúde, anos 1980',l:['Rocinha','Vidigal','Alto da Boa Vista','Carlos Gentile de Mello','Vila São Jorge','Fazenda da Bica','Padre Miguel','Cosmos','Mendanha','Fazenda Modelo','Barra de Guaratiba','Rio da Prata','Pedra de Guaratiba','Jardim Santa Margarida','Jardim Maravilha','Raul Barroso','Cesário de Melo','Jardim 7 de Abril']},
+ umamps:{n:'UMAMPS',t:'Unidades Municipais de Atendimento Médico Primário',l:['Cidade Alta','Fazenda Coqueiro','Hamilton Land','Sylvio Brauner']},
+ postos:{n:'Postos de 1986',t:'Postos de Saúde citados no capítulo, da rede de 27 criada a partir de 1986',l:['Santíssimo','Vila Kennedy','Cesarinho (Paciência)','Cesário de Melo (Campo Grande)','Senador Camará','São Fernando (Santa Cruz)','Santa Inês (Campo Grande)','Sulacap','Caju','Vila Aliança (Taquara)','Palmares (Santa Cruz)','Conjunto Liberdade','Sepetiba','Mangaratiba','Mendanha','Urucânia','Parque Anchieta','Pilares','Jardim América','Pavuna','Formiga','Jacaré','Pedra de Guaratiba']}};
+const todos=[...new Set(Object.values(GR).flatMap(g=>g.l))];const bairros=document.getElementById('bairros');bairros.innerHTML=todos.map(b=>`<span>${b}</span>`).join('');
+const grupos=document.getElementById('grupos');grupos.innerHTML=Object.entries(GR).map(([k,g],i)=>`<button type="button" class="era" data-g="${k}" aria-pressed="${i===0}">${g.n}</button>`).join('');
+function grupo(k){const g=GR[k];grupos.querySelectorAll('.era').forEach(b=>b.setAttribute('aria-pressed',b.dataset.g===k));bairros.querySelectorAll('span').forEach(s=>s.classList.toggle('on',g.l.includes(s.textContent)));document.getElementById('contador').textContent=k==='postos'?'27':g.l.length;document.getElementById('contador-t').textContent=g.t}
+grupos.querySelectorAll('.era').forEach(b=>b.onclick=()=>grupo(b.dataset.g));grupo('uacps');
+
+/* cobertura */
+document.querySelectorAll('.cb').forEach(c=>{const f=c.querySelector('.f'),v=c.querySelector('.v');f.style.width=f.dataset.w+'%';v.style.left=v.dataset.l+'%'});
+
+/* créditos das imagens */
+const ic=document.getElementById('imgcred');ic.insertAdjacentHTML('beforeend',Object.values(IMG).map(m=>`<span>${m.c} ${m.p?`<a href="https://commons.wikimedia.org/wiki/${encodeURI(m.p)}" target="_blank" rel="noopener">Ver no Commons</a>`:''}</span>`).join(''));
+})();
+</script>
+<script>
+(function () {
+  var f = document.getElementById('bx-form'); if (!f) return;
+  var sec = document.getElementById('baixe'), st = document.getElementById('bx-st'), btn = document.getElementById('bx-btn'), tel = document.getElementById('bx-tel');
+  var K = 'ijr-baixe-aps10', PLANILHA = 'https://script.google.com/macros/s/AKfycbxX6UZ3MqjmkNl86IwRS6_RbAJ7ZRD5A_VOtRS4O2mYd5cF4PMKHPFKMeelMQMtZcux/exec';
+  function liberar() { sec.classList.add('feito'); try { localStorage.setItem(K, '1'); } catch (e) {} }
+  try { if (localStorage.getItem(K) === '1') sec.classList.add('feito'); } catch (e) {}
+  tel.addEventListener('input', function () {
+    var d = tel.value.replace(/\D/g, '').slice(0, 11), s = d;
+    if (d.length > 2) s = '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length > 6) s = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+    tel.value = s;
+  });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('bx-honey').value) return;
+    var dig = tel.value.replace(/\D/g, '');
+    if (!f.checkValidity() || dig.length < 10) {
+      st.textContent = !document.getElementById('bx-lgpd').checked && f.nome.value && f.email.value ? 'Para baixar, marque a autorização de tratamento dos dados.' : 'Preencha nome, e-mail válido, telefone com DDD e identidade de gênero.';
+      return;
+    }
+    var corpo = { documento: 'Livro APS+10', nome: f.nome.value, email: f.email.value, telefone: tel.value, identidade_de_genero: f.genero.value,
+      autoriza_tratamento_e_noticias_lgpd: 'sim',
+      _subject: 'Download — Livro APS+10: ' + f.nome.value, _replyto: f.email.value, _template: 'table', _captcha: 'false' };
+    btn.disabled = true; st.textContent = 'Enviando...';
+    var pl = { form: 'aps10', documento: corpo.documento, nome: corpo.nome, email: corpo.email, telefone: corpo.telefone, identidade_de_genero: corpo.identidade_de_genero, autoriza_tratamento_e_noticias_lgpd: 'sim', pagina: location.pathname };
+    try { fetch(PLANILHA, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(pl) }).catch(function () {}); } catch (x) {}
+    fetch('https://formsubmit.co/ajax/justicareprodutiva@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(corpo) })
+      .catch(function () {})
+      .then(function () { liberar(); var ok = document.getElementById('bx-ok'); ok.focus(); ok.scrollIntoView({ block: 'center' }); })
+      .finally(function () { btn.disabled = false; st.textContent = ''; });
+  });
+})();
+</script>
+</body>
+</html>
