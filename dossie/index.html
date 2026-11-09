@@ -846,6 +846,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 50; pointer-event
       autoriza_tratamento_e_noticias_lgpd: 'sim',
       _subject: 'Download — Dossiê Nacional de Transmasculinidades Negras e Periféricas: ' + f.nome.value, _replyto: f.email.value, _template: 'table', _captcha: 'false' };
     btn.disabled = true; st.textContent = 'Enviando...';
+    try { fetch('https://script.google.com/macros/s/AKfycbxX6UZ3MqjmkNl86IwRS6_RbAJ7ZRD5A_VOtRS4O2mYd5cF4PMKHPFKMeelMQMtZcux/exec', { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ form: 'dossie', documento: corpo.documento, nome: corpo.nome, email: corpo.email, telefone: corpo.telefone, identidade_de_genero: corpo.identidade_de_genero, autoriza_tratamento_e_noticias_lgpd: 'sim', pagina: location.pathname }) }).catch(function () {}); } catch (x) {}
     fetch('https://formsubmit.co/ajax/justicareprodutiva@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(corpo) })
       .catch(function () {})
       .then(function () { liberar(); var ok = document.getElementById('bx-ok'); ok.focus(); ok.scrollIntoView({ block: 'center' }); })
