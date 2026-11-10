@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manual de Enfrentamento à VPGR</title>
+<meta name="description" content="Versão interativa do Manual de Enfrentamento à Violência Política de Gênero e Raça no âmbito digital, de Aron Giovanni de Oliveira e Gabrielle Martins da Silva (Instituto Marielle Franco, 2025).">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=VT323&display=swap">
+<style>
+/* Um manual para usar: papel creme, títulos em azul-noite, caixas de destaque em ocre com cursor em pixel, como na publicação */
+:root{
+  --noite:#1B1F5C; --noite-2:#121548; --creme:#F2EFE9; --papel:#FBF9F5; --branco:#FFFFFF;
+  --tinta:#1B1F5C; --suave:#55577A; --linha:#D9D4CA;
+  --ocre:#B57F35; --ocre-esc:#875A1E; --areia:#DCC08E; --areia-2:#EADAB8;
+  --verde:#1F8A70; --laranja:#E5832E; --roxo:#6B3FA0; --vermelho:#C8402E;
+  --sans:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --pixel:'VT323','Courier New',monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--creme);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.65;font-weight:300}
+p{margin:0}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+b,strong{font-weight:700}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:3px}
+h1,h2,h3{font-weight:800;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.wrap{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.tela{position:relative;overflow:hidden;padding-block:clamp(64px,9vw,110px)}
+.noite{background:var(--noite);color:var(--creme)}
+.noite::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px)}
+.creme{background:var(--creme)}
+.papel{background:var(--papel)}
+.rot{font-family:var(--pixel);font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--ocre-esc)}
+.noite .rot{color:var(--areia)}
+.xadrez{height:18px;margin:0 0 26px;max-width:540px;color:var(--ocre);
+  background:conic-gradient(from 90deg at 50% 50%,currentColor 25%,var(--noite) 0 50%,currentColor 0 75%,var(--noite) 0) 0 0/18px 18px}
+.noite .xadrez{background:conic-gradient(from 90deg at 50% 50%,var(--ocre) 25%,transparent 0 50%,var(--ocre) 0 75%,transparent 0) 0 0/18px 18px}
+.titulo{font-size:clamp(32px,4.6vw,54px)}
+.titulo.ocre{color:var(--ocre)}
+.lead{font-size:clamp(17px,1.6vw,20px);max-width:62ch}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:880px){.duas{grid-template-columns:1fr}}
+.nota{font-size:14px;color:var(--suave);margin-top:10px;max-width:64ch}
+.noite .nota{color:rgba(242,239,233,.72)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid currentColor;background:transparent;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ocre)}
+.btn.cheio{background:var(--areia);color:var(--noite);border-color:var(--areia)}
+.botoes{display:flex;flex-wrap:wrap;gap:12px}
+
+/* caixa ocre com cursor, como no manual */
+.caixa{position:relative;background:var(--areia);color:var(--noite);padding:22px 24px 22px 64px;font-size:15.5px;font-weight:600;border-radius:14px;max-width:760px}
+.caixa svg{position:absolute;left:18px;top:20px;width:30px;height:30px}
+.caixa b{font-weight:800}
+
+/* pixels soltos */
+.pixels{position:absolute;inset:0;z-index:1;pointer-events:none}
+.pixels i{position:absolute;width:var(--s);height:var(--s);background:var(--c);opacity:.7;animation:pisca var(--d) steps(2,end) infinite}
+@keyframes pisca{50%{opacity:.12}}
+
+/* CAPA */
+.capa{background:var(--creme);padding:0}
+.capa .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:stretch;min-height:min(92vh,760px)}
+@media (max-width:900px){.capa .grid{grid-template-columns:1fr;min-height:0}}
+.capa .txt{padding:clamp(40px,6vw,80px) max(18px,4vw) clamp(32px,5vw,56px);display:flex;flex-direction:column;justify-content:center;max-width:620px;margin-left:auto}
+.pub{font-size:13.5px;color:var(--suave);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pub .x{width:26px;height:26px;display:grid;place-items:center;background:var(--noite);color:var(--creme);font-family:var(--pixel);font-size:22px;line-height:1}
+.capa h1{font-size:clamp(34px,4.4vw,56px);margin-top:22px;letter-spacing:-.02em}
+.capa h1 .pxl{display:block;font-family:var(--pixel);font-weight:400;font-size:1.05em;letter-spacing:.02em;margin-top:6px}
+.digita::after{content:"█";animation:cursor 1s steps(1) infinite;margin-left:3px;color:var(--ocre)}
+@keyframes cursor{50%{opacity:0}}
+.capa .por{margin-top:18px;font-size:18px}
+.capa .botoes{margin-top:26px}
+.capa .botoes .btn{color:var(--noite)}
+.capa .botoes .btn.cheio{background:var(--noite);color:var(--creme);border-color:var(--noite)}
+.capa .arte{position:relative;background:var(--noite);overflow:hidden;display:flex;align-items:flex-end}
+.capa .arte img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+@media (max-width:900px){.capa .arte img{height:auto}}
+.indice{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.indice a{border:1.5px solid var(--noite);padding:5px 11px;font-size:13.5px;text-decoration:none;font-weight:600}
+.indice a:hover{background:var(--noite);color:var(--creme)}
+
+/* objetivos */
+.obj{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--noite)}
+.obj div{background:var(--noite-2);color:var(--creme);padding:24px 22px;display:grid;gap:4px;align-content:start}
+.obj b{font-family:var(--pixel);font-weight:400;font-size:clamp(44px,5vw,64px);line-height:.85;color:var(--areia)}
+.obj div:nth-child(2) b{color:var(--laranja)}
+.obj div:nth-child(3) b{color:#5BC6A6}
+.obj div:nth-child(4) b{color:#B9A3E3}
+.obj span{font-size:15px}
+@media (max-width:860px){.obj{grid-template-columns:1fr 1fr}}
+
+/* verbos */
+.verbos{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 8px}
+.verbos span{font-family:var(--pixel);font-size:clamp(24px,2.6vw,32px);line-height:1;padding:6px 12px 4px;background:var(--noite);color:var(--creme);opacity:.15;transition:opacity .35s,background .35s}
+.verbos span.on{opacity:1}
+.verbos span.x{background:var(--vermelho);opacity:1;text-decoration:line-through}
+.formas{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.formas button{border:2px solid var(--noite);background:var(--branco);padding:8px 14px;font-weight:700;font-size:14.5px}
+.formas button[aria-pressed="true"]{background:var(--noite);color:var(--creme)}
+.quem{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:16px}
+.quem div{border:2px solid var(--noite);padding:12px;font-weight:700;font-size:14.5px;background:var(--branco);display:grid;gap:6px}
+.quem div i{width:18px;height:18px;background:var(--c)}
+
+/* tipologias */
+.tipos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:28px}
+.tipo{background:var(--branco);border:2px solid var(--noite);padding:18px;text-align:left;display:grid;gap:8px;align-content:start;transition:transform .15s,box-shadow .15s;min-width:0}
+.tipo:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ocre)}
+.tipo .n{font-family:var(--pixel);font-size:48px;line-height:.8;color:var(--ocre)}
+.tipo h3{font-size:19px}
+.tipo .d{display:none;font-size:14.5px}
+.tipo .mais{font-family:var(--pixel);font-size:18px;color:var(--suave)}
+.tipo[aria-expanded="true"]{background:var(--noite);color:var(--creme)}
+.tipo[aria-expanded="true"] .d{display:block}
+.tipo[aria-expanded="true"] .n,.tipo[aria-expanded="true"] .mais{color:var(--areia)}
+
+/* teste */
+.teste{margin-top:40px;background:var(--noite);color:var(--creme);padding:clamp(20px,3.4vw,36px);position:relative;overflow:hidden}
+.teste .cab{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.teste .placar{font-family:var(--pixel);font-size:26px;color:var(--areia)}
+.teste .cena{font-size:clamp(17px,1.8vw,21px);font-weight:600;margin:16px 0 18px;max-width:60ch;min-height:3.2em}
+.teste .ops{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.teste .ops button{border:2px solid rgba(242,239,233,.55);background:transparent;padding:10px 12px;text-align:left;font-weight:600;font-size:14.5px}
+.teste .ops button:hover:not(:disabled){background:rgba(242,239,233,.1)}
+.teste .ops button.certo{background:var(--verde);border-color:var(--verde);color:#fff}
+.teste .ops button.errado{background:var(--vermelho);border-color:var(--vermelho);color:#fff}
+.teste .ops button:disabled{cursor:default}
+.teste .fb{margin-top:16px;font-size:15px;min-height:1.6em}
+.teste .seg{margin-top:14px}
+.teste .seg .btn{color:var(--creme)}
+.progresso{display:flex;gap:4px;margin-top:10px}
+.progresso i{width:22px;height:8px;background:rgba(242,239,233,.18)}
+.progresso i.ok{background:#5BC6A6}.progresso i.no{background:var(--vermelho)}.progresso i.at{background:var(--areia)}
+
+/* canais */
+.redes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:26px}
+.rede{border:2px solid rgba(242,239,233,.5);padding:14px;display:grid;gap:6px;text-align:left;background:transparent;color:var(--creme)}
+.rede .ico{width:34px;height:34px;display:grid;place-items:center;background:var(--areia);color:var(--noite);font-family:var(--pixel);font-size:24px}
+.rede b{font-size:16px}
+.rede span{font-size:13.5px;opacity:.8}
+.meios{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.meios span{font-family:var(--pixel);font-size:22px;padding:2px 10px;background:rgba(242,239,233,.12)}
+
+/* passos */
+.trilha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:30px;border:2px solid var(--noite)}
+@media (max-width:820px){.trilha{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.trilha button{border:none;border-right:2px solid var(--noite);background:var(--branco);padding:16px;text-align:left;display:grid;gap:4px;align-content:start}
+.trilha button:last-child{border-right:none}
+@media (max-width:820px){.trilha button:nth-child(2){border-right:none}.trilha button:nth-child(-n+2){border-bottom:2px solid var(--noite)}}
+.trilha .k{font-family:var(--pixel);font-size:50px;line-height:.8;color:var(--ocre)}
+.trilha b{font-size:16px;line-height:1.2}
+.trilha button[aria-selected="true"]{background:var(--noite);color:var(--creme)}
+.trilha button[aria-selected="true"] .k{color:var(--areia)}
+.painel-passo{background:var(--branco);border:2px solid var(--noite);border-top:none;padding:clamp(20px,3vw,32px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,3vw,40px)}
+@media (max-width:820px){.painel-passo{grid-template-columns:1fr}}
+.painel-passo h3{font-size:clamp(22px,2.4vw,28px);margin-bottom:12px}
+.painel-passo p+p{margin-top:12px}
+.painel-passo ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.painel-passo li{display:flex;gap:10px;font-size:15px;font-weight:600}
+.painel-passo li::before{content:"";flex:none;width:12px;height:12px;margin-top:6px;background:var(--ocre)}
+.grave{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.grave .btn{color:var(--noite)}
+.alerta{margin-top:14px;background:var(--vermelho);color:#fff;padding:16px 18px;font-weight:600;font-size:15.5px;display:none}
+.alerta.on{display:block}
+.alerta b{font-family:var(--pixel);font-weight:400;font-size:34px;line-height:1;margin-right:6px}
+
+/* risco */
+.risco{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);margin-top:30px;align-items:start}
+@media (max-width:880px){.risco{grid-template-columns:1fr}}
+.fator{background:var(--branco);border:2px solid var(--noite);padding:16px 18px;margin-bottom:10px}
+.fator .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.fator b{font-size:17px}
+.fator .val{font-family:var(--pixel);font-size:34px;line-height:1;color:var(--c)}
+.fator p{font-size:14px;color:var(--suave);margin:4px 0 10px}
+.fator input{width:100%;accent-color:var(--c);height:28px}
+.fator .esc{display:flex;justify-content:space-between;font-size:12px;color:var(--suave)}
+.resultado{position:sticky;top:max(16px,env(safe-area-inset-top,0px));background:var(--noite);color:var(--creme);padding:clamp(20px,3vw,30px)}
+.formula{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-family:var(--pixel);font-size:26px;line-height:1}
+.formula .fr{display:grid;justify-items:center;gap:6px}
+.formula .fr .num{padding-bottom:6px;border-bottom:2px solid var(--creme)}
+.formula span.t{padding:2px 8px;color:var(--noite)}
+.nivel{font-family:var(--pixel);font-size:clamp(52px,6vw,74px);line-height:.85;margin-top:20px}
+.blocos{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin:14px 0}
+.blocos i{height:18px;background:rgba(242,239,233,.15);transition:background .2s}
+.resultado .o{font-size:15px}
+
+/* checklist */
+.check{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:28px;align-items:start}
+@media (max-width:860px){.check{grid-template-columns:1fr}}
+.check h3{font-size:20px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.check h3 .c{font-family:var(--pixel);font-weight:400;font-size:30px;color:var(--ocre-esc)}
+.it{display:flex;gap:12px;align-items:flex-start;background:var(--branco);border:2px solid var(--noite);padding:11px 13px;margin-bottom:7px;cursor:pointer;font-weight:600;font-size:14.5px;transition:background .15s}
+.it input{width:21px;height:21px;flex:none;accent-color:var(--noite);margin-top:1px}
+.it small{display:block;font-weight:300;font-size:13px;color:var(--suave);margin-top:2px}
+.it:has(input:checked){background:var(--areia-2)}
+.barra{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:3px;margin:-2px 0 12px}
+.barra i{height:10px;background:var(--linha)}
+.barra i.on{background:var(--ocre)}
+.bo{margin-top:26px}
+.bo .crimes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.bo .crimes span{font-family:var(--pixel);font-size:22px;line-height:1;padding:5px 10px 3px;background:var(--noite);color:var(--creme)}
+
+/* leis */
+.leis{margin-top:28px;display:grid;gap:8px}
+.lei{border:2px solid var(--noite);background:var(--branco)}
+.lei summary{list-style:none;cursor:pointer;padding:14px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.lei summary::-webkit-details-marker{display:none}
+.lei .nm{font-family:var(--pixel);font-size:26px;line-height:1;background:var(--noite);color:var(--creme);padding:4px 10px 2px;white-space:nowrap}
+.lei .tt{font-weight:700;font-size:16px;line-height:1.3}
+.lei .pm{font-family:var(--pixel);font-size:30px;color:var(--ocre)}
+.lei[open] .pm{transform:rotate(45deg)}
+.lei .corpo{padding:0 18px 16px;font-size:15px;max-width:76ch}
+.lei .corpo .art{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.lei .corpo .art span{font-size:13.5px;font-weight:700;border:1.5px solid var(--noite);padding:3px 8px}
+@media (max-width:560px){.lei summary{grid-template-columns:1fr auto}.lei .nm{grid-column:1/-1;justify-self:start}}
+
+/* onde denunciar */
+.precisa{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.precisa button{border:2px solid var(--noite);background:var(--branco);padding:9px 14px;font-weight:700;font-size:14.5px}
+.precisa button[aria-pressed="true"]{background:var(--noite);color:var(--creme)}
+.orgaos{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:20px}
+.org{border:2px solid var(--noite);background:var(--branco);padding:18px;display:grid;gap:8px;align-content:start;transition:opacity .25s,transform .25s,box-shadow .25s}
+.org .tag{font-family:var(--pixel);font-size:18px;color:var(--ocre-esc);text-transform:uppercase;line-height:1}
+.org b{font-size:17px;line-height:1.25}
+.org p{font-size:14.5px}
+.org a{font-weight:700;font-size:14px;word-break:break-word}
+.org .tel{font-family:var(--pixel);font-size:40px;line-height:.9;color:var(--vermelho)}
+.orgaos.filtro .org{opacity:.28}
+.orgaos.filtro .org.on{opacity:1;transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ocre)}
+
+/* frase final */
+.final{background:var(--ocre);color:var(--noite);padding-block:clamp(70px,10vw,130px) 0;position:relative;overflow:hidden}
+.final h2{font-size:clamp(50px,9.5vw,128px);line-height:.92;letter-spacing:-.02em;text-transform:uppercase;font-weight:800;max-width:10ch;position:relative;z-index:2}
+.final .chao{position:relative;height:clamp(90px,14vw,170px);margin-top:clamp(30px,5vw,60px)}
+.final .chao i{position:absolute;bottom:var(--b);left:var(--l);width:var(--s);height:var(--s);background:#C99A55;animation:sobe var(--d) steps(3,end) infinite alternate}
+@keyframes sobe{to{transform:translateY(calc(var(--s) * -1));opacity:.55}}
+.final .olho{position:absolute;right:max(18px,6vw);top:clamp(60px,9vw,120px);width:clamp(110px,16vw,200px);aspect-ratio:1;background:var(--noite);display:grid;place-items:center;z-index:2}
+@media (max-width:700px){.final .olho{position:relative;right:auto;top:auto;margin:28px 0 0 18px;width:120px}}
+.final .olho svg{width:72%}
+
+/* créditos */
+.padrao{height:clamp(120px,18vw,220px);background:url(img/padrao.webp) center/cover;border-bottom:4px solid var(--ocre)}
+.cred{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;font-size:14.5px;margin-top:30px}
+@media (max-width:860px){.cred{grid-template-columns:1fr}}
+.cred .r{display:block;font-family:var(--pixel);font-size:20px;text-transform:uppercase;color:var(--areia);margin-bottom:4px}
+.rodape{margin-top:40px;padding-top:18px;border-top:1px solid rgba(242,239,233,.25);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cursor" viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#1B1F5C" d="M1 1h2v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v2H8v1h1v2H8v1H6v-2H5v-1H4v1H3v1H1z"/><path fill="#F2EFE9" d="M2 3h1v1h1v1h1v1h1v1h1v1h1v1h1v1H7v1h1v2H7v-2H6v-1H5v-1H4v1H3v1H2z"/></symbol>
+</svg>
+
+<header class="capa" id="topo">
+  <div class="grid">
+    <div class="txt">
+      <div class="pub"><span class="x" aria-hidden="true">×</span><span>Regime de ameaça · Instituto Marielle Franco · 2025</span></div>
+      <h1>Manual de Enfrentamento à Violência Política de Gênero e Raça<span class="pxl digita">no âmbito digital</span></h1>
+      <p class="por">Por <b>Aron Giovanni de Oliveira</b> e <b>Gabrielle Martins da Silva</b></p>
+      <div class="botoes">
+        <a class="btn cheio" href="#reconhecer">Começar ↓</a>
+        <a class="btn" href="#onde">Onde denunciar</a>
+      </div>
+      <nav class="indice" aria-label="Navegue pelo manual">
+        <a href="#oque">O que é</a>
+        <a href="#reconhecer">Reconhecer</a>
+        <a href="#canais">Onde acontece</a>
+        <a href="#fazer">O que fazer</a>
+        <a href="#risco">Análise de risco</a>
+        <a href="#provas">Provas</a>
+        <a href="#leis">Leis</a>
+        <a href="#onde">Onde denunciar</a>
+      </nav>
+    </div>
+    <div class="arte"><img src="img/ilustracao.webp" alt="Ilustração: mulher negra de blazer roxo segura um escudo feito de pixels verdes e azuis com ícones de cadeado, megafone, globo e balança. Ao fundo azul-noite, um cadeado, um olho, uma balança e um cursor." width="1241" height="918"></div>
+  </div>
+</header>
+
+<main>
+<section class="tela noite" aria-labelledby="h-para">
+  <div class="pixels" data-n="26" aria-hidden="true"></div>
+  <div class="wrap duas">
+    <div>
+      <div class="xadrez"></div>
+      <h2 class="titulo" id="h-para">Pode e deve ser enfrentada de forma coletiva</h2>
+    </div>
+    <div>
+      <p class="lead">A violência política de gênero e raça tem se expandido cada vez mais, ameaçando o pleno exercício dos direitos políticos de lideranças negras, periféricas e dissidentes, e a própria democracia.</p>
+      <p style="margin-top:16px">Este manual se destina a todas as mulheres, em especial <b>negras, LBTQIA+ e periféricas</b>, que colocam seu corpo à disposição da política: na sociedade, nos movimentos sociais, nos partidos, na máquina pública e no parlamento.</p>
+    </div>
+  </div>
+</section>
+<section class="obj" aria-label="O que o manual reúne">
+  <div><b>01</b><span>Reconhecer a violência política digital</span></div>
+  <div><b>02</b><span>Onde e como denunciar</span></div>
+  <div><b>03</b><span>Quais instâncias acionar</span></div>
+  <div><b>04</b><span>Como registrar provas</span></div>
+</section>
+
+<section class="tela creme" id="oque" aria-labelledby="h-oque">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><span class="rot">O que é</span><h2 class="titulo ocre" id="h-oque" style="margin-top:8px">Violência Política de Gênero e Raça</h2></div>
+      <p class="lead">Um fenômeno social caracterizado por uma ação, discurso ou prática que visa:</p>
+    </div>
+    <div class="verbos" id="verbos" aria-label="interromper, impedir, desacreditar, deslegitimar, desumanizar, silenciar, punir e expulsar"></div>
+    <p class="lead" style="margin-top:10px">a presença e atuação política de <b>mulheres negras, LBTQIA+ e/ou defensoras de direitos humanos</b>.</p>
+
+    <div class="duas" style="margin-top:44px">
+      <div>
+        <h3 style="font-size:20px">Contra quem</h3>
+        <div class="quem">
+          <div><i style="--c:var(--ocre)"></i>Ativistas</div>
+          <div><i style="--c:var(--verde)"></i>Assessoras</div>
+          <div><i style="--c:var(--laranja)"></i>Agentes públicas no executivo</div>
+          <div><i style="--c:var(--roxo)"></i>Candidatas</div>
+          <div><i style="--c:var(--noite)"></i>Parlamentares em exercício</div>
+        </div>
+        <p class="nota">Sustentada por estruturas racistas, patriarcais e cisheteronormativas, não se limita às campanhas eleitorais: atravessa todo o período de atuação política de quem ousa ocupar espaços historicamente negados a corpos dissidentes.</p>
+      </div>
+      <div>
+        <h3 style="font-size:20px">Diferentes formas</h3>
+        <div class="formas" id="formas"></div>
+        <p class="nota" id="formas-t" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div class="caixa" style="margin-top:40px"><svg aria-hidden="true"><use href="#cursor"/></svg>
+      A Lei 14.192/2021 representa um avanço ao tipificar a violência política como crime, mas não é suficiente sozinha. <b>O primeiro passo para combater a violência política de gênero e raça na internet é reconhecê-la e nomeá-la.</b>
+    </div>
+  </div>
+</section>
+
+<section class="tela papel" id="reconhecer" aria-labelledby="h-rec">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><div class="xadrez"></div><h2 class="titulo" id="h-rec">7 tipologias da violência política digital</h2></div>
+      <p class="lead">Toque em cada uma para ler a definição do manual. Depois, teste: você reconheceria cada tipo numa situação real?</p>
+    </div>
+    <div class="tipos" id="tipos"></div>
+
+    <div class="teste" id="teste" aria-labelledby="h-teste">
+      <div class="pixels" data-n="14" aria-hidden="true"></div>
+      <div style="position:relative;z-index:2">
+        <div class="cab"><h3 id="h-teste" style="font-size:22px">Que violência é esta?</h3><span class="placar" id="placar" aria-live="polite"></span></div>
+        <div class="progresso" id="prog" aria-hidden="true"></div>
+        <p class="cena" id="cena"></p>
+        <div class="ops" id="ops"></div>
+        <p class="fb" id="fb" aria-live="polite"></p>
+        <div class="seg"><button type="button" class="btn" id="prox" hidden>Próxima situação →</button></div>
+      </div>
+    </div>
+    <p class="nota">Situações ilustrativas, escritas para este exercício a partir das definições do manual. Na vida real, uma mesma agressão pode reunir mais de um tipo.</p>
+  </div>
+</section>
+
+<section class="tela noite" id="canais" aria-labelledby="h-can">
+  <div class="pixels" data-n="30" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><span class="rot">Onde acontece</span><h2 class="titulo" id="h-can" style="margin-top:8px">De que forma e em qual canal</h2></div>
+      <p class="lead">É comum que os episódios ocorram nas plataformas digitais de relacionamento, principalmente por mensagens diretas, grupos, comentários e publicações públicas.</p>
+    </div>
+    <div class="redes">
+      <div class="rede"><span class="ico" aria-hidden="true">@</span><b>E-mail</b><span>Inclusive o institucional</span></div>
+      <div class="rede"><span class="ico" aria-hidden="true">◎</span><b>Instagram</b><span>DMs, comentários, posts</span></div>
+      <div class="rede"><span class="ico" aria-hidden="true">f</span><b>Facebook</b><span>Comentários e publicações</span></div>
+      <div class="rede"><span class="ico" aria-hidden="true">✆</span><b>WhatsApp</b><span>Mensagens e grupos</span></div>
+      <div class="rede"><span class="ico" aria-hidden="true">X</span><b>X</b><span>Antigo Twitter</span></div>
+      <div class="rede"><span class="ico" aria-hidden="true">▶</span><b>YouTube e TikTok</b><span>Lives e vídeos</span></div>
+    </div>
+    <div class="meios"><span>mensagens diretas</span><span>grupos</span><span>comentários</span><span>publicações públicas</span><span>lives</span></div>
+    <div class="caixa" style="margin-top:36px"><svg aria-hidden="true"><use href="#cursor"/></svg>
+      Quando os conteúdos têm teor discriminatório <b>misógino, racista, LGBTQIA+fóbico</b> ou fazem alusão a casos emblemáticos, como o assassinato político de <b>Marielle Franco</b>, fica evidente que se trata de violência política de gênero e raça.
+    </div>
+  </div>
+</section>
+
+<section class="tela creme" id="fazer" aria-labelledby="h-fazer">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><div class="xadrez"></div><h2 class="titulo" id="h-fazer">O que fazer em caso de violência</h2></div>
+      <p class="lead">O objetivo da violência política é interromper trajetórias usando o medo e o sofrimento. Por isso, <b>o cuidado está no centro do enfrentamento</b>. Siga os passos.</p>
+    </div>
+    <div class="trilha" role="tablist" id="trilha"></div>
+    <div class="painel-passo" role="tabpanel" id="passo" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="tela papel" id="risco" aria-labelledby="h-risco">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><span class="rot">Análise de risco</span><h2 class="titulo ocre" id="h-risco" style="margin-top:8px">Ameaças × Vulnerabilidades ÷ Recursos</h2></div>
+      <p class="lead">A análise de risco orienta quais medidas de proteção tomar e se vale disputar a narrativa nas redes. Mova os controles e veja como os <b>recursos</b> reduzem o risco.</p>
+    </div>
+    <div class="risco">
+      <div>
+        <div class="fator" style="--c:var(--vermelho)">
+          <div class="top"><b>Ameaças</b><span class="val" id="v-a">3</span></div>
+          <p>A declaração ou sugestão de que existe a intenção de infligir dano, punição ou ferimento.</p>
+          <input type="range" min="1" max="5" value="3" id="r-a" aria-label="Nível de ameaças, de 1 a 5">
+          <div class="esc"><span>poucas, vagas</span><span>graves, diretas</span></div>
+        </div>
+        <div class="fator" style="--c:var(--laranja)">
+          <div class="top"><b>Vulnerabilidades</b><span class="val" id="v-v">3</span></div>
+          <p>Qualquer fator que aumente a probabilidade de que o dano se concretize ou resulte em dano ainda maior.</p>
+          <input type="range" min="1" max="5" value="3" id="r-v" aria-label="Nível de vulnerabilidades, de 1 a 5">
+          <div class="esc"><span>poucas</span><span>muitas</span></div>
+        </div>
+        <div class="fator" style="--c:var(--verde)">
+          <div class="top"><b>Recursos</b><span class="val" id="v-r">2</span></div>
+          <p>Qualquer fator, inclusive habilidades ou contatos de organizações e entidades, que possa aumentar o nível de segurança.</p>
+          <input type="range" min="1" max="5" value="2" id="r-r" aria-label="Nível de recursos, de 1 a 5">
+          <div class="esc"><span>sem rede</span><span>rede forte</span></div>
+        </div>
+      </div>
+      <div class="resultado" aria-live="polite">
+        <span class="rot" style="font-size:19px">Risco: possibilidade de que eventos resultem em danos</span>
+        <div class="formula" style="margin-top:18px" aria-hidden="true">
+          <span class="t" style="background:var(--creme)">Risco =</span>
+          <span class="fr"><span class="num"><span class="t" style="background:#E98B7E" id="f-a">3</span> × <span class="t" style="background:#F2B27A" id="f-v">3</span></span><span class="t" style="background:#7FCDB4" id="f-r">2</span></span>
+        </div>
+        <div class="nivel" id="nivel"></div>
+        <div class="blocos" id="blocos"></div>
+        <p class="o" id="orienta"></p>
+      </div>
+    </div>
+    <p class="nota">Exercício para entender a fórmula do manual, sem valor de diagnóstico. Uma análise de risco de verdade é feita com a rede de apoio, a assessoria e a equipe jurídica, que podem pedir a inclusão nos <b>Programas de Proteção a Defensores de Direitos Humanos</b> do Ministério dos Direitos Humanos e da Cidadania (MDHC).</p>
+  </div>
+</section>
+
+<section class="tela creme" id="provas" aria-labelledby="h-provas">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><div class="xadrez"></div><h2 class="titulo" id="h-provas">Provas e documentos para a denúncia</h2></div>
+      <p class="lead">Provas materiais, dados de contexto, testemunhas (se houver) e documentos pessoais. Use as listas para conferir o que você já tem.</p>
+    </div>
+    <div class="check">
+      <div>
+        <h3>Provas digitais <span class="c" id="c-p"></span></h3>
+        <div class="barra" id="b-p" style="--n:8"></div>
+        <div id="l-p"></div>
+      </div>
+      <div>
+        <h3>Documentos pessoais <span class="c" id="c-d"></span></h3>
+        <div class="barra" id="b-d" style="--n:8"></div>
+        <div id="l-d"></div>
+      </div>
+    </div>
+    <div class="bo">
+      <div class="caixa"><svg aria-hidden="true"><use href="#cursor"/></svg>
+        <b>Faça um boletim de ocorrência</b> quando houver indício destes crimes. O BO possibilita investigações, medidas protetivas, ações penais e o pedido de remoção dos conteúdos, a depender do caso.
+        <div class="crimes"><span>ameaças</span><span>calúnia</span><span>difamação</span><span>injúria</span><span>doxxing</span><span>perseguição virtual</span><span>discurso de ódio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tela papel" id="leis" aria-labelledby="h-leis">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><span class="rot">Enquadramento legal</span><h2 class="titulo ocre" id="h-leis" style="margin-top:8px">Em quais leis as denúncias podem se enquadrar</h2></div>
+      <p class="lead">Abra cada item para ver quando ele se aplica.</p>
+    </div>
+    <div class="leis" id="leis-l"></div>
+  </div>
+</section>
+
+<section class="tela creme" id="onde" aria-labelledby="h-onde">
+  <div class="wrap">
+    <div class="duas" style="align-items:end">
+      <div><div class="xadrez"></div><h2 class="titulo" id="h-onde">Onde denunciar e buscar orientação</h2></div>
+      <p class="lead">Denuncie também nas plataformas e <b>guarde os protocolos</b>: eles servem caso seja preciso entrar com ação judicial pedindo a remoção do conteúdo. Escolha do que você precisa agora.</p>
+    </div>
+    <div class="precisa" id="precisa" role="group" aria-label="Do que você precisa"></div>
+    <div class="orgaos" id="orgaos"></div>
+    <p class="nota">Organizações da sociedade civil que atuam com violência política de gênero e raça também podem acompanhar o caso e ajudar no encaminhamento aos órgãos responsáveis, cobrando celeridade e justiça.</p>
+  </div>
+</section>
+</main>
+
+<section class="final" aria-labelledby="h-final">
+  <div class="wrap"><h2 id="h-final">Meu corpo político não será deletado</h2></div>
+  <div class="olho" aria-hidden="true"><svg viewBox="0 0 100 60"><path d="M4 30C20 8 80 8 96 30 80 52 20 52 4 30Z" fill="#F2EFE9"/><circle cx="50" cy="30" r="17" fill="#7A4A1E"/><circle cx="50" cy="30" r="8" fill="#121548"/></svg></div>
+  <div class="chao" id="chao" aria-hidden="true"></div>
+</section>
+
+<footer class="noite" style="position:relative">
+  <div class="padrao" role="img" aria-label="Padrão xadrez em azul e ocre com cadeados, olhos, cursores e janelas fechadas, da publicação."></div>
+  <div class="wrap" style="padding-block:clamp(48px,7vw,80px)">
+    <div class="duas" style="align-items:center">
+      <h2 class="titulo" style="font-size:clamp(26px,3.4vw,40px)">Manual de Enfrentamento à Violência Política de Gênero e Raça no âmbito digital</h2>
+      <div class="botoes">
+        <a class="btn cheio" href="https://www.violenciapolitica.org" target="_blank" rel="noopener">Relatório completo em violenciapolitica.org ↗</a>
+        <a class="btn" href="../regime-de-ameaca/">Leia também: o capítulo sobre os dados</a>
+      </div>
+    </div>
+    <div class="cred">
+      <div><span class="r">Autoria</span><p><b>Aron Giovanni de Oliveira</b>, cientista social, mestrando em História, Política e Bens Culturais (FGV CPDOC), coordenador político da Liga Transmasculina João W. Nery e assessor de pesquisa e incidência do Instituto Marielle Franco. <b>Gabrielle Martins da Silva</b>, cientista social e assessora programática do Instituto Marielle Franco.</p></div>
+      <div><span class="r">Publicação</span><p>Manual publicado em <b>Regime de ameaça: Violência Política de Gênero e Raça no âmbito digital.</b> Rio de Janeiro: Instituto Marielle Franco, 2025, p. 117–128. ISBN 978-65-993290-6-7. Identidade visual e projeto gráfico: Thais D’Oliveira.</p></div>
+      <div><span class="r">Referência</span><p>INTERNETLAB; REDES CORDIAIS. <i>Guia para enfrentamento da violência política de gênero e raça.</i> São Paulo, 2024. Tipos de violência mapeados em “Violência Política contra Mulheres Negras: Eleições 2020”, do Instituto Marielle Franco.</p></div>
+    </div>
+    <div class="rodape"><span>Ilustrações e identidade visual reproduzidas da publicação, para fins educacionais e de ativismo, como autorizado pela própria publicação.</span><span>Versão interativa · 2026</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=id=>document.getElementById(id);
+
+/* pixels soltos */
+document.querySelectorAll('.pixels').forEach(p=>{const n=+(p.dataset.n||30),C=['#B57F35','#1F8A70','#E5832E','#3A4AB8','#0E1140','#DCC08E'];let h='';for(let i=0;i<n;i++){const s=[6,8,10,14,18][i%5];h+=`<i style="left:${(i*37+11)%100}%;top:${(i*53+7)%100}%;--s:${s}px;--c:${C[i%6]};--d:${2+(i%7)*.6}s"></i>`}p.innerHTML=h});
+
+/* chão de pixels da frase final */
+(function(){const c=$('chao');let h='';for(let i=0;i<70;i++){const s=[14,20,26,32][i%4];h+=`<i style="--l:${(i*13.7)%100}%;--b:${(i*29)%120}px;--s:${s}px;--d:${1.6+(i%6)*.5}s"></i>`}c.innerHTML=h})();
+
+/* verbos */
+const VB=['interromper','impedir','desacreditar','deslegitimar','desumanizar','silenciar','punir','expulsar'];
+const vb=$('verbos');vb.innerHTML=VB.map(v=>`<span>${v}</span>`).join('');
+const vs=[...vb.children];
+if(RM){vs.forEach(s=>s.classList.add('on'))}else{
+ const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){vs.forEach((s,i)=>setTimeout(()=>s.classList.add('on'),i*260));io.disconnect()}},{threshold:.4});io.observe(vb)}
+
+/* formas */
+const FM=[['Digital','Termo guarda-chuva para as violências realizadas por meio de tecnologias e no ambiente digital, foco deste manual.'],['Moral e psicológica','Ataques que buscam gerar medo, culpa e sofrimento.'],['Institucional','Praticada dentro das instituições, por exemplo nas casas legislativas e nos partidos.'],['Racial','Atravessada pelo racismo.'],['Física','Agressões ao corpo e à integridade física.'],['Sexual','Assédio e violência de caráter sexual.'],['De gênero e/ou LGBTQIA+fóbica','Ataques motivados por gênero, identidade de gênero e orientação sexual.']];
+const fm=$('formas');fm.innerHTML=FM.map((f,i)=>`<button type="button" aria-pressed="${i===0}">${f[0]}</button>`).join('');
+const fmT=$('formas-t');
+fm.querySelectorAll('button').forEach((b,i)=>b.onclick=()=>{fm.querySelectorAll('button').forEach((x,j)=>x.setAttribute('aria-pressed',i===j));fmT.innerHTML=`<b>${FM[i][0]}.</b> ${FM[i][1]}`});
+fmT.innerHTML=`<b>${FM[0][0]}.</b> ${FM[0][1]}`;
+
+/* tipologias */
+const TP=[
+ ['Ameaças e intimidações','Insultos verbais e/ou intimidações diretas com intuito de gerar medo, que configuram risco concreto à integridade física, emocional, psicológica e política da vítima. Incluem assédio sexual e moral e mensagens privadas com conteúdos ofensivos, inclusive imagens e vídeos obscenos.'],
+ ['Desinformação e fake news','Veiculação intencional de informações falsas, difamatórias ou manipuladas, de forma pontual ou em campanhas coordenadas, para prejudicar a imagem, a credibilidade, a reputação e a atuação pública da vítima.'],
+ ['Discurso de ódio','Repertório de ofensas, insultos e ataques com teor discriminatório, muitas vezes enquadráveis como crimes de racismo, misoginia, LGBTIfobia, cyberbullying e estigmatização baseada em estereótipos.'],
+ ['Violência simbólica ou discursiva','Declarações, narrativas e conteúdos para desqualificar, descredibilizar, invisibilizar e inferiorizar, associados a características físicas, gênero, raça, orientação sexual, território, religião ou preferências pessoais, muitas vezes sob a justificativa de liberdade de expressão ou opinião.'],
+ ['Exposição indevida de dados','Divulgação não autorizada de informações pessoais e sensíveis, como endereço, documentos, telefone e dados de familiares. Também conhecida como doxxing, busca constranger, intimidar ou deixar a vítima vulnerável.'],
+ ['Assédio digital','Perseguição virtual (stalking), manipulação de algoritmos para reduzir alcance, remoção injustificada de postagens, bloqueios por denúncias falsas e censura. Engloba mensagens sexualizadas ou inapropriadas e tentativas de persuasão baseadas em hierarquias de poder.'],
+ ['Invasão de redes','Zoombombing (invasão de videoconferências ou eventos online), acessos não autorizados a contas ou dispositivos e ataques à segurança digital para comprometer ou vigiar.']];
+$('tipos').innerHTML=TP.map((t,i)=>`<button type="button" class="tipo" aria-expanded="false"><span class="n">${i+1}</span><h3>${t[0]}</h3><p class="d">${t[1]}</p><span class="mais">+ ler definição</span></button>`).join('');
+document.querySelectorAll('.tipo').forEach(b=>b.onclick=()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);b.querySelector('.mais').textContent=o?'− fechar':'+ ler definição'});
+
+/* teste */
+const CN=[
+ ['No e-mail do gabinete, uma vereadora recebe uma mensagem dizendo que sabem a que horas ela sai de casa e que ela “vai ter o mesmo fim da Marielle”.',0,'Intimidação direta para gerar medo, com risco concreto à integridade da vítima. A alusão a Marielle deixa evidente a motivação política.'],
+ ['Um vídeo com cortes que mudam o sentido da fala de uma candidata circula em dezenas de grupos, acusando-a de desviar dinheiro.',1,'Conteúdo manipulado e difamatório, espalhado de forma coordenada para atingir a reputação e a atuação pública.'],
+ ['Os comentários de uma publicação da deputada se enchem de xingamentos racistas e LGBTfóbicos.',2,'Ofensas com teor discriminatório, muitas vezes enquadráveis como crime de racismo ou LGBTIfobia.'],
+ ['Perfis repetem que a parlamentar “não tem preparo” e “só está ali pela cota”, ridicularizando seu cabelo e seu sotaque, e se defendem dizendo que “é só opinião”.',3,'Narrativas para desqualificar e inferiorizar, ligadas à aparência, à raça e ao território, sob a justificativa de liberdade de opinião.'],
+ ['Um perfil anônimo publica o endereço de casa e o telefone de uma ativista, junto com fotos da escola dos filhos dela.',4,'Divulgação não autorizada de dados pessoais e de familiares: doxxing.'],
+ ['Depois de uma onda de denúncias falsas, a conta da candidata é bloqueada às vésperas da eleição. Um mesmo usuário cria perfis novos para segui-la e mandar mensagens sexualizadas.',5,'Bloqueio por denúncias falsas, perseguição (stalking) e mensagens sexualizadas são formas de assédio digital.'],
+ ['Durante uma audiência pública online do mandato, desconhecidos entram na sala virtual e tomam a tela com imagens violentas.',6,'Invasão de videoconferência, o chamado zoombombing.']];
+let ord=CN.map((_,i)=>i),at=0,pts=0,res=[];
+function emb(){for(let i=ord.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ord[i],ord[j]]=[ord[j],ord[i]]}}
+emb();
+function prog(){$('prog').innerHTML=ord.map((_,i)=>`<i class="${res[i]===true?'ok':res[i]===false?'no':i===at?'at':''}"></i>`).join('');$('placar').textContent=`${pts} de ${CN.length}`}
+function cena(){const c=CN[ord[at]];$('cena').textContent=c[0];$('fb').textContent='';$('prox').hidden=true;
+ $('ops').innerHTML=TP.map((t,i)=>`<button type="button" data-i="${i}">${t[0]}</button>`).join('');
+ $('ops').querySelectorAll('button').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===c[1];
+  $('ops').querySelectorAll('button').forEach(x=>{x.disabled=true;if(+x.dataset.i===c[1])x.classList.add('certo')});if(!ok)b.classList.add('errado');
+  res[at]=ok;if(ok)pts++;$('fb').innerHTML=`<b>${ok?'Isso.':'Quase.'}</b> ${ok?'':'É '+TP[c[1]][0].toLowerCase()+'. '}${c[2]}`;
+  prog();$('prox').hidden=false;$('prox').textContent=at<CN.length-1?'Próxima situação →':'Recomeçar ↺';$('prox').focus()});
+ prog()}
+$('prox').onclick=()=>{if(at<CN.length-1){at++}else{at=0;pts=0;res=[];emb()}cena()};
+cena();
+
+/* passos */
+const PS=[
+ ['Reconhecer','Reconhecer e nomear',`<p>Identificar a violência é o que permite agir com assertividade. Observe a motivação política: teor misógino, racista ou LGBTQIA+fóbico, ou alusão a casos como o de Marielle Franco.</p><p>Use as <a href="#reconhecer">7 tipologias</a> para nomear o que está acontecendo.</p>`,['Qual dos 7 tipos é esse ataque?','Por qual canal ele chegou?','Há referência a gênero, raça, sexualidade ou a Marielle?']],
+ ['Acolhimento','Buscar apoio e acolhimento',`<p>Como o objetivo da violência política é interromper trajetórias, a mobilização de medo e sofrimento é a principal ferramenta usada. Por isso, o cuidado deve estar no centro.</p><p>É essencial que a pessoa se sinta <b>vista, ouvida e acolhida</b>. Falar com pessoas de confiança e lembrar que ninguém está sozinha é indispensável.</p>`,['Fale com pessoas de confiança','Acione assessoria, partido ou coletivo','Não enfrente sozinha']],
+ ['Provas e denúncia','Reunir evidências e denunciar',`<p>Com a rede de apoio, reúna o máximo de evidências: prints das mensagens, publicações e comentários, e os links das postagens. Denuncie às plataformas para tentar barrar a disseminação.</p><p>Procure apoio jurídico e os canais institucionais: ouvidorias, defensorias públicas e delegacias especializadas. Denunciar ajuda a medir o fenômeno e a cobrar políticas públicas.</p><div class="grave"><b>A violência envolve ameaça grave?</b><button type="button" class="btn" id="sim-grave">Sim</button></div><div class="alerta" id="alerta"><b>190</b> Em emergência, ligue para a polícia. Procure também a Polícia Civil e solicite <b>medidas protetivas</b>. Acione a rede de apoio para priorizar sua segurança.</div>`,['Veja a <a href="#provas">lista de provas</a>','Veja <a href="#onde">onde denunciar</a>','Guarde os protocolos das plataformas']],
+ ['Proteção e narrativa','Proteger-se e disputar a narrativa',`<p>A depender da gravidade, medidas protetivas devem ser tomadas e a rede pode pedir a inclusão nos Programas de Proteção a Defensores de Direitos Humanos (MDHC).</p><p>A depender da <a href="#risco">análise de risco</a>, as redes sociais podem ser ferramenta de denúncia e contra-narrativa. Diante de tentativas de criminalização, é estratégico reforçar a trajetória e o trabalho da liderança, a partir da sua própria perspectiva, garantindo memória e verdade.</p>`,['Faça a análise de risco com sua rede','Busque organizações da sociedade civil','Reforce sua trajetória, com sua voz']]];
+const tr=$('trilha');tr.innerHTML=PS.map((p,i)=>`<button type="button" role="tab" aria-selected="${i===0}" aria-controls="passo"><span class="k">${i+1}º</span><b>${p[0]}</b></button>`).join('');
+function passo(i){tr.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-selected',i===j));const p=PS[i];
+ $('passo').innerHTML=`<div><span class="rot">${i+1}º passo</span><h3 style="margin-top:6px">${p[1]}</h3>${p[2]}</div><div><ul>${p[3].map(x=>`<li><span>${x}</span></li>`).join('')}</ul></div>`;
+ const g=$('sim-grave');if(g)g.onclick=()=>{$('alerta').classList.add('on');g.setAttribute('aria-pressed','true')}}
+tr.querySelectorAll('button').forEach((b,i)=>b.onclick=()=>passo(i));passo(0);
+
+/* risco */
+const NV=[[2,'Baixo','#5BC6A6','Mantenha a atenção e o registro dos episódios. Fortalecer a rede segue reduzindo o risco.'],[5,'Moderado','#DCC08E','Organize as provas, denuncie e combine com a rede de apoio quais medidas de segurança tomar.'],[10,'Alto','#E5832E','Acione a rede para priorizar a segurança. Avalie medidas protetivas e cautela na exposição pública.'],[99,'Muito alto','#E98B7E','Priorize a proteção: medidas protetivas, Polícia Civil e pedido de inclusão no Programa de Proteção a Defensores de Direitos Humanos.']];
+function risco(){const a=+$('r-a').value,v=+$('r-v').value,r=+$('r-r').value,x=a*v/r;
+ $('v-a').textContent=$('f-a').textContent=a;$('v-v').textContent=$('f-v').textContent=v;$('v-r').textContent=$('f-r').textContent=r;
+ const n=NV.find(k=>x<=k[0]);$('nivel').textContent=n[1];$('nivel').style.color=n[2];
+ const on=Math.max(1,Math.min(10,Math.round(x/2.5)));$('blocos').innerHTML=Array.from({length:10},(_,i)=>`<i style="${i<on?'background:'+n[2]:''}"></i>`).join('');
+ $('orienta').innerHTML=`Resultado da fórmula: <b>${x.toLocaleString('pt-BR',{maximumFractionDigits:1})}</b>. ${n[3]}`}
+['r-a','r-v','r-r'].forEach(id=>$(id).addEventListener('input',risco));risco();
+
+/* checklists */
+function lista(pre,itens){const l=$('l-'+pre),b=$('b-'+pre),c=$('c-'+pre);b.style.setProperty('--n',itens.length);b.innerHTML='<i></i>'.repeat(itens.length);
+ l.innerHTML=itens.map((t,i)=>`<label class="it" for="${pre}${i}"><input type="checkbox" id="${pre}${i}"><span>${t[0]}${t[1]?`<small>${t[1]}</small>`:''}</span></label>`).join('');
+ const up=()=>{const n=l.querySelectorAll('input:checked').length;c.textContent=`${n}/${itens.length}`;b.querySelectorAll('i').forEach((x,i)=>x.classList.toggle('on',i<n))};l.addEventListener('change',up);up()}
+lista('p',[['Prints (capturas de tela)','Para identificar o nome da pessoa ou página antes que o perfil seja excluído'],['Links (URLs)','Das postagens, dos perfis agressores e das páginas dos ataques'],['Conteúdo recebido, sem apagar nada','São as provas materiais que podem ser requisitadas no processo'],['Cabeçalho dos e-mails','Indica o endereço IP, a data e o horário: evidência técnica'],['Pasta digital segura','Em ordem cronológica e por tipo de ataque'],['Cópia impressa ou em pen drive','Para levar na hora da denúncia'],['Ata Notarial no cartório','Garante a validade das provas mesmo se o agressor apagar'],['Protocolos das denúncias às plataformas','Úteis para pedir a remoção na Justiça']]);
+lista('d',[['RG'],['CPF'],['Comprovante de residência'],['Registro de filiação partidária ou de candidatura'],['Dados de contexto do caso'],['Testemunhas, se houver'],['Comprovante de renda','Pedido em alguns casos'],['Número do protocolo da ação judicial','Se já houver ação']]);
+
+/* leis */
+const LS=[
+ ['14.192/2021','Lei de Violência Política contra a Mulher','Estabelece normas para prevenir, reprimir e combater a violência política contra mulheres. É o enquadramento central das denúncias de violência política digital.',['Art. 326-B do Código Eleitoral','Art. 359-P do Código Penal']],
+ ['2.848/1940','Código Penal: crimes correlatos','Os ataques também podem ser enquadrados em crimes como ameaça, calúnia, difamação e injúria.',['Art. 138 · Calúnia','Art. 139 · Difamação','Art. 140 · Injúria','Art. 147 · Ameaça']],
+ ['Cyberbullying','Intimidação sistemática na internet','A prática de cyberbullying está prevista nos arts. 138 e 140 do capítulo IV do Código Penal.',['Arts. 138 e 140 do Código Penal']],
+ ['13.185/2015','Programa de Combate à Intimidação Sistemática','Abrange atos de violência física ou psicológica, intencionais e repetitivos, com objetivo de intimidar ou agredir.',['Lei 13.185/2015']],
+ ['12.965/2014','Marco Civil da Internet','Pode ser usado para pedir a remoção de conteúdo falso e de campanhas de desinformação: os provedores devem tornar indisponível o conteúdo ofensivo gerado por terceiros para não serem responsabilizados.',['Art. 19']]];
+$('leis-l').innerHTML=LS.map((l,i)=>`<details class="lei"${i===0?' open':''}><summary><span class="nm">${l[0]}</span><span class="tt">${l[1]}</span><span class="pm" aria-hidden="true">+</span></summary><div class="corpo"><p>${l[2]}</p><div class="art">${l[3].map(a=>`<span>${a}</span>`).join('')}</div></div></details>`).join('');
+
+/* onde denunciar */
+const NEC=[['perigo','Estou em perigo agora'],['bo','Registrar boletim de ocorrência'],['jur','Apoio jurídico gratuito'],['elei','Ataque ligado às eleições'],['ouv','Denunciar e ser orientada'],['tirar','Tirar o conteúdo do ar'],['prot','Proteção continuada']];
+const OR=[
+ ['Emergência','Polícia · 190',`Em situações de emergência, a polícia pode ser acionada pelo 190. Em caso de ameaça grave, procure a Polícia Civil e solicite medidas protetivas.`,null,['perigo'],'190'],
+ ['Delegacia','Delegacias Especializadas de Atendimento à Mulher (DEAMs)','Registram boletins de ocorrência de ameaças, injúrias, perseguição, crimes virtuais e físicos. Podem encaminhar medidas protetivas, abrir inquéritos e acionar outras instâncias de segurança pública.',null,['perigo','bo']],
+ ['Delegacia','Delegacias e departamentos de crimes cibernéticos','Alguns estados contam com delegacias, divisões ou departamentos especializados em crimes cibernéticos, e algumas defensorias estaduais também têm esse serviço. Busque de acordo com seu estado ou município.',null,['bo']],
+ ['Assessoria jurídica','Núcleos de Defesa da Mulher · Defensorias Públicas','Assessoria jurídica gratuita: orientam sobre direitos, acompanham processos, acionam órgãos competentes. Úteis para usar a Lei 14.192/2021, abrir ação civil ou buscar reparação.',['https://www.cnj.jus.br','Consulte a Defensoria do seu estado: cnj.jus.br'],['jur','tirar']],
+ ['Justiça eleitoral','Procuradoria-Geral Eleitoral','Investiga e responsabiliza crimes de violência política de gênero e racial, com o Ministério Público Eleitoral. Recebe representações, fiscaliza partidos e aciona a justiça eleitoral contra candidatos, partidos ou apoiadores que atacam, assediam ou disseminam fake news.',['https://www.mpf.mp.br/pge/institucional/gt-violencia-de-genero/','mpf.mp.br/pge'],['elei']],
+ ['Ouvidoria','Ouvidoria da Mulher do CNMP','Do Conselho Nacional do Ministério Público: registro de denúncias, acompanhamento de casos de violência de gênero, inclusive política, e orientação jurídica. Pode acionar promotorias regionais.',['https://www.cnmp.mp.br/portal/ouvidoria-ouvidoria-da-mulher/apresentacao-ouvidoria-mulher','cnmp.mp.br'],['ouv','jur']],
+ ['Ouvidoria','Ouvidoria do Ministério das Mulheres','Recebe denúncias de violência política de gênero e raça, orienta sobre direitos, encaminha os casos aos órgãos competentes e articula medidas de proteção.',['https://www.gov.br/mulheres/pt-br/canais_atendimento/ouvidoria','gov.br/mulheres'],['ouv','prot']],
+ ['Plataformas','Denúncia nas próprias redes','Sinalize ameaças e discursos de ódio nas plataformas para tentar barrar a disseminação e guarde os protocolos. O art. 19 do Marco Civil da Internet ampara o pedido de remoção na Justiça.',null,['tirar']],
+ ['Proteção','Programas de Proteção a Defensores de Direitos Humanos','Do Ministério dos Direitos Humanos e da Cidadania (MDHC). Assessoria, equipe jurídica, partido ou redes da sociedade civil podem atuar pela inclusão da vítima.',null,['prot','perigo']]];
+$('precisa').innerHTML=NEC.map(n=>`<button type="button" data-k="${n[0]}" aria-pressed="false">${n[1]}</button>`).join('');
+$('orgaos').innerHTML=OR.map(o=>`<div class="org" data-k="${o[4].join(' ')}"><span class="tag">${o[0]}</span>${o[5]?`<span class="tel">${o[5]}</span>`:''}<b>${o[1]}</b><p>${o[2]}</p>${o[3]?`<a href="${o[3][0]}" target="_blank" rel="noopener">${o[3][1]} ↗</a>`:''}</div>`).join('');
+let sel=null;
+$('precisa').querySelectorAll('button').forEach(b=>b.onclick=()=>{sel=sel===b.dataset.k?null:b.dataset.k;
+ $('precisa').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.k===sel));
+ $('orgaos').classList.toggle('filtro',!!sel);$('orgaos').querySelectorAll('.org').forEach(o=>o.classList.toggle('on',!!sel&&o.dataset.k.split(' ').includes(sel)))});
+})();
+</script>
+</body>
+</html>
