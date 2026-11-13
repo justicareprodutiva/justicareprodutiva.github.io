@@ -387,6 +387,48 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
 .cm-pct b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(3.4rem, 7vw, 5.2rem); line-height: .9; color: var(--vermelho); }
 .cm-pct span { display: block; margin-top: 8px; font-weight: 600; }
 .cm-top ol { margin: 10px 0 0; padding-left: 1.3em; display: grid; gap: 6px; font-family: var(--display); text-transform: uppercase; font-size: 1.35rem; color: var(--vinho); }
+.cm-quando { font-size: .85rem; font-weight: 600; opacity: .9; }
+.mp-ind { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+@media (max-width: 1000px) { .mp-ind { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .mp-ind { grid-template-columns: 1fr; } }
+.mp-ind .cm-pct b { font-size: clamp(2.8rem, 5vw, 4rem); }
+.mp-nota { font-weight: 500; margin-top: 14px; max-width: 75ch; }
+.mp-duas { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 30px; }
+@media (max-width: 860px) { .mp-duas { grid-template-columns: 1fr; } }
+.mp-cx { background: rgba(255,253,248,.1); border: 1.5px solid rgba(255,253,248,.35); padding: 22px; }
+.mp-cx h4 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.3rem, 2.2vw, 1.7rem); color: var(--amarelo); margin: 0 0 14px; }
+.mp-barras { display: grid; gap: 12px; }
+.mp-b { display: grid; grid-template-columns: minmax(0, 1fr) 64px; gap: 4px 10px; align-items: center; }
+.mp-b .t { grid-column: 1 / -1; font-weight: 700; font-size: .95rem; }
+.mp-b .tr { height: 18px; background: rgba(255,253,248,.18); }
+.mp-b .ch { display: block; height: 100%; width: calc(var(--p) * 1%); background: var(--amarelo); clip-path: polygon(0 0, 100% 8%, 98% 50%, 100% 92%, 0 100%); }
+.mp-b b { font-family: var(--display); font-weight: 400; font-size: 1.5rem; text-align: right; }
+.mp-barras.claro .tr { background: rgba(43,23,20,.12); }
+.mp-barras.claro .ch { background: var(--vermelho); }
+.mp-obs { font-weight: 600; margin-top: 14px; }
+.mp-obs b { font-family: var(--display); font-weight: 400; font-size: 1.6rem; color: var(--amarelo); }
+.mp-tres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+@media (max-width: 860px) { .mp-tres { grid-template-columns: 1fr; } }
+.mp-cart { background: #FBF7EF; color: var(--tinta); padding: 20px; display: grid; gap: 8px; align-content: start; clip-path: polygon(0 2%, 100% 0, 99% 98%, 1% 100%); }
+.mp-cart .cm-mini { color: var(--vinho); }
+.mp-cart p { font-weight: 600; margin: 0; }
+.mp-cart b { font-family: var(--display); font-weight: 400; font-size: 2rem; color: var(--vermelho); margin-right: 6px; }
+.mp-pede { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+@media (max-width: 860px) { .mp-pede { grid-template-columns: 1fr 1fr; } }
+.mp-pede div { border-top: 5px solid var(--amarelo); padding-top: 10px; }
+.mp-pede b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 4.6vw, 3.4rem); line-height: 1; color: var(--amarelo); }
+.mp-pede span { display: block; font-weight: 700; margin-top: 6px; }
+.mp-voz { margin-top: 30px; font-size: clamp(1.7rem, 4.2vw, 3rem); }
+.mp-regs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.mp-reg { font: inherit; font-weight: 800; cursor: pointer; background: transparent; color: #FBF7EF; border: 2px solid #FBF7EF; padding: 10px 16px; text-transform: uppercase; letter-spacing: .04em; }
+.mp-reg small { display: block; font-weight: 600; text-transform: none; letter-spacing: 0; font-size: .78rem; opacity: .85; }
+.mp-reg[aria-pressed=true] { background: var(--amarelo); border-color: var(--amarelo); color: var(--tinta); }
+.mp-paineis { margin-top: 14px; }
+.mp-painel { background: #FBF7EF; color: var(--tinta); padding: 22px; }
+.mp-painel .mp-obs { color: var(--vinho); }
+.mp-cap { margin-top: 18px; font-weight: 500; max-width: 75ch; }
+.mp-cap b { color: var(--amarelo); }
+.mp-fonte { margin-top: 26px; font-size: .82rem; font-weight: 500; opacity: .9; max-width: 90ch; }
 .cm-dem { margin: 18px 0 0; padding: 0; list-style: none; counter-reset: d; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
 @media (max-width: 760px) { .cm-dem { grid-template-columns: 1fr; } }
 .cm-dem li { counter-increment: d; }
@@ -524,9 +566,11 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
       <article class="cm-bloco">
         <h3>O mapeamento</h3>
         <ul class="cm-nums">
-          <li><b>250</b><span>contribuições</span></li>
+          <li><b>244</b><span>participantes</span></li>
           <li><b>27</b><span>estados, todos os do Brasil</span></li>
+          <li><b>111</b><span>municípios</span></li>
         </ul>
+        <p class="cm-quando">Respostas coletadas de 17/10 a 07/11/2025.</p>
         <p class="cm-mini">O formulário tratou de:</p>
         <ul class="cm-temas">
           <li>Acesso a serviços, recursos e informação em saúde sexual e reprodutiva, nos níveis nacional e local</li>
@@ -541,11 +585,42 @@ h1, h2, h3, .titulo, .titulo-g { letter-spacing: .01em; }
 
     <h3 class="cm-h">O que o mapeamento revelou</h3>
     <p class="cm-voz">“Parimos com medo de morrer.”</p>
-    <div class="cm-res">
-      <div class="cm-pct"><b>93,8%</b><span>avaliaram o acesso e a qualidade dos serviços de saúde reprodutiva para mulheres negras como regulares, ruins ou muito ruins</span></div>
-      <div class="cm-pct"><b>85,0%</b><span>avaliaram o acesso ao aborto legal como ruim ou muito ruim, o que evidencia a desinformação institucionalizada</span></div>
-      <div class="cm-top"><span class="cm-mini">Preocupações mais críticas</span><ol><li>Racismo institucional</li><li>Saúde mental</li><li>Violência obstétrica</li></ol></div>
+    <div class="mp-ind">
+      <div class="cm-pct"><b>85,0%</b><span>avaliam como ruim ou muito ruim o acesso à informação sobre aborto legal. Só 3,3% o avaliam bem.</span></div>
+      <div class="cm-pct"><b>75,8%</b><span>consideram pouco ou nada eficazes as políticas contra o racismo institucional</span></div>
+      <div class="cm-pct"><b>69,0%</b><span>se sentem pouco ou nada seguras para denunciar o racismo institucional</span></div>
+      <div class="cm-pct"><b>61,3%</b><span>dão nota 1 ou 2 ao acesso e à qualidade dos serviços de saúde reprodutiva. Só 6,2% dão nota 4 ou 5.</span></div>
     </div>
+    <p class="mp-nota">Escala de 1 (muito ruim) a 5 (muito bom). Os quatro indicadores andam juntos: quem avalia mal um também avalia mal os outros, o que aponta para uma percepção de negligência institucional, mais do que falhas isoladas.</p>
+
+    <div class="mp-duas">
+      <article class="mp-cx"><h4>Temas mais urgentes</h4><div class="mp-barras "><div class="mp-b"><span class="t">Racismo institucional na saúde</span><span class="tr"><span class="ch" style="--p:64.8"></span></span><b>64,8%</b></div><div class="mp-b"><span class="t">Saúde mental e emocional</span><span class="tr"><span class="ch" style="--p:64.3"></span></span><b>64,3%</b></div><div class="mp-b"><span class="t">Violência obstétrica</span><span class="tr"><span class="ch" style="--p:56.1"></span></span><b>56,1%</b></div><div class="mp-b"><span class="t">Aborto seguro</span><span class="tr"><span class="ch" style="--p:48.8"></span></span><b>48,8%</b></div></div></article>
+      <article class="mp-cx"><h4>Barreiras de acesso de alta relevância</h4><div class="mp-barras "><div class="mp-b"><span class="t">Tempo: horários e filas</span><span class="tr"><span class="ch" style="--p:61.1"></span></span><b>61,1%</b></div><div class="mp-b"><span class="t">Informação</span><span class="tr"><span class="ch" style="--p:45.5"></span></span><b>45,5%</b></div><div class="mp-b"><span class="t">Custo</span><span class="tr"><span class="ch" style="--p:41.4"></span></span><b>41,4%</b></div><div class="mp-b"><span class="t">Distância</span><span class="tr"><span class="ch" style="--p:27.9"></span></span><b>27,9%</b></div></div><p class="mp-obs"><b>84,4%</b> apontam ao menos uma barreira de alta relevância. Quanto mais barreiras, pior a avaliação dos serviços.</p></article>
+    </div>
+
+    <div class="mp-tres">
+      <div class="mp-cart"><span class="cm-mini">Violência obstétrica: o mais crítico</span><p><b>36,1%</b> negligência ou atraso no atendimento</p><p><b>32,4%</b> tratamento desrespeitoso ou discriminatório</p></div>
+      <div class="mp-cart"><span class="cm-mini">Dignidade menstrual: o maior desafio</span><p><b>42,2%</b> acesso a produtos gratuitos ou de baixo custo</p><p><b>29,1%</b> educação e informação sobre saúde menstrual</p></div>
+      <div class="mp-cart"><span class="cm-mini">Reparação e bem viver</span><p><b>82,2%</b> concordam que justiça reprodutiva e reparação histórica estão ligadas</p></div>
+    </div>
+
+    <h3 class="cm-h">O que as participantes pedem</h3>
+    <p class="mp-nota" style="margin-top:8px">Demandas mais frequentes nas respostas abertas, entre as 225 participantes que escreveram.</p>
+    <div class="mp-pede">
+      <div><b>71,1%</b><span>educação sexual e acesso à informação</span></div>
+      <div><b>58,7%</b><span>acesso ao SUS</span></div>
+      <div><b>47,6%</b><span>atendimento humanizado e escuta</span></div>
+      <div><b>45,3%</b><span>formação de profissionais</span></div>
+    </div>
+    <p class="cm-voz mp-voz">“Que a gente não morra por decidir abortar.”</p>
+
+    <h3 class="cm-h">Território a território</h3>
+    <p class="mp-nota" style="margin-top:8px">A avaliação negativa é parecida em todas as regiões. O que muda são as prioridades e as barreiras. Escolha uma região.</p>
+    <div class="mp-regs" role="group" aria-label="Regiões"><button type="button" class="mp-reg" data-reg="norte" aria-pressed="true">Norte <small>40 respostas</small></button><button type="button" class="mp-reg" data-reg="nordeste" aria-pressed="false">Nordeste <small>80 respostas</small></button><button type="button" class="mp-reg" data-reg="centro-oeste" aria-pressed="false">Centro-Oeste <small>24 respostas</small></button><button type="button" class="mp-reg" data-reg="sudeste" aria-pressed="false">Sudeste <small>85 respostas</small></button><button type="button" class="mp-reg" data-reg="sul" aria-pressed="false">Sul <small>12 respostas</small></button></div>
+    <div class="mp-paineis" aria-live="polite"><div class="mp-painel" data-reg="norte"><div class="mp-barras claro"><div class="mp-b"><span class="t">Barreira de tempo alta</span><span class="tr"><span class="ch" style="--p:77.5"></span></span><b>77,5%</b></div><div class="mp-b"><span class="t">Saúde mental como tema urgente</span><span class="tr"><span class="ch" style="--p:75.0"></span></span><b>75,0%</b></div><div class="mp-b"><span class="t">Dignidade menstrual como tema urgente</span><span class="tr"><span class="ch" style="--p:40.0"></span></span><b>40,0%</b></div><div class="mp-b"><span class="t">Distância como barreira alta</span><span class="tr"><span class="ch" style="--p:37.5"></span></span><b>37,5%</b></div></div><p class="mp-obs">A distância e a espera pesam mais, em sintonia com os vazios assistenciais da Amazônia.</p></div><div class="mp-painel" data-reg="nordeste" hidden><div class="mp-barras claro"><div class="mp-b"><span class="t">Barreira financeira alta</span><span class="tr"><span class="ch" style="--p:50.0"></span></span><b>50,0%</b></div><div class="mp-b"><span class="t">Barreira de tempo alta</span><span class="tr"><span class="ch" style="--p:52.5"></span></span><b>52,5%</b></div><div class="mp-b"><span class="t">Aborto seguro como tema urgente</span><span class="tr"><span class="ch" style="--p:38.8"></span></span><b>38,8%</b></div><div class="mp-b"><span class="t">Barreira de informação alta</span><span class="tr"><span class="ch" style="--p:40.0"></span></span><b>40,0%</b></div></div><p class="mp-obs">Tem a barreira financeira mais alta do país.</p></div><div class="mp-painel" data-reg="centro-oeste" hidden><div class="mp-barras claro"><div class="mp-b"><span class="t">Barreira de informação alta</span><span class="tr"><span class="ch" style="--p:75.0"></span></span><b>75,0%</b></div><div class="mp-b"><span class="t">Saúde mental como tema urgente</span><span class="tr"><span class="ch" style="--p:79.2"></span></span><b>79,2%</b></div><div class="mp-b"><span class="t">Dignidade menstrual como tema urgente</span><span class="tr"><span class="ch" style="--p:45.8"></span></span><b>45,8%</b></div><div class="mp-b"><span class="t">Barreira de tempo alta</span><span class="tr"><span class="ch" style="--p:62.5"></span></span><b>62,5%</b></div></div><p class="mp-obs">A falta de informação aparece como a barreira mais forte.</p></div><div class="mp-painel" data-reg="sudeste" hidden><div class="mp-barras claro"><div class="mp-b"><span class="t">Barreira de tempo alta</span><span class="tr"><span class="ch" style="--p:60.0"></span></span><b>60,0%</b></div><div class="mp-b"><span class="t">Aborto seguro como tema urgente</span><span class="tr"><span class="ch" style="--p:54.1"></span></span><b>54,1%</b></div><div class="mp-b"><span class="t">Barreira de informação alta</span><span class="tr"><span class="ch" style="--p:42.4"></span></span><b>42,4%</b></div><div class="mp-b"><span class="t">Barreira financeira alta</span><span class="tr"><span class="ch" style="--p:40.0"></span></span><b>40,0%</b></div></div><p class="mp-obs">Concentra mais de um terço das respostas.</p></div><div class="mp-painel" data-reg="sul" hidden><div class="mp-barras claro"><div class="mp-b"><span class="t">Aborto seguro como tema urgente</span><span class="tr"><span class="ch" style="--p:83.3"></span></span><b>83,3%</b></div><div class="mp-b"><span class="t">Barreira de tempo alta</span><span class="tr"><span class="ch" style="--p:66.7"></span></span><b>66,7%</b></div><div class="mp-b"><span class="t">Barreira de informação alta</span><span class="tr"><span class="ch" style="--p:58.3"></span></span><b>58,3%</b></div><div class="mp-b"><span class="t">Barreira financeira alta</span><span class="tr"><span class="ch" style="--p:33.3"></span></span><b>33,3%</b></div></div><p class="mp-obs">Com só 12 respostas, os números do Sul variam muito e devem ser lidos com cautela.</p></div></div>
+    <p class="mp-cap"><b>Paradoxo das capitais:</b> quem vive em capitais avalia pior o acesso e a qualidade dos serviços (nota média 2,04, contra 2,34 no interior e nas regiões metropolitanas) e enfrenta mais barreiras de tempo e de informação.</p>
+
+    <p class="mp-fonte">Fonte: Comitê Feminista e Antirracista por Justiça Reprodutiva, mapeamento de demandas da Marcha das Mulheres Negras 2025 (formulário on-line, 244 respostas). Análise do Instituto de Justiça Reprodutiva. Amostra não probabilística: os resultados expressam as percepções de uma rede mobilizada, não de toda a população de mulheres negras. Percentuais calculados sobre as respostas válidas de cada pergunta.</p>
 
     <h3 class="cm-h">Seis demandas centrais do manifesto</h3>
     <ol class="cm-dem">
@@ -816,6 +891,12 @@ var TEMAS = {"violencia": {"m": ["1.3.1", "1.3.2", "1.3.3", "2.1.1", "2.2.2", "2
     ps.forEach(function (p) { io.observe(p); });
   } else ps.forEach(function (p) { p.classList.add('on'); });
 
+
+  var regs = document.querySelectorAll('.mp-reg');
+  [].forEach.call(regs, function (b) { b.addEventListener('click', function () {
+    [].forEach.call(regs, function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+    [].forEach.call(document.querySelectorAll('.mp-painel'), function (p) { p.hidden = p.dataset.reg !== b.dataset.reg; });
+  }); });
   [].forEach.call(document.querySelectorAll('[data-abre]'), function (a) { a.addEventListener('click', function (e) { e.preventDefault(); var b = document.getElementById('aba-' + a.dataset.abre); b.click(); document.getElementById('eixo-' + a.dataset.abre).scrollIntoView({ block: 'start' }); }); });
   var vt = document.getElementById('vt'), vs = document.getElementById('vt-som'), vf = document.querySelector('.vt-fundo');
   if (vt) {
