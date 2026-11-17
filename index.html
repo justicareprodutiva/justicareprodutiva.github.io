@@ -524,6 +524,28 @@ a.pessoa:hover .nome, a.pessoa:focus-visible .nome { text-decoration: underline;
 footer img { height: 110px; }
 @media (max-width: 760px) { footer img { height: 92px; } }
 .btn .ico { width: 1.15em; height: 1.15em; vertical-align: -.2em; margin-right: .45em; }
+
+.blister { background-color: var(--branco); color: var(--tinta); }
+.bl-grade { display: grid; gap: clamp(28px, 5vw, 64px); }
+@media (min-width: 920px) { .bl-grade { grid-template-columns: 1fr 1.15fr; align-items: start; } }
+.bl-marca { margin: 0; line-height: 0; }
+.bl-marca img { width: min(340px, 80%); height: auto; }
+.bl-sub { font-size: clamp(1.02rem, 1.5vw, 1.15rem); font-weight: 500; margin: 22px 0; max-width: 52ch; }
+.bl-form { display: block; width: 100%; max-width: 520px; height: 150px; border: 0; background: transparent; }
+.bl-todas { margin-top: 18px; color: var(--azul); border-color: var(--azul); }
+.bl-rot { font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; color: var(--azul); margin: 0 0 14px; }
+.bl-lista { display: grid; gap: 14px; }
+.bl-ed { display: grid; grid-template-columns: 140px 1fr; gap: 16px; align-items: center; background: #fff; color: var(--tinta); text-decoration: none; border-left: 6px solid var(--rosa); padding: 12px 16px 12px 12px; transition: transform .25s ease, box-shadow .25s ease; }
+.bl-ed:hover, .bl-ed:focus-visible { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(31,42,216,.15); }
+.bl-ed img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; display: block; background: var(--azul); }
+.bl-ed.destaque { grid-template-columns: 1fr; border-left: 0; border-top: 6px solid var(--rosa); padding: 0 0 18px; }
+.bl-ed.destaque .bl-txt { padding: 0 20px; }
+.bl-txt { display: grid; gap: 4px; }
+.bl-txt time { font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--azul); }
+.bl-txt b { font-family: var(--display, "Anton", Impact, sans-serif); font-weight: 400; text-transform: uppercase; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.1; color: var(--azul); }
+.bl-ed.destaque .bl-txt b { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.bl-txt span { font-weight: 500; font-size: .95rem; }
+@media (max-width: 520px) { .bl-ed { grid-template-columns: 96px 1fr; } }
 </style>
 </head>
 <body>
@@ -643,7 +665,7 @@ footer img { height: 110px; }
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-com">Coalizões<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <ul class="sub" id="sub-com"><li><a href="coalizoes.html#abcd">Pacto Brasileiro de Combate às Desigualdades</a></li><li><a href="coalizoes.html#alianca">Aliança Pró-Saúde da População Negra</a></li><li><a href="coalizoes.html#coalizao">Coalizão Negra por Direitos</a></li><li><a href="coalizoes.html#comite-jr">Comitê de Justiça Reprodutiva</a></li><li><a href="coalizoes.html#comite-genero">Comitê de Enfrentamento à Violência de Gênero e Raça</a></li><li><a href="coalizoes.html#pacto">Pacto pela Democracia</a></li></ul></div>
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-bib">Biblioteca<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <ul class="sub" id="sub-bib"><li><a href="./#podcasts">Para ver e ouvir</a></li><li><a href="./#imprensa">Para ler</a></li></ul></div>
+        <ul class="sub" id="sub-bib"><li><a href="./#podcasts">Para ver e ouvir</a></li><li><a href="./#imprensa">Para ler</a></li><li><a href="./#blister">Blíster: boletim semanal</a></li></ul></div>
       <a class="junte" href="./#contato">Faça parte</a>
     </nav>
   </div>
@@ -855,7 +877,25 @@ footer img { height: 110px; }
     </div>
   </section>
 
-  <section class="band contato grao" id="contato">
+  <section class="band blister grao" id="blister" aria-labelledby="bl-t">
+  <div class="wrap">
+    <div class="bl-grade">
+      <div class="bl-assina">
+        <h2 id="bl-t" class="bl-marca"><img src="https://substackcdn.com/image/fetch/$s_!x5RU!,e_trim:10:white/e_trim:10:transparent/h_144,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86d396f1-2d08-4f7d-9c31-d879e22de9db_1440x320.png" alt="Blíster" width="364" height="72"></h2>
+        <p class="bl-sub">O boletim semanal do Instituto de Justiça Reprodutiva. Toda semana, na sua caixa de entrada: o que estamos produzindo, as campanhas em curso, os dados que levantamos e a agenda da luta por justiça reprodutiva no Brasil.</p>
+        <iframe class="bl-form" src="https://justicareprodutiva.substack.com/embed" title="Assine o Blíster" loading="lazy" frameborder="0" scrolling="no"></iframe>
+        <a class="btn vazado bl-todas" href="https://justicareprodutiva.substack.com/archive" target="_blank" rel="noopener">Ver todas as edições ↗</a>
+      </div>
+      <div class="bl-edicoes">
+        <p class="bl-rot">Edições recentes</p>
+        <div class="bl-lista" id="bl-lista">
+          <a class="bl-ed destaque" href="https://justicareprodutiva.substack.com/p/boletim-de-justica-reprodutiva-1" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/w_800,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3085ddda-eabc-43ba-ad68-43329047b9e2_2800x1358.png" alt="" loading="lazy"><span class="bl-txt"><time datetime="2026-11-10">10 nov 2026</time><b>BLÍSTER #1: boas-vindas!</b><span>Quem somos, o SUS depois das urnas e a nossa agenda pós eleições</span></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="band contato grao" id="contato">
     <div class="wrap">
       <div class="txt">
         <h2 class="faixa"><span class="f-verde">Faça</span><span class="f-rosa">parte</span></h2>
@@ -944,5 +984,21 @@ footer img { height: 110px; }
 })();
 </script>
 
+<script>
+(function () {
+  var L = document.getElementById('bl-lista'); if (!L || !window.fetch) return;
+  var M = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  function esc(t) { var d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; }
+  fetch('blister.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (eds) {
+    if (!eds || !eds.length) return;
+    L.innerHTML = eds.slice(0, 4).map(function (e, i) {
+      var p = (e.data || '').split('-'), dt = p.length === 3 ? (+p[2]) + ' ' + M[+p[1] - 1] + ' ' + p[0] : '';
+      return '<a class="bl-ed' + (i === 0 ? ' destaque' : '') + '" href="' + esc(e.link) + '" target="_blank" rel="noopener">' +
+        (e.imagem ? '<img src="' + esc(e.imagem) + '" alt="" loading="lazy">' : '') +
+        '<span class="bl-txt"><time datetime="' + esc(e.data) + '">' + dt + '</time><b>' + esc(e.titulo) + '</b><span>' + esc(e.subtitulo) + '</span></span></a>';
+    }).join('');
+  }).catch(function () {});
+})();
+</script>
 </body>
 </html>
