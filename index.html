@@ -546,6 +546,15 @@ footer img { height: 110px; }
 .bl-ed.destaque .bl-txt b { font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .bl-txt span { font-weight: 500; font-size: .95rem; }
 @media (max-width: 520px) { .bl-ed { grid-template-columns: 96px 1fr; } }
+
+/* círculo da identidade atrás de "Autonomia reprodutiva é justiça reprodutiva", girando para a direita */
+.hero { overflow: hidden; }
+.hero h1 { position: relative; }
+.hero h1::before { content: ""; position: absolute; z-index: -1; left: 58%; top: 50%; height: 104%; aspect-ratio: 1;
+  background: url(img/circulo-azul.svg) center / contain no-repeat; transform: translate(-50%, -50%) rotate(0deg);
+  animation: circulo-gira 50s linear infinite; pointer-events: none; }
+@keyframes circulo-gira { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .hero h1::before { animation: none; } }
 </style>
 </head>
 <body>
