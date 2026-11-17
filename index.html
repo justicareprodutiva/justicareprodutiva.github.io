@@ -546,17 +546,52 @@ footer img { height: 110px; }
 .bl-ed.destaque .bl-txt b { font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .bl-txt span { font-weight: 500; font-size: .95rem; }
 @media (max-width: 520px) { .bl-ed { grid-template-columns: 96px 1fr; } }
+
+/* anel da logo atrás de "Justiça reprodutiva para todas as pessoas que gestam" */
+.todas { overflow: hidden; }
+.todas .anel-logo { position: absolute; left: 50%; top: 50%; width: min(118vw, 720px); aspect-ratio: 1; margin: calc(min(118vw, 720px) / -2) 0 0 calc(min(118vw, 720px) / -2);
+  background: var(--rosa); -webkit-mask: url(img/anel-logo.png) center / contain no-repeat; mask: url(img/anel-logo.png) center / contain no-repeat;
+  animation: anel-gira 60s linear infinite; z-index: 0; pointer-events: none; }
+@keyframes anel-gira { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .todas .anel-logo { animation: none; } }
+/* Biblioteca: abas e cartões menores */
+.biblio { background-color: var(--agua-clara); }
+.bib-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 26px; }
+.bib-tab { font-family: var(--display, "Anton", Impact, sans-serif); font-weight: 400; text-transform: uppercase; font-size: clamp(1.05rem, 2vw, 1.4rem); letter-spacing: .02em;
+  padding: 10px 18px; border: 2px solid var(--azul); background: transparent; color: var(--azul); cursor: pointer; }
+.bib-tab[aria-selected=true] { background: var(--azul); color: var(--branco); }
+.bib-tab:hover { background: var(--rosa); border-color: var(--rosa); color: var(--tinta); }
+.bib-intro p { margin: 0 0 22px; }
+.biblio .docs { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
+.biblio .docs:not(.aberta) .doc:nth-child(n+3) { display: grid; }
+.biblio #ver-mais-pub { display: none; }
+.biblio .doc { grid-template-columns: 1fr; gap: 10px; padding: 14px; align-content: start; }
+.biblio .doc .capa-doc { max-width: 150px; }
+.biblio .doc h3 { font-size: 1.02rem; line-height: 1.2; }
+.biblio .doc-autoria, .biblio .doc-txt > p:not(.doc-autoria) { display: none; }
+.biblio .doc-txt { display: grid; gap: 8px; }
+.biblio .doc-acoes { display: grid; gap: 6px; }
+.biblio .doc-acoes .btn { font-size: .78rem; padding: 7px 10px; }
+.biblio .pod-grade { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 22px 16px; }
+.biblio .pod.destaque, .biblio .pod.destaque-m { grid-column: auto; }
+.biblio .pod.destaque .pod-capa, .biblio .pod.destaque-m .pod-capa { aspect-ratio: 16 / 9; }
+.biblio .pod { color: var(--tinta); }
+.biblio .pod-tit { font-size: .95rem; }
+.biblio .pod-meta, .biblio .pod-data { color: #4A5470; }
+.biblio .pod-acao { color: var(--azul); }
+.biblio .ler-grade { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 22px 16px; }
+.biblio .ler .tit { font-size: .92rem; }
 </style>
 </head>
 <body>
 <!-- movimento: abertura com a logo e textos que sobem ao entrar, no estilo de archewellphilanthropies.org -->
 <style id="mv-css">
 .mv #mv-intro { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; pointer-events: auto; }
-.mv #mv-intro::before { content: ""; position: absolute; inset: 0; background: var(--azul, #1F2AD8); transition: opacity .9s ease; }
+.mv #mv-intro::before { content: ""; position: absolute; inset: 0; background: var(--azul, #1F2AD8); transition: opacity .55s ease; }
 .mv #mv-intro.sai::before { opacity: 0; }
 .mv #mv-intro img { position: relative; width: min(340px, 64vw); height: auto; opacity: 0; transform: translateY(24px); transform-origin: 0 0;
-  animation: mv-logo 1.1s .15s cubic-bezier(.2,.7,.2,1) forwards; }
-.mv #mv-intro.voa img { transition: transform 1s cubic-bezier(.7,0,.2,1); }
+  animation: mv-logo .55s .05s cubic-bezier(.2,.7,.2,1) forwards; }
+.mv #mv-intro.voa img { transition: transform .6s cubic-bezier(.7,0,.2,1); }
 @keyframes mv-logo { to { opacity: 1; transform: none; } }
 .mv.mv-intro header .logo img { visibility: hidden; }
 .mv.mv-intro header .nav > *:not(.logo) { opacity: 0; }
@@ -625,13 +660,13 @@ footer img { height: 110px; }
       var a = alvo.getBoundingClientRect(), b = img.getBoundingClientRect();
       intro.classList.add('voa', 'sai');
       img.style.transform = 'translate(' + (a.left - b.left) + 'px,' + (a.top - b.top) + 'px) scale(' + (a.width / b.width) + ')';
-      setTimeout(function () { d.classList.remove('mv-intro'); }, 850);
-      setTimeout(fim, 1050);
+      setTimeout(function () { d.classList.remove('mv-intro'); }, 500);
+      setTimeout(fim, 650);
     }
-    setTimeout(voar, 1500);
+    setTimeout(voar, 750);
     intro.addEventListener('click', fim);
     document.addEventListener('keydown', fim, { once: true });
-    setTimeout(fim, 4000);
+    setTimeout(fim, 2500);
   });
 })();
 </script>
@@ -665,13 +700,25 @@ footer img { height: 110px; }
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-com">Coalizões<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <ul class="sub" id="sub-com"><li><a href="coalizoes.html#abcd">Pacto Brasileiro de Combate às Desigualdades</a></li><li><a href="coalizoes.html#alianca">Aliança Pró-Saúde da População Negra</a></li><li><a href="coalizoes.html#coalizao">Coalizão Negra por Direitos</a></li><li><a href="coalizoes.html#comite-jr">Comitê de Justiça Reprodutiva</a></li><li><a href="coalizoes.html#comite-genero">Comitê de Enfrentamento à Violência de Gênero e Raça</a></li><li><a href="coalizoes.html#pacto">Pacto pela Democracia</a></li></ul></div>
       <div class="item"><button class="topo" type="button" aria-expanded="false" aria-controls="sub-bib">Biblioteca<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <ul class="sub" id="sub-bib"><li><a href="./#podcasts">Para ver e ouvir</a></li><li><a href="./#imprensa">Para ler</a></li><li><a href="./#blister">Blíster: boletim semanal</a></li></ul></div>
-      <a class="junte" href="./#contato">Faça parte</a>
+        <ul class="sub" id="sub-bib"><li><a href="./#publicacoes">Publicações</a></li><li><a href="./#podcasts">Para ver e ouvir</a></li><li><a href="./#imprensa">Para ler</a></li><li><a href="./#blister">Blíster: boletim semanal</a></li></ul></div>
+      <a class="junte" href="faca-parte.html">Faça parte</a>
     </nav>
   </div>
 </header>
 
 <main id="inicio">
+<section class="band todas grao">
+    <span class="anel-logo" aria-hidden="true"></span>
+    <div class="wrap">
+      <h2 class="faixa">
+        <span>Justiça</span>
+        <span>reprodutiva</span>
+        <span class="f-agua">para todas</span>
+        <span>as pessoas</span>
+        <span>que gestam</span>
+      </h2>
+    </div>
+  </section>
   <section class="band hero grao">
     <div class="wrap">
       <div class="txt">
@@ -684,7 +731,6 @@ footer img { height: 110px; }
         <p class="lede">O Instituto de Justiça Reprodutiva é uma organização de direitos humanos que atua na defesa dos direitos sexuais e reprodutivos e na ampliação do acesso à saúde sexual e reprodutiva de mulheres negras e pessoas que gestam no Brasil.</p>
         <div class="acoes">
           <a class="btn cheio alto" href="sobre.html">Saiba mais</a>
-          <a class="btn vazado alto" href="./#contato">Faça parte</a>
         </div>
       </div>
     </div>
@@ -692,10 +738,12 @@ footer img { height: 110px; }
 
 
 
-  <section class="band pubs grao" id="publicacoes">
+  <section class="band biblio grao" id="biblioteca" aria-labelledby="bib-t">
     <div class="wrap">
-      <div class="cab">
-        <h2 class="faixa"><span class="f-azul">Publicações</span></h2>
+      <div class="cab"><h2 class="faixa" id="bib-t"><span class="f-azul">Biblioteca</span></h2><p>Tudo o que produzimos e onde estivemos: publicações, vídeos e podcasts, artigos e reportagens.</p></div>
+      <div class="bib-tabs" role="tablist" aria-label="Biblioteca"><button type="button" role="tab" class="bib-tab" id="tab-publicacoes" aria-controls="publicacoes" aria-selected="true">Publicações</button><button type="button" role="tab" class="bib-tab" id="tab-podcasts" aria-controls="podcasts" aria-selected="false" tabindex="-1">Para ver e ouvir</button><button type="button" role="tab" class="bib-tab" id="tab-imprensa" aria-controls="imprensa" aria-selected="false" tabindex="-1">Para ler</button></div>
+<div class="bib-painel" role="tabpanel" id="publicacoes" aria-labelledby="tab-publicacoes">
+      <div class="cab bib-intro">
         <p>Pesquisas, dossiês, cartilhas, livros e artigos feitos por ou em parceria com o Instituto de Justiça Reprodutiva. Leia a versão interativa ou baixe em PDF.</p>
       </div>
       <div class="docs" id="docs-lista">
@@ -768,12 +816,8 @@ footer img { height: 110px; }
       </div>
       <button class="ver-mais" type="button" id="ver-mais-pub" aria-expanded="false" aria-controls="docs-lista">Ver mais publicações</button>
     </div>
-  </section>
-
-  <section class="band pods grao" id="podcasts">
-    <div class="wrap">
-      <div class="cab">
-        <h2 class="faixa"><span class="f-rosa">Para ver e ouvir</span></h2>
+<div class="bib-painel" role="tabpanel" id="podcasts" aria-labelledby="tab-podcasts" hidden>
+      <div class="cab bib-intro">
         <p class="sub-area">Vídeos, podcasts, mesas de debate e outros conteúdos audiovisuais.</p>
       </div>
       <div class="pod-grade">
@@ -835,12 +879,8 @@ footer img { height: 110px; }
         </a>
       </div>
     </div>
-  </section>
-
-  <section class="band imprensa grao" id="imprensa">
-    <div class="wrap">
-      <div class="cab">
-        <h2 class="faixa"><span class="f-verde">Para ler</span></h2>
+<div class="bib-painel" role="tabpanel" id="imprensa" aria-labelledby="tab-imprensa" hidden>
+      <div class="cab bib-intro">
         <p class="sub-area">Artigos de opinião, entrevistas e reportagens.</p>
       </div>
       <div class="ler-grade">
@@ -862,20 +902,14 @@ footer img { height: 110px; }
       </div>
       <button class="ver-mais" type="button" id="ver-mais" aria-expanded="false" aria-controls="lista-ler">Ver mais matérias</button>
     </div>
-  </section>
-
-  <section class="band todas grao">
-    <svg class="anel" viewBox="0 0 200 200" aria-hidden="true" style="color: var(--rosa)"><use href="#simbolo"/></svg>
-    <div class="wrap">
-      <h2 class="faixa">
-        <span>Justiça</span>
-        <span>reprodutiva</span>
-        <span class="f-agua">para todas</span>
-        <span>as pessoas</span>
-        <span>que gestam</span>
-      </h2>
     </div>
   </section>
+
+  
+
+  
+
+  
 
   <section class="band blister grao" id="blister" aria-labelledby="bl-t">
   <div class="wrap">
@@ -895,32 +929,7 @@ footer img { height: 110px; }
     </div>
   </div>
 </section>
-<section class="band contato grao" id="contato">
-    <div class="wrap">
-      <div class="txt">
-        <h2 class="faixa"><span class="f-verde">Faça</span><span class="f-rosa">parte</span></h2>
-        <p>Quer fazer parte da luta por justiça reprodutiva? Se inscreva para receber informações em primeira mão e chamados para ação.</p>
-        <div class="email"><span id="end-email">justicareprodutiva@gmail.com</span><button class="copiar" type="button" id="btn-copiar">Copiar</button></div>
-        <ul class="redes">
-          <li><a href="https://www.instagram.com/justicareprodutiva/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg><span>Instagram <b>@justicareprodutiva</b></span></a></li>
-          <li><a href="https://x.com/jusreprodutiva" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>X <b>@jusreprodutiva</b></span></a></li>
-          <li><a href="https://www.threads.com/@justicareprodutiva" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 11.2c-.3-2.6-2-4-4.4-4-2.6 0-4.4 2-4.4 4.8s1.8 4.8 4.6 4.8c2.1 0 3.7-1.2 3.7-3 0-1.6-1.4-2.6-3.3-2.6-1.6 0-2.7.8-2.7 2 0 1 .9 1.7 2.1 1.7 1.8 0 3.1-1.5 3.1-4.4V9.8M12 21c-5.2 0-8.5-3.6-8.5-9S6.8 3 12 3c4.3 0 7.2 2.3 8.1 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>Threads <b>@justicareprodutiva</b></span></a></li>
-        </ul>
-      </div>
-      <form id="form-contato" novalidate>
-        <div class="campos">
-          <label class="l" for="nome">Nome *<input id="nome" name="nome" autocomplete="name" required></label>
-          <label for="email">E-mail *<input id="email" name="email" type="email" autocomplete="email" required></label>
-          <label for="tel">Telefone (com DDD) *<input id="tel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(21) 99999-9999" required></label>
-          <label class="l" for="genero">Identidade de gênero *<select id="genero" name="genero" required><option value="">Selecione</option><option>Mulher cis</option><option>Mulher trans</option><option>Homem cis</option><option>Homem trans</option><option>Travesti</option><option>Pessoa não binária</option><option>Prefiro não responder</option></select></label>
-        </div>
-        <label class="aceite"><input type="checkbox" id="aceite" required><span>Autorizo o tratamento dos meus dados pessoais pelo Instituto de Justiça Reprodutiva e a adição à sua base de dados para o recebimento de e-mails com notícias, publicações, campanhas e chamados para ação, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018). *</span></label>
-        <input class="honey" type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="enviar" type="submit" id="btn-enviar">Inscrever</button>
-        <p class="status" id="status" role="status"></p>
-      </form>
-    </div>
-  </section>
+
 </main>
 
 <footer>
@@ -950,14 +959,27 @@ footer img { height: 110px; }
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { var ab = document.querySelector('.item.aberto .topo'); fecharSubs(); if (ab) ab.focus(); } });
 
   var vp = document.getElementById('ver-mais-pub'), dl = document.getElementById('docs-lista');
-  function abrirPubs(a) { dl.classList.toggle('aberta', a); vp.setAttribute('aria-expanded', a); vp.textContent = a ? 'Ver menos' : 'Ver mais publicações'; }
-  vp.addEventListener('click', function () { abrirPubs(!dl.classList.contains('aberta')); });
-  function irPara() { var h = location.hash.slice(1), el = h && document.getElementById(h); if (el && dl.contains(el)) { abrirPubs(true); el.scrollIntoView(); } }
+  if (vp && dl) { function abrirPubs(a) { dl.classList.toggle('aberta', a); vp.setAttribute('aria-expanded', a); vp.textContent = a ? 'Ver menos' : 'Ver mais publicações'; }
+  vp.addEventListener('click', function () { abrirPubs(!dl.classList.contains('aberta')); }); }
+  var tabs = [].slice.call(document.querySelectorAll('.bib-tab'));
+  function aba(id, rolar) {
+    tabs.forEach(function (t) { var on = t.getAttribute('aria-controls') === id; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
+    if (rolar) document.getElementById('biblioteca').scrollIntoView();
+  }
+  tabs.forEach(function (t, n) {
+    t.addEventListener('click', function () { aba(t.getAttribute('aria-controls')); });
+    t.addEventListener('keydown', function (e) { var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; var o = tabs[(n + d + tabs.length) % tabs.length]; o.focus(); o.click(); e.preventDefault(); });
+  });
+  function irPara() {
+    var h = location.hash.slice(1), el = h && document.getElementById(h); if (!el) return;
+    var p = el.closest('.bib-painel'); if (p) { aba(p.id); (el === p ? document.getElementById('biblioteca') : el).scrollIntoView(); }
+  }
   window.addEventListener('hashchange', irPara); irPara();
   var vm = document.getElementById('ver-mais'), ll = document.getElementById('lista-ler');
-  vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais matérias'; });
+  if (vm && ll) vm.addEventListener('click', function () { var a = ll.classList.toggle('aberta'); vm.setAttribute('aria-expanded', a); vm.textContent = a ? 'Ver menos' : 'Ver mais matérias'; });
   var DESTINO = 'https://formsubmit.co/ajax/justicareprodutiva@gmail.com', PLANILHA = 'https://script.google.com/macros/s/AKfycbxX6UZ3MqjmkNl86IwRS6_RbAJ7ZRD5A_VOtRS4O2mYd5cF4PMKHPFKMeelMQMtZcux/exec';
   var form = document.getElementById('form-contato'), status = document.getElementById('status'), btn = document.getElementById('btn-enviar');
+  if (!form) return;
   var tel = document.getElementById('tel');
   tel.addEventListener('input', function () { var d = tel.value.replace(/\D/g, '').slice(0, 11), s = d; if (d.length > 2) s = '(' + d.slice(0, 2) + ') ' + d.slice(2); if (d.length > 6) s = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4); tel.value = s; });
   function msg(texto, tipo) { status.textContent = texto; status.className = 'status' + (tipo ? ' ' + tipo : ''); }
